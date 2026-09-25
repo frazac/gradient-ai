@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gradiente IA – Livelli di integrazione dell'IA tratti da AIAS</title>
+  <meta name="description" content="Cinque livelli per dichiarare quanto e come l'IA entra in una prova universitaria: testi in italiano per STEM, materie umanistiche e AFAM, timbri in PNG, SVG e JavaScript. Adattamento di AIAS v2, CC BY-NC-SA 4.0.">
+  <link rel="icon" href="dist/svg/icona-3-pieno.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/sito.css">
+  <script src="dist/gradient-ai.js" defer></script>
+  <script src="assets/sito.js" defer></script>
+  <!-- SOLO LOCALE: post-it di revisione (revisione/ non va su GitHub). Su GitHub Pages non si carica. -->
+  <script>
+    if (!/github\.io$/.test(location.hostname)) {
+      document.write('<link rel="stylesheet" href="revisione/note.css"><script src="revisione/note.js" defer><\/script>');
+    }
+  </script>
+</head>
+<body data-contesto="tutti">
+
+<header class="testata">
+  <div class="riga">
+    <p class="marchio"><span data-gradient="3" data-variant="icon" data-filled></span> Gradiente IA</p>
+    <nav>
+      <a href="#livelli">Livelli</a>
+      <a href="#usare">Usare</a>
+      <a href="#licenza">Licenza</a>
+      <a href="#fonti">Fonti</a>
+      <a href="https://github.com/frazac/gradient-ai">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section id="intro" class="intro riga">
+  <h1>Gradiente IA</h1>
+  <p class="sottotitolo">Livelli di integrazione dell'IA tratti da AIAS</p>
+  <p class="lead">Cinque livelli per dire, prima di una prova, <strong>quanto e come l'intelligenza artificiale può entrarci</strong>. Testi in italiano pensati per l'università — STEM, materie umanistiche, AFAM — e un timbro per ogni livello, da usare come immagine, come SVG o come libreria JavaScript.</p>
+  <p class="nota-fonte">Adattamento italiano della <a href="https://aiassessmentscale.com/">AI Assessment Scale (AIAS)</a> v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh · <a href="#licenza">CC BY-NC-SA 4.0</a> · versione <span data-versione>0.1.0</span></p>
+</section>
+
+<section id="personalizza" class="pannello" aria-label="Personalizza i timbri">
+  <div class="riga comandi">
+    <label>Forma
+      <select data-opt="variant">
+        <option value="stamp">Timbro</option>
+        <option value="icon">Icona</option>
+        <option value="label">Etichetta</option>
+      </select>
+    </label>
+    <label>Colori
+      <select data-opt="schema">
+        <option value="gradiente">Gradiente (predefinito)</option>
+        <option value="estremi">Da… a…</option>
+        <option value="unico">Colore unico</option>
+        <option value="nero">Nero (stampa)</option>
+      </select>
+    </label>
+    <span class="colori">
+      <input type="color" data-opt="from" value="#c8473d" aria-label="Colore iniziale (livello 1)">
+      <input type="color" data-opt="to" value="#1f2a44" aria-label="Colore finale (livello 5)">
+    </span>
+    <label>Peso <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
+    <label class="spunta"><input type="checkbox" data-opt="filled"> Pieno</label>
+    <label>Contesto
+      <select data-opt="contesto">
+        <option value="tutti">Tutti</option>
+        <option value="stem">STEM</option>
+        <option value="umanistiche">Umanistiche</option>
+        <option value="afam">AFAM</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+<section id="livelli" class="riga">
+  <ol class="galleria">
+    <li><a href="#livello-1"><span data-slot="1"></span></a></li>
+    <li><a href="#livello-2"><span data-slot="2"></span></a></li>
+    <li><a href="#livello-3"><span data-slot="3"></span></a></li>
+    <li><a href="#livello-4"><span data-slot="4"></span></a></li>
+    <li><a href="#livello-5"><span data-slot="5"></span></a></li>
+  </ol>
+
+  <!-- LIVELLI:INIZIO (generato da strumenti/build.py a partire da dati/livelli.it.json: non modificare a mano) -->
+  <article id="livello-1" class="livello" data-livello="1">
+    <div class="livello-timbro"><span data-slot="1" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Livello 1 · Senza IA</p>
+      <h2>Autonomia</h2>
+      <h3>Per chi insegna</h3>
+      <p>La prova si svolge interamente senza IA, in un contesto controllato. Lo studente conta soltanto sulle proprie conoscenze, sulla propria comprensione e sulle proprie abilità.</p>
+      <h3>Consegna per chi studia</h3>
+      <blockquote id="consegna-1">Non usare l'IA in nessuna fase. La prova serve a mostrare che cosa sai e sai fare in autonomia.</blockquote>
+      <h3>Esempi di prove</h3>
+      <div class="esempi">
+        <div class="esempio" data-contesto="stem"><h4 title="Scienze, tecnologia, ingegneria, matematica">STEM</h4><p>Esercizi e dimostrazioni svolti in aula; prova scritta di calcolo; orale su un procedimento; quaderno di laboratorio compilato a mano.</p></div>
+        <div class="esempio" data-contesto="umanistiche"><h4 title="Lettere, filosofia, storia, lingue, scienze sociali">Umanistiche</h4><p>Traduzione in aula; commento a un testo o a una fonte in presenza; esame orale; analisi di un documento d'archivio senza dispositivi.</p></div>
+        <div class="esempio" data-contesto="afam"><h4 title="Accademie di belle arti, conservatori, design, arti performative">AFAM</h4><p>Estemporanea dal vero; prova esecutiva allo strumento; improvvisazione; esercizi di armonia o di analisi su carta; bozzetto a mano libera in aula.</p></div>
+      </div>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-1">Copia la consegna</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="1">Scarica SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="1">Scarica PNG</button>
+        <button type="button" class="bottone" data-copia-svg="1">Copia SVG</button>
+      </p>
+    </div>
+  </article>
+  <article id="livello-2" class="livello" data-livello="2">
+    <div class="livello-timbro"><span data-slot="2" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Livello 2 · IA solo in fase preparatoria</p>
+      <h2>Ideazione</h2>
+      <h3>Per chi insegna</h3>
+      <p>L'IA può intervenire prima del lavoro vero e proprio: per far emergere idee, abbozzare una scaletta, orientarsi nelle prime ricerche. Si valuta la capacità di sviluppare e rifinire quelle idee in modo indipendente.</p>
+      <h3>Consegna per chi studia</h3>
+      <blockquote id="consegna-2">Puoi usare l'IA per cercare idee, organizzare una scaletta e cominciare a documentarti. L'elaborato finale deve mostrare come hai sviluppato e rielaborato tu quelle idee.</blockquote>
+      <h3>Esempi di prove</h3>
+      <div class="esempi">
+        <div class="esempio" data-contesto="stem"><h4 title="Scienze, tecnologia, ingegneria, matematica">STEM</h4><p>Individuare strade possibili per affrontare un problema; mappare la letteratura per una tesina; formulare ipotesi di progetto da discutere. Sviluppo, calcoli e codice restano personali.</p></div>
+        <div class="esempio" data-contesto="umanistiche"><h4 title="Lettere, filosofia, storia, lingue, scienze sociali">Umanistiche</h4><p>Brainstorming di tesi interpretative; scaletta di un saggio; prima ricognizione bibliografica, da verificare sempre sulle fonti.</p></div>
+        <div class="esempio" data-contesto="afam"><h4 title="Accademie di belle arti, conservatori, design, arti performative">AFAM</h4><p>Moodboard e riferimenti visivi; varianti di concept; ricerca iconografica preliminare. Tavole, partitura o prototipo sono realizzati dallo studente.</p></div>
+      </div>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-2">Copia la consegna</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="2">Scarica SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="2">Scarica PNG</button>
+        <button type="button" class="bottone" data-copia-svg="2">Copia SVG</button>
+      </p>
+    </div>
+  </article>
+  <article id="livello-3" class="livello" data-livello="3">
+    <div class="livello-timbro"><span data-slot="3" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Livello 3 · IA al fianco, con vaglio critico</p>
+      <h2>Co-creazione</h2>
+      <h3>Per chi insegna</h3>
+      <p>L'IA può affiancare lo svolgimento del compito: proporre idee, stendere bozze, dare riscontri, aiutare a rifinire. Lo studente vaglia con spirito critico e modifica ciò che l'IA propone, dimostrando la propria comprensione.</p>
+      <h3>Consegna per chi studia</h3>
+      <blockquote id="consegna-3">Puoi usare l'IA per parti specifiche del lavoro, come stendere una bozza, ricevere un riscontro o rifinire. Ogni contenuto generato va vagliato e rielaborato: dichiara come l'hai usata.</blockquote>
+      <h3>Esempi di prove</h3>
+      <div class="esempi">
+        <div class="esempio" data-contesto="stem"><h4 title="Scienze, tecnologia, ingegneria, matematica">STEM</h4><p>Codice scritto con un assistente, poi commentato, testato e spiegato; debugging guidato; relazione di laboratorio con revisione linguistica.</p></div>
+        <div class="esempio" data-contesto="umanistiche"><h4 title="Lettere, filosofia, storia, lingue, scienze sociali">Umanistiche</h4><p>Prima stesura rivista e annotata; confronto fra la propria traduzione e quella generata, discutendo gli scarti; riscontro sull'argomentazione di un saggio.</p></div>
+        <div class="esempio" data-contesto="afam"><h4 title="Accademie di belle arti, conservatori, design, arti performative">AFAM</h4><p>Bozzetti generati e poi ridisegnati; arrangiamento con strumenti di IA, rivisto all'ascolto; testi di presentazione del progetto riscritti.</p></div>
+      </div>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-3">Copia la consegna</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="3">Scarica SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="3">Scarica PNG</button>
+        <button type="button" class="bottone" data-copia-svg="3">Copia SVG</button>
+      </p>
+    </div>
+  </article>
+  <article id="livello-4" class="livello" data-livello="4">
+    <div class="livello-timbro"><span data-slot="4" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Livello 4 · IA diretta dallo studente</p>
+      <h2>Regia</h2>
+      <h3>Per chi insegna</h3>
+      <p>L'IA può essere usata per qualunque parte del compito: lo studente la dirige verso gli obiettivi della prova. A questo livello la prova può anche richiedere espressamente l'uso dell'IA per raggiungere obiettivi e risolvere problemi.</p>
+      <h3>Consegna per chi studia</h3>
+      <blockquote id="consegna-4">Puoi usare l'IA in modo esteso, liberamente o come indicato nella consegna. Conta come la guidi verso l'obiettivo e il pensiero critico che dimostri nel farlo.</blockquote>
+      <h3>Esempi di prove</h3>
+      <div class="esempi">
+        <div class="esempio" data-contesto="stem"><h4 title="Scienze, tecnologia, ingegneria, matematica">STEM</h4><p>Analisi di dati condotta con agenti di IA; prototipo software sviluppato con assistenti, con documentazione delle scelte e verifica indipendente dei risultati.</p></div>
+        <div class="esempio" data-contesto="umanistiche"><h4 title="Lettere, filosofia, storia, lingue, scienze sociali">Umanistiche</h4><p>Costruzione e analisi assistita di un corpus; edizione digitale; dossier che documenta istruzioni date all'IA, verifiche sulle fonti e scelte interpretative.</p></div>
+        <div class="esempio" data-contesto="afam"><h4 title="Accademie di belle arti, conservatori, design, arti performative">AFAM</h4><p>Progetto multimediale in cui l'IA produce materiali sotto direzione artistica; portfolio di processo che motiva ogni scelta.</p></div>
+      </div>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-4">Copia la consegna</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="4">Scarica SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="4">Scarica PNG</button>
+        <button type="button" class="bottone" data-copia-svg="4">Copia SVG</button>
+      </p>
+    </div>
+  </article>
+  <article id="livello-5" class="livello" data-livello="5">
+    <div class="livello-timbro"><span data-slot="5" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Livello 5 · IA come terreno di ricerca</p>
+      <h2>Sperimentazione</h2>
+      <h3>Per chi insegna</h3>
+      <p>L'IA è usata in modo creativo per affrontare problemi, produrre intuizioni nuove o sviluppare soluzioni originali. Docenti e studenti progettano insieme la prova per esplorare usi dell'IA inediti nella disciplina.</p>
+      <h3>Consegna per chi studia</h3>
+      <blockquote id="consegna-5">Usa l'IA in modo creativo per affrontare il compito: puoi progettare approcci nuovi insieme al docente.</blockquote>
+      <h3>Esempi di prove</h3>
+      <div class="esempi">
+        <div class="esempio" data-contesto="stem"><h4 title="Scienze, tecnologia, ingegneria, matematica">STEM</h4><p>Adattare o addestrare un modello; confrontare metodi; progettare esperimenti in cui l'IA stessa è oggetto di studio.</p></div>
+        <div class="esempio" data-contesto="umanistiche"><h4 title="Lettere, filosofia, storia, lingue, scienze sociali">Umanistiche</h4><p>Metodi di digital humanities; indagine su distorsioni e limiti dei modelli applicati a testi storici; nuove forme di lettura e di edizione.</p></div>
+        <div class="esempio" data-contesto="afam"><h4 title="Accademie di belle arti, conservatori, design, arti performative">AFAM</h4><p>Opere che assumono l'IA come medium o come tema critico; performance e installazioni; strumenti generativi costruiti ad hoc.</p></div>
+      </div>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-5">Copia la consegna</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="5">Scarica SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="5">Scarica PNG</button>
+        <button type="button" class="bottone" data-copia-svg="5">Copia SVG</button>
+      </p>
+    </div>
+  </article>
+  <!-- LIVELLI:FINE -->
+</section>
+
+<section id="usare" class="riga">
+  <h2>Usare i timbri</h2>
+  <p>Tre modi, dal più semplice al più flessibile. Gli esempi usano il livello 3; i colori e il peso nel codice JavaScript seguono le scelte del pannello qui sopra.</p>
+
+  <div class="tecnica">
+    <h3>1. Immagine PNG</h3>
+    <p>Per slide, documenti, piattaforme che accettano solo immagini. Ogni timbro è disponibile a 128 e 512 px (icona: 64 e 256; etichetta: 48 e 192 di altezza), contornato o pieno.</p>
+    <pre><code data-codice="png"></code></pre>
+    <p><a href="https://github.com/frazac/gradient-ai/tree/main/dist/png">Tutti i PNG</a></p>
+  </div>
+
+  <div class="tecnica">
+    <h3>2. File SVG</h3>
+    <p>Vettoriale: si ingrandisce senza perdere qualità e si modifica in Illustrator, Inkscape, Figma. Il testo usa un font di sistema.</p>
+    <pre><code data-codice="svg"></code></pre>
+    <p><a href="https://github.com/frazac/gradient-ai/tree/main/dist/svg">Tutti gli SVG</a></p>
+  </div>
+
+  <div class="tecnica">
+    <h3>3. JavaScript</h3>
+    <p>Come <a href="https://lucide.dev/guide/packages/lucide">Lucide</a>: si segna il posto con un attributo e la libreria disegna il timbro, con colori e peso a scelta.</p>
+    <pre><code data-codice="js"></code></pre>
+    <p>Opzioni: <code>variant</code> (<code>stamp</code>, <code>icon</code>, <code>label</code>) · <code>color</code> · <code>from</code>/<code>to</code> (gradiente in cinque passi) · <code>palette</code> (cinque colori) · <code>weight</code> (1–3) · <code>filled</code> · <code>size</code> (px). Per avere solo la stringa SVG: <code>GradientAI.toSvg(3, {variant: 'stamp'})</code>.</p>
+  </div>
+</section>
+
+<section id="note-uso" class="riga">
+  <h2>Note d'uso</h2>
+  <!-- NOTE:INIZIO -->
+  <ul>
+    <li>I livelli non sono una scala di merito: dicono quanto e come l'IA entra nella prova, non quanto la prova valga.</li>
+    <li>Solo il livello 1 si può garantire, e solo in un contesto controllato. Per un lavoro svolto a casa è prudente dare per possibile qualunque uso dell'IA e progettare la prova di conseguenza.</li>
+    <li>Il livello va scelto in base agli obiettivi di apprendimento e comunicato prima della consegna, insieme a che cosa va dichiarato (per esempio le istruzioni date all'IA).</li>
+  </ul>
+  <!-- NOTE:FINE -->
+</section>
+
+<section id="licenza" class="riga">
+  <h2>Licenza e attribuzione</h2>
+  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
+  Gradiente IA è distribuito con licenza <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it">Creative Commons Attribuzione – Non commerciale – Condividi allo stesso modo 4.0 Internazionale</a>, la stessa della AIAS v2 da cui deriva.</p>
+  <ul>
+    <li><strong>Puoi</strong> condividere, tradurre, adattare, ricolorare i timbri.</li>
+    <li><strong>Devi</strong> citare autori e fonte, indicare se hai fatto modifiche e distribuire le opere derivate con la stessa licenza.</li>
+    <li><strong>Non puoi</strong> usarlo per scopi commerciali.</li>
+  </ul>
+  <h3>Come attribuire</h3>
+  <blockquote id="attribuzione">Gradiente IA – Livelli di integrazione dell'IA tratti da AIAS, v<span data-versione>0.1.0</span>, di Francesco Zaccaria, <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it">CC BY-NC-SA 4.0</a>. Adattamento di AI Assessment Scale (AIAS) v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh (CC BY-NC-SA 4.0). Icone: Lucide (ISC).</blockquote>
+  <button type="button" class="bottone" data-copia="#attribuzione">Copia l'attribuzione</button>
+  <p class="piccolo">Gradiente IA è un adattamento indipendente: non è una traduzione ufficiale e non è approvato dagli autori della AIAS.</p>
+</section>
+
+<section id="fonti" class="riga">
+  <h2>Fonti e crediti</h2>
+  <h3>AI Assessment Scale</h3>
+  <ul class="bibliografia">
+    <li>Perkins, M., Furze, L., Roe, J., &amp; MacVaugh, J. (2024). The Artificial Intelligence Assessment Scale (AIAS): A framework for ethical integration of generative AI in educational assessment. <em>Journal of University Teaching and Learning Practice</em>, 21(6). <a href="https://open-publishing.org/journals/index.php/jutlp/article/view/810">open-publishing.org</a></li>
+    <li>Perkins, M., Roe, J., &amp; Furze, L. (2024). The AI Assessment Scale revisited: A framework for educational assessment. <em>arXiv</em>, 2412.09029. <a href="https://arxiv.org/abs/2412.09029">arxiv.org</a></li>
+    <li>AI Assessment Scale, sito ufficiale: <a href="https://aiassessmentscale.com/">aiassessmentscale.com</a> — versione 2 consultata nell'<a href="https://web.archive.org/web/20250611083200/https://aiassessmentscale.com/">archivio del giugno 2025</a>.</li>
+  </ul>
+  <h3>Icone</h3>
+  <p>Le icone al centro dei timbri sono di <a href="https://lucide.dev">Lucide</a> (licenza <a href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">ISC</a>, © Lucide Icons and Contributors): <a href="https://lucide.dev/icons/ban">ban</a>, <a href="https://lucide.dev/icons/calendar-days">calendar-days</a>, <a href="https://lucide.dev/icons/blender">blender</a>, <a href="https://lucide.dev/icons/bot">bot</a>, <a href="https://lucide.dev/icons/lighthouse">lighthouse</a> (le stesse scelte per il corso <a href="https://github.com/frazac/FORMAZIONE-IA-base">FORMAZIONE-IA-base</a>).</p>
+  <h3>Caratteri</h3>
+  <p>Sito: <a href="https://fonts.google.com/specimen/Space+Grotesk">Space Grotesk</a> (SIL Open Font License). Nei file SVG e PNG il testo usa un font di sistema.</p>
+  <h3>Cura</h3>
+  <p><a href="https://linktr.ee/frazac">Francesco Zaccaria</a> — adattamento, testi e timbri. Segnalazioni e proposte: <a href="https://github.com/frazac/gradient-ai/issues">issue su GitHub</a>.</p>
+</section>
+
+</main>
+
+<footer class="piede riga">
+  <p>Gradiente IA v<span data-versione>0.1.0</span> · <a href="https://github.com/frazac/gradient-ai/blob/main/CHANGELOG.md">Novità</a> · CC BY-NC-SA 4.0</p>
+</footer>
+
+</body>
+</html>

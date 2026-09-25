@@ -1,0 +1,137 @@
+/* Gradiente IA — sito (GitHub Pages). Nessun build: CSS a mano, variabili in :root. */
+
+:root {
+  --carta: #fbfaf7;
+  --carta-2: #f1eee8;
+  --inchiostro: #1c1d21;
+  --tenue: #5d6069;
+  --filo: #d9d5cc;
+  --accento: #2f5d8a;
+  --f: 'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --larghezza: 72rem;
+  --raggio: 10px;
+  --fondo-timbri: #fbfaf7;   /* i timbri stanno sempre su carta chiara, anche in tema scuro */
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --carta: #15161a;
+    --carta-2: #1f2026;
+    --inchiostro: #ecebe7;
+    --tenue: #a4a6ad;
+    --filo: #34363d;
+    --accento: #8fb5dc;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 8rem; }
+body {
+  margin: 0;
+  background: var(--carta);
+  color: var(--inchiostro);
+  font: 400 1.0625rem/1.6 var(--f);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accento); text-underline-offset: 0.18em; }
+h1, h2, h3, h4 { line-height: 1.15; font-weight: 700; margin: 0 0 0.5em; }
+h2 { font-size: 2rem; letter-spacing: -0.01em; }
+h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--tenue); margin-top: 1.6em; }
+code, pre { font-family: var(--mono); font-size: 0.85em; }
+:not(pre) > code { background: var(--carta-2); padding: 0.05em 0.35em; border-radius: 4px; }
+pre { background: var(--carta-2); border: 1px solid var(--filo); border-radius: var(--raggio); padding: 1rem; overflow-x: auto; line-height: 1.5; }
+
+.riga { max-width: var(--larghezza); margin: 0 auto; padding: 0 1rem; }
+main > section { padding-top: 3rem; }
+main > .intro { padding-top: 4rem; }
+
+/* testata */
+.testata { border-bottom: 1px solid var(--filo); background: var(--carta); }
+.testata .riga { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.5rem; flex-wrap: wrap; }
+.marchio { margin: 0; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+.marchio svg { width: 1.6rem; height: 1.6rem; }
+.testata nav { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: 0.95rem; }
+.testata nav a { color: inherit; text-decoration: none; }
+.testata nav a:hover { color: var(--accento); }
+
+/* intro */
+.intro h1 { font-size: clamp(2.6rem, 8vw, 5.5rem); letter-spacing: -0.03em; margin: 0; }
+.sottotitolo { font-size: clamp(1.1rem, 2.6vw, 1.6rem); margin: 0.2rem 0 1.4rem; color: var(--tenue); }
+.lead { font-size: 1.2rem; max-width: 44rem; }
+.nota-fonte { font-size: 0.9rem; color: var(--tenue); }
+
+/* pannello di personalizzazione */
+.pannello {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--carta) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-block: 1px solid var(--filo);
+  margin-top: 2rem; padding: 0.7rem 0 !important;
+}
+.comandi { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; align-items: center; font-size: 0.9rem; }
+.comandi label { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--tenue); }
+.comandi select, .comandi input[type=range] { font: inherit; color: var(--inchiostro); }
+.comandi select { background: var(--carta); border: 1px solid var(--filo); border-radius: 6px; padding: 0.25rem 0.4rem; }
+.comandi output { min-width: 2.2em; color: var(--inchiostro); font-variant-numeric: tabular-nums; }
+.colori { display: inline-flex; gap: 0.3rem; }
+.colori input { width: 2rem; height: 1.8rem; padding: 0; border: 1px solid var(--filo); border-radius: 6px; background: none; cursor: pointer; }
+.colori[hidden] { display: none; }
+
+/* galleria */
+.galleria { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+.galleria a { display: grid; place-items: center; aspect-ratio: 1; border: 1px solid var(--filo); border-radius: var(--raggio); padding: 0.8rem; background: var(--fondo-timbri); transition: transform 0.15s, border-color 0.15s; }
+.galleria a:hover { transform: translateY(-2px); border-color: var(--tenue); }
+.galleria svg { width: 100%; height: auto; max-height: 100%; }
+body[data-variant="label"] .galleria { grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+body[data-variant="label"] .galleria a { aspect-ratio: auto; }
+
+/* scheda livello */
+.livello { display: grid; grid-template-columns: minmax(12rem, 18rem) 1fr; gap: 2.5rem; padding: 3rem 0; border-top: 1px solid var(--filo); }
+.livello-timbro { position: sticky; top: 6rem; align-self: start; background: var(--fondo-timbri); border-radius: var(--raggio); padding: 1rem; }
+.livello-timbro svg { width: 100%; height: auto; }
+.occhiello { margin: 0; color: var(--tenue); font-size: 0.95rem; }
+.livello h2 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 0.1em; }
+.livello blockquote, #attribuzione { margin: 0; padding: 0.8rem 1rem; border-left: 4px solid var(--c, var(--accento)); background: var(--carta-2); border-radius: 0 var(--raggio) var(--raggio) 0; }
+.esempi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.esempio { border: 1px solid var(--filo); border-radius: var(--raggio); padding: 0.8rem 1rem; }
+.esempio h4 { font-size: 0.95rem; margin: 0 0 0.3rem; }
+.esempio p { margin: 0; font-size: 0.95rem; }
+body:not([data-contesto="tutti"]) .esempi { grid-template-columns: 1fr; }
+body[data-contesto="stem"] .esempio:not([data-contesto="stem"]),
+body[data-contesto="umanistiche"] .esempio:not([data-contesto="umanistiche"]),
+body[data-contesto="afam"] .esempio:not([data-contesto="afam"]) { display: none; }
+.azioni { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+
+.bottone {
+  font: 500 0.9rem var(--f); color: var(--inchiostro);
+  background: var(--carta); border: 1px solid var(--filo); border-radius: 999px;
+  padding: 0.4rem 0.9rem; cursor: pointer;
+}
+.bottone:hover { border-color: var(--inchiostro); }
+.bottone.fatto { border-color: #2a8c82; color: #2a8c82; }
+
+/* usare, licenza, fonti */
+.tecnica { margin-top: 2rem; }
+.tecnica h3 { color: var(--inchiostro); font-size: 1.1rem; text-transform: none; letter-spacing: 0; }
+.cc { display: flex; gap: 1rem; align-items: flex-start; }
+.cc img { flex: none; margin-top: 0.3rem; }
+#attribuzione { margin: 0 0 0.8rem; }
+.bibliografia li { margin-bottom: 0.5rem; }
+.piccolo { font-size: 0.9rem; color: var(--tenue); }
+.piede { border-top: 1px solid var(--filo); margin-top: 4rem; padding-block: 1.5rem 3rem; font-size: 0.9rem; color: var(--tenue); }
+
+@media (max-width: 52rem) {
+  .galleria { grid-template-columns: repeat(3, 1fr); }
+  .livello { grid-template-columns: 1fr; gap: 1rem; }
+  .livello-timbro { position: static; max-width: 14rem; }
+  .esempi { grid-template-columns: 1fr; }
+  .cc { flex-direction: column; }
+}
+@media (max-width: 30rem) {
+  .galleria { grid-template-columns: repeat(2, 1fr); }
+  .pannello { position: static; }
+}
+@media print {
+  .pannello, .testata nav, .azioni, #usare, .galleria { display: none; }
+  .livello { break-inside: avoid; }
+}

@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- Usato da strumenti/build.py (Chrome headless --dump-dom): genera SVG e PNG statici con la libreria stessa. -->
+<meta charset="utf-8">
+<script src="../dist/gradient-ai.js"></script>
+<pre id="out"></pre>
+<script>
+  // altezze dei PNG in px, per variante
+  var SIZES = { stamp: [128, 512], icon: [64, 256], label: [48, 192] };
+  var svg = {}, png = {}, jobs = [];
+  ['stamp', 'icon', 'label'].forEach(function (v) {
+    [1, 2, 3, 4, 5].forEach(function (n) {
+      [['outline', false], ['filled', true]].forEach(function (t) {
+        var k = v + '-' + n + '-' + t[0];
+        // id dei textPath stabili nei file statici
+        svg[k] = GradientAI.toSvg(n, { variant: v, filled: t[1] }).replace(/gai\d+/g, 'gai-' + k);
+        SIZES[v].forEach(function (h) { jobs.push(raster(k, svg[k], h)); });
+      });
+    });
+  });
+  function raster(k, s, h) {
+    return new Promise(function (ok) {
+      var vb = s.match(/viewBox="([^"]+)"/)[1].split(' ').map(Number);
+      var w = Math.round(h * vb[2] / vb[3]);
+      var img = new Image();
+      img.onload = function () {
+        var c = document.createElement('canvas');
+        c.width = w; c.height = h;
+        c.getContext('2d').drawImage(img, 0, 0, w, h);
+        png[k + '-' + h] = c.toDataURL('image/png');
+        ok();
+      };
+      img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(s);
+    });
+  }
+  Promise.all(jobs).then(function () {
+    document.getElementById('out').textContent = JSON.stringify({ svg: svg, png: png });
+  });
+</script>

@@ -1,0 +1,94 @@
+{
+  "lingua": "it",
+  "titolo": "Gradiente IA",
+  "sottotitolo": "Livelli di integrazione dell'IA tratti da AIAS",
+  "fonte": {
+    "nome": "AI Assessment Scale (AIAS), Version 2 (2024)",
+    "autori": ["Mike Perkins", "Leon Furze", "Jasper Roe", "Jason MacVaugh"],
+    "licenza": "CC BY-NC-SA 4.0",
+    "url": "https://aiassessmentscale.com/",
+    "archivio": "https://web.archive.org/web/20250611083200/https://aiassessmentscale.com/"
+  },
+  "contesti": [
+    { "id": "stem", "nome": "STEM", "esteso": "Scienze, tecnologia, ingegneria, matematica" },
+    { "id": "umanistiche", "nome": "Umanistiche", "esteso": "Lettere, filosofia, storia, lingue, scienze sociali" },
+    { "id": "afam", "nome": "AFAM", "esteso": "Accademie di belle arti, conservatori, design, arti performative" }
+  ],
+  "livelli": [
+    {
+      "n": 1,
+      "id": "autonomia",
+      "nome": "Autonomia",
+      "sottotitolo": "Senza IA",
+      "icona": "ban",
+      "docente": "La prova si svolge interamente senza IA, in un contesto controllato. Lo studente conta soltanto sulle proprie conoscenze, sulla propria comprensione e sulle proprie abilità.",
+      "studente": "Non usare l'IA in nessuna fase. La prova serve a mostrare che cosa sai e sai fare in autonomia.",
+      "esempi": {
+        "stem": "Esercizi e dimostrazioni svolti in aula; prova scritta di calcolo; orale su un procedimento; quaderno di laboratorio compilato a mano.",
+        "umanistiche": "Traduzione in aula; commento a un testo o a una fonte in presenza; esame orale; analisi di un documento d'archivio senza dispositivi.",
+        "afam": "Estemporanea dal vero; prova esecutiva allo strumento; improvvisazione; esercizi di armonia o di analisi su carta; bozzetto a mano libera in aula."
+      }
+    },
+    {
+      "n": 2,
+      "id": "ideazione",
+      "nome": "Ideazione",
+      "sottotitolo": "IA solo in fase preparatoria",
+      "icona": "calendar-days",
+      "docente": "L'IA può intervenire prima del lavoro vero e proprio: per far emergere idee, abbozzare una scaletta, orientarsi nelle prime ricerche. Si valuta la capacità di sviluppare e rifinire quelle idee in modo indipendente.",
+      "studente": "Puoi usare l'IA per cercare idee, organizzare una scaletta e cominciare a documentarti. L'elaborato finale deve mostrare come hai sviluppato e rielaborato tu quelle idee.",
+      "esempi": {
+        "stem": "Individuare strade possibili per affrontare un problema; mappare la letteratura per una tesina; formulare ipotesi di progetto da discutere. Sviluppo, calcoli e codice restano personali.",
+        "umanistiche": "Brainstorming di tesi interpretative; scaletta di un saggio; prima ricognizione bibliografica, da verificare sempre sulle fonti.",
+        "afam": "Moodboard e riferimenti visivi; varianti di concept; ricerca iconografica preliminare. Tavole, partitura o prototipo sono realizzati dallo studente."
+      }
+    },
+    {
+      "n": 3,
+      "id": "co-creazione",
+      "nome": "Co-creazione",
+      "sottotitolo": "IA al fianco, con vaglio critico",
+      "icona": "blender",
+      "docente": "L'IA può affiancare lo svolgimento del compito: proporre idee, stendere bozze, dare riscontri, aiutare a rifinire. Lo studente vaglia con spirito critico e modifica ciò che l'IA propone, dimostrando la propria comprensione.",
+      "studente": "Puoi usare l'IA per parti specifiche del lavoro, come stendere una bozza, ricevere un riscontro o rifinire. Ogni contenuto generato va vagliato e rielaborato: dichiara come l'hai usata.",
+      "esempi": {
+        "stem": "Codice scritto con un assistente, poi commentato, testato e spiegato; debugging guidato; relazione di laboratorio con revisione linguistica.",
+        "umanistiche": "Prima stesura rivista e annotata; confronto fra la propria traduzione e quella generata, discutendo gli scarti; riscontro sull'argomentazione di un saggio.",
+        "afam": "Bozzetti generati e poi ridisegnati; arrangiamento con strumenti di IA, rivisto all'ascolto; testi di presentazione del progetto riscritti."
+      }
+    },
+    {
+      "n": 4,
+      "id": "regia",
+      "nome": "Regia",
+      "sottotitolo": "IA diretta dallo studente",
+      "icona": "bot",
+      "docente": "L'IA può essere usata per qualunque parte del compito: lo studente la dirige verso gli obiettivi della prova. A questo livello la prova può anche richiedere espressamente l'uso dell'IA per raggiungere obiettivi e risolvere problemi.",
+      "studente": "Puoi usare l'IA in modo esteso, liberamente o come indicato nella consegna. Conta come la guidi verso l'obiettivo e il pensiero critico che dimostri nel farlo.",
+      "esempi": {
+        "stem": "Analisi di dati condotta con agenti di IA; prototipo software sviluppato con assistenti, con documentazione delle scelte e verifica indipendente dei risultati.",
+        "umanistiche": "Costruzione e analisi assistita di un corpus; edizione digitale; dossier che documenta istruzioni date all'IA, verifiche sulle fonti e scelte interpretative.",
+        "afam": "Progetto multimediale in cui l'IA produce materiali sotto direzione artistica; portfolio di processo che motiva ogni scelta."
+      }
+    },
+    {
+      "n": 5,
+      "id": "sperimentazione",
+      "nome": "Sperimentazione",
+      "sottotitolo": "IA come terreno di ricerca",
+      "icona": "lighthouse",
+      "docente": "L'IA è usata in modo creativo per affrontare problemi, produrre intuizioni nuove o sviluppare soluzioni originali. Docenti e studenti progettano insieme la prova per esplorare usi dell'IA inediti nella disciplina.",
+      "studente": "Usa l'IA in modo creativo per affrontare il compito: puoi progettare approcci nuovi insieme al docente.",
+      "esempi": {
+        "stem": "Adattare o addestrare un modello; confrontare metodi; progettare esperimenti in cui l'IA stessa è oggetto di studio.",
+        "umanistiche": "Metodi di digital humanities; indagine su distorsioni e limiti dei modelli applicati a testi storici; nuove forme di lettura e di edizione.",
+        "afam": "Opere che assumono l'IA come medium o come tema critico; performance e installazioni; strumenti generativi costruiti ad hoc."
+      }
+    }
+  ],
+  "note": [
+    "I livelli non sono una scala di merito: dicono quanto e come l'IA entra nella prova, non quanto la prova valga.",
+    "Solo il livello 1 si può garantire, e solo in un contesto controllato. Per un lavoro svolto a casa è prudente dare per possibile qualunque uso dell'IA e progettare la prova di conseguenza.",
+    "Il livello va scelto in base agli obiettivi di apprendimento e comunicato prima della consegna, insieme a che cosa va dichiarato (per esempio le istruzioni date all'IA)."
+  ]
+}
