@@ -23,6 +23,7 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 - Testo del profilo sopra i pulsanti dei profili, in una fascia con filetti al vivo come il pannello; «Introduzione» come h2 sotto il sottotitolo (entra anche nella briciola).
 - Nelle schede, dopo «Indicazione per chi realizza» (o «Consegna per chi studia»): «(Profilo: Generale, modifica)», con il nome del profilo in uso e un link che riporta alla fascia dei profili (`#profili`).
 - Avviso «This page is in Simple English»: senza la barra a sinistra, filetto uguale su tutti i lati (2 px, colore d'accento) e angoli tutti stondati.
+- «Come questo progetto ha usato l'IA»: sotto, una riga «Fatto con Claude, il modello di IA di Anthropic, usato attraverso Claude Code», in testo semplice, senza logo e con la precisazione che Anthropic non è coinvolta né ha approvato il progetto (come chiedono le linee guida di Anthropic sui marchi). Claude non compare fra i contributori del repository.
 - Testata: nella briciola un pallino pieno al posto del trattino fra il nome e la sezione.
 - Licenza sotto timbro e pittogramma più grande (timbro 10, pittogramma 3,4 unità; l'arco si allunga da solo per farci stare il testo) e regolabile: comando «Licenza» nel pannello (0,5–2, solo per timbro e pittogramma), opzione `creditSize` / attributo `data-credit-size`, chiave `licenza` nell'indirizzo condiviso.
 

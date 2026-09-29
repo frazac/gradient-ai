@@ -382,3 +382,6 @@ main ul { padding-left: 0; list-style-position: outside; }
   .piede-comandi, .pannello, .fascia-condividi, .fascia-profili, .testata, .nav-livelli, .azioni, #usare, .galleria { display: none; }
   .livello { break-inside: avoid; }
 }
+
+/* sotto «Come questo progetto ha usato l'IA»: con quale strumento, in testo semplice (niente logo, nessun legame con Anthropic) */
+.fatto-con { margin-top: 1.2rem; font-size: 0.85rem; color: var(--tenue); }
