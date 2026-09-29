@@ -79,11 +79,11 @@ def box_copia(id_, html_testo, lg):
 
 BOTTONI = {
     "it": {"livelli": "Livelli", "livello": "Livello", "copia": "Copia", "md": "Copia in formato MD", "testo": "Copia testo con link",
-           "svg": "Scarica SVG", "png": "Scarica PNG", "copiasvg": "Copia SVG"},
+           "svg": "Scarica SVG", "png": "Scarica PNG", "copiasvg": "Copia SVG", "profilo": "Profilo", "modifica": "modifica"},
     "fr": {"livelli": "Niveaux", "livello": "Niveau", "copia": "Copier", "md": "Copier au format MD", "testo": "Copier le texte avec lien",
-           "svg": "Télécharger le SVG", "png": "Télécharger le PNG", "copiasvg": "Copier le SVG"},
+           "svg": "Télécharger le SVG", "png": "Télécharger le PNG", "copiasvg": "Copier le SVG", "profilo": "Profil", "modifica": "modifier"},
     "en": {"livelli": "Levels", "livello": "Level", "copia": "Copy", "md": "Copy as Markdown (MD)", "testo": "Copy text with link",
-           "svg": "Download SVG", "png": "Download PNG", "copiasvg": "Copy SVG"},
+           "svg": "Download SVG", "png": "Download PNG", "copiasvg": "Copy SVG", "profilo": "Profile", "modifica": "change"},
 }
 
 
@@ -129,7 +129,7 @@ def render_lang(lg, dati, version):
       <p class="azioni"><button type="button" class="bottone" data-copia-testo="{n}">{B["testo"]}</button></p>
       <code class="badge-md" id="md-{n}">{e(md)}</code>
       <p class="azioni"><button type="button" class="bottone" data-copia="#md-{n}">{B["md"]}</button></p>
-      <h3 class="etichetta">{e(pr["esegue"])}</h3>
+      <h3 class="etichetta">{e(pr["esegue"])} <span class="etichetta-profilo">({B["profilo"]}: {e(pr["nome"])}, <a href="#profili">{B["modifica"]}</a>)</span></h3>
       {box_copia(f"consegna-{n}", e(t["esegue"]), lg)}
     </div>
   </article>""")

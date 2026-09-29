@@ -21,6 +21,7 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 - Pannello: «Forma: timbro / etichetta / pittogramma» (in quest'ordine; «icona» diventa «pittogramma») e «Colore: …» dentro i menu, senza etichetta a parte; interruttore «Traccia ○ Pieno»; sfondi di prova senza grigio e rosso (resta il selettore libero); 10 px in più sopra e sotto.
 - Sotto il pannello, una striscia «Condividi questa configurazione» (copia un indirizzo con le scelte, es. `?forma=label&pieno=1`, che all'apertura ha la precedenza su quelle salvate) e «Reset».
 - Testo del profilo sopra i pulsanti dei profili, in una fascia con filetti al vivo come il pannello; «Introduzione» come h2 sotto il sottotitolo (entra anche nella briciola).
+- Nelle schede, dopo «Indicazione per chi realizza» (o «Consegna per chi studia»): «(Profilo: Generale, modifica)», con il nome del profilo in uso e un link che riporta alla fascia dei profili (`#profili`).
 
 ## 0.4.0 — 2026-09-29
 

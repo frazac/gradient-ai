@@ -254,6 +254,9 @@ body[data-variant="label"] .uscite-timbro { width: 22rem; }
 .badge-nome { margin: 1.5rem 0 0; font-weight: 500; }
 .badge-md { display: block; margin-top: 1.2rem; font-size: 0.8rem; line-height: 1.5; color: var(--tenue); background: var(--carta-2); border-radius: 10px; padding: 0.6rem 0.8rem; overflow-wrap: anywhere; }
 .uscite .etichetta { margin-top: 1.8rem; }
+/* dopo l'etichetta: il profilo in uso e il link per cambiarlo (riporta alla fascia dei profili) */
+.etichetta-profilo { font-weight: 400; text-transform: none; letter-spacing: 0; }
+.etichetta-profilo a { color: inherit; }
 .occhiello { margin: 0; color: var(--tenue); font-size: 0.95rem; }
 .livello h2 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 0.1em; }
 /* box di testo da copiare: bordi arrotondati, pulsante «Copia» dentro */
