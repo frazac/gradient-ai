@@ -281,7 +281,10 @@ body[data-variant="label"] .uscite-timbro img { width: auto; height: 4rem; }
 /* dopo l'etichetta: il profilo in uso e il link per cambiarlo (riporta alla fascia dei profili) */
 .etichetta-profilo { font-weight: 400; text-transform: none; letter-spacing: 0; }
 .etichetta-profilo a { color: inherit; }
-.occhiello { margin: 0; color: var(--tenue); font-size: 0.95rem; }
+.occhiello { display: flex; align-items: center; gap: 0.55rem; margin: 0; color: var(--tenue); font-size: 0.95rem; }
+/* «Gradiente 1 ● AUTONOMIA»: lo stesso pallino della briciola, in grigio */
+.occhiello .pallino { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--tenue); flex: none; }
+.occhiello-nome { text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85em; font-weight: 600; }
 .livello h2 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 0.1em; }
 /* box di testo da copiare: bordi arrotondati, pulsante «Copia» dentro */
 .box-copia { border: 1px solid var(--filo); border-radius: 16px; background: var(--carta-2); padding: 1rem 1.2rem; }

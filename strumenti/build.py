@@ -82,11 +82,11 @@ def box_copia(id_, html_testo, lg):
 
 
 BOTTONI = {
-    "it": {"livelli": "Livelli", "livello": "Livello", "copia": "Copia", "md": "Copia in formato MD", "testo": "Copia testo con link",
+    "it": {"gradiente": "Gradiente", "livelli": "Livelli", "livello": "Livello", "copia": "Copia", "md": "Copia in formato MD", "testo": "Copia testo con link",
            "svg": "Scarica SVG", "png": "Scarica PNG", "copiasvg": "Copia SVG", "profilo": "Profilo", "modifica": "modifica"},
-    "fr": {"livelli": "Niveaux", "livello": "Niveau", "copia": "Copier", "md": "Copier au format MD", "testo": "Copier le texte avec lien",
+    "fr": {"gradiente": "Gradient", "livelli": "Niveaux", "livello": "Niveau", "copia": "Copier", "md": "Copier au format MD", "testo": "Copier le texte avec lien",
            "svg": "Télécharger le SVG", "png": "Télécharger le PNG", "copiasvg": "Copier le SVG", "profilo": "Profil", "modifica": "modifier"},
-    "en": {"livelli": "Levels", "livello": "Level", "copia": "Copy", "md": "Copy as Markdown (MD)", "testo": "Copy text with link",
+    "en": {"gradiente": "Gradient", "livelli": "Levels", "livello": "Level", "copia": "Copy", "md": "Copy as Markdown (MD)", "testo": "Copy text with link",
            "svg": "Download SVG", "png": "Download PNG", "copiasvg": "Copy SVG", "profilo": "Profile", "modifica": "change"},
 }
 
@@ -115,9 +115,8 @@ def render_lang(lg, dati, version):
             md = f"[{nome_badge}]({url})"
             parts.append(f"""
   <article id="livello-{n}" class="livello" data-livello="{n}">
-    <p class="occhiello">{B["livello"]} {n} · {e(l["sottotitolo"])}</p>
+    <p class="occhiello">{B["gradiente"]} {n}<span class="pallino" aria-hidden="true"></span><span class="occhiello-nome">{e(l["nome"])}</span></p>
     <h2>{e(l["nome"])}</h2>
-    <h3 class="etichetta">{e(pr["chiede"])}</h3>
     <p>{e(t["chiede"])}</p>
     <h3 class="etichetta">{e(pr["esempi"])}</h3>
     <ul class="esempi">{esempi}
