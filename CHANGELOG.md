@@ -2,8 +2,9 @@
 
 Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con una numerazione propria; la versione della AIAS da cui deriva (v2, 2024) è dichiarata a parte.
 
-## Non ancora rilasciato
+## 0.6.1 — 2026-09-30
 
+- Timbri: le due scritte sugli archi sono centrate sulla linea mediana della fascia qualunque sia il corpo (raggio della linea di base calcolato dall'altezza delle maiuscole); pallini laterali sulla stessa linea.
 - Badge testuale e Markdown del primo grado con «(senza IA)».
 - Versione per telefono e tablet: testata su una riga con menu che scorre, introduzione e titoli più compatti, pulsanti del badge su una riga, galleria a tre colonne.
 ## 0.6.0 — 2026-09-30

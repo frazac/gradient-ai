@@ -175,20 +175,26 @@
     var bottom = o.bottomText != null ? o.bottomText : TEXT[o.lang].bottom;
     var cr = o.credit !== false && o.credit !== 'false' ? credit(id + 'c', CREDIT, 100, 97, 10, o, c) : null;
     var s = open(200, 200, o, l, cr ? cr.m : 0);
-    s += '<defs><path id="' + id + 't" d="M 25 100 A 75 75 0 0 1 175 100"/>' +
-      '<path id="' + id + 'b" d="M 14 100 A 86 86 0 0 0 186 100"/></defs>';
+    // le due scritte stanno centrate sulla linea mediana della fascia fra anello esterno e cerchio interno,
+    // qualunque sia il corpo: il raggio della linea di base si sposta di mezza altezza delle maiuscole (0,7 em)
+    var nome = l.badge || l.name;
+    var fs = Math.min(17, 185 / (nome.length * 0.87)), fsB = 12, CAP = 0.7;
+    var rc = ((64 + w * 0.45) + (96 - w * 1.8)) / 2;           // centro della fascia
+    var rT = +(rc - CAP * fs / 2).toFixed(2);                    // arco in alto: le lettere crescono verso l'esterno
+    var rB = +(rc + CAP * fsB / 2).toFixed(2);                   // arco in basso: le lettere crescono verso il centro
+    s += '<defs><path id="' + id + 't" d="M ' + (100 - rT) + ' 100 A ' + rT + ' ' + rT + ' 0 0 1 ' + (100 + rT) + ' 100"/>' +
+      '<path id="' + id + 'b" d="M ' + (100 - rB) + ' 100 A ' + rB + ' ' + rB + ' 0 0 0 ' + (100 + rB) + ' 100"/></defs>';
     if (filled) s += '<circle cx="100" cy="100" r="97" fill="' + c + '"/>';
     else if (o.background) s += '<circle cx="100" cy="100" r="97" fill="' + o.background + '"/>';
     s += '<circle cx="100" cy="100" r="' + (96 - w * 0.9) + '" fill="none" stroke="' + ink + '" stroke-width="' + (w * 1.8) + '"/>';
     s += '<circle cx="100" cy="100" r="64" fill="none" stroke="' + ink + '" stroke-width="' + (w * 0.9) + '"/>';
     s += '<g fill="' + ink + '" font-family="' + esc(FONT) + '" font-weight="' + fw + '" text-anchor="middle">';
-    // corpo adattivo: i nomi lunghi (SPERIMENTAZIONE) restano dentro l'arco superiore
-    var nome = l.badge || l.name;
-    var fs = Math.min(17, 185 / (nome.length * 0.87));
+    // corpo adattivo: i nomi lunghi (SPERIMENTAZIONE, AUTONOMIA (SENZA IA)) restano dentro l'arco superiore
     s += '<text font-size="' + fs.toFixed(1) + '" letter-spacing="' + (fs * 0.15).toFixed(2) + '"><textPath href="#' + id + 't" startOffset="50%">' + esc(nome.toUpperCase()) + '</textPath></text>';
-    s += '<text font-size="12" letter-spacing="3.5"><textPath href="#' + id + 'b" startOffset="50%">' + esc(bottom) + '</textPath></text>';
+    s += '<text font-size="' + fsB + '" letter-spacing="3.5"><textPath href="#' + id + 'b" startOffset="50%">' + esc(bottom) + '</textPath></text>';
     // pallini ai lati: grandi come quelli del sito (circa 9 px quando il timbro è a 170 px)
-    s += '<circle cx="20" cy="100" r="' + (3.5 + w * 0.9) + '"/><circle cx="180" cy="100" r="' + (3.5 + w * 0.9) + '"/>';
+    // sulla stessa linea mediana delle scritte
+    s += '<circle cx="' + (100 - rc).toFixed(2) + '" cy="100" r="' + (3.5 + w * 0.9) + '"/><circle cx="' + (100 + rc).toFixed(2) + '" cy="100" r="' + (3.5 + w * 0.9) + '"/>';
     // baseline a 146: sotto il numero resta verso il cerchio interno lo stesso spazio (~17) che c'è sopra il pittogramma
     s += '<text x="100" y="146" font-size="30" font-weight="' + Math.max(fw, 700) + '">' + l.n + '/5</text>';
     s += '</g>';

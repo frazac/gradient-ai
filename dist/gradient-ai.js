@@ -1,5 +1,5 @@
 /*!
- * Gradient AI v0.6.0 — Gradiente IA: livelli di integrazione dell'IA tratti da AIAS
+ * Gradient AI v0.6.1 — Gradiente IA: livelli di integrazione dell'IA tratti da AIAS
  * https://github.com/frazac/gradient-ai
  *
  * Contenuti: adattamento di AI Assessment Scale (AIAS) v2 di Mike Perkins, Leon Furze,
@@ -14,7 +14,7 @@
 }(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '0.6.0';
+  var VERSION = '0.6.1';
   var LEVELS = {"it": [{"n": 1, "id": "autonomia", "name": "Autonomia", "subtitle": "Senza IA", "icon": "ban", "badge": "Autonomia (senza IA)"}, {"n": 2, "id": "ideazione", "name": "Ideazione", "subtitle": "IA solo in fase preparatoria", "icon": "calendar-days", "badge": "Ideazione"}, {"n": 3, "id": "co-creazione", "name": "Co-creazione", "subtitle": "IA al fianco, con vaglio critico", "icon": "blender", "badge": "Co-creazione"}, {"n": 4, "id": "regia", "name": "Regia", "subtitle": "IA sotto direzione umana", "icon": "bot", "badge": "Regia"}, {"n": 5, "id": "sperimentazione", "name": "Sperimentazione", "subtitle": "IA come terreno di ricerca", "icon": "lighthouse", "badge": "Sperimentazione"}], "fr": [{"n": 1, "id": "autonomia", "name": "Autonomie", "subtitle": "Sans IA", "icon": "ban", "badge": "Autonomie (sans IA)"}, {"n": 2, "id": "ideazione", "name": "Idéation", "subtitle": "IA seulement en amont", "icon": "calendar-days", "badge": "Idéation"}, {"n": 3, "id": "co-creazione", "name": "Co-création", "subtitle": "IA à vos côtés, avec regard critique", "icon": "blender", "badge": "Co-création"}, {"n": 4, "id": "regia", "name": "Régie", "subtitle": "IA sous direction humaine", "icon": "bot", "badge": "Régie"}, {"n": 5, "id": "sperimentazione", "name": "Expérimentation", "subtitle": "IA comme terrain de recherche", "icon": "lighthouse", "badge": "Expérimentation"}], "en": [{"n": 1, "id": "autonomia", "name": "On your own", "subtitle": "No AI", "icon": "ban", "badge": "On your own (no AI)"}, {"n": 2, "id": "ideazione", "name": "Ideas", "subtitle": "AI only before you start", "icon": "calendar-days", "badge": "Ideas"}, {"n": 3, "id": "co-creazione", "name": "Working together", "subtitle": "AI helps, you check everything", "icon": "blender", "badge": "Working together"}, {"n": 4, "id": "regia", "name": "Directing", "subtitle": "People lead the AI", "icon": "bot", "badge": "Directing"}, {"n": 5, "id": "sperimentazione", "name": "Exploring", "subtitle": "AI as a place to try new things", "icon": "lighthouse", "badge": "Exploring"}]};   // { it: [...], en: [...] }
   var TEXT = {
     it: { brand: 'Gradiente IA', level: 'Livello', bottom: 'GRADIENTE IA', mark: 'Gradient IA' },
@@ -175,20 +175,26 @@
     var bottom = o.bottomText != null ? o.bottomText : TEXT[o.lang].bottom;
     var cr = o.credit !== false && o.credit !== 'false' ? credit(id + 'c', CREDIT, 100, 97, 10, o, c) : null;
     var s = open(200, 200, o, l, cr ? cr.m : 0);
-    s += '<defs><path id="' + id + 't" d="M 25 100 A 75 75 0 0 1 175 100"/>' +
-      '<path id="' + id + 'b" d="M 14 100 A 86 86 0 0 0 186 100"/></defs>';
+    // le due scritte stanno centrate sulla linea mediana della fascia fra anello esterno e cerchio interno,
+    // qualunque sia il corpo: il raggio della linea di base si sposta di mezza altezza delle maiuscole (0,7 em)
+    var nome = l.badge || l.name;
+    var fs = Math.min(17, 185 / (nome.length * 0.87)), fsB = 12, CAP = 0.7;
+    var rc = ((64 + w * 0.45) + (96 - w * 1.8)) / 2;           // centro della fascia
+    var rT = +(rc - CAP * fs / 2).toFixed(2);                    // arco in alto: le lettere crescono verso l'esterno
+    var rB = +(rc + CAP * fsB / 2).toFixed(2);                   // arco in basso: le lettere crescono verso il centro
+    s += '<defs><path id="' + id + 't" d="M ' + (100 - rT) + ' 100 A ' + rT + ' ' + rT + ' 0 0 1 ' + (100 + rT) + ' 100"/>' +
+      '<path id="' + id + 'b" d="M ' + (100 - rB) + ' 100 A ' + rB + ' ' + rB + ' 0 0 0 ' + (100 + rB) + ' 100"/></defs>';
     if (filled) s += '<circle cx="100" cy="100" r="97" fill="' + c + '"/>';
     else if (o.background) s += '<circle cx="100" cy="100" r="97" fill="' + o.background + '"/>';
     s += '<circle cx="100" cy="100" r="' + (96 - w * 0.9) + '" fill="none" stroke="' + ink + '" stroke-width="' + (w * 1.8) + '"/>';
     s += '<circle cx="100" cy="100" r="64" fill="none" stroke="' + ink + '" stroke-width="' + (w * 0.9) + '"/>';
     s += '<g fill="' + ink + '" font-family="' + esc(FONT) + '" font-weight="' + fw + '" text-anchor="middle">';
-    // corpo adattivo: i nomi lunghi (SPERIMENTAZIONE) restano dentro l'arco superiore
-    var nome = l.badge || l.name;
-    var fs = Math.min(17, 185 / (nome.length * 0.87));
+    // corpo adattivo: i nomi lunghi (SPERIMENTAZIONE, AUTONOMIA (SENZA IA)) restano dentro l'arco superiore
     s += '<text font-size="' + fs.toFixed(1) + '" letter-spacing="' + (fs * 0.15).toFixed(2) + '"><textPath href="#' + id + 't" startOffset="50%">' + esc(nome.toUpperCase()) + '</textPath></text>';
-    s += '<text font-size="12" letter-spacing="3.5"><textPath href="#' + id + 'b" startOffset="50%">' + esc(bottom) + '</textPath></text>';
+    s += '<text font-size="' + fsB + '" letter-spacing="3.5"><textPath href="#' + id + 'b" startOffset="50%">' + esc(bottom) + '</textPath></text>';
     // pallini ai lati: grandi come quelli del sito (circa 9 px quando il timbro è a 170 px)
-    s += '<circle cx="20" cy="100" r="' + (3.5 + w * 0.9) + '"/><circle cx="180" cy="100" r="' + (3.5 + w * 0.9) + '"/>';
+    // sulla stessa linea mediana delle scritte
+    s += '<circle cx="' + (100 - rc).toFixed(2) + '" cy="100" r="' + (3.5 + w * 0.9) + '"/><circle cx="' + (100 + rc).toFixed(2) + '" cy="100" r="' + (3.5 + w * 0.9) + '"/>';
     // baseline a 146: sotto il numero resta verso il cerchio interno lo stesso spazio (~17) che c'è sopra il pittogramma
     s += '<text x="100" y="146" font-size="30" font-weight="' + Math.max(fw, 700) + '">' + l.n + '/5</text>';
     s += '</g>';
