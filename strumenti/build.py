@@ -121,7 +121,7 @@ def render_lang(lg, dati, version):
             n, t = l["n"], l["profili"][pid]
             esempi = "".join(f"\n        <li>{e(x)}</li>" for x in t["esempi"])
             url = f"{SITO}{pr['percorso']}#livello-{n}"
-            nome_badge = f"{data['titolo']} · {B['livello']} {n} · {l['nome']}"
+            nome_badge = f"{data['titolo']} · {B['livello']} {n} · {l['nome']}{html.unescape(titolo_extra(l))}"
             md = f"[{nome_badge}]({url})"
             parts.append(f"""
   <article id="livello-{n}" class="livello" data-livello="{n}">

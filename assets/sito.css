@@ -403,8 +403,49 @@ main ul > li::before {
   .nav-nome { display: none; }
 }
 @media (max-width: 30rem) {
-  .galleria { grid-template-columns: repeat(2, 1fr); }
+  .galleria { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .galleria a { padding: 0.4rem; }
   .uscite { --p-u: 1rem; }
+}
+
+/* ---- telefono e tablet stretto (fino a 48rem, ~768 px) ---- */
+@media (max-width: 48rem) {
+  body { font-size: 1rem; }
+  h2 { font-size: 1.6rem; }
+  .intro h1 { font-size: clamp(2.3rem, 11vw, 3.2rem); }
+  .lead { font-size: 1.05rem; }
+  main > .intro { padding-top: 2.2rem; }
+  main > section { padding-top: 2.2rem; }
+
+  /* testata su una riga: il menu scorre in orizzontale invece di andare a capo, il globo resta a destra */
+  .testata .riga { flex-wrap: nowrap; gap: 0.6rem; }
+  .testata .menu-sezioni {
+    flex-wrap: nowrap; overflow-x: auto; min-width: 0; gap: 1rem;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    padding: 0.2rem 0;
+  }
+  /* dissolvenza a destra solo quando il menu non ci sta e scorre (classe messa da sito.js) */
+  .testata .menu-sezioni.scorre {
+    mask-image: linear-gradient(90deg, #000 85%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+  }
+  .testata .menu-sezioni::-webkit-scrollbar { display: none; }
+  .testata .menu-sezioni a { flex: none; white-space: nowrap; }
+  .header-lang { flex: none; }
+  /* briciola: il nome del progetto resta, il capitolo si accorcia con i puntini */
+  .briciole { min-width: 0; flex: 1; }
+  .briciole-btn { font-size: 0.9rem; padding: 0.3rem 0.6rem 0.3rem 0.8rem; }
+  .indice-tendina { min-width: 0; width: min(18rem, calc(100vw - 2rem)); }
+
+  /* pulsanti un po' più compatti: i tre del badge stanno su una riga */
+  .bottone { font-size: 0.8rem; padding: 0.5rem 0.85rem; }
+  .uscite .azioni { gap: 0.4rem; }
+  .uscite .bottone { padding: 0.5rem 0.7rem; }
+  .livello { padding: 2.2rem 0; }
+  .livello h2 { font-size: clamp(1.7rem, 8vw, 2.2rem); }
+
+  /* codice: scorre dentro il suo riquadro, corpo più piccolo */
+  pre { font-size: 0.78em; padding: 0.8rem; }
 }
 @media print {
   .piede-comandi, .pannello, .fascia-condividi, .fascia-profili, .testata, .nav-livelli, .azioni, #usare, .galleria { display: none; }

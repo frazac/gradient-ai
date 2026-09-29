@@ -71,7 +71,8 @@
 
   // badge solo testo: una riga che dichiara il livello e porta alla sua scheda
   function url(n) { return PAGINA + '#livello-' + n; }
-  function etichetta(n) { return T.brand + ' · ' + T.level + ' ' + n + ' · ' + LEVELS[n - 1].name; }
+  // nome come sui badge: il primo grado porta «(senza IA)»
+  function etichetta(n) { return T.brand + ' · ' + T.level + ' ' + n + ' · ' + (LEVELS[n - 1].badge || LEVELS[n - 1].name); }
   function testo(n) { return etichetta(n) + ' — ' + url(n); }
   function testoHtml(n) { return '<a href="' + url(n) + '">' + etichetta(n) + '</a>'; }
 
@@ -215,7 +216,12 @@
 
   // altezza reale della testata (su schermi stretti va su due righe): il menu dei livelli si aggancia sotto
   var testata = document.querySelector('.testata');
-  function altezza() { if (testata) document.documentElement.style.setProperty('--h-testata', testata.offsetHeight + 'px'); }
+  var menuSez = document.querySelector('.menu-sezioni');
+  function altezza() {
+    if (testata) document.documentElement.style.setProperty('--h-testata', testata.offsetHeight + 'px');
+    // su telefono il menu scorre in orizzontale: la dissolvenza serve solo se non ci sta tutto
+    if (menuSez) menuSez.classList.toggle('scorre', menuSez.scrollWidth > menuSez.clientWidth + 1);
+  }
   window.addEventListener('resize', altezza);
   altezza();
 

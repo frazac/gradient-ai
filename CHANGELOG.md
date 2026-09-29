@@ -2,6 +2,10 @@
 
 Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con una numerazione propria; la versione della AIAS da cui deriva (v2, 2024) è dichiarata a parte.
 
+## Non ancora rilasciato
+
+- Badge testuale e Markdown del primo grado con «(senza IA)».
+- Versione per telefono e tablet: testata su una riga con menu che scorre, introduzione e titoli più compatti, pulsanti del badge su una riga, galleria a tre colonne.
 ## 0.6.0 — 2026-09-30
 
 - Pittogramma: grado «n/5» sopra il tondo, piccolo e fisso nel corpo della licenza; la licenza sotto non ripete più il grado.
