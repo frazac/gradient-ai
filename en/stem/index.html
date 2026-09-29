@@ -1,0 +1,409 @@
+<!-- Generato da strumenti/build.py (src/pagina.en.html + dati/livelli.en.json): non modificare a mano. -->
+<!doctype html>
+<html lang="en" data-theme-default="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script>
+  /* tema prima del primo disegno (niente lampo): stessa logica e chiave di masterismi.dev */
+  (function () {
+    try {
+      var d = document.documentElement;
+      var stored = localStorage.getItem('quark2-theme');
+      var pref = stored || d.getAttribute('data-theme-default') || 'auto';
+      var isDark = pref === 'dark' || (pref === 'auto' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      d.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      d.classList.toggle('dark', isDark);
+    } catch (e) {}
+  })();
+  </script>
+  <title>Gradient AI – Levels of AI use, based on the AIAS · STEM teaching</title>
+  <meta name="description" content="Five levels to say, before a test or task, how much AI can be part of it, and how: exercises, lab reports, projects, code. A profile for science, technology, engineering and maths. Based on the AIAS v2, CC BY-NC-SA 4.0.">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="it" href="https://frazac.github.io/gradient-ai/stem/">
+  <link rel="alternate" hreflang="en" href="https://frazac.github.io/gradient-ai/en/stem/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="../../assets/cookieconsent.css">
+  <link rel="stylesheet" href="../../assets/sito.css">
+  <script src="../../dist/gradient-ai.js" defer></script>
+  <script src="../../assets/sito.js" defer></script>
+  <!-- local only: review notes (revisione/ is not on GitHub) -->
+  <script>
+    if (/^(localhost|127\.0\.0\.1|gradient-ai|.+\.localhost)$/.test(location.hostname) || location.protocol === 'file:') {
+      document.write('<link rel="stylesheet" href="../../revisione/note.css"><script src="../../revisione/note.js" defer><\/script>');
+    }
+  </script>
+</head>
+<body data-profilo="stem" data-percorso="en/stem/">
+
+<header class="testata">
+  <div class="riga">
+    <p class="marchio"><a href="../../" class="marchio-link"><span data-gradient="3" data-variant="icon" data-color="currentColor"></span> Gradient AI</a></p>
+    <nav>
+      <a href="#livelli">Levels</a>
+      <a href="#usare">Use</a>
+      <a href="#licenza">Licence</a>
+      <a href="#fonti">Sources</a>
+      <a href="https://github.com/frazac/gradient-ai" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span><span class="sr">(opens in a new tab)</span></a>
+      <a href="../../stem/" hreflang="it" lang="it" class="lingua">IT</a> <a href="../../en/stem/" hreflang="en" lang="en" class="lingua" aria-current="true">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section id="intro" class="intro riga">
+  <h1>Gradient AI</h1>
+  <p class="sottotitolo">Levels of AI use, based on the AIAS</p>
+  <p class="occhiello-profilo">Teaching profile · STEM</p>
+  <p class="lead">Five levels to say, before a test or task, <strong>how much AI can be part of it, and how</strong>: exercises, lab reports, projects, code. A profile for science, technology, engineering and maths.</p>
+  <aside class="avviso-lingua">
+    <p><strong>This page is in Simple English.</strong> There is already a better English text: the original <a href="https://aiassessmentscale.com/">AI Assessment Scale (AIAS)</a> by Mike Perkins, Leon Furze, Jasper Roe and Jason MacVaugh. Read it first if English is easy for you.</p>
+    <p>Gradient AI started in Italian. We wrote this English version for people who are still learning English. We follow the plain language standard <a href="https://www.iso.org/standard/78907.html">ISO 24495-1:2023</a> and the rules of the <a href="https://simple.wikipedia.org/wiki/Wikipedia:How_to_write_Simple_English_pages">Simple English Wikipedia</a>: common words, short sentences, one idea in each sentence.</p>
+  </aside>
+  <p class="nota-fonte">Based on the <a href="https://aiassessmentscale.com/">AI Assessment Scale (AIAS)</a> v2 by Mike Perkins, Leon Furze, Jasper Roe and Jason MacVaugh · <a href="#licenza">CC BY-NC-SA 4.0</a><br>
+  Gradient AI is at version <span data-versione>0.3.0</span></p>
+</section>
+
+<nav class="profili riga" aria-label="Profiles">
+  <a href="../../en/" title="Work">General</a>
+  <a href="../../en/stem/" aria-current="page" title="Science, technology, engineering, maths">STEM teaching</a>
+  <a href="../../en/humanities/" title="Literature, philosophy, history, languages, social sciences">Humanities teaching</a>
+  <a href="../../en/arts/" title="Art and music schools, design, performing arts (in Italy: AFAM)">Arts teaching</a>
+</nav>
+
+<section id="personalizza" class="pannello" aria-label="Change the badges">
+  <div class="riga comandi">
+    <label>Shape
+      <select data-opt="variant">
+        <option value="stamp">Stamp</option>
+        <option value="icon">Icon</option>
+        <option value="label">Label</option>
+      </select>
+    </label>
+    <label>Colours
+      <select data-opt="schema">
+        <option value="gradiente">Gradient (default)</option>
+        <option value="estremi">From… to…</option>
+        <option value="unico">One colour</option>
+        <option value="nero">Black (for print)</option>
+      </select>
+    </label>
+    <span class="colori">
+      <input type="color" data-opt="from" value="#c8473d" aria-label="First colour (level 1)">
+      <input type="color" data-opt="to" value="#1f2a44" aria-label="Last colour (level 5)">
+    </span>
+    <label>Weight <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
+    <label class="spunta"><input type="checkbox" data-opt="filled"> Filled</label>
+  </div>
+</section>
+
+<section id="livelli" class="riga">
+  <ol class="galleria">
+    <li><a href="#livello-1"><span data-slot="1"></span></a></li>
+    <li><a href="#livello-2"><span data-slot="2"></span></a></li>
+    <li><a href="#livello-3"><span data-slot="3"></span></a></li>
+    <li><a href="#livello-4"><span data-slot="4"></span></a></li>
+    <li><a href="#livello-5"><span data-slot="5"></span></a></li>
+  </ol>
+
+  <!-- LIVELLI:INIZIO -->
+  <article id="livello-1" class="livello" data-livello="1">
+    <div class="livello-timbro"><span data-slot="1" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Level 1 · No AI</p>
+      <h2>On your own</h2>
+      <h3>For teachers</h3>
+      <p>Students do the task with no AI, in a room where you can see the work. They use only what they know and their own way to solve problems.</p>
+      <h3>For students</h3>
+      <blockquote id="consegna-1">Do not use AI at any step. This task shows what you know and what you can do on your own. Show all your steps.</blockquote>
+      <h3>Examples of tasks</h3>
+      <ul class="esempi">
+        <li>Exercises and proofs done in class.</li>
+        <li>A written maths test. An oral exam about a method.</li>
+        <li>A lab notebook written by hand.</li>
+      </ul>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-1">Copy the text</button>
+        <button type="button" class="bottone" data-copia-testo="1">Copy text with link</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="1">Download SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="1">Download PNG</button>
+        <button type="button" class="bottone" data-copia-svg="1">Copy SVG</button>
+      </p>
+    </div>
+  </article>
+  <article id="livello-2" class="livello" data-livello="2">
+    <div class="livello-timbro"><span data-slot="2" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Level 2 · AI only before you start</p>
+      <h2>Ideas</h2>
+      <h3>For teachers</h3>
+      <p>AI can help only before the real work starts: to find ways to solve a problem, to find papers to read, to make a plan. You assess how students develop these ideas on their own.</p>
+      <h3>For students</h3>
+      <blockquote id="consegna-2">You can use AI to find ways to solve the problem and to plan your project. You do the maths, the code and the development yourself.</blockquote>
+      <h3>Examples of tasks</h3>
+      <ul class="esempi">
+        <li>Finding possible ways to solve a problem.</li>
+        <li>Finding papers to read for a short report.</li>
+        <li>Ideas for a project, to talk about in class.</li>
+      </ul>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-2">Copy the text</button>
+        <button type="button" class="bottone" data-copia-testo="2">Copy text with link</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="2">Download SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="2">Download PNG</button>
+        <button type="button" class="bottone" data-copia-svg="2">Copy SVG</button>
+      </p>
+    </div>
+  </article>
+  <article id="livello-3" class="livello" data-livello="3">
+    <div class="livello-timbro"><span data-slot="3" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Level 3 · AI helps, you check everything</p>
+      <h2>Working together</h2>
+      <h3>For teachers</h3>
+      <p>AI can help to do the task: it can suggest answers, write code or give comments. Students check, correct and explain what the AI gives. This shows that they understand it.</p>
+      <h3>For students</h3>
+      <blockquote id="consegna-3">You can use AI for some parts of the task. Check every result. You must be able to explain every line of code. Say how you used AI.</blockquote>
+      <h3>Examples of tasks</h3>
+      <ul class="esempi">
+        <li>Code written with an AI assistant, then explained, tested and commented.</li>
+        <li>Finding errors in code with help from AI.</li>
+        <li>A lab report with language checked by AI.</li>
+      </ul>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-3">Copy the text</button>
+        <button type="button" class="bottone" data-copia-testo="3">Copy text with link</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="3">Download SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="3">Download PNG</button>
+        <button type="button" class="bottone" data-copia-svg="3">Copy SVG</button>
+      </p>
+    </div>
+  </article>
+  <article id="livello-4" class="livello" data-livello="4">
+    <div class="livello-timbro"><span data-slot="4" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Level 4 · People lead the AI</p>
+      <h2>Directing</h2>
+      <h3>For teachers</h3>
+      <p>AI can be used for any part of the task, or the task needs AI. Students lead the AI to the goal. You assess how they lead it, how they check the results on their own, and what they know about the subject.</p>
+      <h3>For students</h3>
+      <blockquote id="consegna-4">You can use AI a lot, as you like or as the task says. What matters is how you lead it and how you check what it makes.</blockquote>
+      <h3>Examples of tasks</h3>
+      <ul class="esempi">
+        <li>Data studied with AI agents.</li>
+        <li>A first version of a program made with AI assistants, with notes on each choice.</li>
+        <li>Checking the results against cases with known answers.</li>
+      </ul>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-4">Copy the text</button>
+        <button type="button" class="bottone" data-copia-testo="4">Copy text with link</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="4">Download SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="4">Download PNG</button>
+        <button type="button" class="bottone" data-copia-svg="4">Copy SVG</button>
+      </p>
+    </div>
+  </article>
+  <article id="livello-5" class="livello" data-livello="5">
+    <div class="livello-timbro"><span data-slot="5" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Level 5 · AI as a place to try new things</p>
+      <h2>Exploring</h2>
+      <h3>For teachers</h3>
+      <p>Students use AI in creative ways to solve problems, find new ideas or build new solutions. Teachers and students plan the task together. AI itself can be the subject of study.</p>
+      <h3>For students</h3>
+      <blockquote id="consegna-5">Use AI in creative ways to do the task. You can plan new methods together with your teacher.</blockquote>
+      <h3>Examples of tasks</h3>
+      <ul class="esempi">
+        <li>Changing or training an AI model.</li>
+        <li>Comparing methods and writing down their limits.</li>
+        <li>Tests where AI itself is the subject of study.</li>
+      </ul>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-5">Copy the text</button>
+        <button type="button" class="bottone" data-copia-testo="5">Copy text with link</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="5">Download SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="5">Download PNG</button>
+        <button type="button" class="bottone" data-copia-svg="5">Copy SVG</button>
+      </p>
+    </div>
+  </article>
+  <!-- LIVELLI:FINE -->
+</section>
+
+<section id="usare" class="riga">
+  <h2>How to use the badges</h2>
+  <p>There are four ways, from the easiest to the most flexible. The examples use level 3 and link to its part of this page. Shape, colours and weight follow your choices in the panel above.</p>
+
+  <div class="tecnica">
+    <h3>1. Text only, with a link</h3>
+    <p>For documents, emails, learning platforms and websites: one line that gives the level and links to it. The button “Copy text with link” under each level copies this line for you. In Word, Google Docs or an email, the link still works when you paste it.</p>
+    <pre><code data-codice="testo"></code></pre>
+    <p>In HTML:</p>
+    <pre><code data-codice="testo-html"></code></pre>
+  </div>
+
+  <div class="tecnica">
+    <h3>2. PNG image</h3>
+    <p>For slides, documents and platforms that only take images. Each stamp comes at 128 and 512 px (icon: 64 and 256; label: 48 and 192 px high), as an outline or filled.</p>
+    <pre><code data-codice="png"></code></pre>
+    <p><a href="https://github.com/frazac/gradient-ai/tree/main/dist/png/en">All PNG files</a></p>
+  </div>
+
+  <div class="tecnica">
+    <h3>3. SVG file</h3>
+    <p>A vector file: it stays sharp at any size, and you can change it in Illustrator, Inkscape or Figma. The text uses a system font.</p>
+    <pre><code data-codice="svg"></code></pre>
+    <p><a href="https://github.com/frazac/gradient-ai/tree/main/dist/svg/en">All SVG files</a></p>
+  </div>
+
+  <div class="tecnica">
+    <h3>4. JavaScript</h3>
+    <p>It works like <a href="https://lucide.dev/guide/packages/lucide">Lucide</a>: you mark the place with an attribute, and the library draws the badge, with the colours and weight you want.</p>
+    <pre><code data-codice="js"></code></pre>
+    <p>Options: <code>variant</code> (<code>stamp</code>, <code>icon</code>, <code>label</code>) · <code>lang</code> (<code>en</code> or <code>it</code>) · <code>color</code> · <code>from</code>/<code>to</code> (a gradient in five steps) · <code>palette</code> (five colours) · <code>weight</code> (1–3) · <code>filled</code> · <code>size</code> (px) · <code>link</code> (by default the badge links to its level on this site; <code>false</code> removes the link, or give the address of a profile). To get only the SVG text: <code>GradientAI.toSvg(3, {variant: 'stamp', lang: 'en'})</code>.</p>
+  </div>
+</section>
+
+<section id="note-uso" class="riga">
+  <h2>Notes on use</h2>
+  <!-- NOTE:INIZIO -->
+  <ul>
+    <li>The levels do not say how good a task is. They only say how much AI is part of it, and how.</li>
+    <li>You can only be sure of level 1 in a room where you can see the work. For work done at home, expect that students may use AI in any way. Plan the task with this in mind.</li>
+    <li>Choose the level from what students need to learn. Tell students the level before they start. Also tell them what they must report, for example the instructions they gave to the AI.</li>
+  </ul>
+  <!-- NOTE:FINE -->
+</section>
+
+<section id="licenza" class="riga">
+  <h2>Licence and credit</h2>
+  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
+  Gradient AI has the licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution – NonCommercial – ShareAlike 4.0 International</a>. This is the same licence as the AIAS v2, the work it comes from.</p>
+  <ul>
+    <li><strong>You can</strong> share, translate and change the texts, and change the colours of the badges.</li>
+    <li><strong>You must</strong> name the authors and the source, say what you changed, and share your new version with the same licence.</li>
+    <li><strong>You cannot</strong> use it to make money.</li>
+  </ul>
+  <h3>How to give credit</h3>
+  <blockquote id="attribuzione">Gradient AI by Francesco Zaccaria, levels of AI use based on the AIAS v2 by Mike Perkins, Leon Furze, Jasper Roe and Jason MacVaugh (License <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>). Icons: Lucide (License <a href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">ISC</a>).</blockquote>
+  <button type="button" class="bottone" data-copia="#attribuzione">Copy the credit</button>
+  <p class="piccolo">Gradient AI is an independent version. It is not an official translation, and the authors of the AIAS have not approved it.</p>
+</section>
+
+<section id="fonti" class="riga">
+  <h2>Sources and credits</h2>
+  <h3>AI Assessment Scale</h3>
+  <ul class="bibliografia">
+    <li>Perkins, M., Furze, L., Roe, J., &amp; MacVaugh, J. (2024). The Artificial Intelligence Assessment Scale (AIAS): A framework for ethical integration of generative AI in educational assessment. <em>Journal of University Teaching and Learning Practice</em>, 21(6). <a href="https://open-publishing.org/journals/index.php/jutlp/article/view/810">open-publishing.org</a></li>
+    <li>Perkins, M., Roe, J., &amp; Furze, L. (2024). The AI Assessment Scale revisited: A framework for educational assessment. <em>arXiv</em>, 2412.09029. <a href="https://arxiv.org/abs/2412.09029">arxiv.org</a></li>
+    <li>AI Assessment Scale, official website: <a href="https://aiassessmentscale.com/">aiassessmentscale.com</a> — version 2 as saved in the <a href="https://web.archive.org/web/20250611083200/https://aiassessmentscale.com/">June 2025 archive</a>.</li>
+  </ul>
+  <h3>Simple English</h3>
+  <ul class="bibliografia">
+    <li>ISO 24495-1:2023. <em>Plain language — Part 1: Governing principles and guidelines</em>. International Organization for Standardization. <a href="https://www.iso.org/standard/78907.html">iso.org</a></li>
+    <li>Simple English Wikipedia. <em>How to write Simple English pages</em>. <a href="https://simple.wikipedia.org/wiki/Wikipedia:How_to_write_Simple_English_pages">simple.wikipedia.org</a></li>
+  </ul>
+  <h3>Icons</h3>
+  <p>The icons in the badges come from <a href="https://lucide.dev">Lucide</a> (licence <a href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">ISC</a>, © Lucide Icons and Contributors): <a href="https://lucide.dev/icons/ban">ban</a>, <a href="https://lucide.dev/icons/calendar-days">calendar-days</a>, <a href="https://lucide.dev/icons/blender">blender</a>, <a href="https://lucide.dev/icons/bot">bot</a>, <a href="https://lucide.dev/icons/lighthouse">lighthouse</a>.</p>
+  <h3>Fonts</h3>
+  <p>Website: <a href="https://fonts.google.com/specimen/Space+Grotesk">Space Grotesk</a> (SIL Open Font License). The SVG and PNG files use a system font.</p>
+  <h3>Parts of the website</h3>
+  <p>Cookie banner: <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> 3.1.0 by Orest Bida (MIT licence). Light/dark switch from masterismi.dev (Quark 2 theme), sun and moon icons by <a href="https://iconoir.com/">Iconoir</a> (MIT licence).</p>
+  <h3>Made by</h3>
+  <p><a href="https://linktr.ee/frazac">Francesco Zaccaria</a> — adaptation, texts and badges. Ideas and problems: <a href="https://github.com/frazac/gradient-ai/issues">issues on GitHub</a>.</p>
+  <h3>How this project used AI</h3>
+  <dl class="gradiente-progetto">
+    <dt><span data-gradient="2" data-variant="label" data-color="#111111" data-filled data-link="#"></span> Content</dt>
+    <dd>The author made the adaptation and wrote the level names and texts. AI helped to compare sources, suggest other options and check that the texts match the AIAS v2. The author rewrote every text and checked it against the original.</dd>
+    <dt><span data-gradient="4" data-variant="label" data-color="#111111" data-filled data-link="#"></span> Website, code and design</dt>
+    <dd>The website, the JavaScript library, the build tools, the badges and the GitHub repository were made with Claude Code. The author set the goals and the design choices, and checked and tested the result.</dd>
+  </dl>
+</section>
+
+</main>
+
+<footer class="piede riga">
+  <p class="titolo-piede">Gradient AI – Levels of AI use, based on the AIAS · version <span data-versione>0.3.0</span></p>
+  <p>© 2026 Francesco Zaccaria. The texts, badges and code have the licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution – NonCommercial – ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>.</p>
+  <p>“AI Assessment Scale” and “AIAS” are names and signs of their owners. The AI Assessment Scale is the work of Mike Perkins, Leon Furze, Jasper Roe and Jason MacVaugh. They keep all intellectual property rights in it. We use it here only as their CC BY-NC-SA 4.0 licence allows. Gradient AI is an independent version: it is not official, and the authors or owners of the AIAS do not approve or support it.</p>
+  <p>Icons: <a href="https://lucide.dev">Lucide</a>, © Lucide Icons and Contributors, ISC licence. Website font: Space Grotesk, SIL Open Font License. Cookie banner: <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> by Orest Bida, MIT licence; sun/moon icons: <a href="https://iconoir.com/">Iconoir</a>, MIT licence.</p>
+  <p>We give these materials for teaching and learning, as they are, with no guarantee. The people who choose a level and plan the task or the work are responsible for it.</p>
+  <nav aria-label="Footer links">
+    <a href="https://github.com/frazac/gradient-ai">Source code</a>
+    <a href="https://github.com/frazac/gradient-ai/blob/main/CHANGELOG.md">What is new</a>
+    <a href="https://github.com/frazac/gradient-ai/blob/main/LICENSE">Licence</a>
+    <a href="https://github.com/frazac/gradient-ai/issues">Report a problem</a>
+    <a href="https://linktr.ee/frazac">Contact</a>
+    <a href="#" id="cookie-prefs-link" onclick="window.CookieConsent &amp;&amp; CookieConsent.showPreferences(); return false;">Cookie settings</a>
+  </nav>
+  <div class="piede-comandi">
+    <button type="button" class="theme-switch" data-theme-toggle
+            data-label-light="Light" data-label-dark="Dark"
+            data-aria-template="Look: %s" data-title-template="Look: %s (click to change)"
+            aria-label="Look" title="Look (click to change)">
+      <span class="icon-sun" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 12L23 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2V1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 23V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 20L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 4L19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 20L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 4L5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 12L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </span>
+      <span class="icon-moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </span>
+      <span class="knob" data-theme-knob></span>
+    </button>
+  </div>
+</footer>
+
+<script src="../../assets/theme-toggle.js"></script>
+<script src="../../assets/cookieconsent.umd.js"></script>
+<script>
+/* cookie banner: same set-up as masterismi.dev, with no statistics (there is no Matomo here) */
+window.addEventListener('load', function () {
+  CookieConsent.run({
+    mode: 'opt-in',
+    guiOptions: {
+      consentModal: { layout: 'box', position: 'bottom left', equalWeightButtons: true },
+      preferencesModal: { layout: 'box', equalWeightButtons: true }
+    },
+    categories: {
+      necessary: { readOnly: true }
+    },
+    language: {
+      default: 'en',
+      translations: {
+        en: {
+          consentModal: {
+            description: 'We only use cookies that the site needs to work.',
+            acceptAllBtn: 'Accept',
+            acceptNecessaryBtn: 'Reject',
+            showPreferencesBtn: 'Settings'
+          },
+          preferencesModal: {
+            title: 'Cookie settings',
+            acceptAllBtn: 'Accept',
+            acceptNecessaryBtn: 'Reject',
+            savePreferencesBtn: 'Save',
+            closeIconLabel: 'Close',
+            sections: [
+              {
+                title: 'Cookies the site needs',
+                description: 'They remember the light or dark look, your choices for the badges and your answer to this banner. They stay in your browser. They are always on.',
+                linkedCategory: 'necessary'
+              },
+              {
+                title: 'Outside services',
+                description: 'We use no statistics and no tracking. GitHub Pages hosts the site. The font comes from Google Fonts and the licence badge from Creative Commons: these services get the IP address of your browser to send the files.'
+              }
+            ]
+          }
+        }
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>

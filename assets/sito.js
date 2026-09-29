@@ -5,7 +5,15 @@
   var G = window.GradientAI;
   var BASE = 'https://frazac.github.io/gradient-ai/';
   var CDN = 'https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v' + G.version + '/dist/gradient-ai.js';
-  var NOMI = { stamp: 'timbro', icon: 'icona', label: 'etichetta' };
+  var LG = /^en/.test(document.documentElement.lang) ? 'en' : 'it';
+  var T = {
+    it: { brand: 'Gradiente IA', level: 'Livello', filled: '-pieno', dir: '', file: 'gradiente-ia-', ok: 'Copiato', ko: 'Copia non riuscita',
+          nomi: { stamp: 'timbro', icon: 'icona', label: 'etichetta' } },
+    en: { brand: 'Gradient AI', level: 'Level', filled: '-filled', dir: 'en/', file: 'gradient-ai-', ok: 'Copied', ko: 'Copy failed',
+          nomi: { stamp: 'stamp', icon: 'icon', label: 'label' } }
+  }[LG];
+  var NOMI = T.nomi;
+  var LEVELS = G.i18n[LG];
   var PNG = { stamp: 512, icon: 256, label: 192 };
   var PAGINA = BASE + (document.body.getAttribute('data-percorso') || '');   // pagina del profilo corrente
   var stato = { variant: 'stamp', schema: 'gradiente', from: '#c8473d', to: '#1f2a44', weight: 2, filled: false };
@@ -14,7 +22,7 @@
   delete stato.contesto;   // opzione della 0.1.0, sostituita dalle pagine per profilo
 
   function opzioni() {
-    var o = { variant: stato.variant, weight: stato.weight, filled: stato.filled };
+    var o = { variant: stato.variant, weight: stato.weight, filled: stato.filled, lang: LG };
     if (stato.schema === 'estremi') { o.from = stato.from; o.to = stato.to; }
     if (stato.schema === 'unico') o.color = stato.from;
     if (stato.schema === 'nero') o.color = '#111111';
@@ -33,8 +41,8 @@
     document.body.setAttribute('data-variant', stato.variant);
     // anteprima = file scaricato: stessa stringa SVG mostrata come <img>, quindi anche stesso font (di sistema)
     document.querySelectorAll('[data-slot]').forEach(function (el) {
-      var n = Number(el.getAttribute('data-slot')), l = G.levels[n - 1];
-      el.innerHTML = '<img alt="Livello ' + n + ' · ' + l.name + '" src="data:image/svg+xml;charset=utf-8,' +
+      var n = Number(el.getAttribute('data-slot')), l = LEVELS[n - 1];
+      el.innerHTML = '<img alt="' + T.level + ' ' + n + ' · ' + l.name + '" src="data:image/svg+xml;charset=utf-8,' +
         encodeURIComponent(svgDi(n)) + '">';
     });
     document.querySelectorAll('.livello').forEach(function (el) {
@@ -49,21 +57,22 @@
 
   // badge solo testo: una riga che dichiara il livello e porta alla sua scheda
   function url(n) { return PAGINA + '#livello-' + n; }
-  function etichetta(n) { return 'Gradiente IA · Livello ' + n + ' · ' + G.levels[n - 1].name; }
+  function etichetta(n) { return T.brand + ' · ' + T.level + ' ' + n + ' · ' + LEVELS[n - 1].name; }
   function testo(n) { return etichetta(n) + ' — ' + url(n); }
   function testoHtml(n) { return '<a href="' + url(n) + '">' + etichetta(n) + '</a>'; }
 
   function codici(o) {
-    var nome = NOMI[o.variant] + '-3' + (o.filled ? '-pieno' : '');
+    var nome = T.dir + NOMI[o.variant] + '-3' + (o.filled ? T.filled : '');
     var alt = etichetta(3);
     var attr = ['data-gradient="3"'];
+    if (LG !== 'it') attr.push('data-lang="' + LG + '"');
     if (o.variant !== 'stamp') attr.push('data-variant="' + o.variant + '"');
     var cfg = [];
     if (o.color) cfg.push("color: '" + o.color + "'");
     if (o.from) cfg.push("from: '" + o.from + "', to: '" + o.to + "'");
     if (Number(o.weight) !== 2) cfg.push('weight: ' + o.weight);
     if (o.filled) cfg.push('filled: true');
-    if (PAGINA !== BASE) cfg.push("link: '" + PAGINA + "'");
+    if (PAGINA !== BASE + T.dir) cfg.push("link: '" + PAGINA + "'");
     set('testo', testo(3));
     set('testo-html', testoHtml(3));
     set('png', '<a href="' + url(3) + '">\n  <img src="' + BASE + 'dist/png/' + nome + '-' + PNG[o.variant] + '.png"\n       alt="' + alt + '" width="128">\n</a>');
@@ -80,11 +89,11 @@
     setTimeout(function () { btn.textContent = prima; btn.classList.remove('fatto'); }, 1600);
   }
   function copia(testo, btn) {
-    navigator.clipboard.writeText(testo).then(function () { conferma(btn, 'Copiato'); }, function () { conferma(btn, 'Copia non riuscita'); });
+    navigator.clipboard.writeText(testo).then(function () { conferma(btn, T.ok); }, function () { conferma(btn, T.ko); });
   }
   function nomeFile(n, ext) {
     var o = opzioni();
-    return 'gradiente-ia-' + NOMI[o.variant] + '-' + n + (o.filled ? '-pieno' : '') + '.' + ext;
+    return T.file + NOMI[o.variant] + '-' + n + (o.filled ? T.filled : '') + '.' + ext;
   }
   function scarica(url, nome) {
     var a = document.createElement('a');
@@ -103,7 +112,7 @@
         navigator.clipboard.write([new ClipboardItem({
           'text/plain': new Blob([testo(t)], { type: 'text/plain' }),
           'text/html': new Blob([testoHtml(t)], { type: 'text/html' })
-        })]).then(function () { conferma(b, 'Copiato'); }, function () { copia(testo(t), b); });
+        })]).then(function () { conferma(b, T.ok); }, function () { copia(testo(t), b); });
       } else copia(testo(t), b);
     } else if (b.hasAttribute('data-copia')) {
       copia(document.querySelector(b.getAttribute('data-copia')).textContent.trim(), b);

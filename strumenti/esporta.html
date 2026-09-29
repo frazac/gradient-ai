@@ -7,13 +7,15 @@
   // altezze dei PNG in px, per variante
   var SIZES = { stamp: [128, 512], icon: [64, 256], label: [48, 192] };
   var svg = {}, png = {}, jobs = [];
-  ['stamp', 'icon', 'label'].forEach(function (v) {
-    [1, 2, 3, 4, 5].forEach(function (n) {
-      [['outline', false], ['filled', true]].forEach(function (t) {
-        var k = v + '-' + n + '-' + t[0];
-        // id dei textPath stabili nei file statici
-        svg[k] = GradientAI.toSvg(n, { variant: v, filled: t[1] }).replace(/gai\d+/g, 'gai-' + k);
-        SIZES[v].forEach(function (h) { jobs.push(raster(k, svg[k], h)); });
+  ['it', 'en'].forEach(function (lg) {
+    ['stamp', 'icon', 'label'].forEach(function (v) {
+      [1, 2, 3, 4, 5].forEach(function (n) {
+        [['outline', false], ['filled', true]].forEach(function (t) {
+          var k = lg + '-' + v + '-' + n + '-' + t[0];
+          // id dei textPath stabili nei file statici
+          svg[k] = GradientAI.toSvg(n, { variant: v, filled: t[1], lang: lg }).replace(/gai\d+/g, 'gai-' + k);
+          SIZES[v].forEach(function (h) { jobs.push(raster(k, svg[k], h)); });
+        });
       });
     });
   });

@@ -1,4 +1,4 @@
-<!-- Generato da strumenti/build.py (src/pagina.html + dati/livelli.it.json): non modificare a mano. -->
+<!-- Generato da strumenti/build.py (src/pagina.it.html + dati/livelli.it.json): non modificare a mano. -->
 <!doctype html>
 <html lang="it" data-theme-default="auto">
 <head>
@@ -21,6 +21,8 @@
   <title>Gradiente IA – Livelli di integrazione dell'IA tratti da AIAS · Didattica AFAM</title>
   <meta name="description" content="Cinque livelli per dire, prima di una prova, quanto e come l'intelligenza artificiale può entrarci: elaborati, progetti, esecuzioni, portfolio. Profilo per accademie di belle arti, conservatori, design e arti performative. Adattamento di AIAS v2, CC BY-NC-SA 4.0.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="it" href="https://frazac.github.io/gradient-ai/afam/">
+  <link rel="alternate" hreflang="en" href="https://frazac.github.io/gradient-ai/en/arts/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
@@ -28,9 +30,9 @@
   <link rel="stylesheet" href="../assets/sito.css">
   <script src="../dist/gradient-ai.js" defer></script>
   <script src="../assets/sito.js" defer></script>
-  <!-- SOLO LOCALE: post-it di revisione (revisione/ non va su GitHub). Su GitHub Pages non si carica. -->
+  <!-- SOLO LOCALE: post-it di revisione (revisione/ non va su GitHub). Si carica solo in locale. -->
   <script>
-    if (!/github\.io$/.test(location.hostname)) {
+    if (/^(localhost|127\.0\.0\.1|gradient-ai|.+\.localhost)$/.test(location.hostname) || location.protocol === 'file:') {
       document.write('<link rel="stylesheet" href="../revisione/note.css"><script src="../revisione/note.js" defer><\/script>');
     }
   </script>
@@ -46,6 +48,7 @@
       <a href="#licenza">Licenza</a>
       <a href="#fonti">Fonti</a>
       <a href="https://github.com/frazac/gradient-ai" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span><span class="sr">(si apre in una nuova scheda)</span></a>
+      <a href="../afam/" hreflang="it" lang="it" class="lingua" aria-current="true">IT</a> <a href="../en/arts/" hreflang="en" lang="en" class="lingua">EN</a>
     </nav>
   </div>
 </header>
@@ -58,7 +61,7 @@
   <p class="occhiello-profilo">Profilo didattico · area AFAM</p>
   <p class="lead">Cinque livelli per dire, prima di una prova, <strong>quanto e come l'intelligenza artificiale può entrarci</strong>: elaborati, progetti, esecuzioni, portfolio. Profilo per accademie di belle arti, conservatori, design e arti performative.</p>
   <p class="nota-fonte">Adattamento italiano della <a href="https://aiassessmentscale.com/">AI Assessment Scale (AIAS)</a> v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh · <a href="#licenza">CC BY-NC-SA 4.0</a><br>
-  Gradiente IA è in versione <span data-versione>0.2.0</span></p>
+  Gradiente IA è in versione <span data-versione>0.3.0</span></p>
 </section>
 
 <nav class="profili riga" aria-label="Profili">
@@ -102,7 +105,6 @@
     <li><a href="#livello-4"><span data-slot="4"></span></a></li>
     <li><a href="#livello-5"><span data-slot="5"></span></a></li>
   </ol>
-  <p class="originale">La versione originale, in inglese: <strong>AIAS</strong> — <em>AI Assessment Scale</em>, cioè scala dell'IA nella valutazione → <a href="https://aiassessmentscale.com/">aiassessmentscale.com</a></p>
 
   <!-- LIVELLI:INIZIO -->
   <article id="livello-1" class="livello" data-livello="1">
@@ -304,12 +306,19 @@
   <p>Banner cookie: <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> 3.1.0 di Orest Bida (licenza MIT). Switch chiaro/scuro ripreso da masterismi.dev (tema Quark 2), icone sole e luna di <a href="https://iconoir.com/">Iconoir</a> (licenza MIT).</p>
   <h3>Cura</h3>
   <p><a href="https://linktr.ee/frazac">Francesco Zaccaria</a> — adattamento, testi e timbri. Segnalazioni e proposte: <a href="https://github.com/frazac/gradient-ai/issues">issue su GitHub</a>.</p>
+  <h3>Gradiente di questo progetto</h3>
+  <dl class="gradiente-progetto">
+    <dt><span data-gradient="2" data-variant="label" data-color="#111111" data-filled data-link="#"></span> Contenuti</dt>
+    <dd>Adattamento, nomi e testi dei livelli sono dell'autore. L'IA è servita a confrontare le fonti, proporre alternative e controllare la coerenza con la AIAS v2; ogni testo è stato riscritto e verificato sull'originale.</dd>
+    <dt><span data-gradient="4" data-variant="label" data-color="#111111" data-filled data-link="#"></span> Sito, codice e grafica</dt>
+    <dd>Sito, libreria JavaScript, strumenti di build, timbri e repository GitHub sono stati realizzati con Claude Code sotto la direzione dell'autore, che ha fissato obiettivi e scelte grafiche e ha rivisto e provato il risultato.</dd>
+  </dl>
 </section>
 
 </main>
 
 <footer class="piede riga">
-  <p class="titolo-piede">Gradiente IA – Livelli di integrazione dell'IA tratti da AIAS · versione <span data-versione>0.2.0</span></p>
+  <p class="titolo-piede">Gradiente IA – Livelli di integrazione dell'IA tratti da AIAS · versione <span data-versione>0.3.0</span></p>
   <p>© 2026 Francesco Zaccaria. Testi italiani, timbri e codice sono distribuiti con licenza <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it">Creative Commons Attribuzione – Non commerciale – Condividi allo stesso modo 4.0 Internazionale (CC BY-NC-SA 4.0)</a>.</p>
   <p>«AI Assessment Scale» e «AIAS» sono denominazioni e segni distintivi dei rispettivi titolari. La AI Assessment Scale è opera di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh, che ne conservano tutti i diritti di proprietà intellettuale; qui è adattata nei limiti della licenza CC BY-NC-SA 4.0 con cui gli autori l'hanno resa disponibile. Gradiente IA è un adattamento indipendente: non è una versione ufficiale e non è approvato né sostenuto dagli autori o dai titolari della AIAS.</p>
   <p>Icone: <a href="https://lucide.dev">Lucide</a>, © Lucide Icons and Contributors, licenza ISC. Carattere del sito: Space Grotesk, SIL Open Font License. Banner cookie: <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> di Orest Bida, licenza MIT; icone sole/luna: <a href="https://iconoir.com/">Iconoir</a>, licenza MIT.</p>

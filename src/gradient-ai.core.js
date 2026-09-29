@@ -15,7 +15,11 @@
   'use strict';
 
   var VERSION = '__VERSION__';
-  var LEVELS = __LEVELS__;
+  var LEVELS = __LEVELS__;   // { it: [...], en: [...] }
+  var TEXT = {
+    it: { brand: 'Gradiente IA', level: 'Livello', bottom: 'GRADIENTE IA' },
+    en: { brand: 'Gradient AI', level: 'Level', bottom: 'GRADIENT AI' }
+  };
   var ICONS = __ICONS__;
 
   // Palette predefinita: dal rosso del divieto (senza IA) al blu dell'esplorazione (sperimentazione).
@@ -79,8 +83,10 @@
 
   // ---- opzioni ----
 
-  function level(n) {
-    var l = LEVELS.filter(function (x) { return x.n === Number(n) || x.id === n; })[0];
+  function lang(x) { return TEXT[x] ? x : 'it'; }
+
+  function level(n, lg) {
+    var l = LEVELS[lang(lg)].filter(function (x) { return x.n === Number(n) || x.id === n; })[0];
     if (!l) throw new Error('GradientAI: livello sconosciuto "' + n + '" (usa 1–5)');
     return l;
   }
@@ -103,11 +109,12 @@
   }
 
   function open(w, h, o, l) {
+    var t = TEXT[o.lang];
     var px = o.size ? ' width="' + (o.size * w / h) + '" height="' + o.size + '"' : '';
     return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + w + ' ' + h + '"' + px +
-      ' role="img" aria-label="' + esc('Livello ' + l.n + ' · ' + l.name + ' — ' + l.subtitle) + '"' +
+      ' role="img" aria-label="' + esc(t.level + ' ' + l.n + ' · ' + l.name + ' — ' + l.subtitle) + '"' +
       (o['class'] ? ' class="' + esc(o['class']) + '"' : '') + '>' +
-      '<title>' + esc('Gradiente IA · Livello ' + l.n + ' · ' + l.name) + '</title>';
+      '<title>' + esc(t.brand + ' · ' + t.level + ' ' + l.n + ' · ' + l.name) + '</title>';
   }
 
   function fontWeight(w) { return w < 1.5 ? 500 : w < 2.5 ? 700 : 800; }
@@ -120,7 +127,7 @@
     var ink = filled ? (o.ink || '#ffffff') : c;
     var id = 'gai' + (++uid);
     var fw = fontWeight(w);
-    var bottom = o.bottomText != null ? o.bottomText : 'GRADIENTE IA';
+    var bottom = o.bottomText != null ? o.bottomText : TEXT[o.lang].bottom;
     var s = open(200, 200, o, l);
     s += '<defs><path id="' + id + 't" d="M 25 100 A 75 75 0 0 1 175 100"/>' +
       '<path id="' + id + 'b" d="M 14 100 A 86 86 0 0 0 186 100"/></defs>';
@@ -173,7 +180,7 @@
   /**
    * SVG di un livello come stringa.
    * @param {number|string} n  1–5 oppure l'id ("autonomia", "ideazione", …)
-   * @param {object} [options] variant: stamp|icon|label · color · from/to · palette · weight (1–3)
+   * @param {object} [options] variant: stamp|icon|label · lang: it|en · color · from/to · palette · weight (1–3)
    *                           · filled · ink · background · size (px) · class · bottomText
    */
   function toSvg(n, options) {
@@ -182,14 +189,15 @@
     for (k in options || {}) if (options[k] != null && options[k] !== '') o[k] = options[k];
     o.weight = Math.min(4, Math.max(0.5, Number(o.weight) || 2));
     o.filled = o.filled === true || o.filled === 'true' || o.filled === '';
+    o.lang = lang(o.lang);
     var fn = VARIANTS[o.variant];
     if (!fn) throw new Error('GradientAI: variante sconosciuta "' + o.variant + '" (stamp, icon, label)');
-    return fn(level(n), o);
+    return fn(level(n, o.lang), o);
   }
 
   /**
    * Sostituisce ogni elemento [data-gradient] con l'SVG del livello, come lucide.createIcons().
-   * Attributi: data-gradient="3" data-variant data-color data-from data-to data-weight data-filled data-size data-link.
+   * Attributi: data-gradient="3" data-lang (it|en) data-variant data-color data-from data-to data-weight data-filled data-size data-link.
    * link: di default il timbro porta alla scheda del livello su frazac.github.io/gradient-ai;
    *       false (o data-link="false") lo toglie, una stringa è l'indirizzo della pagina da usare (es. il profilo /stem/).
    * Le opzioni passate valgono per tutti; gli attributi del singolo elemento hanno la precedenza.
@@ -199,21 +207,24 @@
     Array.prototype.forEach.call(els, function (el) {
       var o = {};
       for (var k in options || {}) o[k] = options[k];
-      ['variant', 'color', 'from', 'to', 'weight', 'filled', 'size', 'ink', 'background', 'link'].forEach(function (a) {
+      ['variant', 'color', 'from', 'to', 'weight', 'filled', 'size', 'ink', 'background', 'link', 'lang'].forEach(function (a) {
         // data-filled senza valore vale true (altrimenti la stringa vuota verrebbe scartata)
         if (el.hasAttribute('data-' + a)) o[a] = el.getAttribute('data-' + a) || (a === 'filled' ? true : '');
       });
       if (el.className) o['class'] = el.className;
+      // lingua: opzione, data-lang, oppure il lang della pagina (en → inglese, altrimenti italiano)
+      if (!o.lang) { var lg = el.closest('[lang]'); o.lang = lg && /^en/i.test(lg.getAttribute('lang')) ? 'en' : 'it'; }
+      o.lang = lang(o.lang);
       var tpl = document.createElement('template');
       tpl.innerHTML = toSvg(el.getAttribute('data-gradient'), o);
       var svg = tpl.content.firstChild;
       svg.setAttribute('data-gradient', el.getAttribute('data-gradient'));
-      var node = svg, link = o.link === undefined || o.link === true || o.link === 'true' ? SITE : o.link;
+      var node = svg, link = o.link === undefined || o.link === true || o.link === 'true' ? SITE + (o.lang === 'en' ? 'en/' : '') : o.link;
       if (link && link !== 'false') {
-        var n = level(el.getAttribute('data-gradient')).n;
+        var lv = level(el.getAttribute('data-gradient'), o.lang), n = lv.n, t = TEXT[o.lang];
         node = document.createElement('a');
         node.href = link.replace(/#.*$/, '') + '#livello-' + n;
-        node.title = 'Gradiente IA · Livello ' + n + ' · ' + LEVELS[n - 1].name;
+        node.title = t.brand + ' · ' + t.level + ' ' + n + ' · ' + lv.name;
         node.style.display = 'inline-block';
         node.appendChild(svg);
       }
@@ -223,7 +234,8 @@
 
   return {
     version: VERSION,
-    levels: LEVELS,
+    levels: LEVELS.it,
+    i18n: LEVELS,
     icons: ICONS,
     defaultPalette: PALETTE.slice(),
     site: SITE,

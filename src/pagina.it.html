@@ -1,4 +1,4 @@
-<!-- Modello delle pagine del sito: strumenti/build.py genera index.html, stem/, umanistiche/, afam/ da questo file e da dati/livelli.it.json. -->
+<!-- Modello delle pagine italiane: strumenti/build.py genera index.html, stem/, umanistiche/, afam/ da questo file e da dati/livelli.it.json. -->
 <!doctype html>
 <html lang="it" data-theme-default="auto">
 <head>
@@ -21,6 +21,7 @@
   <title>{{TITOLO}}</title>
   <meta name="description" content="{{DESCRIZIONE}}">
   <link rel="icon" href="{{R}}assets/favicon.svg" type="image/svg+xml">
+{{ALTERNATE}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
@@ -28,9 +29,9 @@
   <link rel="stylesheet" href="{{R}}assets/sito.css">
   <script src="{{R}}dist/gradient-ai.js" defer></script>
   <script src="{{R}}assets/sito.js" defer></script>
-  <!-- SOLO LOCALE: post-it di revisione (revisione/ non va su GitHub). Su GitHub Pages non si carica. -->
+  <!-- SOLO LOCALE: post-it di revisione (revisione/ non va su GitHub). Si carica solo in locale. -->
   <script>
-    if (!/github\.io$/.test(location.hostname)) {
+    if (/^(localhost|127\.0\.0\.1|gradient-ai|.+\.localhost)$/.test(location.hostname) || location.protocol === 'file:') {
       document.write('<link rel="stylesheet" href="{{R}}revisione/note.css"><script src="{{R}}revisione/note.js" defer><\/script>');
     }
   </script>
@@ -46,6 +47,7 @@
       <a href="#licenza">Licenza</a>
       <a href="#fonti">Fonti</a>
       <a href="https://github.com/frazac/gradient-ai" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span><span class="sr">(si apre in una nuova scheda)</span></a>
+      {{LINGUA}}
     </nav>
   </div>
 </header>
@@ -98,7 +100,6 @@
     <li><a href="#livello-4"><span data-slot="4"></span></a></li>
     <li><a href="#livello-5"><span data-slot="5"></span></a></li>
   </ol>
-  <p class="originale">La versione originale, in inglese: <strong>AIAS</strong> — <em>AI Assessment Scale</em>, cioè scala dell'IA nella valutazione → <a href="https://aiassessmentscale.com/">aiassessmentscale.com</a></p>
 
   <!-- LIVELLI:INIZIO -->{{LIVELLI}}
   <!-- LIVELLI:FINE -->
@@ -174,6 +175,13 @@
   <p>Banner cookie: <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> 3.1.0 di Orest Bida (licenza MIT). Switch chiaro/scuro ripreso da masterismi.dev (tema Quark 2), icone sole e luna di <a href="https://iconoir.com/">Iconoir</a> (licenza MIT).</p>
   <h3>Cura</h3>
   <p><a href="https://linktr.ee/frazac">Francesco Zaccaria</a> — adattamento, testi e timbri. Segnalazioni e proposte: <a href="https://github.com/frazac/gradient-ai/issues">issue su GitHub</a>.</p>
+  <h3>Gradiente di questo progetto</h3>
+  <dl class="gradiente-progetto">
+    <dt><span data-gradient="2" data-variant="label" data-color="#111111" data-filled data-link="#"></span> Contenuti</dt>
+    <dd>Adattamento, nomi e testi dei livelli sono dell'autore. L'IA è servita a confrontare le fonti, proporre alternative e controllare la coerenza con la AIAS v2; ogni testo è stato riscritto e verificato sull'originale.</dd>
+    <dt><span data-gradient="4" data-variant="label" data-color="#111111" data-filled data-link="#"></span> Sito, codice e grafica</dt>
+    <dd>Sito, libreria JavaScript, strumenti di build, timbri e repository GitHub sono stati realizzati con Claude Code sotto la direzione dell'autore, che ha fissato obiettivi e scelte grafiche e ha rivisto e provato il risultato.</dd>
+  </dl>
 </section>
 
 </main>

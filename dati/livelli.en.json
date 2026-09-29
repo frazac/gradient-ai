@@ -1,0 +1,303 @@
+{
+  "lingua": "en",
+  "titolo": "Gradient AI",
+  "sottotitolo": "Levels of AI use, based on the AIAS",
+  "stile": {
+    "nome": "Simple English",
+    "standard": "ISO 24495-1:2023 Plain language — Part 1: Governing principles and guidelines",
+    "regole": "Simple English Wikipedia, How to write Simple English pages (Basic English words, short sentences)"
+  },
+  "fonte": {
+    "nome": "AI Assessment Scale (AIAS), Version 2 (2024)",
+    "autori": ["Mike Perkins", "Leon Furze", "Jasper Roe", "Jason MacVaugh"],
+    "licenza": "CC BY-NC-SA 4.0",
+    "url": "https://aiassessmentscale.com/"
+  },
+  "profili": [
+    {
+      "id": "generale",
+      "percorso": "en/",
+      "nome": "General",
+      "esteso": "Work",
+      "occhiello": "General profile · work",
+      "lead": "Five levels to say, before the work starts, <strong>how much AI can be part of it, and how</strong>. Use them for a job, a project or a team task. The same levels and badges are also in the profiles for university teaching.",
+      "chiede": "For the person who asks for the work",
+      "esegue": "For the person who does the work",
+      "esempi": "Examples",
+      "note": [
+        "The general profile takes a scale made for schools and universities and uses it for work. This is our own addition. It is not part of the original AIAS.",
+        "The levels do not say how good the work is. They only say how much AI is part of it, and how.",
+        "Agree on the level before the work starts. Write it down, for example in a brief, a contract or a team rule. Also agree on what people must report, and who is responsible for the result.",
+        "You can only be sure of level 1 when you can see how the work is done. At other levels you trust what people tell you. It helps to ask them to keep notes on how they worked."
+      ]
+    },
+    {
+      "id": "stem",
+      "percorso": "en/stem/",
+      "nome": "STEM teaching",
+      "esteso": "Science, technology, engineering, maths",
+      "occhiello": "Teaching profile · STEM",
+      "lead": "Five levels to say, before a test or task, <strong>how much AI can be part of it, and how</strong>: exercises, lab reports, projects, code. A profile for science, technology, engineering and maths.",
+      "chiede": "For teachers",
+      "esegue": "For students",
+      "esempi": "Examples of tasks",
+      "note": "didattica"
+    },
+    {
+      "id": "umanistiche",
+      "percorso": "en/humanities/",
+      "nome": "Humanities teaching",
+      "esteso": "Literature, philosophy, history, languages, social sciences",
+      "occhiello": "Teaching profile · humanities",
+      "lead": "Five levels to say, before a test or task, <strong>how much AI can be part of it, and how</strong>: essays, translations, comments on texts, research. A profile for literature, philosophy, history, languages and social sciences.",
+      "chiede": "For teachers",
+      "esegue": "For students",
+      "esempi": "Examples of tasks",
+      "note": "didattica"
+    },
+    {
+      "id": "afam",
+      "percorso": "en/arts/",
+      "nome": "Arts teaching",
+      "esteso": "Art and music schools, design, performing arts (in Italy: AFAM)",
+      "occhiello": "Teaching profile · art, music and design schools",
+      "lead": "Five levels to say, before a test or task, <strong>how much AI can be part of it, and how</strong>: artworks, projects, performances, portfolios. A profile for art schools, music schools, design and performing arts.",
+      "chiede": "For teachers",
+      "esegue": "For students",
+      "esempi": "Examples of tasks",
+      "note": "didattica"
+    }
+  ],
+  "note_didattica": [
+    "The levels do not say how good a task is. They only say how much AI is part of it, and how.",
+    "You can only be sure of level 1 in a room where you can see the work. For work done at home, expect that students may use AI in any way. Plan the task with this in mind.",
+    "Choose the level from what students need to learn. Tell students the level before they start. Also tell them what they must report, for example the instructions they gave to the AI."
+  ],
+  "livelli": [
+    {
+      "n": 1,
+      "id": "autonomia",
+      "nome": "On your own",
+      "sottotitolo": "No AI",
+      "icona": "ban",
+      "profili": {
+        "generale": {
+          "chiede": "The work is done with no AI at all. Use this level when you need the person's own skill, when the material is private, or when the client asks for it.",
+          "esegue": "Do not use AI tools at any step. This includes checking, summing up or translating. If you think a step needs AI, ask first.",
+          "esempi": [
+            "Expert reports and opinions that a person signs with their own name.",
+            "Work on private papers that must not leave the organisation.",
+            "Job interviews and skill tests."
+          ]
+        },
+        "stem": {
+          "chiede": "Students do the task with no AI, in a room where you can see the work. They use only what they know and their own way to solve problems.",
+          "esegue": "Do not use AI at any step. This task shows what you know and what you can do on your own. Show all your steps.",
+          "esempi": [
+            "Exercises and proofs done in class.",
+            "A written maths test. An oral exam about a method.",
+            "A lab notebook written by hand."
+          ]
+        },
+        "umanistiche": {
+          "chiede": "Students do the task with no AI, in a room where you can see the work. They use only their own reading, their own understanding and their own writing.",
+          "esegue": "Do not use AI at any step. This task shows how you read, understand and write on your own.",
+          "esempi": [
+            "A translation done in class.",
+            "A comment on a text, written in class. An oral exam.",
+            "Work on an old document with no devices."
+          ]
+        },
+        "afam": {
+          "chiede": "Students do the task with no AI, in a room where you can see the work. They use only their own hands, their own ears and their own technique.",
+          "esegue": "Do not use AI at any step. This task shows what you can make with your own skills.",
+          "esempi": [
+            "Drawing from life in class. A quick sketch by hand.",
+            "Playing an instrument in an exam. Improvising.",
+            "Music theory exercises on paper."
+          ]
+        }
+      }
+    },
+    {
+      "n": 2,
+      "id": "ideazione",
+      "nome": "Ideas",
+      "sottotitolo": "AI only before you start",
+      "icona": "calendar-days",
+      "profili": {
+        "generale": {
+          "chiede": "AI can help only before the real work starts: to find ideas, to plan the structure, to learn about a new subject. The person writes and makes the final work.",
+          "esegue": "You can use AI to find ideas, to plan and to do first research. You make and write the final work yourself. Check every fact in a trusted source.",
+          "esempi": [
+            "Ideas for an offer, a proposal or a new concept.",
+            "A plan for a report or a talk.",
+            "A first look at a market, a law or a new subject. Check everything after."
+          ]
+        },
+        "stem": {
+          "chiede": "AI can help only before the real work starts: to find ways to solve a problem, to find papers to read, to make a plan. You assess how students develop these ideas on their own.",
+          "esegue": "You can use AI to find ways to solve the problem and to plan your project. You do the maths, the code and the development yourself.",
+          "esempi": [
+            "Finding possible ways to solve a problem.",
+            "Finding papers to read for a short report.",
+            "Ideas for a project, to talk about in class."
+          ]
+        },
+        "umanistiche": {
+          "chiede": "AI can help only before the real work starts: to find ideas, to plan an essay, to start research. You assess how students develop and support these ideas on their own.",
+          "esegue": "You can use AI to find ideas, to plan and to start your research. You write the final text yourself. Check every book or source it names.",
+          "esempi": [
+            "Ideas for the main point of an essay.",
+            "A plan for an essay.",
+            "A first list of books to read. Check every title."
+          ]
+        },
+        "afam": {
+          "chiede": "AI can help only before the real work starts: to collect images and ideas, to try different versions of a concept. You assess how students develop these ideas with their own skills.",
+          "esegue": "You can use AI to collect images and ideas and to try versions of a concept. You make the drawings, the music or the model yourself.",
+          "esempi": [
+            "A mood board of images and ideas.",
+            "Versions of a concept, to talk about in class.",
+            "First research on images or music."
+          ]
+        }
+      }
+    },
+    {
+      "n": 3,
+      "id": "co-creazione",
+      "nome": "Working together",
+      "sottotitolo": "AI helps, you check everything",
+      "icona": "blender",
+      "profili": {
+        "generale": {
+          "chiede": "AI can help to make the work: first drafts, changes, comments, final touches. The person checks, corrects and adds to everything the AI gives. They are responsible for all of it.",
+          "esegue": "You can use AI for some clear parts of the work, like a first draft, a review or a check. Read, correct and complete everything it makes. You are responsible for the result. Say where you used AI.",
+          "esempi": [
+            "Texts, emails and documents written with an AI assistant, then checked.",
+            "Code written with an AI assistant, then reviewed and tested.",
+            "Translations or summaries made by AI, then checked against the original."
+          ]
+        },
+        "stem": {
+          "chiede": "AI can help to do the task: it can suggest answers, write code or give comments. Students check, correct and explain what the AI gives. This shows that they understand it.",
+          "esegue": "You can use AI for some parts of the task. Check every result. You must be able to explain every line of code. Say how you used AI.",
+          "esempi": [
+            "Code written with an AI assistant, then explained, tested and commented.",
+            "Finding errors in code with help from AI.",
+            "A lab report with language checked by AI."
+          ]
+        },
+        "umanistiche": {
+          "chiede": "AI can help to do the task: it can suggest words, write a first draft or comment on an argument. Students check and rewrite what the AI gives. This shows that they understand it.",
+          "esegue": "You can use AI for some parts of the task, like a first draft or comments. Check and rewrite everything it makes. Say how you used AI.",
+          "esempi": [
+            "A first draft, then changed and with notes.",
+            "Your own translation next to an AI translation, with a talk about the differences.",
+            "Comments from AI on the argument of an essay."
+          ]
+        },
+        "afam": {
+          "chiede": "AI can help to make the work: it can make sketches, suggest music or give comments. Students choose, change and rework what the AI gives, and explain their choices.",
+          "esegue": "You can use AI for some parts of the task. Choose and change what it makes with your own hands. Say how you used AI.",
+          "esempi": [
+            "Sketches made by AI, then drawn again by hand.",
+            "Music arranged with AI tools, then checked by listening.",
+            "A text about the project, written with AI, then rewritten."
+          ]
+        }
+      }
+    },
+    {
+      "n": 4,
+      "id": "regia",
+      "nome": "Directing",
+      "sottotitolo": "People lead the AI",
+      "icona": "bot",
+      "profili": {
+        "generale": {
+          "chiede": "AI can be used for any part of the work, or the work needs AI. The value is in the direction: clear goals, exact instructions, quality checks and good reasons for each choice.",
+          "esegue": "You can use AI a lot. What matters is how you lead it to the goal, how you check the results and how you explain your choices. Keep notes on how you worked.",
+          "esempi": [
+            "Data or documents studied with AI agents, with spot checks.",
+            "A first version of a product or service made with AI tools.",
+            "Many texts or images made with AI, following clear style rules."
+          ]
+        },
+        "stem": {
+          "chiede": "AI can be used for any part of the task, or the task needs AI. Students lead the AI to the goal. You assess how they lead it, how they check the results on their own, and what they know about the subject.",
+          "esegue": "You can use AI a lot, as you like or as the task says. What matters is how you lead it and how you check what it makes.",
+          "esempi": [
+            "Data studied with AI agents.",
+            "A first version of a program made with AI assistants, with notes on each choice.",
+            "Checking the results against cases with known answers."
+          ]
+        },
+        "umanistiche": {
+          "chiede": "AI can be used for any part of the task, or the task needs AI. Students lead the AI to the goal. You assess their critical thinking, how they check sources, and how they explain texts.",
+          "esegue": "You can use AI a lot, as you like or as the task says. What matters is how you lead it and how well you think about what it gives you.",
+          "esempi": [
+            "Building a large set of texts and studying it with AI.",
+            "A digital edition of a text.",
+            "A file with the instructions given to AI, the source checks and the choices made."
+          ]
+        },
+        "afam": {
+          "chiede": "AI can be used for any part of the task, or the task needs AI. Students are the artistic directors. You assess their vision, how their choices fit together and how much control they keep over the result.",
+          "esegue": "You can use AI a lot, as you like or as the task says. What matters is your artistic direction. Explain every choice.",
+          "esempi": [
+            "A media project where AI makes material under the student's direction.",
+            "A portfolio that shows the process and explains each choice.",
+            "A show or exhibition planned with AI tools."
+          ]
+        }
+      }
+    },
+    {
+      "n": 5,
+      "id": "sperimentazione",
+      "nome": "Exploring",
+      "sottotitolo": "AI as a place to try new things",
+      "icona": "lighthouse",
+      "profili": {
+        "generale": {
+          "chiede": "AI is the heart of the work. People try new ways to use it: to solve problems, to find new ideas or to build new solutions. The client and the team agree on the goals and the method together.",
+          "esegue": "Use AI in creative and new ways. Suggest new ideas, agree on them with the client, and write down what works and what does not.",
+          "esempi": [
+            "A small test project to bring AI into a way of working.",
+            "A tool made to measure with AI models.",
+            "Research on new services that use AI."
+          ]
+        },
+        "stem": {
+          "chiede": "Students use AI in creative ways to solve problems, find new ideas or build new solutions. Teachers and students plan the task together. AI itself can be the subject of study.",
+          "esegue": "Use AI in creative ways to do the task. You can plan new methods together with your teacher.",
+          "esempi": [
+            "Changing or training an AI model.",
+            "Comparing methods and writing down their limits.",
+            "Tests where AI itself is the subject of study."
+          ]
+        },
+        "umanistiche": {
+          "chiede": "Students use AI in creative ways to ask new questions about texts and sources. Teachers and students plan the task together, to try new uses of AI in the subject.",
+          "esegue": "Use AI in creative ways to do the task. You can plan new methods together with your teacher.",
+          "esempi": [
+            "Methods from the digital humanities.",
+            "Studying the errors and limits of AI models on old texts.",
+            "New ways to read and publish texts."
+          ]
+        },
+        "afam": {
+          "chiede": "AI is the material, the tool or the subject of the artwork. Teachers and students plan the task together, to try new languages and new ways of making.",
+          "esegue": "Use AI in creative ways, also as the material of your work. You can plan new methods together with your teacher.",
+          "esempi": [
+            "Artworks that use AI as their material or as their subject.",
+            "Performances and installations.",
+            "Tools for making art, built for the project."
+          ]
+        }
+      }
+    }
+  ]
+}
