@@ -68,35 +68,36 @@ body.scorsa .marchio { opacity: 1; visibility: visible; transform: none; }
 .testata nav { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: 0.95rem; }
 .testata nav a { color: inherit; text-decoration: none; }
 .testata nav a:hover { color: var(--accento); }
-/* selettore lingua — stesso schema di orco.it: globo che apre un pannello a pillola */
+/* selettore lingua: globo (Lucide earth) che apre un menu a tendina */
 .testata .riga { gap: 0.8rem 1.2rem; }
 .header-lang { position: relative; display: flex; align-items: center; margin-left: auto; }
 .testata nav + .header-lang { margin-left: 0; }
-.lang-toggle, .lang-close {
-  display: grid; place-items: center; width: 28px; height: 28px; padding: 0; flex-shrink: 0;
-  color: var(--tenue); background: none; border: none; border-radius: 50%; cursor: pointer;
-  transition: color 0.2s ease, opacity 0.2s ease, width 0.2s ease;
+.lang-toggle {
+  display: grid; place-items: center; width: 32px; height: 32px; padding: 0; flex-shrink: 0;
+  color: var(--tenue); background: none; border: 1px solid transparent; border-radius: 50%; cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
-.lang-toggle svg, .lang-close svg { width: 20px; height: 20px; }
-.lang-toggle:hover, .lang-close:hover { color: var(--inchiostro); }
+.lang-toggle svg { width: 20px; height: 20px; }
+.lang-toggle:hover, .header-lang.is-open .lang-toggle { color: var(--inchiostro); border-color: var(--filo); }
 .lang-panel {
-  /* sovrapposto a destra, sopra il menu: la testata non va a capo quando si apre */
-  position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 20;
-  background: var(--carta);
-  max-width: 0; overflow: hidden;
-  border: 1px solid transparent; border-radius: 999px;
-  opacity: 0; pointer-events: none;
-  transition: max-width 0.35s ease, opacity 0.25s ease, border-color 0.25s ease;
+  position: absolute; right: 0; top: calc(100% + 0.6rem); z-index: 40;
+  min-width: 12rem; background: var(--carta);
+  border: 1px solid var(--filo); border-radius: 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
 }
-.lang-panel-inner { display: flex; align-items: center; gap: 0.9rem; width: max-content; padding: 2px 0.4rem 2px 0.9rem; white-space: nowrap; }
-.lang-panel ul { display: flex; align-items: center; gap: 0.9rem; margin: 0; padding: 0; list-style: none; }
-.lang-panel a { display: inline-flex; align-items: center; color: var(--tenue); text-decoration: none; font-size: 0.9rem; }
-.lang-panel a::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; margin-right: 0.4rem; border-radius: 50%; background: transparent; }
-.lang-panel a:hover:not(.is-active) { color: var(--inchiostro); }
-.lang-panel a.is-active { color: var(--inchiostro); }
+.header-lang.is-open .lang-panel { opacity: 1; visibility: visible; transform: none; }
+.lang-panel.a-destra { right: auto; left: 0; }
+.lang-panel-inner { padding: 0.35rem; }
+.lang-panel ul { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; list-style: none; }
+.lang-panel a {
+  display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.8rem; border-radius: 9px;
+  color: var(--tenue); text-decoration: none; font-size: 0.92rem; white-space: nowrap;
+}
+.lang-panel a::before { content: ''; flex: none; width: 6px; height: 6px; border-radius: 50%; background: transparent; }
+.lang-panel a:hover { background: var(--carta-2); color: var(--inchiostro); }
+.lang-panel a.is-active { color: var(--inchiostro); font-weight: 600; }
 .lang-panel a.is-active::before { background: var(--accento); }
-.header-lang.is-open .lang-toggle { opacity: 0; pointer-events: none; }
-.header-lang.is-open .lang-panel { max-width: 30rem; opacity: 1; pointer-events: auto; border-color: var(--filo); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 /* intro */

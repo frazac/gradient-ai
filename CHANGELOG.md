@@ -11,6 +11,7 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 - Contenuti dichiarati a livello 3 (Co-creazione): i testi sono scritti insieme all'IA e rivisti dall'autore. Tolto un doppione della sezione nella pagina italiana.
 - Badge sempre su sfondo trasparente; nel pannello «Sfondo di prova» (trasparente, bianco, nero, grigio, rosso o un colore a scelta) cambia solo l'anteprima, non i file.
 - Marchio in testata solo testuale (l'icona resta nella favicon).
+- Selettore lingua come menu a tendina sotto il globo (si apre verso destra se a sinistra non c'è spazio).
 
 ## 0.4.0 — 2026-09-29
 

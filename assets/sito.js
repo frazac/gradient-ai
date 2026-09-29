@@ -158,15 +158,19 @@
     });
   });
 
-  // selettore lingua (come orco.it): apre/chiude il pannello, chiude con ×, Esc o clic fuori
+  // selettore lingua: menu a tendina sotto il globo; si chiude con Esc o con un clic fuori
   var lingua = document.querySelector('.header-lang');
   if (lingua) {
     var tog = lingua.querySelector('.lang-toggle');
-    var apri = function (si) { lingua.classList.toggle('is-open', si); tog.setAttribute('aria-expanded', si ? 'true' : 'false'); };
+    var pannello = lingua.querySelector('.lang-panel');
+    var apri = function (si) {
+      // se il globo è andato a capo sulla sinistra (schermi stretti), il menu si apre verso destra
+      if (si) pannello.classList.toggle('a-destra', lingua.getBoundingClientRect().right - pannello.offsetWidth < 8);
+      lingua.classList.toggle('is-open', si); tog.setAttribute('aria-expanded', si ? 'true' : 'false');
+    };
     tog.addEventListener('click', function () { apri(!lingua.classList.contains('is-open')); });
-    lingua.querySelector('.lang-close').addEventListener('click', function () { apri(false); tog.focus(); });
     document.addEventListener('click', function (e) { if (!lingua.contains(e.target)) apri(false); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') apri(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lingua.classList.contains('is-open')) { apri(false); tog.focus(); } });
   }
 
   // altezza reale della testata (su schermi stretti va su due righe): il menu dei livelli si aggancia sotto
