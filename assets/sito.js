@@ -18,9 +18,20 @@
   var LEVELS = G.i18n[LG];
   var PNG = { stamp: 512, icon: 256, label: 192 };
   var PAGINA = BASE + (document.body.getAttribute('data-percorso') || '');   // pagina del profilo corrente
-  var stato = { variant: 'stamp', schema: 'gradiente', from: '#c8473d', to: '#1f2a44', weight: 2, filled: false, sfondo: 'transparent' };
+  var stato = { variant: 'stamp', schema: 'gradiente', from: '#c8473d', to: '#52589a', weight: 2, filled: false, sfondo: 'transparent' };
 
+  var stato0 = JSON.parse(JSON.stringify(stato));   // configurazione di partenza (pulsante Reset)
   try { Object.assign(stato, JSON.parse(localStorage.getItem('gradiente-ia') || '{}')); } catch (e) { /* storage non disponibile */ }
+  // una configurazione condivisa (?forma=…&colore=…) ha la precedenza su quella salvata nel browser
+  (function () {
+    var P = { forma: 'variant', colore: 'schema', da: 'from', a: 'to', peso: 'weight', pieno: 'filled', sfondo: 'sfondo' };
+    location.search.slice(1).split('&').forEach(function (kv) {
+      var p = kv.split('='), k = P[p[0]];
+      if (!k || p[1] == null) return;
+      var v = decodeURIComponent(p[1]);
+      stato[k] = k === 'weight' ? Number(v) || 2 : k === 'filled' ? v === '1' || v === 'true' : v;
+    });
+  }());
   delete stato.contesto;   // opzione della 0.1.0, sostituita dalle pagine per profilo
 
   function opzioni() {
@@ -253,6 +264,35 @@
   campioni.forEach(function (c) { c.addEventListener('click', function () { sfondo(c.getAttribute('data-sfondo')); }); });
   if (libero) libero.addEventListener('input', function () { sfondo(libero.value, true); });
   sfondo(stato.sfondo || 'transparent');
+
+  // condividere la configurazione: le scelte vanno nell'indirizzo (?forma=…), chi lo apre vede gli stessi badge
+  var CHIAVI = { variant: 'forma', schema: 'colore', from: 'da', to: 'a', weight: 'peso', filled: 'pieno', sfondo: 'sfondo' };
+  var PARTENZA = stato0;
+  function indirizzo() {
+    var q = [];
+    Object.keys(CHIAVI).forEach(function (k) {
+      if (String(stato[k]) !== String(PARTENZA[k])) q.push(CHIAVI[k] + '=' + encodeURIComponent(k === 'filled' ? (stato[k] ? 1 : 0) : stato[k]));
+    });
+    return location.origin + location.pathname + (q.length ? '?' + q.join('&') : '') + '#personalizza';
+  }
+  var bCond = document.querySelector('[data-condividi]'), bReset = document.querySelector('[data-reset]');
+  if (bCond) bCond.addEventListener('click', function () {
+    var u = indirizzo();
+    if (navigator.share && /Mobi|Android/i.test(navigator.userAgent)) navigator.share({ title: document.title, url: u }).catch(function () {});
+    else copia(u, bCond);
+  });
+  function allinea() {
+    document.querySelectorAll('[data-opt]').forEach(function (el) {
+      var k = el.getAttribute('data-opt');
+      if (el.type === 'checkbox') el.checked = !!stato[k]; else el.value = stato[k];
+    });
+  }
+  if (bReset) bReset.addEventListener('click', function () {
+    Object.keys(PARTENZA).forEach(function (k) { stato[k] = PARTENZA[k]; });
+    allinea(); sfondo(stato.sfondo); disegna();
+    if (location.search) history.replaceState(null, '', location.pathname + location.hash);
+    conferma(bReset, T.ok);
+  });
 
   G.createBadges({ link: false });   // badge della sezione sull'uso dell'IA (hanno il proprio data-link)
   disegna();

@@ -68,50 +68,56 @@
 <section id="intro" class="intro riga">
   <h1>Gradiente IA</h1>
   <p class="sottotitolo">Livelli di integrazione dell'IA tratti da AIAS</p>
-  <p class="occhiello-profilo">Profilo didattico · area AFAM</p>
+  <h2 class="titolo-intro">Introduzione</h2>
   <p class="lead">Cinque livelli per dire, prima di una prova, <strong>quanto e come l'intelligenza artificiale può entrarci</strong>: elaborati, progetti, esecuzioni, portfolio. Profilo per accademie di belle arti, conservatori, design e arti performative.</p>
   <p class="nota-fonte">Adattamento italiano della <a href="https://aiassessmentscale.com/">AI Assessment Scale (AIAS)</a> v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh · <a href="#licenza">CC BY-NC-SA 4.0</a><br>
   Gradiente IA è in versione <span data-versione>0.4.0</span></p>
 </section>
 
-<nav class="profili riga" aria-label="Profili">
+<section class="fascia-profili" aria-label="Profili">
+  <div class="riga">
+    <p class="occhiello-profilo">Profilo didattico · area AFAM</p>
+    <nav class="profili" aria-label="Profili">
   <a href="../" title="Contesto professionale">Generale</a>
   <a href="../stem/" title="Scienze, tecnologia, ingegneria, matematica">Didattica STEM</a>
   <a href="../umanistiche/" title="Lettere, filosofia, storia, lingue, scienze sociali">Didattica umanistica</a>
   <a href="../afam/" aria-current="page" title="Accademie di belle arti, conservatori, design, arti performative">Didattica AFAM</a>
-</nav>
+    </nav>
+  </div>
+</section>
 
 <section id="personalizza" class="pannello" aria-label="Personalizza i timbri">
   <div class="riga comandi">
-    <label>Forma
-      <select data-opt="variant">
-        <option value="stamp">Timbro</option>
-        <option value="icon">Icona</option>
-        <option value="label">Etichetta</option>
-      </select>
-    </label>
-    <label>Colori
-      <select data-opt="schema">
-        <option value="gradiente">Gradiente (predefinito)</option>
-        <option value="estremi">Da… a…</option>
-        <option value="unico">Colore unico</option>
-        <option value="nero">Nero (stampa)</option>
-      </select>
-    </label>
+    <select data-opt="variant" aria-label="Forma">
+      <option value="stamp">Forma: timbro</option>
+      <option value="label">Forma: etichetta</option>
+      <option value="icon">Forma: pittogramma</option>
+    </select>
+    <select data-opt="schema" aria-label="Colore">
+      <option value="gradiente">Colore: gradiente</option>
+      <option value="estremi">Colore: da… a…</option>
+      <option value="unico">Colore: unico</option>
+      <option value="nero">Colore: nero (stampa)</option>
+    </select>
     <span class="colori">
       <input type="color" data-opt="from" value="#c8473d" aria-label="Colore iniziale (livello 1)">
-      <input type="color" data-opt="to" value="#1f2a44" aria-label="Colore finale (livello 5)">
+      <input type="color" data-opt="to" value="#52589a" aria-label="Colore finale (livello 5)">
     </span>
     <label>Peso <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
-    <label class="spunta"><input type="checkbox" data-opt="filled"> Pieno</label>
+    <label class="spunta">Traccia <input type="checkbox" role="switch" data-opt="filled"> Pieno</label>
     <span class="sfondo-prova" role="group" aria-label="Sfondo di prova"><span class="sfondo-etichetta">Sfondo di prova</span>
         <button type="button" class="campione" data-sfondo="transparent" style="--campione:transparent" aria-label="Trasparente" title="Trasparente"></button>
         <button type="button" class="campione" data-sfondo="#ffffff" style="--campione:#ffffff" aria-label="Bianco" title="Bianco"></button>
         <button type="button" class="campione" data-sfondo="#000000" style="--campione:#000000" aria-label="Nero" title="Nero"></button>
-        <button type="button" class="campione" data-sfondo="#808080" style="--campione:#808080" aria-label="Grigio" title="Grigio"></button>
-        <button type="button" class="campione" data-sfondo="#d62828" style="--campione:#d62828" aria-label="Rosso" title="Rosso"></button>
         <input type="color" data-sfondo-libero value="#f2c14e" aria-label="Altro colore" title="Altro colore">
     </span>
+  </div>
+</section>
+
+<section class="fascia-condividi" aria-label="Configurazione">
+  <div class="riga">
+    <p>Condividi la pagina con questa configurazione, oppure torna a quella di partenza.</p>
+    <p class="azioni"><button type="button" class="bottone" data-condividi>Condividi questa configurazione</button> <button type="button" class="bottone" data-reset>Reset</button></p>
   </div>
 </section>
 
@@ -272,7 +278,7 @@
 
   <div class="tecnica">
     <h3>2. Immagine PNG</h3>
-    <p>Per slide, documenti, piattaforme che accettano solo immagini. Ogni timbro è disponibile a 128 e 512 px (icona: 64 e 256; etichetta: 48 e 192 di altezza), contornato o pieno.</p>
+    <p>Per slide, documenti, piattaforme che accettano solo immagini. Ogni timbro è disponibile a 128 e 512 px (pittogramma: 64 e 256; etichetta: 48 e 192 di altezza), contornato o pieno.</p>
     <pre><code data-codice="png"></code></pre>
     <p><a href="https://github.com/frazac/gradient-ai/tree/main/dist/png">Tutti i PNG</a></p>
   </div>

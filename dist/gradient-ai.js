@@ -17,14 +17,16 @@
   var VERSION = '0.4.0';
   var LEVELS = {"it": [{"n": 1, "id": "autonomia", "name": "Autonomia", "subtitle": "Senza IA", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Ideazione", "subtitle": "IA solo in fase preparatoria", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Co-creazione", "subtitle": "IA al fianco, con vaglio critico", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Regia", "subtitle": "IA sotto direzione umana", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Sperimentazione", "subtitle": "IA come terreno di ricerca", "icon": "lighthouse"}], "fr": [{"n": 1, "id": "autonomia", "name": "Autonomie", "subtitle": "Sans IA", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Idéation", "subtitle": "IA seulement en amont", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Co-création", "subtitle": "IA à vos côtés, avec regard critique", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Régie", "subtitle": "IA sous direction humaine", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Expérimentation", "subtitle": "IA comme terrain de recherche", "icon": "lighthouse"}], "en": [{"n": 1, "id": "autonomia", "name": "On your own", "subtitle": "No AI", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Ideas", "subtitle": "AI only before you start", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Working together", "subtitle": "AI helps, you check everything", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Directing", "subtitle": "People lead the AI", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Exploring", "subtitle": "AI as a place to try new things", "icon": "lighthouse"}]};   // { it: [...], en: [...] }
   var TEXT = {
-    it: { brand: 'Gradiente IA', level: 'Livello', bottom: 'GRADIENTE IA' },
-    fr: { brand: 'Gradient IA', level: 'Niveau', bottom: 'GRADIENT IA' },
-    en: { brand: 'Gradient AI', level: 'Level', bottom: 'GRADIENT AI' }
+    it: { brand: 'Gradiente IA', level: 'Livello', bottom: 'GRADIENTE IA', mark: 'Gradient IA' },
+    fr: { brand: 'Gradient IA', level: 'Niveau', bottom: 'GRADIENT IA', mark: 'Gradient IA' },
+    en: { brand: 'Gradient AI', level: 'Level', bottom: 'GRADIENT AI', mark: 'Gradient AI' }
   };
+  // licenza e indirizzo, in corpo piccolo sull'arco esterno sotto timbro e pittogramma (opzione credit: false per toglierli)
+  var CREDIT = 'CC BY-NC-SA 4.0 getgradient.it';
   var ICONS = {"ban": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M4.929 4.929 19.07 19.071\"/>", "calendar-days": "<path d=\"M8 2v3\"/><path d=\"M16 2v3\"/><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M3 9h18\"/><path d=\"M8 13h.01\"/><path d=\"M12 13h.01\"/><path d=\"M16 13h.01\"/><path d=\"M8 17h.01\"/><path d=\"M12 17h.01\"/><path d=\"M16 17h.01\"/>", "blender": "<path d=\"M8 14a2 2 0 0 0-1.963 1.615l-1.018 5.193A1 1 0 0 0 6 22h12a1 1 0 0 0 .981-1.192l-1.018-5.193A2 2 0 0 0 16 14z\"/><path d=\"m17 2-1 12\"/><path d=\"M8.006 14 7 2\"/><path d=\"M7.565 8.787A5 5 0 0 0 12 8a5 5 0 0 1 4.56-.75\"/><path d=\"M19 2H5a2 2 0 0 0-2 2v5a2 2 0 0 0 .688 1.5\"/><path d=\"M12 18h.01\"/>", "bot": "<path d=\"M12 8V4H8\"/><rect width=\"16\" height=\"12\" x=\"4\" y=\"8\" rx=\"2\"/><path d=\"M2 14h2\"/><path d=\"M20 14h2\"/><path d=\"M15 13v2\"/><path d=\"M9 13v2\"/>", "lighthouse": "<path d=\"M12 3V2\"/><path d=\"M16.066 16.865 7 22l2-11V6a3 3 0 016 0v5l2 11\"/><path d=\"m19.792 4.5.866-.5\"/><path d=\"m19.797 13.5.866.5\"/><path d=\"M21 9h1\"/><path d=\"M3 9H2\"/><path d=\"m4.203 13.5-.866.5\"/><path d=\"M4.208 4.5 3.342 4\"/><path d=\"M5.5 22h13\"/><path d=\"m7.932 16.875 7.377-4.178\"/><path d=\"M8 11h8\"/><path d=\"M8 7h8\"/>"};
 
   // Palette predefinita: dal rosso del divieto (senza IA) al blu dell'esplorazione (sperimentazione).
-  var PALETTE = ['#c8473d', '#b8741c', '#2a8c82', '#2f5d8a', '#1f2a44'];
+  var PALETTE = ['#c8473d', '#b8741c', '#2a8c82', '#2f5d8a', '#52589a'];
   var FONT = "'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif";
   var uid = 0;
   var SITE = 'https://frazac.github.io/gradient-ai/';
@@ -109,16 +111,40 @@
       ICONS[name] + '</g>';
   }
 
-  function open(w, h, o, l) {
+  // m: margine attorno al disegno (spazio per il testo della licenza sull'arco esterno)
+  function open(w, h, o, l, m) {
     var t = TEXT[o.lang];
-    var px = o.size ? ' width="' + (o.size * w / h) + '" height="' + o.size + '"' : '';
-    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + w + ' ' + h + '"' + px +
+    m = m || 0;
+    var W = w + 2 * m, H = h + 2 * m;
+    var px = o.size ? ' width="' + (o.size * W / H) + '" height="' + o.size + '"' : '';
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="' + (-m) + ' ' + (-m) + ' ' + W + ' ' + H + '"' + px +
       ' role="img" aria-label="' + esc(t.level + ' ' + l.n + ' · ' + l.name + ' — ' + l.subtitle) + '"' +
       (o['class'] ? ' class="' + esc(o['class']) + '"' : '') + '>' +
       '<title>' + esc(t.brand + ' · ' + t.level + ' ' + l.n + ' · ' + l.name) + '</title>';
   }
 
   function fontWeight(w) { return w < 1.5 ? 500 : w < 2.5 ? 700 : 800; }
+
+  // testo su arco sotto un cerchio di centro (cx, cy): baseline a raggio r, lettere verso il centro;
+  // l'arco sale di `gradi` sopra l'orizzontale ai due lati, così c'è posto anche per i testi lunghi
+  function arcText(id, txt, cx, cy, r, fs, ink, gradi) {
+    var a = (gradi || 0) * Math.PI / 180, dx = r * Math.cos(a), dy = r * Math.sin(a);
+    var f = function (v) { return +v.toFixed(2); };
+    return '<defs><path id="' + id + '" d="M ' + f(cx - dx) + ' ' + f(cy - dy) + ' A ' + r + ' ' + r + ' 0 ' + (gradi > 0 ? 1 : 0) + ' 0 ' +
+      f(cx + dx) + ' ' + f(cy - dy) + '"/></defs>' +
+      '<text fill="' + ink + '" font-family="' + esc(FONT) + '" font-weight="500" font-size="' + fs + '" letter-spacing="' + f(fs * 0.06) +
+      '" text-anchor="middle"><textPath href="#' + id + '" startOffset="50%">' + esc(txt) + '</textPath></text>';
+  }
+
+  // larghezza stimata di un testo maiuscolo in Space Grotesk (em per carattere), per le etichette a larghezza variabile
+  function textWidth(txt, fs, ls) {
+    var w = 0;
+    for (var i = 0; i < txt.length; i++) {
+      var ch = txt[i];
+      w += /[IJ1 ]/.test(ch) ? 0.34 : /[MW]/.test(ch) ? 0.86 : 0.62;
+    }
+    return w * fs + ls * txt.length;
+  }
 
   // ---- varianti ----
 
@@ -129,7 +155,8 @@
     var id = 'gai' + (++uid);
     var fw = fontWeight(w);
     var bottom = o.bottomText != null ? o.bottomText : TEXT[o.lang].bottom;
-    var s = open(200, 200, o, l);
+    var credit = o.credit !== false && o.credit !== 'false';
+    var s = open(200, 200, o, l, credit ? 9 : 0);
     s += '<defs><path id="' + id + 't" d="M 25 100 A 75 75 0 0 1 175 100"/>' +
       '<path id="' + id + 'b" d="M 14 100 A 86 86 0 0 0 186 100"/></defs>';
     if (filled) s += '<circle cx="100" cy="100" r="97" fill="' + c + '"/>';
@@ -142,9 +169,10 @@
     s += '<text font-size="' + fs.toFixed(1) + '" letter-spacing="' + (fs * 0.15).toFixed(2) + '"><textPath href="#' + id + 't" startOffset="50%">' + esc(l.name.toUpperCase()) + '</textPath></text>';
     s += '<text font-size="12" letter-spacing="3.5"><textPath href="#' + id + 'b" startOffset="50%">' + esc(bottom) + '</textPath></text>';
     s += '<circle cx="20" cy="100" r="' + (1.6 + w * 0.6) + '"/><circle cx="180" cy="100" r="' + (1.6 + w * 0.6) + '"/>';
-    s += '<text x="100" y="152" font-size="36" font-weight="' + Math.max(fw, 700) + '">' + l.n + '</text>';
+    s += '<text x="100" y="152" font-size="36" font-weight="' + Math.max(fw, 700) + '">' + l.n + '<tspan font-size="22">/5</tspan></text>';
     s += '</g>';
     s += icon(l.icon, 74, 52, 52, ink, w);
+    if (credit) s += arcText(id + 'c', CREDIT, 100, 100, 104, 7, c, 0);
     return s + '</svg>';
   }
 
@@ -152,25 +180,29 @@
   function badgeIcon(l, o) {
     var c = colorFor(l, o), w = o.weight, filled = o.filled;
     var ink = filled ? (o.ink || '#ffffff') : c;
-    var s = open(48, 48, o, l);
+    var credit = o.credit !== false && o.credit !== 'false';
+    var s = open(48, 48, o, l, credit ? 4 : 0);
     s += filled ? '<circle cx="24" cy="24" r="23" fill="' + c + '"/>'
       : '<circle cx="24" cy="24" r="' + (23 - w / 2) + '" fill="' + (o.background || 'none') + '" stroke="' + c + '" stroke-width="' + w + '"/>';
     s += icon(l.icon, 11, 11, 26, ink, w);
+    if (credit) s += arcText('gai' + (++uid) + 'c', TEXT[o.lang].mark + ' ' + l.n + '/5 — ' + CREDIT, 24, 24, 26.2, 2.5, c, 22);
     return s + '</svg>';
   }
 
-  // Etichetta orizzontale: numero, icona, nome.
+  // Etichetta orizzontale: grado (n/5), icona, nome; la larghezza segue la lunghezza del nome.
   function label(l, o) {
     var c = colorFor(l, o), w = o.weight, filled = o.filled;
     var ink = filled ? (o.ink || '#ffffff') : c;
-    var s = open(260, 48, o, l);
-    s += filled ? '<rect x="0" y="0" width="260" height="48" rx="24" fill="' + c + '"/>'
-      : '<rect x="' + w / 2 + '" y="' + w / 2 + '" width="' + (260 - w) + '" height="' + (48 - w) + '" rx="' + (24 - w / 2) + '" fill="' + (o.background || 'none') + '" stroke="' + c + '" stroke-width="' + w + '"/>';
+    var name = l.name.toUpperCase();
+    var W = Math.round(92 + textWidth(name, 15, 1.2) + 22);
+    var s = open(W, 48, o, l);
+    s += filled ? '<rect x="0" y="0" width="' + W + '" height="48" rx="24" fill="' + c + '"/>'
+      : '<rect x="' + w / 2 + '" y="' + w / 2 + '" width="' + (W - w) + '" height="' + (48 - w) + '" rx="' + (24 - w / 2) + '" fill="' + (o.background || 'none') + '" stroke="' + c + '" stroke-width="' + w + '"/>';
     s += '<g fill="' + ink + '" font-family="' + esc(FONT) + '" font-weight="' + fontWeight(w) + '">';
-    s += '<text x="24" y="30.5" font-size="18" text-anchor="middle">' + l.n + '</text>';
-    s += '<text x="82" y="29.5" font-size="15" letter-spacing="1.2">' + esc(l.name.toUpperCase()) + '</text></g>';
-    s += '<line x1="42" y1="12" x2="42" y2="36" stroke="' + ink + '" stroke-width="' + (w * 0.6) + '" stroke-linecap="round"/>';
-    s += icon(l.icon, 50, 13, 22, ink, w);
+    s += '<text x="30" y="30.5" font-size="18" text-anchor="middle">' + l.n + '<tspan font-size="12">/5</tspan></text>';
+    s += '<text x="92" y="29.5" font-size="15" letter-spacing="1.2">' + esc(name) + '</text></g>';
+    s += '<line x1="50" y1="12" x2="50" y2="36" stroke="' + ink + '" stroke-width="' + (w * 0.6) + '" stroke-linecap="round"/>';
+    s += icon(l.icon, 58, 13, 22, ink, w);
     return s + '</svg>';
   }
 
@@ -183,6 +215,7 @@
    * @param {number|string} n  1–5 oppure l'id ("autonomia", "ideazione", …)
    * @param {object} [options] variant: stamp|icon|label · lang: it|fr|en · color · from/to · palette · weight (1–3)
    *                           · filled · ink · background · size (px) · class · bottomText
+   *                           · credit (false: niente licenza sull'arco esterno di timbro e pittogramma)
    */
   function toSvg(n, options) {
     var o = {};

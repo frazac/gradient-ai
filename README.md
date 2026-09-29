@@ -46,7 +46,7 @@ La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè sca
 <i data-gradient="5" data-variant="label" data-filled></i>
 
 <script>
-  GradientAI.createBadges({ from: '#c8473d', to: '#1f2a44', weight: 2 });
+  GradientAI.createBadges({ from: '#c8473d', to: '#52589a', weight: 2 });
 </script>
 ```
 

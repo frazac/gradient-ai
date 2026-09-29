@@ -9,13 +9,18 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 - Scala tipografica rivista (h3 > h4; etichette delle schede in maiuscoletto a parte); elenchi con pallino appeso fuori dal testo.
 - «Come questo progetto ha usato l'IA» in tutte e tre le lingue, con badge contornati neri (tema chiaro) o bianchi (tema scuro).
 - Contenuti dichiarati a livello 3 (Co-creazione): i testi sono scritti insieme all'IA e rivisti dall'autore. Tolto un doppione della sezione nella pagina italiana.
-- Badge sempre su sfondo trasparente; nel pannello «Sfondo di prova» (trasparente, bianco, nero, grigio, rosso o un colore a scelta) cambia solo l'anteprima, non i file.
+- Badge sempre su sfondo trasparente; nel pannello «Sfondo di prova» (trasparente, bianco, nero o un colore a scelta) cambia solo l'anteprima, non i file.
 - Marchio in testata solo testuale (l'icona resta nella favicon).
 - Selettore lingua come menu a tendina sotto il globo (si apre verso destra se a sinistra non c'è spazio).
 - Lingue anche nel piè di pagina, sempre aperte, accanto allo switch chiaro/scuro.
 - Testata: voci allineate a sinistra; dopo il titolo il menu diventa una briciola a tendina (come l'indice di madeprogram): «Gradiente IA — [sezione corrente ▾]»: il nome è un link semplice alla home della lingua, la sezione è un pulsante a pillola sempre visibile che apre l'elenco di tutti gli h2; globo sempre a destra.
 - Icona del selettore lingua: Lucide `globe` al posto di `earth`.
 - Licenza: bollino CC e, sotto, il testo in piccolo (prima finiva su più colonne).
+- Badge: sotto timbro e pittogramma, sull'arco esterno, «CC BY-NC-SA 4.0 getgradient.it» in corpo piccolo (sul pittogramma «Gradient IA n/5 — CC BY-NC-SA 4.0 getgradient.it»); opzione `credit: false` per toglierlo (la favicon non lo porta). Timbro ed etichetta indicano il grado come n/5. Etichetta a larghezza variabile secondo il nome.
+- Colore predefinito del livello 5 schiarito (#1f2a44 → #52589a, indaco): leggibile sia sul tema chiaro sia su quello scuro.
+- Pannello: «Forma: timbro / etichetta / pittogramma» (in quest'ordine; «icona» diventa «pittogramma») e «Colore: …» dentro i menu, senza etichetta a parte; interruttore «Traccia ○ Pieno»; sfondi di prova senza grigio e rosso (resta il selettore libero); 10 px in più sopra e sotto.
+- Sotto il pannello, una striscia «Condividi questa configurazione» (copia un indirizzo con le scelte, es. `?forma=label&pieno=1`, che all'apertura ha la precedenza su quelle salvate) e «Reset».
+- Testo del profilo sopra i pulsanti dei profili, in una fascia con filetti al vivo come il pannello; «Introduzione» come h2 sotto il sottotitolo (entra anche nella briciola).
 
 ## 0.4.0 — 2026-09-29
 

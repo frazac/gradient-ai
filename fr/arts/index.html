@@ -68,50 +68,56 @@
 <section id="intro" class="intro riga">
   <h1>Gradient IA</h1>
   <p class="sottotitolo">Niveaux d'intégration de l'IA inspirés de l'AIAS</p>
-  <p class="occhiello-profilo">Profil enseignement · écoles d'art et conservatoires</p>
+  <h2 class="titolo-intro">Introduction</h2>
   <p class="lead">Cinq niveaux pour dire, avant une épreuve, <strong>quelle place l'intelligence artificielle peut y prendre, et comment</strong> : réalisations, projets, interprétations, portfolios. Profil pour les écoles d'art, les conservatoires, le design et les arts du spectacle.</p>
   <p class="nota-fonte">Adaptation de l'<a href="https://aiassessmentscale.com/">AI Assessment Scale (AIAS)</a> v2 de Mike Perkins, Leon Furze, Jasper Roe et Jason MacVaugh · <a href="#licenza">CC BY-NC-SA 4.0</a><br>
   Gradient IA en est à la version <span data-versione>0.4.0</span></p>
 </section>
 
-<nav class="profili riga" aria-label="Profils">
+<section class="fascia-profili" aria-label="Profils">
+  <div class="riga">
+    <p class="occhiello-profilo">Profil enseignement · écoles d'art et conservatoires</p>
+    <nav class="profili" aria-label="Profils">
   <a href="../../fr/" title="Contexte professionnel">Général</a>
   <a href="../../fr/stem/" title="Sciences, technologie, ingénierie, mathématiques">Enseignement STEM</a>
   <a href="../../fr/sciences-humaines/" title="Lettres, philosophie, histoire, langues, sciences sociales">Enseignement lettres et sciences humaines</a>
   <a href="../../fr/arts/" aria-current="page" title="Écoles d'art, conservatoires, design, arts du spectacle">Enseignement artistique</a>
-</nav>
+    </nav>
+  </div>
+</section>
 
 <section id="personalizza" class="pannello" aria-label="Personnaliser les tampons">
   <div class="riga comandi">
-    <label>Forme
-      <select data-opt="variant">
-        <option value="stamp">Tampon</option>
-        <option value="icon">Icône</option>
-        <option value="label">Étiquette</option>
-      </select>
-    </label>
-    <label>Couleurs
-      <select data-opt="schema">
-        <option value="gradiente">Dégradé (par défaut)</option>
-        <option value="estremi">De… à…</option>
-        <option value="unico">Couleur unique</option>
-        <option value="nero">Noir (impression)</option>
-      </select>
-    </label>
+    <select data-opt="variant" aria-label="Forme">
+      <option value="stamp">Forme : tampon</option>
+      <option value="label">Forme : étiquette</option>
+      <option value="icon">Forme : pictogramme</option>
+    </select>
+    <select data-opt="schema" aria-label="Couleur">
+      <option value="gradiente">Couleur : dégradé</option>
+      <option value="estremi">Couleur : de… à…</option>
+      <option value="unico">Couleur : unique</option>
+      <option value="nero">Couleur : noir (impression)</option>
+    </select>
     <span class="colori">
       <input type="color" data-opt="from" value="#c8473d" aria-label="Couleur de départ (niveau 1)">
-      <input type="color" data-opt="to" value="#1f2a44" aria-label="Couleur d'arrivée (niveau 5)">
+      <input type="color" data-opt="to" value="#52589a" aria-label="Couleur d'arrivée (niveau 5)">
     </span>
     <label>Graisse <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
-    <label class="spunta"><input type="checkbox" data-opt="filled"> Plein</label>
+    <label class="spunta">Trait <input type="checkbox" role="switch" data-opt="filled"> Plein</label>
     <span class="sfondo-prova" role="group" aria-label="Fond de test"><span class="sfondo-etichetta">Fond de test</span>
         <button type="button" class="campione" data-sfondo="transparent" style="--campione:transparent" aria-label="Transparent" title="Transparent"></button>
         <button type="button" class="campione" data-sfondo="#ffffff" style="--campione:#ffffff" aria-label="Blanc" title="Blanc"></button>
         <button type="button" class="campione" data-sfondo="#000000" style="--campione:#000000" aria-label="Noir" title="Noir"></button>
-        <button type="button" class="campione" data-sfondo="#808080" style="--campione:#808080" aria-label="Gris" title="Gris"></button>
-        <button type="button" class="campione" data-sfondo="#d62828" style="--campione:#d62828" aria-label="Rouge" title="Rouge"></button>
         <input type="color" data-sfondo-libero value="#f2c14e" aria-label="Autre couleur" title="Autre couleur">
     </span>
+  </div>
+</section>
+
+<section class="fascia-condividi" aria-label="Configuration">
+  <div class="riga">
+    <p>Partagez la page avec cette configuration, ou revenez à celle de départ.</p>
+    <p class="azioni"><button type="button" class="bottone" data-condividi>Partager cette configuration</button> <button type="button" class="bottone" data-reset>Réinitialiser</button></p>
   </div>
 </section>
 
@@ -272,7 +278,7 @@
 
   <div class="tecnica">
     <h3>2. Image PNG</h3>
-    <p>Pour les diapositives, les documents et les plateformes qui n'acceptent que des images. Chaque tampon existe en 128 et 512 px (icône : 64 et 256 ; étiquette : 48 et 192 de haut), en contour ou plein.</p>
+    <p>Pour les diapositives, les documents et les plateformes qui n'acceptent que des images. Chaque tampon existe en 128 et 512 px (pictogramme : 64 et 256 ; étiquette : 48 et 192 de haut), en contour ou plein.</p>
     <pre><code data-codice="png"></code></pre>
     <p><a href="https://github.com/frazac/gradient-ai/tree/main/dist/png/fr">Tous les PNG</a></p>
   </div>
