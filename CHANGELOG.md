@@ -4,6 +4,8 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 
 ## Non ancora rilasciato
 
+- Nuova sezione finale «Ospitare una ricerca»: invito a università e centri di ricerca (assegno o borsa di ricerca, visiting fellowship, progetto congiunto).
+
 ## 0.5.0 — 2026-09-30
 
 - Schede dei livelli in una colonna: prima il testo, poi le uscite (badge, pulsanti, testo con link, Markdown, indicazione per chi esegue). Tutti i pulsanti con lo stesso stile e la spunta ✓ quando l'azione riesce.
