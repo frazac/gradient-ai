@@ -85,17 +85,17 @@
 
   // ---- copia e scarica ----
 
+  // ogni pulsante riuscito mostra per un attimo la spunta (Lucide check); se fallisce, un breve messaggio
+  var CHECK = '<svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+  document.querySelectorAll('.bottone').forEach(function (b) { b.insertAdjacentHTML('afterbegin', CHECK); });
   function conferma(btn, testo) {
-    // pulsante-icona: l'icona copia diventa una spunta (Lucide check) per un attimo
-    if (btn.classList.contains('copia-icona')) {
-      if (testo !== T.ok) return;
+    if (testo === T.ok) {
       btn.classList.add('fatto');
-      setTimeout(function () { btn.classList.remove('fatto'); }, 1600);
-      return;
+      clearTimeout(btn._t);
+      btn._t = setTimeout(function () { btn.classList.remove('fatto'); }, 1600);
+    } else {
+      btn.setAttribute('title', testo);
     }
-    var prima = btn.textContent;
-    btn.textContent = testo; btn.classList.add('fatto');
-    setTimeout(function () { btn.textContent = prima; btn.classList.remove('fatto'); }, 1600);
   }
   function copia(testo, btn) {
     navigator.clipboard.writeText(testo).then(function () { conferma(btn, T.ok); }, function () { conferma(btn, T.ko); });
@@ -130,6 +130,7 @@
     } else if (b.getAttribute('data-scarica') === 'svg') {
       var n = b.getAttribute('data-n');
       scarica(URL.createObjectURL(new Blob([svgDi(n)], { type: 'image/svg+xml' })), nomeFile(n, 'svg'));
+      conferma(b, T.ok);
     } else if (b.getAttribute('data-scarica') === 'png') {
       var m = b.getAttribute('data-n'), s = svgDi(m);
       var vb = s.match(/viewBox="([^"]+)"/)[1].split(' ').map(Number);
@@ -140,6 +141,7 @@
         c.width = w; c.height = h;
         c.getContext('2d').drawImage(img, 0, 0, w, h);
         scarica(c.toDataURL('image/png'), nomeFile(m, 'png'));
+        conferma(b, T.ok);
       };
       img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(s);
     }
@@ -166,6 +168,37 @@
     document.addEventListener('click', function (e) { if (!lingua.contains(e.target)) apri(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') apri(false); });
   }
+
+  // altezza reale della testata (su schermi stretti va su due righe): il menu dei livelli si aggancia sotto
+  var testata = document.querySelector('.testata');
+  function altezza() { if (testata) document.documentElement.style.setProperty('--h-testata', testata.offsetHeight + 'px'); }
+  window.addEventListener('resize', altezza);
+  altezza();
+
+  // testata: logo e nome compaiono quando il titolo esce dallo schermo
+  var titolo = document.querySelector('.intro h1');
+  if (titolo && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (v) { document.body.classList.toggle('scorsa', !v[0].isIntersecting); },
+      { rootMargin: '-56px 0px 0px 0px' }).observe(titolo);
+  } else document.body.classList.add('scorsa');
+
+  // menu dei livelli: livello attivo e traccia di avanzamento lungo le cinque schede
+  var voci = Array.prototype.slice.call(document.querySelectorAll('.nav-livelli a'));
+  var schede = Array.prototype.slice.call(document.querySelectorAll('.livello'));
+  var barra = document.querySelector('.traccia-barra');
+  function spia() {
+    if (!schede.length) return;
+    var nav = document.querySelector('.nav-livelli'), y = nav.getBoundingClientRect().bottom + 8;
+    var inizio = schede[0].getBoundingClientRect().top, fine = schede[schede.length - 1].getBoundingClientRect().bottom;
+    var p = Math.min(1, Math.max(0, (y - inizio) / (fine - inizio - window.innerHeight + y)));
+    if (barra) barra.style.width = (p * 100).toFixed(1) + '%';
+    var attivo = 0;
+    schede.forEach(function (sc, i) { if (sc.getBoundingClientRect().top <= y + 40) attivo = i + 1; });
+    voci.forEach(function (v, i) { v.classList.toggle('attivo', i + 1 === attivo); });
+  }
+  window.addEventListener('scroll', spia, { passive: true });
+  window.addEventListener('resize', spia);
+  spia();
 
   G.createBadges({ link: false });   // marchio nella testata (è già dentro un link)
   disegna();

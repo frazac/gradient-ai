@@ -113,155 +113,135 @@
     <li><a href="#livello-5"><span data-slot="5"></span></a></li>
   </ol>
 
-  <!-- LIVELLI:INIZIO -->
+  <!-- LIVELLI:INIZIO --><nav class="nav-livelli" aria-label="Niveaux"><ol><li><a href="#livello-1" data-nav="1"><span class="nav-num">1</span><span class="nav-nome">Autonomie</span></a></li><li><a href="#livello-2" data-nav="2"><span class="nav-num">2</span><span class="nav-nome">Idéation</span></a></li><li><a href="#livello-3" data-nav="3"><span class="nav-num">3</span><span class="nav-nome">Co-création</span></a></li><li><a href="#livello-4" data-nav="4"><span class="nav-num">4</span><span class="nav-nome">Régie</span></a></li><li><a href="#livello-5" data-nav="5"><span class="nav-num">5</span><span class="nav-nome">Expérimentation</span></a></li></ol><div class="traccia" aria-hidden="true"><div class="traccia-barra"></div></div></nav>
   <article id="livello-1" class="livello" data-livello="1">
-    <div class="livello-timbro">
-      <span data-slot="1" data-grande></span>
-      <p class="azioni-badge">
+    <p class="occhiello">Niveau 1 · Sans IA</p>
+    <h2>Autonomie</h2>
+    <h3 class="etichetta">Pour l'enseignant</h3>
+    <p>L'épreuve se déroule entièrement sans IA, dans un cadre surveillé. L'étudiant ne compte que sur sa main, son oreille et sa technique.</p>
+    <h3 class="etichetta">Exemples d'épreuves</h3>
+    <ul class="esempi">
+        <li>Dessin d'après modèle ; croquis à main levée en atelier.</li>
+        <li>Épreuve d'instrument ; improvisation.</li>
+        <li>Exercices d'harmonie ou d'analyse sur papier.</li>
+    </ul>
+    <div class="uscite">
+      <span class="uscite-timbro" data-slot="1" data-grande></span>
+      <p class="azioni">
         <button type="button" class="bottone" data-scarica="svg" data-n="1">Télécharger le SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="1">Télécharger le PNG</button>
         <button type="button" class="bottone" data-copia-svg="1">Copier le SVG</button>
       </p>
-      <div class="badge-testo">
-        <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/fr/arts/#livello-1">Gradient IA · Niveau 1 · Autonomie</a></p>
-        <button type="button" class="bottone primario" data-copia-testo="1">Copier le texte avec lien</button>
-        <code class="badge-md" id="md-1">[Gradient IA · Niveau 1 · Autonomie](https://frazac.github.io/gradient-ai/fr/arts/#livello-1)</code>
-        <button type="button" class="bottone" data-copia="#md-1">Copier au format MD</button>
-      </div>
-    </div>
-    <div class="livello-testo">
-      <p class="occhiello">Niveau 1 · Sans IA</p>
-      <h2>Autonomie</h2>
-      <h3>Pour l'enseignant</h3>
-      <p>L'épreuve se déroule entièrement sans IA, dans un cadre surveillé. L'étudiant ne compte que sur sa main, son oreille et sa technique.</p>
-      <h3>Consigne pour l'étudiant</h3>
-      <div class="box-copia"><p id="consegna-1">N'utilisez l'IA à aucune étape. L'épreuve sert à montrer ce que vous savez faire avec vos propres moyens.</p><button type="button" class="copia-icona" data-copia="#consegna-1" aria-label="Copier" title="Copier"><svg class="i-copia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button></div>
-      <h3>Exemples d'épreuves</h3>
-      <ul class="esempi">
-        <li>Dessin d'après modèle ; croquis à main levée en atelier.</li>
-        <li>Épreuve d'instrument ; improvisation.</li>
-        <li>Exercices d'harmonie ou d'analyse sur papier.</li>
-      </ul>
+      <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/fr/arts/#livello-1">Gradient IA · Niveau 1 · Autonomie</a></p>
+      <p class="azioni"><button type="button" class="bottone" data-copia-testo="1">Copier le texte avec lien</button></p>
+      <code class="badge-md" id="md-1">[Gradient IA · Niveau 1 · Autonomie](https://frazac.github.io/gradient-ai/fr/arts/#livello-1)</code>
+      <p class="azioni"><button type="button" class="bottone" data-copia="#md-1">Copier au format MD</button></p>
+      <h3 class="etichetta">Consigne pour l'étudiant</h3>
+      <div class="box-copia"><p id="consegna-1">N'utilisez l'IA à aucune étape. L'épreuve sert à montrer ce que vous savez faire avec vos propres moyens.</p><p class="azioni"><button type="button" class="bottone" data-copia="#consegna-1">Copier</button></p></div>
     </div>
   </article>
   <article id="livello-2" class="livello" data-livello="2">
-    <div class="livello-timbro">
-      <span data-slot="2" data-grande></span>
-      <p class="azioni-badge">
+    <p class="occhiello">Niveau 2 · IA seulement en amont</p>
+    <h2>Idéation</h2>
+    <h3 class="etichetta">Pour l'enseignant</h3>
+    <p>L'IA peut intervenir avant le travail proprement dit : rassembler des références, explorer des variantes, s'orienter sur un thème. On évalue comment l'étudiant développe et réalise ces idées avec ses propres moyens.</p>
+    <h3 class="etichetta">Exemples d'épreuves</h3>
+    <ul class="esempi">
+        <li>Planche de tendances et références visuelles.</li>
+        <li>Variantes de concept à discuter en revue.</li>
+        <li>Recherche iconographique ou de répertoire préliminaire.</li>
+    </ul>
+    <div class="uscite">
+      <span class="uscite-timbro" data-slot="2" data-grande></span>
+      <p class="azioni">
         <button type="button" class="bottone" data-scarica="svg" data-n="2">Télécharger le SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="2">Télécharger le PNG</button>
         <button type="button" class="bottone" data-copia-svg="2">Copier le SVG</button>
       </p>
-      <div class="badge-testo">
-        <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/fr/arts/#livello-2">Gradient IA · Niveau 2 · Idéation</a></p>
-        <button type="button" class="bottone primario" data-copia-testo="2">Copier le texte avec lien</button>
-        <code class="badge-md" id="md-2">[Gradient IA · Niveau 2 · Idéation](https://frazac.github.io/gradient-ai/fr/arts/#livello-2)</code>
-        <button type="button" class="bottone" data-copia="#md-2">Copier au format MD</button>
-      </div>
-    </div>
-    <div class="livello-testo">
-      <p class="occhiello">Niveau 2 · IA seulement en amont</p>
-      <h2>Idéation</h2>
-      <h3>Pour l'enseignant</h3>
-      <p>L'IA peut intervenir avant le travail proprement dit : rassembler des références, explorer des variantes, s'orienter sur un thème. On évalue comment l'étudiant développe et réalise ces idées avec ses propres moyens.</p>
-      <h3>Consigne pour l'étudiant</h3>
-      <div class="box-copia"><p id="consegna-2">Vous pouvez utiliser l'IA pour rassembler des références et explorer des variantes. Planches, partition ou prototype, c'est vous qui les réalisez.</p><button type="button" class="copia-icona" data-copia="#consegna-2" aria-label="Copier" title="Copier"><svg class="i-copia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button></div>
-      <h3>Exemples d'épreuves</h3>
-      <ul class="esempi">
-        <li>Planche de tendances et références visuelles.</li>
-        <li>Variantes de concept à discuter en revue.</li>
-        <li>Recherche iconographique ou de répertoire préliminaire.</li>
-      </ul>
+      <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/fr/arts/#livello-2">Gradient IA · Niveau 2 · Idéation</a></p>
+      <p class="azioni"><button type="button" class="bottone" data-copia-testo="2">Copier le texte avec lien</button></p>
+      <code class="badge-md" id="md-2">[Gradient IA · Niveau 2 · Idéation](https://frazac.github.io/gradient-ai/fr/arts/#livello-2)</code>
+      <p class="azioni"><button type="button" class="bottone" data-copia="#md-2">Copier au format MD</button></p>
+      <h3 class="etichetta">Consigne pour l'étudiant</h3>
+      <div class="box-copia"><p id="consegna-2">Vous pouvez utiliser l'IA pour rassembler des références et explorer des variantes. Planches, partition ou prototype, c'est vous qui les réalisez.</p><p class="azioni"><button type="button" class="bottone" data-copia="#consegna-2">Copier</button></p></div>
     </div>
   </article>
   <article id="livello-3" class="livello" data-livello="3">
-    <div class="livello-timbro">
-      <span data-slot="3" data-grande></span>
-      <p class="azioni-badge">
+    <p class="occhiello">Niveau 3 · IA à vos côtés, avec regard critique</p>
+    <h2>Co-création</h2>
+    <h3 class="etichetta">Pour l'enseignant</h3>
+    <p>L'IA peut accompagner la réalisation : générer des esquisses, proposer des arrangements, faire des retours. L'étudiant sélectionne, transforme et retravaille ce que l'IA propose, et justifie ses choix.</p>
+    <h3 class="etichetta">Exemples d'épreuves</h3>
+    <ul class="esempi">
+        <li>Esquisses générées, puis redessinées.</li>
+        <li>Arrangement fait avec des outils d'IA, retravaillé à l'écoute.</li>
+        <li>Textes de présentation du projet réécrits.</li>
+    </ul>
+    <div class="uscite">
+      <span class="uscite-timbro" data-slot="3" data-grande></span>
+      <p class="azioni">
         <button type="button" class="bottone" data-scarica="svg" data-n="3">Télécharger le SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="3">Télécharger le PNG</button>
         <button type="button" class="bottone" data-copia-svg="3">Copier le SVG</button>
       </p>
-      <div class="badge-testo">
-        <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/fr/arts/#livello-3">Gradient IA · Niveau 3 · Co-création</a></p>
-        <button type="button" class="bottone primario" data-copia-testo="3">Copier le texte avec lien</button>
-        <code class="badge-md" id="md-3">[Gradient IA · Niveau 3 · Co-création](https://frazac.github.io/gradient-ai/fr/arts/#livello-3)</code>
-        <button type="button" class="bottone" data-copia="#md-3">Copier au format MD</button>
-      </div>
-    </div>
-    <div class="livello-testo">
-      <p class="occhiello">Niveau 3 · IA à vos côtés, avec regard critique</p>
-      <h2>Co-création</h2>
-      <h3>Pour l'enseignant</h3>
-      <p>L'IA peut accompagner la réalisation : générer des esquisses, proposer des arrangements, faire des retours. L'étudiant sélectionne, transforme et retravaille ce que l'IA propose, et justifie ses choix.</p>
-      <h3>Consigne pour l'étudiant</h3>
-      <div class="box-copia"><p id="consegna-3">Vous pouvez utiliser l'IA pour certaines parties du travail. Ce qu'elle génère doit être sélectionné et transformé par votre main : indiquez comment vous l'avez utilisée.</p><button type="button" class="copia-icona" data-copia="#consegna-3" aria-label="Copier" title="Copier"><svg class="i-copia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button></div>
-      <h3>Exemples d'épreuves</h3>
-      <ul class="esempi">
-        <li>Esquisses générées, puis redessinées.</li>
-        <li>Arrangement fait avec des outils d'IA, retravaillé à l'écoute.</li>
-        <li>Textes de présentation du projet réécrits.</li>
-      </ul>
+      <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/fr/arts/#livello-3">Gradient IA · Niveau 3 · Co-création</a></p>
+      <p class="azioni"><button type="button" class="bottone" data-copia-testo="3">Copier le texte avec lien</button></p>
+      <code class="badge-md" id="md-3">[Gradient IA · Niveau 3 · Co-création](https://frazac.github.io/gradient-ai/fr/arts/#livello-3)</code>
+      <p class="azioni"><button type="button" class="bottone" data-copia="#md-3">Copier au format MD</button></p>
+      <h3 class="etichetta">Consigne pour l'étudiant</h3>
+      <div class="box-copia"><p id="consegna-3">Vous pouvez utiliser l'IA pour certaines parties du travail. Ce qu'elle génère doit être sélectionné et transformé par votre main : indiquez comment vous l'avez utilisée.</p><p class="azioni"><button type="button" class="bottone" data-copia="#consegna-3">Copier</button></p></div>
     </div>
   </article>
   <article id="livello-4" class="livello" data-livello="4">
-    <div class="livello-timbro">
-      <span data-slot="4" data-grande></span>
-      <p class="azioni-badge">
+    <p class="occhiello">Niveau 4 · IA sous direction humaine</p>
+    <h2>Régie</h2>
+    <h3 class="etichetta">Pour l'enseignant</h3>
+    <p>L'IA peut servir pour n'importe quelle partie de l'épreuve, ou elle est demandée : l'étudiant en assure la direction artistique. On évalue la vision, la cohérence des choix et la maîtrise du résultat.</p>
+    <h3 class="etichetta">Exemples d'épreuves</h3>
+    <ul class="esempi">
+        <li>Projet multimédia où l'IA produit des matériaux sous direction artistique.</li>
+        <li>Portfolio de processus qui justifie chaque choix.</li>
+        <li>Installation ou spectacle conçus avec des outils d'IA.</li>
+    </ul>
+    <div class="uscite">
+      <span class="uscite-timbro" data-slot="4" data-grande></span>
+      <p class="azioni">
         <button type="button" class="bottone" data-scarica="svg" data-n="4">Télécharger le SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="4">Télécharger le PNG</button>
         <button type="button" class="bottone" data-copia-svg="4">Copier le SVG</button>
       </p>
-      <div class="badge-testo">
-        <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/fr/arts/#livello-4">Gradient IA · Niveau 4 · Régie</a></p>
-        <button type="button" class="bottone primario" data-copia-testo="4">Copier le texte avec lien</button>
-        <code class="badge-md" id="md-4">[Gradient IA · Niveau 4 · Régie](https://frazac.github.io/gradient-ai/fr/arts/#livello-4)</code>
-        <button type="button" class="bottone" data-copia="#md-4">Copier au format MD</button>
-      </div>
-    </div>
-    <div class="livello-testo">
-      <p class="occhiello">Niveau 4 · IA sous direction humaine</p>
-      <h2>Régie</h2>
-      <h3>Pour l'enseignant</h3>
-      <p>L'IA peut servir pour n'importe quelle partie de l'épreuve, ou elle est demandée : l'étudiant en assure la direction artistique. On évalue la vision, la cohérence des choix et la maîtrise du résultat.</p>
-      <h3>Consigne pour l'étudiant</h3>
-      <div class="box-copia"><p id="consegna-4">Vous pouvez utiliser l'IA largement, librement ou comme l'indique la consigne. Ce qui compte, c'est votre direction artistique : justifiez chaque choix.</p><button type="button" class="copia-icona" data-copia="#consegna-4" aria-label="Copier" title="Copier"><svg class="i-copia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button></div>
-      <h3>Exemples d'épreuves</h3>
-      <ul class="esempi">
-        <li>Projet multimédia où l'IA produit des matériaux sous direction artistique.</li>
-        <li>Portfolio de processus qui justifie chaque choix.</li>
-        <li>Installation ou spectacle conçus avec des outils d'IA.</li>
-      </ul>
+      <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/fr/arts/#livello-4">Gradient IA · Niveau 4 · Régie</a></p>
+      <p class="azioni"><button type="button" class="bottone" data-copia-testo="4">Copier le texte avec lien</button></p>
+      <code class="badge-md" id="md-4">[Gradient IA · Niveau 4 · Régie](https://frazac.github.io/gradient-ai/fr/arts/#livello-4)</code>
+      <p class="azioni"><button type="button" class="bottone" data-copia="#md-4">Copier au format MD</button></p>
+      <h3 class="etichetta">Consigne pour l'étudiant</h3>
+      <div class="box-copia"><p id="consegna-4">Vous pouvez utiliser l'IA largement, librement ou comme l'indique la consigne. Ce qui compte, c'est votre direction artistique : justifiez chaque choix.</p><p class="azioni"><button type="button" class="bottone" data-copia="#consegna-4">Copier</button></p></div>
     </div>
   </article>
   <article id="livello-5" class="livello" data-livello="5">
-    <div class="livello-timbro">
-      <span data-slot="5" data-grande></span>
-      <p class="azioni-badge">
+    <p class="occhiello">Niveau 5 · IA comme terrain de recherche</p>
+    <h2>Expérimentation</h2>
+    <h3 class="etichetta">Pour l'enseignant</h3>
+    <p>L'IA est médium, outil ou sujet de l'œuvre. Enseignants et étudiants conçoivent l'épreuve ensemble pour explorer des langages et des processus nouveaux.</p>
+    <h3 class="etichetta">Exemples d'épreuves</h3>
+    <ul class="esempi">
+        <li>Œuvres qui prennent l'IA comme médium ou comme sujet critique.</li>
+        <li>Performances et installations.</li>
+        <li>Outils génératifs construits sur mesure.</li>
+    </ul>
+    <div class="uscite">
+      <span class="uscite-timbro" data-slot="5" data-grande></span>
+      <p class="azioni">
         <button type="button" class="bottone" data-scarica="svg" data-n="5">Télécharger le SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="5">Télécharger le PNG</button>
         <button type="button" class="bottone" data-copia-svg="5">Copier le SVG</button>
       </p>
-      <div class="badge-testo">
-        <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/fr/arts/#livello-5">Gradient IA · Niveau 5 · Expérimentation</a></p>
-        <button type="button" class="bottone primario" data-copia-testo="5">Copier le texte avec lien</button>
-        <code class="badge-md" id="md-5">[Gradient IA · Niveau 5 · Expérimentation](https://frazac.github.io/gradient-ai/fr/arts/#livello-5)</code>
-        <button type="button" class="bottone" data-copia="#md-5">Copier au format MD</button>
-      </div>
-    </div>
-    <div class="livello-testo">
-      <p class="occhiello">Niveau 5 · IA comme terrain de recherche</p>
-      <h2>Expérimentation</h2>
-      <h3>Pour l'enseignant</h3>
-      <p>L'IA est médium, outil ou sujet de l'œuvre. Enseignants et étudiants conçoivent l'épreuve ensemble pour explorer des langages et des processus nouveaux.</p>
-      <h3>Consigne pour l'étudiant</h3>
-      <div class="box-copia"><p id="consegna-5">Utilisez l'IA de façon créative, y compris comme matière de l'œuvre : vous pouvez concevoir des approches nouvelles avec l'enseignant.</p><button type="button" class="copia-icona" data-copia="#consegna-5" aria-label="Copier" title="Copier"><svg class="i-copia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button></div>
-      <h3>Exemples d'épreuves</h3>
-      <ul class="esempi">
-        <li>Œuvres qui prennent l'IA comme médium ou comme sujet critique.</li>
-        <li>Performances et installations.</li>
-        <li>Outils génératifs construits sur mesure.</li>
-      </ul>
+      <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/fr/arts/#livello-5">Gradient IA · Niveau 5 · Expérimentation</a></p>
+      <p class="azioni"><button type="button" class="bottone" data-copia-testo="5">Copier le texte avec lien</button></p>
+      <code class="badge-md" id="md-5">[Gradient IA · Niveau 5 · Expérimentation](https://frazac.github.io/gradient-ai/fr/arts/#livello-5)</code>
+      <p class="azioni"><button type="button" class="bottone" data-copia="#md-5">Copier au format MD</button></p>
+      <h3 class="etichetta">Consigne pour l'étudiant</h3>
+      <div class="box-copia"><p id="consegna-5">Utilisez l'IA de façon créative, y compris comme matière de l'œuvre : vous pouvez concevoir des approches nouvelles avec l'enseignant.</p><p class="azioni"><button type="button" class="bottone" data-copia="#consegna-5">Copier</button></p></div>
     </div>
   </article>
   <!-- LIVELLI:FINE -->
@@ -322,7 +302,7 @@
     <li><strong>Vous ne pouvez pas</strong> en faire un usage commercial.</li>
   </ul>
   <h3>Comment attribuer</h3>
-  <div class="box-copia"><p id="attribuzione">Gradient IA de Francesco Zaccaria, niveaux d'intégration de l'IA inspirés de l'AIAS v2 de Mike Perkins, Leon Furze, Jasper Roe et Jason MacVaugh (License <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>). Icônes : Lucide (License <a href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">ISC</a>).</p><button type="button" class="copia-icona" data-copia="#attribuzione" aria-label="Copier" title="Copier"><svg class="i-copia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button></div>
+  <div class="box-copia"><p id="attribuzione">Gradient IA de Francesco Zaccaria, niveaux d'intégration de l'IA inspirés de l'AIAS v2 de Mike Perkins, Leon Furze, Jasper Roe et Jason MacVaugh (License <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>). Icônes : Lucide (License <a href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">ISC</a>).</p><p class="azioni"><button type="button" class="bottone" data-copia="#attribuzione">Copier</button></p></div>
   <p class="piccolo">Gradient IA est une adaptation indépendante : ce n'est pas une traduction officielle et elle n'est pas approuvée par les auteurs de l'AIAS. Une traduction française de l'AIAS existe par ailleurs (François Jourde), recensée sur <a href="https://leonfurze.com/2025/03/19/ai-assessment-scale-aias-translations-2025-updates/">le site de Leon Furze</a>.</p>
 </section>
 
@@ -342,6 +322,15 @@
   <p>Bannière cookies : <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> 3.1.0 d'Orest Bida (licence MIT). Interrupteur clair/sombre repris de masterismi.dev (thème Quark 2), icônes soleil et lune d'<a href="https://iconoir.com/">Iconoir</a> (licence MIT).</p>
   <h3>Réalisation</h3>
   <p><a href="https://linktr.ee/frazac">Francesco Zaccaria</a> — adaptation, textes et tampons. Traduction française à partir de la version italienne. Signalements et propositions : <a href="https://github.com/frazac/gradient-ai/issues">issues sur GitHub</a>.</p>
+  <h3>Comment ce projet a utilisé l'IA</h3>
+  <div class="gradiente-progetto">
+    <h4>Contenus</h4>
+    <p class="badge-progetto"><span data-gradient="2" data-variant="label" data-color="currentColor" data-link="#"></span></p>
+    <p>L'auteur a réalisé l'adaptation et rédigé les noms et les textes des niveaux. L'IA a aidé à comparer les sources, proposer des variantes et vérifier que les textes correspondent à l'AIAS v2. L'auteur a réécrit chaque texte et l'a vérifié sur l'original.</p>
+    <h4>Site, code et graphisme</h4>
+    <p class="badge-progetto"><span data-gradient="4" data-variant="label" data-color="currentColor" data-link="#"></span></p>
+    <p>Le site, la bibliothèque JavaScript, les outils de construction, les tampons et le dépôt GitHub ont été réalisés avec Claude Code. L'auteur a fixé les objectifs et les choix graphiques, puis a vérifié et testé le résultat.</p>
+  </div>
 </section>
 
 </main>

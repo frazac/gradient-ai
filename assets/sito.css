@@ -12,6 +12,8 @@
   --larghezza: 700px;   /* colonna del testo; il padding laterale si aggiunge fuori */
   --raggio: 10px;
   --fondo-timbri: #fbfaf7;   /* i timbri stanno sempre su carta chiara, anche in tema scuro */
+  --h-testata: 3.5rem;       /* altezza della testata sticky: il menu dei livelli si aggancia sotto */
+  --ok: #2a8c82;
 }
 /* tema scuro: scelto dallo switch (data-theme, vedi assets/theme-toggle.js) o, senza JS, dal sistema */
 :root[data-theme="dark"] {
@@ -34,7 +36,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 8rem; }
+html { scroll-behavior: smooth; scroll-padding-top: 7.5rem; }
 body {
   margin: 0;
   background: var(--carta);
@@ -45,7 +47,9 @@ body {
 a { color: var(--accento); text-underline-offset: 0.18em; }
 h1, h2, h3, h4 { line-height: 1.15; font-weight: 700; margin: 0 0 0.5em; }
 h2 { font-size: 2rem; letter-spacing: -0.01em; }
-h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--tenue); margin-top: 1.6em; }
+h3 { font-size: 1.3rem; margin-top: 1.8em; }
+h4 { font-size: 1.05rem; margin-top: 1.4em; }
+.etichetta { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--tenue); margin-top: 1.8em; }
 code, pre { font-family: var(--mono); font-size: 0.85em; }
 :not(pre) > code { background: var(--carta-2); padding: 0.05em 0.35em; border-radius: 4px; }
 pre { background: var(--carta-2); border: 1px solid var(--filo); border-radius: var(--raggio); padding: 1rem; overflow-x: auto; line-height: 1.5; }
@@ -55,8 +59,10 @@ main > section { padding-top: 3rem; }
 main > .intro { padding-top: 4rem; }
 
 /* testata */
-.testata { border-bottom: 1px solid var(--filo); background: var(--carta); }
-.testata .riga { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.5rem; flex-wrap: wrap; }
+.testata { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid var(--filo); background: var(--carta); }
+.marchio { opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; }
+body.scorsa .marchio { opacity: 1; visibility: visible; transform: none; }
+.testata .riga { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--h-testata); flex-wrap: wrap; }
 .marchio { margin: 0; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
 .marchio-link { display: flex; align-items: center; gap: 0.5rem; color: inherit; text-decoration: none; }
 .marchio svg { width: 1.6rem; height: 1.6rem; color: #ffffff; }   /* marchio bianco (sulla testata chiara resta leggibile col colore del testo) */
@@ -112,10 +118,7 @@ main > .intro { padding-top: 4rem; }
 
 /* pannello di personalizzazione */
 .pannello {
-  position: sticky; top: 0; z-index: 10;
-  margin-bottom: 2rem;   /* respiro fra i comandi e i badge */
-  background: color-mix(in srgb, var(--carta) 92%, transparent);
-  backdrop-filter: blur(8px);
+  margin-bottom: 2rem;   /* respiro fra i comandi e i badge; non è sticky */
   border-block: 1px solid var(--filo);
   margin-top: 1rem; padding: 0.7rem 0 !important;
 }
@@ -168,64 +171,76 @@ main > .intro { padding-top: 4rem; }
 body[data-variant="label"] .galleria { grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
 body[data-variant="label"] .galleria a { aspect-ratio: auto; }
 
-/* scheda livello */
-.livello { display: grid; grid-template-columns: 13rem 1fr; gap: 2rem; padding: 3rem 0; border-top: 1px solid var(--filo); }
-.livello-timbro { align-self: start; display: flex; flex-direction: column; gap: 0.9rem; }
-.livello-timbro [data-slot] { display: block; background: var(--fondo-timbri); border-radius: 14px; padding: 1rem; }
-.livello-timbro img { display: block; width: 100%; height: auto; }
-/* sotto il badge: pulsanti del badge, poi il badge testuale (link + Markdown) */
-.azioni-badge { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; }
-.azioni-badge .bottone, .badge-testo .bottone { font-size: 0.8rem; padding: 0.45rem 0.9rem; }
-.badge-testo { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; padding-top: 0.9rem; border-top: 1px solid var(--filo); }
-.badge-nome { margin: 0; font-size: 0.85rem; font-weight: 500; line-height: 1.35; }
-.badge-md { display: block; width: 100%; font-size: 0.72rem; line-height: 1.45; color: var(--tenue); background: var(--carta-2); border-radius: 10px; padding: 0.5rem 0.65rem; overflow-wrap: anywhere; }
+/* menu dei livelli: sticky sotto la testata, con traccia di avanzamento */
+.nav-livelli {
+  position: sticky; top: var(--h-testata); z-index: 20;
+  margin: 0 -1rem; padding: 0.55rem 1rem 0;
+  background: color-mix(in srgb, var(--carta) 94%, transparent); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--filo);
+}
+.nav-livelli ol { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.3rem; margin: 0; padding: 0; list-style: none; }
+.nav-livelli a { display: flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.2rem 0.5rem; color: var(--tenue); text-decoration: none; font-size: 0.8rem; white-space: nowrap; overflow: hidden; }
+.nav-num {
+  flex: none; display: grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  border: 1px solid currentColor; font-size: 0.75rem; font-weight: 700;
+}
+.nav-nome { overflow: hidden; text-overflow: ellipsis; }
+.nav-livelli a:hover { color: var(--inchiostro); }
+.nav-livelli a.attivo { color: var(--inchiostro); font-weight: 700; }
+.nav-livelli a.attivo .nav-num { background: var(--inchiostro); color: var(--carta); border-color: var(--inchiostro); }
+.traccia { height: 3px; margin: 0 -1rem; background: var(--filo); }
+.traccia-barra { height: 100%; width: 0; background: var(--inchiostro); transition: width 0.1s linear; }
+
+/* scheda livello: testo, poi le uscite (badge, pulsanti, testo con link, Markdown, indicazione) */
+.livello { padding: 3rem 0; border-top: 1px solid var(--filo); }
+.nav-livelli + .livello { border-top: none; }
+.uscite { margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--filo); border-radius: 18px; }
+.uscite-timbro { display: block; width: 13rem; max-width: 100%; background: var(--fondo-timbri); border-radius: 14px; padding: 1rem; }
+body[data-variant="label"] .uscite-timbro { width: 22rem; }
+.uscite-timbro img { display: block; width: 100%; height: auto; }
+.uscite > .azioni:first-of-type { margin-top: 1rem; }
+.badge-nome { margin: 1.5rem 0 0; font-weight: 500; }
+.badge-md { display: block; margin-top: 1.2rem; font-size: 0.8rem; line-height: 1.5; color: var(--tenue); background: var(--carta-2); border-radius: 10px; padding: 0.6rem 0.8rem; overflow-wrap: anywhere; }
+.uscite .etichetta { margin-top: 1.8rem; }
 .occhiello { margin: 0; color: var(--tenue); font-size: 0.95rem; }
 .livello h2 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 0.1em; }
-/* box di testo da copiare: bordi arrotondati, icona copia dentro (Lucide copy → check) */
-.box-copia { position: relative; border: 1px solid var(--filo); border-radius: 16px; background: var(--carta-2); padding: 1rem 3.2rem 1rem 1.2rem; }
+/* box di testo da copiare: bordi arrotondati, pulsante «Copia» dentro */
+.box-copia { border: 1px solid var(--filo); border-radius: 16px; background: var(--carta-2); padding: 1rem 1.2rem; }
 .box-copia p { margin: 0; }
-.copia-icona {
-  position: absolute; top: 0.6rem; right: 0.6rem; width: 34px; height: 34px;
-  display: grid; place-items: center; padding: 0; cursor: pointer;
-  color: var(--tenue); background: var(--carta); border: 1px solid var(--filo); border-radius: 50%;
-  transition: color 0.15s, border-color 0.15s, background 0.15s;
-}
-.copia-icona:hover { color: var(--inchiostro); border-color: var(--inchiostro); }
-.copia-icona svg { width: 16px; height: 16px; grid-area: 1 / 1; transition: opacity 0.15s, transform 0.15s; }
-.copia-icona .i-fatto { opacity: 0; transform: scale(0.6); }
-.copia-icona.fatto { color: #fff; background: #2a8c82; border-color: #2a8c82; }
-.copia-icona.fatto .i-copia { opacity: 0; transform: scale(0.6); }
-.copia-icona.fatto .i-fatto { opacity: 1; transform: none; }
-.esempi { margin: 0; padding-left: 1.2rem; }
+.box-copia .azioni { margin-top: 0.9rem; }
+/* elenchi: pallino appeso fuori dal blocco, testo allineato a sinistra col resto */
+main ul { padding-left: 0; list-style-position: outside; }
+.esempi { margin: 0; }
 .esempi li { margin-bottom: 0.3rem; }
 .esempi li::marker { color: var(--c, var(--accento)); }
-.azioni { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+.azioni { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.6rem 0 0; }
 
 .bottone {
+  display: inline-flex; align-items: center; gap: 0;
   font: 500 0.85rem var(--f); color: var(--inchiostro);
   background: none; border: 1px solid var(--filo); border-radius: 999px;
-  padding: 0.6rem 1.15rem; cursor: pointer; white-space: nowrap;
-  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  padding: 0.55rem 1.1rem; cursor: pointer; white-space: nowrap;
+  transition: border-color 0.15s, background 0.15s, color 0.15s, gap 0.15s;
 }
 .bottone:hover { border-color: var(--inchiostro); }
-/* azione principale: pieno, come i pulsanti di masterismi.dev */
-.bottone.primario { background: var(--inchiostro); color: var(--carta); border-color: var(--inchiostro); }
-.bottone.primario:hover { opacity: 0.85; }
-.bottone.fatto { border-color: #2a8c82; background: #2a8c82; color: #fff; }
+/* spunta (Lucide check) mostrata dopo ogni azione riuscita */
+.bottone .i-fatto { width: 0; height: 15px; opacity: 0; transition: width 0.15s, opacity 0.15s; }
+.bottone.fatto { gap: 0.4rem; border-color: var(--ok); color: var(--ok); }
+.bottone.fatto .i-fatto { width: 15px; opacity: 1; }
 
 /* usare, licenza, fonti */
 .tecnica { margin-top: 2rem; }
-.tecnica h3 { color: var(--inchiostro); font-size: 1.1rem; text-transform: none; letter-spacing: 0; }
 .cc { display: flex; gap: 1rem; align-items: flex-start; }
 .cc img { flex: none; margin-top: 0.3rem; }
 
 .bibliografia li { margin-bottom: 0.5rem; }
-/* gradiente del progetto: etichette nere piene; nel tema scuro invertite, altrimenti sparirebbero */
-.gradiente-progetto dt { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.8rem; margin-top: 1rem; font-weight: 600; }
-.gradiente-progetto dt svg { display: block; width: 190px; height: auto; }
-.gradiente-progetto dd { margin: 0.4rem 0 0; }
-:root[data-theme="dark"] .gradiente-progetto svg { filter: invert(1); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme]) .gradiente-progetto svg { filter: invert(1); } }
+/* come il progetto ha usato l'IA: sottotitolo, badge come contenuto, testo.
+   Badge contornato in currentColor: nero sul tema chiaro, bianco sul tema scuro */
+.gradiente-progetto h4 { margin-bottom: 0.6rem; }
+.badge-progetto { margin: 0 0 0.6rem; color: #000; }
+.badge-progetto svg { display: block; width: 220px; height: auto; }
+:root[data-theme="dark"] .badge-progetto { color: #fff; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) .badge-progetto { color: #fff; } }
 .piccolo { font-size: 0.9rem; color: var(--tenue); }
 .piede { border-top: 1px solid var(--filo); margin-top: 4rem; padding-block: 2rem 3rem; font-size: 0.85rem; line-height: 1.55; color: var(--tenue); }
 .piede p { margin: 0 0 0.9rem; }
@@ -291,15 +306,15 @@ body[data-variant="label"] .galleria a { aspect-ratio: auto; }
 
 @media (max-width: 52rem) {
   .galleria { grid-template-columns: repeat(3, 1fr); }
-  .livello { grid-template-columns: 1fr; gap: 1rem; }
-  .livello-timbro [data-slot] { max-width: 14rem; }
+  .nav-nome { display: none; }
+  .nav-livelli ol { grid-template-columns: repeat(5, auto); justify-content: space-between; }
   .cc { flex-direction: column; }
 }
 @media (max-width: 30rem) {
   .galleria { grid-template-columns: repeat(2, 1fr); }
-  .pannello { position: static; }
+  .uscite { padding: 1rem; }
 }
 @media print {
-  .piede-comandi, .pannello, .testata nav, .azioni, #usare, .galleria { display: none; }
+  .piede-comandi, .pannello, .testata, .nav-livelli, .azioni, #usare, .galleria { display: none; }
   .livello { break-inside: avoid; }
 }

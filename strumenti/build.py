@@ -74,18 +74,18 @@ ICONA_CHECK = ('<svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="cur
 
 
 def box_copia(id_, html_testo, lg):
-    """Box arrotondato con il testo e, dentro, il pulsante-icona copia (Lucide copy → check)."""
+    """Box arrotondato con il testo e, dentro, il pulsante «Copia» (stesso stile degli altri)."""
     c = BOTTONI[lg]["copia"]
     return (f'<div class="box-copia"><p id="{id_}">{html_testo}</p>'
-            f'<button type="button" class="copia-icona" data-copia="#{id_}" aria-label="{c}" title="{c}">{ICONA_COPY}{ICONA_CHECK}</button></div>')
+            f'<p class="azioni"><button type="button" class="bottone" data-copia="#{id_}">{c}</button></p></div>')
 
 
 BOTTONI = {
-    "it": {"livello": "Livello", "copia": "Copia", "md": "Copia in formato MD", "testo": "Copia testo con link",
+    "it": {"livelli": "Livelli", "livello": "Livello", "copia": "Copia", "md": "Copia in formato MD", "testo": "Copia testo con link",
            "svg": "Scarica SVG", "png": "Scarica PNG", "copiasvg": "Copia SVG"},
-    "fr": {"livello": "Niveau", "copia": "Copier", "md": "Copier au format MD", "testo": "Copier le texte avec lien",
+    "fr": {"livelli": "Niveaux", "livello": "Niveau", "copia": "Copier", "md": "Copier au format MD", "testo": "Copier le texte avec lien",
            "svg": "Télécharger le SVG", "png": "Télécharger le PNG", "copiasvg": "Copier le SVG"},
-    "en": {"livello": "Level", "copia": "Copy", "md": "Copy as Markdown (MD)", "testo": "Copy text with link",
+    "en": {"livelli": "Levels", "livello": "Level", "copia": "Copy", "md": "Copy as Markdown (MD)", "testo": "Copy text with link",
            "svg": "Download SVG", "png": "Download PNG", "copiasvg": "Copy SVG"},
 }
 
@@ -114,32 +114,32 @@ def render_lang(lg, dati, version):
             md = f"[{nome_badge}]({url})"
             parts.append(f"""
   <article id="livello-{n}" class="livello" data-livello="{n}">
-    <div class="livello-timbro">
-      <span data-slot="{n}" data-grande></span>
-      <p class="azioni-badge">
+    <p class="occhiello">{B["livello"]} {n} · {e(l["sottotitolo"])}</p>
+    <h2>{e(l["nome"])}</h2>
+    <h3 class="etichetta">{e(pr["chiede"])}</h3>
+    <p>{e(t["chiede"])}</p>
+    <h3 class="etichetta">{e(pr["esempi"])}</h3>
+    <ul class="esempi">{esempi}
+    </ul>
+    <div class="uscite">
+      <span class="uscite-timbro" data-slot="{n}" data-grande></span>
+      <p class="azioni">
         <button type="button" class="bottone" data-scarica="svg" data-n="{n}">{B["svg"]}</button>
         <button type="button" class="bottone" data-scarica="png" data-n="{n}">{B["png"]}</button>
         <button type="button" class="bottone" data-copia-svg="{n}">{B["copiasvg"]}</button>
       </p>
-      <div class="badge-testo">
-        <p class="badge-nome"><a href="{url}">{e(nome_badge)}</a></p>
-        <button type="button" class="bottone primario" data-copia-testo="{n}">{B["testo"]}</button>
-        <code class="badge-md" id="md-{n}">{e(md)}</code>
-        <button type="button" class="bottone" data-copia="#md-{n}">{B["md"]}</button>
-      </div>
-    </div>
-    <div class="livello-testo">
-      <p class="occhiello">{B["livello"]} {n} · {e(l["sottotitolo"])}</p>
-      <h2>{e(l["nome"])}</h2>
-      <h3>{e(pr["chiede"])}</h3>
-      <p>{e(t["chiede"])}</p>
-      <h3>{e(pr["esegue"])}</h3>
+      <p class="badge-nome"><a href="{url}">{e(nome_badge)}</a></p>
+      <p class="azioni"><button type="button" class="bottone" data-copia-testo="{n}">{B["testo"]}</button></p>
+      <code class="badge-md" id="md-{n}">{e(md)}</code>
+      <p class="azioni"><button type="button" class="bottone" data-copia="#md-{n}">{B["md"]}</button></p>
+      <h3 class="etichetta">{e(pr["esegue"])}</h3>
       {box_copia(f"consegna-{n}", e(t["esegue"]), lg)}
-      <h3>{e(pr["esempi"])}</h3>
-      <ul class="esempi">{esempi}
-      </ul>
     </div>
   </article>""")
+        nav_livelli = ('<nav class="nav-livelli" aria-label="' + B["livelli"] + '"><ol>' + "".join(
+            f'<li><a href="#livello-{l["n"]}" data-nav="{l["n"]}"><span class="nav-num">{l["n"]}</span>'
+            f'<span class="nav-nome">{e(l["nome"])}</span></a></li>' for l in data["livelli"])
+            + '</ol><div class="traccia" aria-hidden="true"><div class="traccia-barra"></div></div></nav>')
         note_list = data["note_didattica"] if pr["note"] == "didattica" else pr["note"]
         note = "\n  <ul>" + "".join(f"\n    <li>{e(x)}</li>" for x in note_list) + "\n  </ul>\n  "
         nav = "".join(
@@ -166,7 +166,7 @@ def render_lang(lg, dati, version):
                 .replace("{{R}}", r).replace("{{TITOLO}}", e(titolo)).replace("{{DESCRIZIONE}}", e(descr))
                 .replace("{{PROFILO}}", pid).replace("{{PERCORSO}}", pr["percorso"]).replace("{{OCCHIELLO}}", e(pr["occhiello"]))
                 .replace("{{LEAD}}", pr["lead"]).replace("{{PROFILI}}", nav)
-                .replace("{{LIVELLI}}", "".join(parts)).replace("{{COPIA_ICONE}}", ICONA_COPY + ICONA_CHECK).replace("{{COPIA}}", B["copia"]).replace("{{ALTERNATE}}", alternate).replace("{{LINGUA}}", lingua).replace("{{NOTE}}", note))
+                .replace("{{LIVELLI}}", nav_livelli + "".join(parts)).replace("{{COPIA_ICONE}}", ICONA_COPY + ICONA_CHECK).replace("{{COPIA}}", B["copia"]).replace("{{ALTERNATE}}", alternate).replace("{{LINGUA}}", lingua).replace("{{NOTE}}", note))
         page = page.split("\n", 1)[1]            # via il commento sul modello
         page = re.sub(r"(<span data-versione>)[^<]*(</span>)", rf"\g<1>{version}\g<2>", page)
         out = ROOT / pr["percorso"] / "index.html"
