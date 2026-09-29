@@ -18,7 +18,7 @@
   var LEVELS = G.i18n[LG];
   var PNG = { stamp: 512, icon: 256, label: 192 };
   var PAGINA = BASE + (document.body.getAttribute('data-percorso') || '');   // pagina del profilo corrente
-  var stato = { variant: 'stamp', schema: 'gradiente', from: '#c8473d', to: '#1f2a44', weight: 2, filled: false };
+  var stato = { variant: 'stamp', schema: 'gradiente', from: '#c8473d', to: '#1f2a44', weight: 2, filled: false, sfondo: 'transparent' };
 
   try { Object.assign(stato, JSON.parse(localStorage.getItem('gradiente-ia') || '{}')); } catch (e) { /* storage non disponibile */ }
   delete stato.contesto;   // opzione della 0.1.0, sostituita dalle pagine per profilo
@@ -200,6 +200,20 @@
   window.addEventListener('resize', spia);
   spia();
 
-  G.createBadges({ link: false });   // marchio nella testata (è già dentro un link)
+  // sfondo di prova: cambia solo lo sfondo dell'anteprima (variabile CSS), non i file copiati o scaricati
+  var campioni = document.querySelectorAll('.campione'), libero = document.querySelector('[data-sfondo-libero]');
+  function sfondo(v, daLibero) {
+    stato.sfondo = v;
+    document.documentElement.style.setProperty('--sfondo-prova', v);
+    var trovato = false;
+    campioni.forEach(function (c) { var si = !daLibero && c.getAttribute('data-sfondo') === v; trovato = trovato || si; c.setAttribute('aria-pressed', si ? 'true' : 'false'); });
+    if (libero) { libero.classList.toggle('scelto', !trovato); if (!trovato && /^#/.test(v)) libero.value = v; }
+    try { localStorage.setItem('gradiente-ia', JSON.stringify(stato)); } catch (e) { /* ignora */ }
+  }
+  campioni.forEach(function (c) { c.addEventListener('click', function () { sfondo(c.getAttribute('data-sfondo')); }); });
+  if (libero) libero.addEventListener('input', function () { sfondo(libero.value, true); });
+  sfondo(stato.sfondo || 'transparent');
+
+  G.createBadges({ link: false });   // badge della sezione sull'uso dell'IA (hanno il proprio data-link)
   disegna();
 }());

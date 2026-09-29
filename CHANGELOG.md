@@ -8,6 +8,9 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 - Testata sticky, con logo e nome che compaiono dopo lo scorrimento; pannello di personalizzazione non più sticky; menu dei 5 livelli sticky con traccia di avanzamento.
 - Scala tipografica rivista (h3 > h4; etichette delle schede in maiuscoletto a parte); elenchi con pallino appeso fuori dal testo.
 - «Come questo progetto ha usato l'IA» in tutte e tre le lingue, con badge contornati neri (tema chiaro) o bianchi (tema scuro).
+- Contenuti dichiarati a livello 3 (Co-creazione): i testi sono scritti insieme all'IA e rivisti dall'autore. Tolto un doppione della sezione nella pagina italiana.
+- Badge sempre su sfondo trasparente; nel pannello «Sfondo di prova» (trasparente, bianco, nero, grigio, rosso o un colore a scelta) cambia solo l'anteprima, non i file.
+- Marchio in testata solo testuale (l'icona resta nella favicon).
 
 ## 0.4.0 — 2026-09-29
 

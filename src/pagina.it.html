@@ -40,7 +40,7 @@
 
 <header class="testata">
   <div class="riga">
-    <p class="marchio"><a href="{{R}}" class="marchio-link"><span data-gradient="3" data-variant="icon" data-color="currentColor"></span> Gradiente IA</a></p>
+    <p class="marchio"><a href="{{R}}" class="marchio-link">Gradiente IA</a></p>
     <nav>
       <a href="#livelli">Livelli</a>
       <a href="#usare">Usare</a>
@@ -89,6 +89,14 @@
     </span>
     <label>Peso <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
     <label class="spunta"><input type="checkbox" data-opt="filled"> Pieno</label>
+    <span class="sfondo-prova" role="group" aria-label="Sfondo di prova"><span class="sfondo-etichetta">Sfondo di prova</span>
+        <button type="button" class="campione" data-sfondo="transparent" style="--campione:transparent" aria-label="Trasparente" title="Trasparente"></button>
+        <button type="button" class="campione" data-sfondo="#ffffff" style="--campione:#ffffff" aria-label="Bianco" title="Bianco"></button>
+        <button type="button" class="campione" data-sfondo="#000000" style="--campione:#000000" aria-label="Nero" title="Nero"></button>
+        <button type="button" class="campione" data-sfondo="#808080" style="--campione:#808080" aria-label="Grigio" title="Grigio"></button>
+        <button type="button" class="campione" data-sfondo="#d62828" style="--campione:#d62828" aria-label="Rosso" title="Rosso"></button>
+        <input type="color" data-sfondo-libero value="#f2c14e" aria-label="Altro colore" title="Altro colore">
+    </span>
   </div>
 </section>
 
@@ -174,18 +182,11 @@
   <p>Banner cookie: <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> 3.1.0 di Orest Bida (licenza MIT). Switch chiaro/scuro ripreso da masterismi.dev (tema Quark 2), icone sole e luna di <a href="https://iconoir.com/">Iconoir</a> (licenza MIT).</p>
   <h3>Cura</h3>
   <p><a href="https://linktr.ee/frazac">Francesco Zaccaria</a> — adattamento, testi e timbri. Segnalazioni e proposte: <a href="https://github.com/frazac/gradient-ai/issues">issue su GitHub</a>.</p>
-  <h3>Gradiente di questo progetto</h3>
-  <dl class="gradiente-progetto">
-    <dt><span data-gradient="2" data-variant="label" data-color="#111111" data-filled data-link="#"></span> Contenuti</dt>
-    <dd>Adattamento, nomi e testi dei livelli sono dell'autore. L'IA è servita a confrontare le fonti, proporre alternative e controllare la coerenza con la AIAS v2; ogni testo è stato riscritto e verificato sull'originale.</dd>
-    <dt><span data-gradient="4" data-variant="label" data-color="#111111" data-filled data-link="#"></span> Sito, codice e grafica</dt>
-    <dd>Sito, libreria JavaScript, strumenti di build, timbri e repository GitHub sono stati realizzati con Claude Code sotto la direzione dell'autore, che ha fissato obiettivi e scelte grafiche e ha rivisto e provato il risultato.</dd>
-  </dl>
   <h3>Come questo progetto ha usato l'IA</h3>
   <div class="gradiente-progetto">
     <h4>Contenuti</h4>
-    <p class="badge-progetto"><span data-gradient="2" data-variant="label" data-color="currentColor" data-link="#"></span></p>
-    <p>L'autore ha curato l'adattamento e scritto i nomi e i testi dei livelli. L'IA ha aiutato a confrontare le fonti, proporre alternative e verificare che i testi corrispondano alla AIAS v2. L'autore ha riscritto ogni testo e lo ha controllato sull'originale.</p>
+    <p class="badge-progetto"><span data-gradient="3" data-variant="label" data-color="currentColor" data-link="#"></span></p>
+    <p>L'autore ha curato l'adattamento e le scelte di fondo: nomi dei livelli, profili, taglio professionale e didattico. I testi sono stati scritti insieme all'IA (Claude) a partire dalle sue indicazioni; l'autore li rivede, li corregge e li verifica sulla AIAS v2.</p>
     <h4>Sito, codice e grafica</h4>
     <p class="badge-progetto"><span data-gradient="4" data-variant="label" data-color="currentColor" data-link="#"></span></p>
     <p>Il sito, la libreria JavaScript, gli strumenti di build, i timbri e il repository GitHub sono stati realizzati con Claude Code. L'autore ha definito gli obiettivi e le scelte grafiche, e ha verificato e collaudato il risultato.</p>

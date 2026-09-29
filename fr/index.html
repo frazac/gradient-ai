@@ -42,7 +42,7 @@
 
 <header class="testata">
   <div class="riga">
-    <p class="marchio"><a href="../" class="marchio-link"><span data-gradient="3" data-variant="icon" data-color="currentColor"></span> Gradient IA</a></p>
+    <p class="marchio"><a href="../" class="marchio-link">Gradient IA</a></p>
     <nav>
       <a href="#livelli">Niveaux</a>
       <a href="#usare">Utiliser</a>
@@ -101,6 +101,14 @@
     </span>
     <label>Graisse <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
     <label class="spunta"><input type="checkbox" data-opt="filled"> Plein</label>
+    <span class="sfondo-prova" role="group" aria-label="Fond de test"><span class="sfondo-etichetta">Fond de test</span>
+        <button type="button" class="campione" data-sfondo="transparent" style="--campione:transparent" aria-label="Transparent" title="Transparent"></button>
+        <button type="button" class="campione" data-sfondo="#ffffff" style="--campione:#ffffff" aria-label="Blanc" title="Blanc"></button>
+        <button type="button" class="campione" data-sfondo="#000000" style="--campione:#000000" aria-label="Noir" title="Noir"></button>
+        <button type="button" class="campione" data-sfondo="#808080" style="--campione:#808080" aria-label="Gris" title="Gris"></button>
+        <button type="button" class="campione" data-sfondo="#d62828" style="--campione:#d62828" aria-label="Rouge" title="Rouge"></button>
+        <input type="color" data-sfondo-libero value="#f2c14e" aria-label="Autre couleur" title="Autre couleur">
+    </span>
   </div>
 </section>
 
@@ -326,8 +334,8 @@
   <h3>Comment ce projet a utilisé l'IA</h3>
   <div class="gradiente-progetto">
     <h4>Contenus</h4>
-    <p class="badge-progetto"><span data-gradient="2" data-variant="label" data-color="currentColor" data-link="#"></span></p>
-    <p>L'auteur a réalisé l'adaptation et rédigé les noms et les textes des niveaux. L'IA a aidé à comparer les sources, proposer des variantes et vérifier que les textes correspondent à l'AIAS v2. L'auteur a réécrit chaque texte et l'a vérifié sur l'original.</p>
+    <p class="badge-progetto"><span data-gradient="3" data-variant="label" data-color="currentColor" data-link="#"></span></p>
+    <p>L'auteur a conçu l'adaptation et fait les choix de fond : noms des niveaux, profils, orientation professionnelle et pédagogique. Les textes ont été rédigés avec l'IA (Claude) à partir de ses indications ; l'auteur les relit, les corrige et les vérifie sur l'AIAS v2.</p>
     <h4>Site, code et graphisme</h4>
     <p class="badge-progetto"><span data-gradient="4" data-variant="label" data-color="currentColor" data-link="#"></span></p>
     <p>Le site, la bibliothèque JavaScript, les outils de construction, les tampons et le dépôt GitHub ont été réalisés avec Claude Code. L'auteur a fixé les objectifs et les choix graphiques, puis a vérifié et testé le résultat.</p>

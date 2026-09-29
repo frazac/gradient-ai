@@ -42,7 +42,7 @@
 
 <header class="testata">
   <div class="riga">
-    <p class="marchio"><a href="../../" class="marchio-link"><span data-gradient="3" data-variant="icon" data-color="currentColor"></span> Gradient AI</a></p>
+    <p class="marchio"><a href="../../" class="marchio-link">Gradient AI</a></p>
     <nav>
       <a href="#livelli">Levels</a>
       <a href="#usare">Use</a>
@@ -105,6 +105,14 @@
     </span>
     <label>Weight <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
     <label class="spunta"><input type="checkbox" data-opt="filled"> Filled</label>
+    <span class="sfondo-prova" role="group" aria-label="Test background"><span class="sfondo-etichetta">Test background</span>
+        <button type="button" class="campione" data-sfondo="transparent" style="--campione:transparent" aria-label="See-through" title="See-through"></button>
+        <button type="button" class="campione" data-sfondo="#ffffff" style="--campione:#ffffff" aria-label="White" title="White"></button>
+        <button type="button" class="campione" data-sfondo="#000000" style="--campione:#000000" aria-label="Black" title="Black"></button>
+        <button type="button" class="campione" data-sfondo="#808080" style="--campione:#808080" aria-label="Grey" title="Grey"></button>
+        <button type="button" class="campione" data-sfondo="#d62828" style="--campione:#d62828" aria-label="Red" title="Red"></button>
+        <input type="color" data-sfondo-libero value="#f2c14e" aria-label="Other colour" title="Other colour">
+    </span>
   </div>
 </section>
 
@@ -334,8 +342,8 @@
   <h3>How this project used AI</h3>
   <div class="gradiente-progetto">
     <h4>Content</h4>
-    <p class="badge-progetto"><span data-gradient="2" data-variant="label" data-color="currentColor" data-link="#"></span></p>
-    <p>The author made the adaptation and wrote the level names and texts. AI helped to compare sources, suggest other options and check that the texts match the AIAS v2. The author rewrote every text and checked it against the original.</p>
+    <p class="badge-progetto"><span data-gradient="3" data-variant="label" data-color="currentColor" data-link="#"></span></p>
+    <p>The author made the adaptation and the main choices: the names of the levels, the profiles, and the focus on work and on teaching. The texts were written together with AI (Claude), following the author's directions. The author reads, corrects and checks them against the AIAS v2.</p>
     <h4>Website, code and design</h4>
     <p class="badge-progetto"><span data-gradient="4" data-variant="label" data-color="currentColor" data-link="#"></span></p>
     <p>The website, the JavaScript library, the build tools, the badges and the GitHub repository were made with Claude Code. The author set the goals and the design choices, and checked and tested the result.</p>
