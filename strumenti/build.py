@@ -60,9 +60,8 @@ def e(t):
 # etichetta del selettore di lingua (il codice tecnico e l'URL restano it / en)
 ETICHETTE = {"it": "Italiano", "fr": "Français", "en": "Simple English"}
 LINGUA_UI = {"it": ("Cambia lingua",), "fr": ("Changer de langue",), "en": ("Change language",)}
-ICONA_EARTH = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
-               '<path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/>'
-               '<path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>')
+ICONA_GLOBO = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+               '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>')
 
 SITO = "https://frazac.github.io/gradient-ai/"
 ICONA_COPY = ('<svg class="i-copia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
@@ -147,7 +146,7 @@ def render_lang(lg, dati, version):
         pari = {x: next(q for q in dati[x]["profili"] if q["id"] == pid) for x in LINGUE}
         base_url = SITO
         alternate = "\n".join(f'  <link rel="alternate" hreflang="{x}" href="{base_url}{pari[x]["percorso"]}">' for x in LINGUE)
-        # selettore lingua: globo (Lucide "earth") che apre un menu a tendina
+        # selettore lingua: globo (Lucide "globe") che apre un menu a tendina
         voci = "".join(
             f'<li><a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{x}" lang="{x}"'
             + (' class="is-active" aria-current="true"' if x == lg else "") + f'>{ETICHETTE[x]}</a></li>' for x in LINGUE)
@@ -157,7 +156,7 @@ def render_lang(lg, dati, version):
             f'<li><a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{x}" lang="{x}"'
             + (' class="is-active" aria-current="true"' if x == lg else "") + f'>{ETICHETTE[x]}</a></li>' for x in LINGUE) + '</ul>')
         lingua = (f'<div class="header-lang">\n'
-                  f'      <button class="lang-toggle" type="button" aria-label="{L[0]}" title="{L[0]}" aria-expanded="false" aria-haspopup="true" aria-controls="lang-panel">{ICONA_EARTH}</button>\n'
+                  f'      <button class="lang-toggle" type="button" aria-label="{L[0]}" title="{L[0]}" aria-expanded="false" aria-haspopup="true" aria-controls="lang-panel">{ICONA_GLOBO}</button>\n'
                   f'      <div class="lang-panel" id="lang-panel"><div class="lang-panel-inner">\n'
                   f'        <ul>{voci}</ul>\n'
                   f'      </div></div>\n    </div>')

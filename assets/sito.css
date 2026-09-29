@@ -93,7 +93,7 @@ body.scorsa .briciole { display: flex; }
 .testata nav { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: 0.95rem; justify-content: flex-start; }
 .testata nav a { color: inherit; text-decoration: none; }
 .testata nav a:hover { color: var(--accento); }
-/* selettore lingua: globo (Lucide earth) che apre un menu a tendina */
+/* selettore lingua: globo (Lucide globe) che apre un menu a tendina */
 .testata .riga { gap: 0.8rem 1.2rem; }
 .header-lang { position: relative; display: flex; align-items: center; margin-left: auto; }
 .lang-toggle {
