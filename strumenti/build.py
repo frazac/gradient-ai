@@ -56,6 +56,9 @@ def e(t):
     return html.escape(t, quote=False).replace('"', "&quot;")   # apostrofi lasciati leggibili
 
 
+# etichetta del selettore di lingua (il codice tecnico e l'URL restano it / en)
+ETICHETTE = {"it": ("IT", "Italiano"), "en": ("Simple EN", "Simple English")}
+
 BOTTONI = {
     "it": {"livello": "Livello", "copia": "Copia l'indicazione", "testo": "Copia testo con link",
            "svg": "Scarica SVG", "png": "Scarica PNG", "copiasvg": "Copia SVG"},
@@ -116,7 +119,7 @@ def render_lang(lg, dati, version):
         alternate = "\n".join(f'  <link rel="alternate" hreflang="{x}" href="{base_url}{pari[x]["percorso"]}">' for x in LINGUE)
         lingua = " ".join(
             f'<a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{x}" lang="{x}" class="lingua"'
-            + (' aria-current="true"' if x == lg else "") + f'>{x.upper()}</a>' for x in LINGUE)
+            + (' aria-current="true"' if x == lg else "") + f' title="{ETICHETTE[x][1]}">{ETICHETTE[x][0]}</a>' for x in LINGUE)
         titolo = f"{data['titolo']} – {data['sottotitolo']}" + ("" if pid == "generale" else f" · {pr['nome']}")
         descr = re.sub(r"<[^>]+>", "", pr["lead"]) + (" Adattamento di AIAS v2, CC BY-NC-SA 4.0." if lg == "it" else " Based on the AIAS v2, CC BY-NC-SA 4.0.")
         page = (template.replace('<a href="{{R}}" class="marchio-link">', f'<a href="{r or "./"}" class="marchio-link">')
