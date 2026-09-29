@@ -12,6 +12,8 @@
 | 4 | **Regia** | IA diretta dallo studente |
 | 5 | **Sperimentazione** | IA come terreno di ricerca |
 
+La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè scala dell'IA nella valutazione → [aiassessmentscale.com](https://aiassessmentscale.com/)
+
 ## Usare i timbri
 
 **PNG** — `dist/png/timbro-3-512.png` (anche `-pieno`, icona, etichetta; più misure)
@@ -57,4 +59,4 @@ Gradiente IA è un adattamento indipendente: non è una traduzione ufficiale e n
 
 ### Come attribuire
 
-> Gradiente IA – Livelli di integrazione dell'IA tratti da AIAS, v0.1.0, di Francesco Zaccaria, CC BY-NC-SA 4.0. Adattamento di AI Assessment Scale (AIAS) v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh (CC BY-NC-SA 4.0). Icone: Lucide (ISC).
+> Gradiente IA di Francesco Zaccaria, Livelli di integrazione dell'IA tratti da AIAS v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh (License CC BY-NC-SA 4.0). Icone: Lucide (License ISC).

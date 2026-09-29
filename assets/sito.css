@@ -78,12 +78,13 @@ main > .intro { padding-top: 4rem; }
 .colori[hidden] { display: none; }
 
 /* galleria */
-.galleria { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+.galleria { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
 .galleria a { display: grid; place-items: center; aspect-ratio: 1; border: 1px solid var(--filo); border-radius: var(--raggio); padding: 0.8rem; background: var(--fondo-timbri); transition: transform 0.15s, border-color 0.15s; }
 .galleria a:hover { transform: translateY(-2px); border-color: var(--tenue); }
 .galleria svg { width: 100%; height: auto; max-height: 100%; }
 body[data-variant="label"] .galleria { grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
 body[data-variant="label"] .galleria a { aspect-ratio: auto; }
+.originale { margin: 0 0 2rem; font-size: 0.95rem; color: var(--tenue); }
 
 /* scheda livello */
 .livello { display: grid; grid-template-columns: minmax(12rem, 18rem) 1fr; gap: 2.5rem; padding: 3rem 0; border-top: 1px solid var(--filo); }
