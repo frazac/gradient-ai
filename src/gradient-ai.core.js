@@ -201,8 +201,10 @@
   function badgeIcon(l, o) {
     var c = colorFor(l, o), w = o.weight, filled = o.filled;
     var ink = filled ? (o.ink || '#ffffff') : c;
-    var cr = o.credit !== false && o.credit !== 'false' ? credit('gai' + (++uid) + 'c', TEXT[o.lang].mark + ' ' + l.n + '/5 — ' + CREDIT, 24, 23, 3.4, o, c) : null;
-    var s = open(48, 48, o, l, cr ? cr.m : 0);
+    var cr = o.credit !== false && o.credit !== 'false' ? credit('gai' + (++uid) + 'c', TEXT[o.lang].mark + ' — ' + CREDIT, 24, 23, 3.4, o, c) : null;
+    // grado n/5 sopra il tondo: piccolo, nel corpo della licenza, fisso (non segue creditSize)
+    var s = open(48, 48, o, l, Math.max(cr ? cr.m : 0, 5));
+    s += '<text x="24" y="-1.3" fill="' + c + '" font-family="' + esc(FONT) + '" font-weight="500" font-size="3.4" letter-spacing="0.2" text-anchor="middle">' + l.n + '/5</text>';
     s += filled ? '<circle cx="24" cy="24" r="23" fill="' + c + '"/>'
       : '<circle cx="24" cy="24" r="' + (23 - w / 2) + '" fill="' + (o.background || 'none') + '" stroke="' + c + '" stroke-width="' + w + '"/>';
     s += icon(l.icon, 11, 11, 26, ink, w);

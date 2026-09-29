@@ -2,8 +2,9 @@
 
 Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con una numerazione propria; la versione della AIAS da cui deriva (v2, 2024) è dichiarata a parte.
 
-## Non ancora rilasciato
+## 0.6.0 — 2026-09-30
 
+- Pittogramma: grado «n/5» sopra il tondo, piccolo e fisso nel corpo della licenza; la licenza sotto non ripete più il grado.
 - Badge del primo grado: sul timbro e sull'etichetta «AUTONOMIA (SENZA IA)» (fr «AUTONOMIE (SANS IA)», en «ON YOUR OWN (NO AI)»); campo `badge` nei livelli della libreria.
 - Scheda delle uscite di nuovo con i quattro angoli a 18 px; il riquadro del badge resta concentrico al disegno.
 - Primo grado: titolo della scheda «Autonomia (senza IA)» (fr «Autonomie (sans IA)», en «On your own (no AI)»).

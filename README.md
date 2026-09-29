@@ -40,7 +40,7 @@ La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè sca
 **JavaScript**, come [Lucide](https://lucide.dev):
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v0.5.0/dist/gradient-ai.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v0.6.0/dist/gradient-ai.js"></script>
 
 <i data-gradient="3"></i>
 <i data-gradient="5" data-variant="label" data-filled></i>

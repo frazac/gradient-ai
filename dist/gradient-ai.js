@@ -1,5 +1,5 @@
 /*!
- * Gradient AI v0.5.0 — Gradiente IA: livelli di integrazione dell'IA tratti da AIAS
+ * Gradient AI v0.6.0 — Gradiente IA: livelli di integrazione dell'IA tratti da AIAS
  * https://github.com/frazac/gradient-ai
  *
  * Contenuti: adattamento di AI Assessment Scale (AIAS) v2 di Mike Perkins, Leon Furze,
@@ -14,7 +14,7 @@
 }(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '0.5.0';
+  var VERSION = '0.6.0';
   var LEVELS = {"it": [{"n": 1, "id": "autonomia", "name": "Autonomia", "subtitle": "Senza IA", "icon": "ban", "badge": "Autonomia (senza IA)"}, {"n": 2, "id": "ideazione", "name": "Ideazione", "subtitle": "IA solo in fase preparatoria", "icon": "calendar-days", "badge": "Ideazione"}, {"n": 3, "id": "co-creazione", "name": "Co-creazione", "subtitle": "IA al fianco, con vaglio critico", "icon": "blender", "badge": "Co-creazione"}, {"n": 4, "id": "regia", "name": "Regia", "subtitle": "IA sotto direzione umana", "icon": "bot", "badge": "Regia"}, {"n": 5, "id": "sperimentazione", "name": "Sperimentazione", "subtitle": "IA come terreno di ricerca", "icon": "lighthouse", "badge": "Sperimentazione"}], "fr": [{"n": 1, "id": "autonomia", "name": "Autonomie", "subtitle": "Sans IA", "icon": "ban", "badge": "Autonomie (sans IA)"}, {"n": 2, "id": "ideazione", "name": "Idéation", "subtitle": "IA seulement en amont", "icon": "calendar-days", "badge": "Idéation"}, {"n": 3, "id": "co-creazione", "name": "Co-création", "subtitle": "IA à vos côtés, avec regard critique", "icon": "blender", "badge": "Co-création"}, {"n": 4, "id": "regia", "name": "Régie", "subtitle": "IA sous direction humaine", "icon": "bot", "badge": "Régie"}, {"n": 5, "id": "sperimentazione", "name": "Expérimentation", "subtitle": "IA comme terrain de recherche", "icon": "lighthouse", "badge": "Expérimentation"}], "en": [{"n": 1, "id": "autonomia", "name": "On your own", "subtitle": "No AI", "icon": "ban", "badge": "On your own (no AI)"}, {"n": 2, "id": "ideazione", "name": "Ideas", "subtitle": "AI only before you start", "icon": "calendar-days", "badge": "Ideas"}, {"n": 3, "id": "co-creazione", "name": "Working together", "subtitle": "AI helps, you check everything", "icon": "blender", "badge": "Working together"}, {"n": 4, "id": "regia", "name": "Directing", "subtitle": "People lead the AI", "icon": "bot", "badge": "Directing"}, {"n": 5, "id": "sperimentazione", "name": "Exploring", "subtitle": "AI as a place to try new things", "icon": "lighthouse", "badge": "Exploring"}]};   // { it: [...], en: [...] }
   var TEXT = {
     it: { brand: 'Gradiente IA', level: 'Livello', bottom: 'GRADIENTE IA', mark: 'Gradient IA' },
@@ -201,8 +201,10 @@
   function badgeIcon(l, o) {
     var c = colorFor(l, o), w = o.weight, filled = o.filled;
     var ink = filled ? (o.ink || '#ffffff') : c;
-    var cr = o.credit !== false && o.credit !== 'false' ? credit('gai' + (++uid) + 'c', TEXT[o.lang].mark + ' ' + l.n + '/5 — ' + CREDIT, 24, 23, 3.4, o, c) : null;
-    var s = open(48, 48, o, l, cr ? cr.m : 0);
+    var cr = o.credit !== false && o.credit !== 'false' ? credit('gai' + (++uid) + 'c', TEXT[o.lang].mark + ' — ' + CREDIT, 24, 23, 3.4, o, c) : null;
+    // grado n/5 sopra il tondo: piccolo, nel corpo della licenza, fisso (non segue creditSize)
+    var s = open(48, 48, o, l, Math.max(cr ? cr.m : 0, 5));
+    s += '<text x="24" y="-1.3" fill="' + c + '" font-family="' + esc(FONT) + '" font-weight="500" font-size="3.4" letter-spacing="0.2" text-anchor="middle">' + l.n + '/5</text>';
     s += filled ? '<circle cx="24" cy="24" r="23" fill="' + c + '"/>'
       : '<circle cx="24" cy="24" r="' + (23 - w / 2) + '" fill="' + (o.background || 'none') + '" stroke="' + c + '" stroke-width="' + w + '"/>';
     s += icon(l.icon, 11, 11, 26, ink, w);
