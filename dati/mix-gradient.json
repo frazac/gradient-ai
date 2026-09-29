@@ -2,10 +2,10 @@
   "nome": "Mix Gradient IA",
   "angolo": 135,
   "livelli": [
-    { "n": 1, "nome": "Autonomia", "da": "#a3203a", "a": "#d8401f", "note": "da rosso carminio a rosso scarlatto" },
-    { "n": 2, "nome": "Ideazione", "da": "#b98a1e", "a": "#a6a81c", "note": "da giallo ocra a giallo lime" },
+    { "n": 1, "nome": "Autonomia", "da": "#a61e66", "a": "#d8401f", "note": "da carminio magenta a rosso scarlatto" },
+    { "n": 2, "nome": "Ideazione", "da": "#c0701a", "a": "#ad7d10", "note": "da arancio ocra a giallo ambra" },
     { "n": 3, "nome": "Co-creazione", "da": "#279b78", "a": "#2a8a98", "note": "da verde smeraldo a verde petrolio" },
     { "n": 4, "nome": "Regia", "da": "#3475b7", "a": "#2f4f8f", "note": "da blu cobalto a blu oltremare" },
-    { "n": 5, "nome": "Sperimentazione", "da": "#75509b", "a": "#6a4c9c", "note": "da indaco a viola" }
+    { "n": 5, "nome": "Sperimentazione", "da": "#4b4f9e", "a": "#7a4aa0", "note": "da indaco a viola" }
   ]
 }

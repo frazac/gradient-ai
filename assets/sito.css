@@ -413,3 +413,7 @@ main ul > li::before {
 .apri-chiudi:hover { color: var(--inchiostro); border-color: var(--inchiostro); }
 .apri-chiudi svg { width: 18px; height: 18px; transition: transform 0.2s ease; }
 .apri-chiudi[aria-expanded="true"] svg { transform: rotate(45deg); }   /* aperta: il + diventa × */
+
+/* il titolo della fascia si clicca come il tondino */
+.titolo-fascia { cursor: pointer; user-select: none; }
+.testa-fascia:hover .apri-chiudi { border-color: var(--inchiostro); color: var(--inchiostro); }

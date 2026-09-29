@@ -340,6 +340,9 @@
   }
   tondini.forEach(function (b) {
     b.addEventListener('click', function () { fascia(b, b.getAttribute('aria-expanded') !== 'true'); });
+    // anche il titolo della fascia apre e chiude (il tondino resta il comando per tastiera e lettori di schermo)
+    var tit = b.parentNode.querySelector('.titolo-fascia');
+    if (tit) tit.addEventListener('click', function () { b.click(); });
   });
   // un link a una fascia (#profili, #personalizza) la apre: «modifica» nelle schede, indirizzi condivisi
   function apriDaIndirizzo() {
