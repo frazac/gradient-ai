@@ -4,6 +4,8 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 
 ## Non ancora rilasciato
 
+- **Mix Gradient IA** come colore predefinito dei badge: due toni per livello in un gradiente lineare a 135° (`dati/mix-gradient.json`, esportato dallo strumento di regolazione). Opzione `gradient: false` per la tinta unita; `GradientAI.mix` espone i toni.
+- Timbro: numero n/5 un po' più in alto, con lo stesso spazio sopra e sotto.
 - Nuova sezione finale «Ospitare una ricerca»: invito a università e centri di ricerca (assegno o borsa di ricerca, visiting fellowship, progetto congiunto).
 
 ## 0.5.0 — 2026-09-30

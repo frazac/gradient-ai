@@ -25,8 +25,11 @@
   var CREDIT = 'CC BY-NC-SA 4.0 getgradient.it';
   var ICONS = __ICONS__;
 
-  // Palette predefinita: dal rosso del divieto (senza IA) al blu dell'esplorazione (sperimentazione).
-  var PALETTE = ['#c8473d', '#b8741c', '#2a8c82', '#2f5d8a', '#52589a'];
+  // Mix Gradient IA (dati/mix-gradient.json): colore predefinito, due toni per livello in un gradiente lineare.
+  var MIX = __MIX__;
+  // tinta unita di riferimento per livello (il primo tono del mix): la usa chi non vuole il gradiente (gradient: false)
+  var PALETTE = MIX.livelli.map(function (t) { return t.da; });
+  var SEGNAPOSTO = '#010203';   // colore temporaneo, poi sostituito dal gradiente
   var FONT = "'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif";
   var uid = 0;
   var SITE = 'https://frazac.github.io/gradient-ai/';
@@ -185,7 +188,8 @@
     s += '<text font-size="12" letter-spacing="3.5"><textPath href="#' + id + 'b" startOffset="50%">' + esc(bottom) + '</textPath></text>';
     // pallini ai lati: grandi come quelli del sito (circa 9 px quando il timbro è a 170 px)
     s += '<circle cx="20" cy="100" r="' + (3.5 + w * 0.9) + '"/><circle cx="180" cy="100" r="' + (3.5 + w * 0.9) + '"/>';
-    s += '<text x="100" y="151" font-size="30" font-weight="' + Math.max(fw, 700) + '">' + l.n + '/5</text>';
+    // baseline a 146: sotto il numero resta verso il cerchio interno lo stesso spazio (~17) che c'è sopra il pittogramma
+    s += '<text x="100" y="146" font-size="30" font-weight="' + Math.max(fw, 700) + '">' + l.n + '/5</text>';
     s += '</g>';
     s += icon(l.icon, 74, 52, 52, ink, w);
     if (cr) s += cr.svg;
@@ -235,10 +239,21 @@
 
   var DEFAULTS = { variant: 'stamp', weight: 2, filled: false };
 
+  // gradiente lineare su tutto il badge, nella direzione del Mix (angolo in gradi, 0 = da sinistra a destra)
+  function gradiente(s, t) {
+    var vb = s.match(/viewBox="([^"]+)"/)[1].split(' ').map(Number);
+    var cx = vb[0] + vb[2] / 2, cy = vb[1] + vb[3] / 2, r = Math.max(vb[2], vb[3]) / 2;
+    var ang = MIX.angolo * Math.PI / 180, dx = Math.cos(ang) * r, dy = Math.sin(ang) * r;
+    var id = 'gai' + (++uid) + 'g';
+    var defs = '<defs><linearGradient id="' + id + '" gradientUnits="userSpaceOnUse" x1="' + (cx - dx).toFixed(2) + '" y1="' + (cy - dy).toFixed(2) +
+      '" x2="' + (cx + dx).toFixed(2) + '" y2="' + (cy + dy).toFixed(2) + '"><stop offset="0" stop-color="' + t.da + '"/><stop offset="1" stop-color="' + t.a + '"/></linearGradient></defs>';
+    return s.split(SEGNAPOSTO).join('url(#' + id + ')').replace(/(<svg[^>]*>)/, '$1' + defs);
+  }
+
   /**
    * SVG di un livello come stringa.
    * @param {number|string} n  1–5 oppure l'id ("autonomia", "ideazione", …)
-   * @param {object} [options] variant: stamp|icon|label · lang: it|fr|en · color · from/to · palette · weight (1–3)
+   * @param {object} [options] variant: stamp|icon|label · lang: it|fr|en · color · from/to · palette · gradient (false: tinta unita) · weight (1–3)
    *                           · filled · ink · background · size (px) · class · bottomText
    *                           · credit (false: niente licenza sotto il badge: sull'arco esterno di timbro e pittogramma, in riga sotto l'etichetta)
    *                           · creditSize (0.5–2, predefinito 1: grandezza del testo della licenza)
@@ -252,7 +267,11 @@
     o.lang = lang(o.lang);
     var fn = VARIANTS[o.variant];
     if (!fn) throw new Error('GradientAI: variante sconosciuta "' + o.variant + '" (stamp, icon, label)');
-    return fn(level(n, o.lang), o);
+    var l = level(n, o.lang);
+    // colore predefinito = gradiente del Mix; con color, from/to, palette o gradient: false si torna alla tinta unita
+    var mix = !o.color && !o.palette && !(o.from && o.to) && o.gradient !== false && o.gradient !== 'false';
+    if (!mix) return fn(l, o);
+    return gradiente(fn(l, Object.assign({}, o, { color: SEGNAPOSTO })), MIX.livelli[l.n - 1]);
   }
 
   /**
@@ -299,6 +318,7 @@
     i18n: LEVELS,
     icons: ICONS,
     defaultPalette: PALETTE.slice(),
+    mix: MIX,
     site: SITE,
     palette: palette,
     toSvg: toSvg,

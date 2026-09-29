@@ -25,8 +25,11 @@
   var CREDIT = 'CC BY-NC-SA 4.0 getgradient.it';
   var ICONS = {"ban": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M4.929 4.929 19.07 19.071\"/>", "calendar-days": "<path d=\"M8 2v3\"/><path d=\"M16 2v3\"/><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M3 9h18\"/><path d=\"M8 13h.01\"/><path d=\"M12 13h.01\"/><path d=\"M16 13h.01\"/><path d=\"M8 17h.01\"/><path d=\"M12 17h.01\"/><path d=\"M16 17h.01\"/>", "blender": "<path d=\"M8 14a2 2 0 0 0-1.963 1.615l-1.018 5.193A1 1 0 0 0 6 22h12a1 1 0 0 0 .981-1.192l-1.018-5.193A2 2 0 0 0 16 14z\"/><path d=\"m17 2-1 12\"/><path d=\"M8.006 14 7 2\"/><path d=\"M7.565 8.787A5 5 0 0 0 12 8a5 5 0 0 1 4.56-.75\"/><path d=\"M19 2H5a2 2 0 0 0-2 2v5a2 2 0 0 0 .688 1.5\"/><path d=\"M12 18h.01\"/>", "bot": "<path d=\"M12 8V4H8\"/><rect width=\"16\" height=\"12\" x=\"4\" y=\"8\" rx=\"2\"/><path d=\"M2 14h2\"/><path d=\"M20 14h2\"/><path d=\"M15 13v2\"/><path d=\"M9 13v2\"/>", "lighthouse": "<path d=\"M12 3V2\"/><path d=\"M16.066 16.865 7 22l2-11V6a3 3 0 016 0v5l2 11\"/><path d=\"m19.792 4.5.866-.5\"/><path d=\"m19.797 13.5.866.5\"/><path d=\"M21 9h1\"/><path d=\"M3 9H2\"/><path d=\"m4.203 13.5-.866.5\"/><path d=\"M4.208 4.5 3.342 4\"/><path d=\"M5.5 22h13\"/><path d=\"m7.932 16.875 7.377-4.178\"/><path d=\"M8 11h8\"/><path d=\"M8 7h8\"/>"};
 
-  // Palette predefinita: dal rosso del divieto (senza IA) al blu dell'esplorazione (sperimentazione).
-  var PALETTE = ['#c8473d', '#b8741c', '#2a8c82', '#2f5d8a', '#52589a'];
+  // Mix Gradient IA (dati/mix-gradient.json): colore predefinito, due toni per livello in un gradiente lineare.
+  var MIX = {"angolo": 135, "livelli": [{"da": "#a3203a", "a": "#d8401f"}, {"da": "#b98a1e", "a": "#a6a81c"}, {"da": "#279b78", "a": "#2a8a98"}, {"da": "#3475b7", "a": "#2f4f8f"}, {"da": "#75509b", "a": "#6a4c9c"}]};
+  // tinta unita di riferimento per livello (il primo tono del mix): la usa chi non vuole il gradiente (gradient: false)
+  var PALETTE = MIX.livelli.map(function (t) { return t.da; });
+  var SEGNAPOSTO = '#010203';   // colore temporaneo, poi sostituito dal gradiente
   var FONT = "'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif";
   var uid = 0;
   var SITE = 'https://frazac.github.io/gradient-ai/';
@@ -185,7 +188,8 @@
     s += '<text font-size="12" letter-spacing="3.5"><textPath href="#' + id + 'b" startOffset="50%">' + esc(bottom) + '</textPath></text>';
     // pallini ai lati: grandi come quelli del sito (circa 9 px quando il timbro è a 170 px)
     s += '<circle cx="20" cy="100" r="' + (3.5 + w * 0.9) + '"/><circle cx="180" cy="100" r="' + (3.5 + w * 0.9) + '"/>';
-    s += '<text x="100" y="151" font-size="30" font-weight="' + Math.max(fw, 700) + '">' + l.n + '/5</text>';
+    // baseline a 146: sotto il numero resta verso il cerchio interno lo stesso spazio (~17) che c'è sopra il pittogramma
+    s += '<text x="100" y="146" font-size="30" font-weight="' + Math.max(fw, 700) + '">' + l.n + '/5</text>';
     s += '</g>';
     s += icon(l.icon, 74, 52, 52, ink, w);
     if (cr) s += cr.svg;
@@ -235,10 +239,21 @@
 
   var DEFAULTS = { variant: 'stamp', weight: 2, filled: false };
 
+  // gradiente lineare su tutto il badge, nella direzione del Mix (angolo in gradi, 0 = da sinistra a destra)
+  function gradiente(s, t) {
+    var vb = s.match(/viewBox="([^"]+)"/)[1].split(' ').map(Number);
+    var cx = vb[0] + vb[2] / 2, cy = vb[1] + vb[3] / 2, r = Math.max(vb[2], vb[3]) / 2;
+    var ang = MIX.angolo * Math.PI / 180, dx = Math.cos(ang) * r, dy = Math.sin(ang) * r;
+    var id = 'gai' + (++uid) + 'g';
+    var defs = '<defs><linearGradient id="' + id + '" gradientUnits="userSpaceOnUse" x1="' + (cx - dx).toFixed(2) + '" y1="' + (cy - dy).toFixed(2) +
+      '" x2="' + (cx + dx).toFixed(2) + '" y2="' + (cy + dy).toFixed(2) + '"><stop offset="0" stop-color="' + t.da + '"/><stop offset="1" stop-color="' + t.a + '"/></linearGradient></defs>';
+    return s.split(SEGNAPOSTO).join('url(#' + id + ')').replace(/(<svg[^>]*>)/, '$1' + defs);
+  }
+
   /**
    * SVG di un livello come stringa.
    * @param {number|string} n  1–5 oppure l'id ("autonomia", "ideazione", …)
-   * @param {object} [options] variant: stamp|icon|label · lang: it|fr|en · color · from/to · palette · weight (1–3)
+   * @param {object} [options] variant: stamp|icon|label · lang: it|fr|en · color · from/to · palette · gradient (false: tinta unita) · weight (1–3)
    *                           · filled · ink · background · size (px) · class · bottomText
    *                           · credit (false: niente licenza sotto il badge: sull'arco esterno di timbro e pittogramma, in riga sotto l'etichetta)
    *                           · creditSize (0.5–2, predefinito 1: grandezza del testo della licenza)
@@ -252,7 +267,11 @@
     o.lang = lang(o.lang);
     var fn = VARIANTS[o.variant];
     if (!fn) throw new Error('GradientAI: variante sconosciuta "' + o.variant + '" (stamp, icon, label)');
-    return fn(level(n, o.lang), o);
+    var l = level(n, o.lang);
+    // colore predefinito = gradiente del Mix; con color, from/to, palette o gradient: false si torna alla tinta unita
+    var mix = !o.color && !o.palette && !(o.from && o.to) && o.gradient !== false && o.gradient !== 'false';
+    if (!mix) return fn(l, o);
+    return gradiente(fn(l, Object.assign({}, o, { color: SEGNAPOSTO })), MIX.livelli[l.n - 1]);
   }
 
   /**
@@ -299,6 +318,7 @@
     i18n: LEVELS,
     icons: ICONS,
     defaultPalette: PALETTE.slice(),
+    mix: MIX,
     site: SITE,
     palette: palette,
     toSvg: toSvg,
