@@ -76,8 +76,11 @@
 
 <section id="profili" class="fascia-profili" aria-label="Profils">
   <div class="riga">
-    <p class="occhiello-profilo">Profil général · contexte professionnel</p>
-    <nav class="profili" aria-label="Profils">
+    <div class="testa-fascia">
+      <p class="occhiello-profilo titolo-fascia">Profil général · contexte professionnel</p>
+      <button type="button" class="apri-chiudi" aria-expanded="true" aria-controls="corpo-profili" aria-label="Afficher ou masquer: Profil général · contexte professionnel" title="Afficher ou masquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+    </div>
+    <nav id="corpo-profili" class="profili corpo-fascia" aria-label="Profils">
   <a href="../fr/" aria-current="page" title="Contexte professionnel">Général</a>
   <a href="../fr/stem/" title="Sciences, technologie, ingénierie, mathématiques">Enseignement STEM</a>
   <a href="../fr/sciences-humaines/" title="Lettres, philosophie, histoire, langues, sciences sociales">Enseignement lettres et sciences humaines</a>
@@ -87,42 +90,54 @@
 </section>
 
 <section id="personalizza" class="pannello" aria-label="Personnaliser les tampons">
-  <div class="riga comandi">
-    <div class="linea">
-      <div class="gruppo" role="radiogroup" aria-label="Forme" data-gruppo="variant">
-        <div class="scelta" role="radio" data-valore="stamp">Tampon</div>
-        <div class="scelta" role="radio" data-valore="label">Étiquette</div>
-        <div class="scelta" role="radio" data-valore="icon">Pictogramme</div>
+  <div class="riga">
+    <div class="testa-fascia">
+      <h2 class="titolo-fascia">Personnaliser</h2>
+      <button type="button" class="apri-chiudi" aria-expanded="true" aria-controls="corpo-personalizza" aria-label="Afficher ou masquer: Personnaliser" title="Afficher ou masquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+    </div>
+    <div id="corpo-personalizza" class="comandi corpo-fascia">
+      <div class="linea">
+        <div class="gruppo" role="radiogroup" aria-label="Forme" data-gruppo="variant">
+          <div class="scelta" role="radio" data-valore="stamp">Tampon</div>
+          <div class="scelta" role="radio" data-valore="label">Étiquette</div>
+          <div class="scelta" role="radio" data-valore="icon">Pictogramme</div>
+        </div>
       </div>
-    </div>
-    <div class="linea">
-      <div class="gruppo" role="radiogroup" aria-label="Couleur" data-gruppo="schema">
-        <div class="scelta" role="radio" data-valore="gradiente">Dégradé</div>
-        <div class="scelta" role="radio" data-valore="estremi">De <input type="color" data-opt="from" value="#c8473d" aria-label="Couleur de départ (niveau 1)"> à <input type="color" data-opt="to" value="#52589a" aria-label="Couleur d'arrivée (niveau 5)"></div>
-        <div class="scelta" role="radio" data-valore="unico">Unique <input type="color" data-opt="unico" value="#2f5d8a" aria-label="Couleur unique"></div>
-        <div class="scelta" role="radio" data-valore="nero">Noir (impression)</div>
+      <div class="linea">
+        <div class="gruppo" role="radiogroup" aria-label="Couleur" data-gruppo="schema">
+          <div class="scelta" role="radio" data-valore="gradiente">Dégradé</div>
+          <div class="scelta" role="radio" data-valore="estremi">De <input type="color" data-opt="from" value="#c8473d" aria-label="Couleur de départ (niveau 1)"> à <input type="color" data-opt="to" value="#52589a" aria-label="Couleur d'arrivée (niveau 5)"></div>
+          <div class="scelta" role="radio" data-valore="unico">Unique <input type="color" data-opt="unico" value="#2f5d8a" aria-label="Couleur unique"></div>
+          <div class="scelta" role="radio" data-valore="nero">Noir (impression)</div>
+        </div>
       </div>
-    </div>
-    <div class="linea">
-      <label>Graisse <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
-      <label class="spunta">Trait <input type="checkbox" role="switch" data-opt="filled"> Plein</label>
-    <span class="sfondo-prova" role="group" aria-label="Fond de test"><span class="sfondo-etichetta">Fond de test</span>
-        <button type="button" class="campione" data-sfondo="transparent" style="--campione:transparent" aria-label="Transparent" title="Transparent"></button>
-        <button type="button" class="campione" data-sfondo="#ffffff" style="--campione:#ffffff" aria-label="Blanc" title="Blanc"></button>
-        <button type="button" class="campione" data-sfondo="#000000" style="--campione:#000000" aria-label="Noir" title="Noir"></button>
-        <input type="color" data-sfondo-libero value="#f2c14e" aria-label="Autre couleur" title="Autre couleur">
-    </span>
-    </div>
-    <div class="linea linea-licenza">
-      <label title="Taille du texte de licence sous les badges">Licence <input type="range" data-opt="creditSize" min="0.5" max="2" step="0.1" value="1" aria-label="Taille du texte de licence sous les badges"> <output data-out="creditSize">1</output></label>
+      <div class="linea">
+        <label>Graisse <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
+        <label class="spunta">Trait <input type="checkbox" role="switch" data-opt="filled"> Plein</label>
+      <span class="sfondo-prova" role="group" aria-label="Fond de test"><span class="sfondo-etichetta">Fond de test</span>
+          <button type="button" class="campione" data-sfondo="transparent" style="--campione:transparent" aria-label="Transparent" title="Transparent"></button>
+          <button type="button" class="campione" data-sfondo="#ffffff" style="--campione:#ffffff" aria-label="Blanc" title="Blanc"></button>
+          <button type="button" class="campione" data-sfondo="#000000" style="--campione:#000000" aria-label="Noir" title="Noir"></button>
+          <input type="color" data-sfondo-libero value="#f2c14e" aria-label="Autre couleur" title="Autre couleur">
+      </span>
+      </div>
+      <div class="linea linea-licenza">
+        <label title="Taille du texte de licence sous les badges">Licence <input type="range" data-opt="creditSize" min="0.5" max="2" step="0.1" value="1" aria-label="Taille du texte de licence sous les badges"> <output data-out="creditSize">1</output></label>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="fascia-condividi" aria-label="Configuration">
   <div class="riga">
-    <p>Partagez la page avec cette configuration, ou revenez à celle de départ.</p>
-    <p class="azioni"><button type="button" class="bottone" data-condividi>Partager cette configuration</button> <button type="button" class="bottone" data-reset>Réinitialiser</button></p>
+    <div class="testa-fascia">
+      <p class="titolo-fascia">Partager</p>
+      <button type="button" class="apri-chiudi" aria-expanded="true" aria-controls="corpo-condividi" aria-label="Afficher ou masquer: Partager" title="Afficher ou masquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+    </div>
+    <div id="corpo-condividi" class="corpo-fascia">
+      <p>Partagez la page avec cette configuration, ou revenez à celle de départ.</p>
+      <p class="azioni"><button type="button" class="bottone" data-condividi>Partager cette configuration</button> <button type="button" class="bottone" data-reset>Réinitialiser</button></p>
+    </div>
   </div>
 </section>
 
@@ -354,7 +369,7 @@
     <p class="badge-progetto"><span data-gradient="4" data-variant="label" data-color="currentColor" data-link="#"></span></p>
     <p>Le site, la bibliothèque JavaScript, les outils de construction, les tampons et le dépôt GitHub ont été réalisés avec Claude Code. L'auteur a fixé les objectifs et les choix graphiques, puis a vérifié et testé le résultat.</p>
   </div>
-  <p class="fatto-con">Réalisé avec Claude, le modèle d'IA d'Anthropic, utilisé via Claude Code (septembre 2026). Anthropic ne participe pas au projet et ne l'a pas approuvé : l'auteur répond des contenus.</p>
+  <p class="fatto-con">Réalisé avec Claude, le modèle d'IA d'Anthropic, utilisé via Claude Code (septembre 2026).</p>
 </section>
 
 </main>

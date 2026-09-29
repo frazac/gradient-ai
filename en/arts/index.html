@@ -80,8 +80,11 @@
 
 <section id="profili" class="fascia-profili" aria-label="Profiles">
   <div class="riga">
-    <p class="occhiello-profilo">Teaching profile · art, music and design schools</p>
-    <nav class="profili" aria-label="Profiles">
+    <div class="testa-fascia">
+      <p class="occhiello-profilo titolo-fascia">Teaching profile · art, music and design schools</p>
+      <button type="button" class="apri-chiudi" aria-expanded="true" aria-controls="corpo-profili" aria-label="Show or hide: Teaching profile · art, music and design schools" title="Show or hide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+    </div>
+    <nav id="corpo-profili" class="profili corpo-fascia" aria-label="Profiles">
   <a href="../../en/" title="Work">General</a>
   <a href="../../en/stem/" title="Science, technology, engineering, maths">STEM teaching</a>
   <a href="../../en/humanities/" title="Literature, philosophy, history, languages, social sciences">Humanities teaching</a>
@@ -91,42 +94,54 @@
 </section>
 
 <section id="personalizza" class="pannello" aria-label="Change the badges">
-  <div class="riga comandi">
-    <div class="linea">
-      <div class="gruppo" role="radiogroup" aria-label="Shape" data-gruppo="variant">
-        <div class="scelta" role="radio" data-valore="stamp">Stamp</div>
-        <div class="scelta" role="radio" data-valore="label">Label</div>
-        <div class="scelta" role="radio" data-valore="icon">Pictogram</div>
+  <div class="riga">
+    <div class="testa-fascia">
+      <h2 class="titolo-fascia">Customize</h2>
+      <button type="button" class="apri-chiudi" aria-expanded="true" aria-controls="corpo-personalizza" aria-label="Show or hide: Customize" title="Show or hide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+    </div>
+    <div id="corpo-personalizza" class="comandi corpo-fascia">
+      <div class="linea">
+        <div class="gruppo" role="radiogroup" aria-label="Shape" data-gruppo="variant">
+          <div class="scelta" role="radio" data-valore="stamp">Stamp</div>
+          <div class="scelta" role="radio" data-valore="label">Label</div>
+          <div class="scelta" role="radio" data-valore="icon">Pictogram</div>
+        </div>
       </div>
-    </div>
-    <div class="linea">
-      <div class="gruppo" role="radiogroup" aria-label="Colour" data-gruppo="schema">
-        <div class="scelta" role="radio" data-valore="gradiente">Gradient</div>
-        <div class="scelta" role="radio" data-valore="estremi">From <input type="color" data-opt="from" value="#c8473d" aria-label="First colour (level 1)"> to <input type="color" data-opt="to" value="#52589a" aria-label="Last colour (level 5)"></div>
-        <div class="scelta" role="radio" data-valore="unico">One colour <input type="color" data-opt="unico" value="#2f5d8a" aria-label="One colour"></div>
-        <div class="scelta" role="radio" data-valore="nero">Black (for print)</div>
+      <div class="linea">
+        <div class="gruppo" role="radiogroup" aria-label="Colour" data-gruppo="schema">
+          <div class="scelta" role="radio" data-valore="gradiente">Gradient</div>
+          <div class="scelta" role="radio" data-valore="estremi">From <input type="color" data-opt="from" value="#c8473d" aria-label="First colour (level 1)"> to <input type="color" data-opt="to" value="#52589a" aria-label="Last colour (level 5)"></div>
+          <div class="scelta" role="radio" data-valore="unico">One colour <input type="color" data-opt="unico" value="#2f5d8a" aria-label="One colour"></div>
+          <div class="scelta" role="radio" data-valore="nero">Black (for print)</div>
+        </div>
       </div>
-    </div>
-    <div class="linea">
-      <label>Weight <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
-      <label class="spunta">Outline <input type="checkbox" role="switch" data-opt="filled"> Filled</label>
-    <span class="sfondo-prova" role="group" aria-label="Test background"><span class="sfondo-etichetta">Test background</span>
-        <button type="button" class="campione" data-sfondo="transparent" style="--campione:transparent" aria-label="See-through" title="See-through"></button>
-        <button type="button" class="campione" data-sfondo="#ffffff" style="--campione:#ffffff" aria-label="White" title="White"></button>
-        <button type="button" class="campione" data-sfondo="#000000" style="--campione:#000000" aria-label="Black" title="Black"></button>
-        <input type="color" data-sfondo-libero value="#f2c14e" aria-label="Other colour" title="Other colour">
-    </span>
-    </div>
-    <div class="linea linea-licenza">
-      <label title="Size of the licence text under the badges">Licence <input type="range" data-opt="creditSize" min="0.5" max="2" step="0.1" value="1" aria-label="Size of the licence text under the badges"> <output data-out="creditSize">1</output></label>
+      <div class="linea">
+        <label>Weight <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
+        <label class="spunta">Outline <input type="checkbox" role="switch" data-opt="filled"> Filled</label>
+      <span class="sfondo-prova" role="group" aria-label="Test background"><span class="sfondo-etichetta">Test background</span>
+          <button type="button" class="campione" data-sfondo="transparent" style="--campione:transparent" aria-label="See-through" title="See-through"></button>
+          <button type="button" class="campione" data-sfondo="#ffffff" style="--campione:#ffffff" aria-label="White" title="White"></button>
+          <button type="button" class="campione" data-sfondo="#000000" style="--campione:#000000" aria-label="Black" title="Black"></button>
+          <input type="color" data-sfondo-libero value="#f2c14e" aria-label="Other colour" title="Other colour">
+      </span>
+      </div>
+      <div class="linea linea-licenza">
+        <label title="Size of the licence text under the badges">Licence <input type="range" data-opt="creditSize" min="0.5" max="2" step="0.1" value="1" aria-label="Size of the licence text under the badges"> <output data-out="creditSize">1</output></label>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="fascia-condividi" aria-label="Settings">
   <div class="riga">
-    <p>Share this page with these settings, or go back to the start.</p>
-    <p class="azioni"><button type="button" class="bottone" data-condividi>Share these settings</button> <button type="button" class="bottone" data-reset>Reset</button></p>
+    <div class="testa-fascia">
+      <p class="titolo-fascia">Share</p>
+      <button type="button" class="apri-chiudi" aria-expanded="true" aria-controls="corpo-condividi" aria-label="Show or hide: Share" title="Show or hide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+    </div>
+    <div id="corpo-condividi" class="corpo-fascia">
+      <p>Share this page with these settings, or go back to the start.</p>
+      <p class="azioni"><button type="button" class="bottone" data-condividi>Share these settings</button> <button type="button" class="bottone" data-reset>Reset</button></p>
+    </div>
   </div>
 </section>
 
@@ -362,7 +377,7 @@
     <p class="badge-progetto"><span data-gradient="4" data-variant="label" data-color="currentColor" data-link="#"></span></p>
     <p>The website, the JavaScript library, the build tools, the badges and the GitHub repository were made with Claude Code. The author set the goals and the design choices, and checked and tested the result.</p>
   </div>
-  <p class="fatto-con">Made with Claude, the AI model by Anthropic, through Claude Code (September 2026). Anthropic is not part of this project and has not approved it. The author is responsible for the content.</p>
+  <p class="fatto-con">Made with Claude, the AI model by Anthropic, through Claude Code (September 2026).</p>
 </section>
 
 </main>

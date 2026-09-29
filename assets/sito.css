@@ -47,6 +47,8 @@ body {
 a { color: var(--accento); text-underline-offset: 0.18em; }
 h1, h2, h3, h4 { line-height: 1.15; font-weight: 700; margin: 0 0 0.5em; }
 h2 { font-size: 2rem; letter-spacing: -0.01em; }
+/* filetto sopra ogni titolo h2: nero sul tema chiaro, bianco sullo scuro (tranne i titoli delle fasce, che hanno già il loro) */
+main h2:not(.titolo-fascia) { border-top: 1px solid var(--inchiostro); padding-top: 0.45em; }
 h3 { font-size: 1.3rem; margin-top: 1.8em; }
 h4 { font-size: 1.05rem; margin-top: 1.4em; }
 .etichetta { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--tenue); margin-top: 1.8em; }
@@ -137,13 +139,13 @@ body.scorsa .briciole { display: flex; }
 .occhiello-profilo { margin: 0 0 0.6rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--tenue); }
 /* profili: testo del profilo sopra i pulsanti, fascia con filetti al vivo come il pannello */
 .fascia-profili { margin-top: 2rem; border-top: 1px solid var(--filo); padding: calc(0.7rem + 10px) 0; }
-.fascia-profili .occhiello-profilo { margin-bottom: 0.7rem; }
+.fascia-profili .occhiello-profilo { margin: 0; }
 .profili { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .fascia-profili + .pannello { margin-top: 0; }   /* un solo filetto fra le due fasce */
 /* striscia sotto il pannello: condividere la configurazione o tornare a quella di partenza */
 .pannello:has(+ .fascia-condividi) { margin-bottom: 0; }
 .fascia-condividi { border-bottom: 1px solid var(--filo); padding: 0.7rem 0; margin-bottom: 2rem; }
-.fascia-condividi .riga { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1.2rem; }
+.fascia-condividi .corpo-fascia { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1.2rem; }
 .fascia-condividi p { margin: 0; font-size: 0.85rem; color: var(--tenue); }
 .fascia-condividi .azioni { margin: 0; }
 /* «Introduzione»: titolo di sezione per il menu, sotto il sottotitolo */
@@ -395,3 +397,17 @@ main ul > li::before {
 
 /* sotto «Come questo progetto ha usato l'IA»: con quale strumento, in testo semplice (niente logo, nessun legame con Anthropic) */
 .fatto-con { margin-top: 1.2rem; font-size: 0.85rem; color: var(--tenue); }
+
+/* fasce richiudibili (profilo, personalizza, condividi): titolo a sinistra, tondino +/× a destra; all'inizio aperte */
+.testa-fascia { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.testa-fascia + .corpo-fascia { margin-top: 0.8rem; }
+.corpo-fascia[hidden] { display: none !important; }
+.titolo-fascia { margin: 0; font-size: 0.8rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; color: var(--tenue); }
+.apri-chiudi {
+  display: grid; place-items: center; width: 32px; height: 32px; padding: 0; flex-shrink: 0;
+  color: var(--tenue); background: none; border: 1px solid var(--filo); border-radius: 50%; cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.apri-chiudi:hover { color: var(--inchiostro); border-color: var(--inchiostro); }
+.apri-chiudi svg { width: 18px; height: 18px; transition: transform 0.2s ease; }
+.apri-chiudi[aria-expanded="true"] svg { transform: rotate(45deg); }   /* aperta: il + diventa × */

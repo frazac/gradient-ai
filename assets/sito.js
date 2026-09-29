@@ -319,8 +319,22 @@
   if (bReset) bReset.addEventListener('click', function () {
     Object.keys(PARTENZA).forEach(function (k) { stato[k] = PARTENZA[k]; });
     allinea(); allineaGruppi(); sfondo(stato.sfondo); disegna();
+    try { localStorage.setItem('gradiente-ia', JSON.stringify(stato)); } catch (e) { /* ignora */ }
+    // il reset riporta anche al profilo generale (il primo della fascia dei profili)
+    var gen = document.querySelector('.profili a');
+    if (gen && gen.getAttribute('aria-current') !== 'page') { location.href = gen.href.replace(/#.*$/, '') + '#personalizza'; return; }
     if (location.search) history.replaceState(null, '', location.pathname + location.hash);
     conferma(bReset, T.ok);
+  });
+
+  // fasce richiudibili: il tondino apre e chiude il corpo (all'inizio sono tutte aperte)
+  document.querySelectorAll('.apri-chiudi').forEach(function (b) {
+    var corpo = document.getElementById(b.getAttribute('aria-controls'));
+    b.addEventListener('click', function () {
+      var aperta = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', aperta ? 'false' : 'true');
+      corpo.hidden = aperta;
+    });
   });
 
   G.createBadges({ link: false });   // badge della sezione sull'uso dell'IA (hanno il proprio data-link)
