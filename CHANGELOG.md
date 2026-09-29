@@ -24,6 +24,7 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 - Nelle schede, dopo «Indicazione per chi realizza» (o «Consegna per chi studia»): «(Profilo: Generale, modifica)», con il nome del profilo in uso e un link che riporta alla fascia dei profili (`#profili`).
 - Avviso «This page is in Simple English»: senza la barra a sinistra, filetto uguale su tutti i lati (2 px, colore d'accento) e angoli tutti stondati.
 - «Come questo progetto ha usato l'IA»: sotto, una riga «Fatto con Claude, il modello di IA di Anthropic, usato attraverso Claude Code», in testo semplice e senza logo. Claude non compare fra i contributori del repository.
+- Tolti i post-it di revisione (caricati solo in locale): le revisioni passano dalla chat.
 - Fasce richiudibili come accordion (profilo, «Personalizza», «Condividi»): titolo a sinistra e tondino con + che diventa × quando la fascia è aperta; all'avvio sono tutte aperte. «Reset» riporta anche al profilo generale.
 - Filetto di 1 px (nero sul chiaro, bianco sullo scuro) sopra ogni titolo h2.
 - Pannello su quattro righe: forma (tre pulsanti: timbro, etichetta, pittogramma); colore (gradiente · da ◯ a ◯ · unico ◯ · nero, con i selettori dentro i pulsanti; il colore unico ha un suo selettore, chiave `unico` nell'indirizzo); peso, traccia/pieno e sfondo di prova; licenza, con il cursore largo quanto la colonna.
