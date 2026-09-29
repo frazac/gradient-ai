@@ -160,28 +160,29 @@ body.scorsa .briciole { display: flex; }
   margin-top: 1rem; padding: calc(0.7rem + 10px) 0 !important;
 }
 /* pannello: stile masterismi.dev — tutto a pillola */
-.comandi { display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: center; font-size: 0.85rem; }
+.comandi { display: flex; flex-direction: column; align-items: stretch; gap: 0.8rem; font-size: 0.85rem; }
+/* quattro righe: forma · colore · peso, traccia/pieno, sfondo · licenza */
+.linea { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; align-items: center; }
+/* gruppi a scelta singola, a pillola */
+.gruppo { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; border: 1px solid var(--filo); border-radius: 999px; }
+.scelta {
+  display: inline-flex; align-items: center; gap: 0.45rem; min-height: 32px;
+  padding: 0.3rem 0.95rem; border-radius: 999px; cursor: pointer; color: var(--tenue); user-select: none;
+}
+.scelta:hover { color: var(--inchiostro); }
+.scelta[aria-checked="true"] { background: var(--inchiostro); color: var(--carta); }
+.scelta:focus-visible { outline: 2px solid var(--accento); outline-offset: 2px; }
+.scelta input[type=color] {
+  appearance: none; -webkit-appearance: none; width: 22px; height: 22px; padding: 0;
+  border: 1px solid var(--filo); border-radius: 50%; background: none; cursor: pointer; overflow: hidden;
+}
+.scelta input[type=color]::-webkit-color-swatch-wrapper { padding: 2px; }
+.scelta input[type=color]::-webkit-color-swatch { border: none; border-radius: 50%; }
+.scelta input[type=color]::-moz-color-swatch { border: none; border-radius: 50%; }
+/* licenza: cursore largo quanto la colonna */
+.linea-licenza label { flex: 1; }
+.linea-licenza input[type=range] { flex: 1; width: auto; }
 .comandi label { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--tenue); }
-.comandi select {
-  appearance: none; -webkit-appearance: none;
-  font: inherit; color: var(--inchiostro); background-color: var(--carta);
-  border: 1px solid var(--filo); border-radius: 999px;
-  padding: 0.5rem 2.1rem 0.5rem 1rem; cursor: pointer;
-  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
-  background-position: calc(100% - 17px) 52%, calc(100% - 12px) 52%;
-  background-size: 5px 5px; background-repeat: no-repeat;
-}
-.comandi select:hover, .comandi select:focus-visible { border-color: var(--inchiostro); }
-.colori { display: inline-flex; gap: 0.4rem; }
-.colori[hidden] { display: none; }
-.colori input[type=color] {
-  appearance: none; -webkit-appearance: none;
-  width: 30px; height: 30px; padding: 0; border: 1px solid var(--filo); border-radius: 50%;
-  background: none; cursor: pointer; overflow: hidden;
-}
-.colori input[type=color]::-webkit-color-swatch-wrapper { padding: 3px; }
-.colori input[type=color]::-webkit-color-swatch { border: none; border-radius: 50%; }
-.colori input[type=color]::-moz-color-swatch { border: none; border-radius: 50%; }
 .comandi input[type=range] { appearance: none; -webkit-appearance: none; width: 110px; height: 4px; border-radius: 999px; background: var(--filo); cursor: pointer; }
 .comandi input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--inchiostro); border: none; }
 .comandi input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--inchiostro); border: none; }

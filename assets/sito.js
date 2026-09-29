@@ -18,13 +18,13 @@
   var LEVELS = G.i18n[LG];
   var PNG = { stamp: 512, icon: 256, label: 192 };
   var PAGINA = BASE + (document.body.getAttribute('data-percorso') || '');   // pagina del profilo corrente
-  var stato = { variant: 'stamp', schema: 'gradiente', from: '#c8473d', to: '#52589a', weight: 2, filled: false, sfondo: 'transparent', creditSize: 1 };
+  var stato = { variant: 'stamp', schema: 'gradiente', from: '#c8473d', to: '#52589a', weight: 2, filled: false, sfondo: 'transparent', creditSize: 1, unico: '#2f5d8a' };
 
   var stato0 = JSON.parse(JSON.stringify(stato));   // configurazione di partenza (pulsante Reset)
   try { Object.assign(stato, JSON.parse(localStorage.getItem('gradiente-ia') || '{}')); } catch (e) { /* storage non disponibile */ }
   // una configurazione condivisa (?forma=…&colore=…) ha la precedenza su quella salvata nel browser
   (function () {
-    var P = { forma: 'variant', colore: 'schema', da: 'from', a: 'to', peso: 'weight', pieno: 'filled', sfondo: 'sfondo', licenza: 'creditSize' };
+    var P = { forma: 'variant', colore: 'schema', da: 'from', a: 'to', peso: 'weight', pieno: 'filled', sfondo: 'sfondo', licenza: 'creditSize', unico: 'unico' };
     location.search.slice(1).split('&').forEach(function (kv) {
       var p = kv.split('='), k = P[p[0]];
       if (!k || p[1] == null) return;
@@ -38,7 +38,7 @@
     var o = { variant: stato.variant, weight: stato.weight, filled: stato.filled, lang: LG };
     if (Number(stato.creditSize) !== 1) o.creditSize = Number(stato.creditSize);
     if (stato.schema === 'estremi') { o.from = stato.from; o.to = stato.to; }
-    if (stato.schema === 'unico') o.color = stato.from;
+    if (stato.schema === 'unico') o.color = stato.unico;
     if (stato.schema === 'nero') o.color = '#111111';
     return o;
   }
@@ -62,8 +62,6 @@
     document.querySelectorAll('.livello').forEach(function (el) {
       el.style.setProperty('--c', c[Number(el.getAttribute('data-livello')) - 1]);
     });
-    document.querySelector('.colori').hidden = !(stato.schema === 'estremi' || stato.schema === 'unico');
-    document.querySelector('[data-opt="to"]').hidden = stato.schema !== 'estremi';
     document.querySelector('[data-out="weight"]').textContent = stato.weight;
     document.querySelector('[data-out="creditSize"]').textContent = Number(stato.creditSize).toFixed(1);
 
@@ -163,6 +161,33 @@
   });
 
   // ---- pannello ----
+
+  // forma e colore: gruppi di pulsanti a scelta singola (i selettori di colore stanno dentro «Da… a…» e «Unico»)
+  function allineaGruppi() {
+    document.querySelectorAll('[data-gruppo]').forEach(function (g) {
+      var k = g.getAttribute('data-gruppo');
+      g.querySelectorAll('.scelta').forEach(function (b) {
+        var si = b.getAttribute('data-valore') === String(stato[k]);
+        b.setAttribute('aria-checked', si ? 'true' : 'false');
+        b.tabIndex = si ? 0 : -1;
+      });
+    });
+  }
+  document.querySelectorAll('[data-gruppo]').forEach(function (g) {
+    var k = g.getAttribute('data-gruppo'), scelte = Array.prototype.slice.call(g.querySelectorAll('.scelta'));
+    function scegli(b) { stato[k] = b.getAttribute('data-valore'); allineaGruppi(); disegna(); }
+    scelte.forEach(function (b, i) {
+      // un clic sul pulsante o sul suo selettore di colore sceglie l'opzione
+      b.addEventListener('click', function () { if (b.getAttribute('aria-checked') !== 'true') scegli(b); });
+      b.addEventListener('keydown', function (e) {
+        if (e.target !== b) return;
+        if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); scegli(b); }
+        var d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
+        if (d) { e.preventDefault(); var n = scelte[(i + d + scelte.length) % scelte.length]; scegli(n); n.focus(); }
+      });
+    });
+  });
+  allineaGruppi();
 
   document.querySelectorAll('[data-opt]').forEach(function (el) {
     var k = el.getAttribute('data-opt');
@@ -270,7 +295,7 @@
   sfondo(stato.sfondo || 'transparent');
 
   // condividere la configurazione: le scelte vanno nell'indirizzo (?forma=…), chi lo apre vede gli stessi badge
-  var CHIAVI = { variant: 'forma', schema: 'colore', from: 'da', to: 'a', weight: 'peso', filled: 'pieno', sfondo: 'sfondo', creditSize: 'licenza' };
+  var CHIAVI = { variant: 'forma', schema: 'colore', from: 'da', to: 'a', weight: 'peso', filled: 'pieno', sfondo: 'sfondo', creditSize: 'licenza', unico: 'unico' };
   var PARTENZA = stato0;
   function indirizzo() {
     var q = [];
@@ -293,7 +318,7 @@
   }
   if (bReset) bReset.addEventListener('click', function () {
     Object.keys(PARTENZA).forEach(function (k) { stato[k] = PARTENZA[k]; });
-    allinea(); sfondo(stato.sfondo); disegna();
+    allinea(); allineaGruppi(); sfondo(stato.sfondo); disegna();
     if (location.search) history.replaceState(null, '', location.pathname + location.hash);
     conferma(bReset, T.ok);
   });

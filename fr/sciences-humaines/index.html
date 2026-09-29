@@ -88,30 +88,34 @@
 
 <section id="personalizza" class="pannello" aria-label="Personnaliser les tampons">
   <div class="riga comandi">
-    <select data-opt="variant" aria-label="Forme">
-      <option value="stamp">Forme : tampon</option>
-      <option value="label">Forme : étiquette</option>
-      <option value="icon">Forme : pictogramme</option>
-    </select>
-    <select data-opt="schema" aria-label="Couleur">
-      <option value="gradiente">Couleur : dégradé</option>
-      <option value="estremi">Couleur : de… à…</option>
-      <option value="unico">Couleur : unique</option>
-      <option value="nero">Couleur : noir (impression)</option>
-    </select>
-    <span class="colori">
-      <input type="color" data-opt="from" value="#c8473d" aria-label="Couleur de départ (niveau 1)">
-      <input type="color" data-opt="to" value="#52589a" aria-label="Couleur d'arrivée (niveau 5)">
-    </span>
-    <label>Graisse <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
-    <label title="Taille du texte de licence sous les badges">Licence <input type="range" data-opt="creditSize" min="0.5" max="2" step="0.1" value="1" aria-label="Taille du texte de licence sous les badges"> <output data-out="creditSize">1</output></label>
-    <label class="spunta">Trait <input type="checkbox" role="switch" data-opt="filled"> Plein</label>
+    <div class="linea">
+      <div class="gruppo" role="radiogroup" aria-label="Forme" data-gruppo="variant">
+        <div class="scelta" role="radio" data-valore="stamp">Tampon</div>
+        <div class="scelta" role="radio" data-valore="label">Étiquette</div>
+        <div class="scelta" role="radio" data-valore="icon">Pictogramme</div>
+      </div>
+    </div>
+    <div class="linea">
+      <div class="gruppo" role="radiogroup" aria-label="Couleur" data-gruppo="schema">
+        <div class="scelta" role="radio" data-valore="gradiente">Dégradé</div>
+        <div class="scelta" role="radio" data-valore="estremi">De <input type="color" data-opt="from" value="#c8473d" aria-label="Couleur de départ (niveau 1)"> à <input type="color" data-opt="to" value="#52589a" aria-label="Couleur d'arrivée (niveau 5)"></div>
+        <div class="scelta" role="radio" data-valore="unico">Unique <input type="color" data-opt="unico" value="#2f5d8a" aria-label="Couleur unique"></div>
+        <div class="scelta" role="radio" data-valore="nero">Noir (impression)</div>
+      </div>
+    </div>
+    <div class="linea">
+      <label>Graisse <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
+      <label class="spunta">Trait <input type="checkbox" role="switch" data-opt="filled"> Plein</label>
     <span class="sfondo-prova" role="group" aria-label="Fond de test"><span class="sfondo-etichetta">Fond de test</span>
         <button type="button" class="campione" data-sfondo="transparent" style="--campione:transparent" aria-label="Transparent" title="Transparent"></button>
         <button type="button" class="campione" data-sfondo="#ffffff" style="--campione:#ffffff" aria-label="Blanc" title="Blanc"></button>
         <button type="button" class="campione" data-sfondo="#000000" style="--campione:#000000" aria-label="Noir" title="Noir"></button>
         <input type="color" data-sfondo-libero value="#f2c14e" aria-label="Autre couleur" title="Autre couleur">
     </span>
+    </div>
+    <div class="linea linea-licenza">
+      <label title="Taille du texte de licence sous les badges">Licence <input type="range" data-opt="creditSize" min="0.5" max="2" step="0.1" value="1" aria-label="Taille du texte de licence sous les badges"> <output data-out="creditSize">1</output></label>
+    </div>
   </div>
 </section>
 
