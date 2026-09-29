@@ -4,6 +4,7 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 
 ## Non ancora rilasciato
 
+- Fonti: aggiunto Furze (2024), *AIAS: Why we’ve driven through the traffic lights*, sul perché la AIAS ha lasciato i colori del semaforo.
 - **Mix Gradient IA** come colore predefinito dei badge: due toni per livello in un gradiente lineare a 135° (`dati/mix-gradient.json`, esportato dallo strumento di regolazione). Opzione `gradient: false` per la tinta unita; `GradientAI.mix` espone i toni.
 - Mix ritoccato: livello 1 da carminio magenta a scarlatto, livello 2 da arancio ocra ad ambra (ora sopra 3:1 sul fondo chiaro), livello 5 da indaco a viola, con due toni ben distinti.
 - Fasce richiudibili: si aprono e chiudono anche cliccando sul titolo, non solo sul tondino.
