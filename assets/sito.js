@@ -18,24 +18,25 @@
   var LEVELS = G.i18n[LG];
   var PNG = { stamp: 512, icon: 256, label: 192 };
   var PAGINA = BASE + (document.body.getAttribute('data-percorso') || '');   // pagina del profilo corrente
-  var stato = { variant: 'stamp', schema: 'gradiente', from: '#c8473d', to: '#52589a', weight: 2, filled: false, sfondo: 'transparent' };
+  var stato = { variant: 'stamp', schema: 'gradiente', from: '#c8473d', to: '#52589a', weight: 2, filled: false, sfondo: 'transparent', creditSize: 1 };
 
   var stato0 = JSON.parse(JSON.stringify(stato));   // configurazione di partenza (pulsante Reset)
   try { Object.assign(stato, JSON.parse(localStorage.getItem('gradiente-ia') || '{}')); } catch (e) { /* storage non disponibile */ }
   // una configurazione condivisa (?forma=…&colore=…) ha la precedenza su quella salvata nel browser
   (function () {
-    var P = { forma: 'variant', colore: 'schema', da: 'from', a: 'to', peso: 'weight', pieno: 'filled', sfondo: 'sfondo' };
+    var P = { forma: 'variant', colore: 'schema', da: 'from', a: 'to', peso: 'weight', pieno: 'filled', sfondo: 'sfondo', licenza: 'creditSize' };
     location.search.slice(1).split('&').forEach(function (kv) {
       var p = kv.split('='), k = P[p[0]];
       if (!k || p[1] == null) return;
       var v = decodeURIComponent(p[1]);
-      stato[k] = k === 'weight' ? Number(v) || 2 : k === 'filled' ? v === '1' || v === 'true' : v;
+      stato[k] = k === 'weight' ? Number(v) || 2 : k === 'creditSize' ? Number(v) || 1 : k === 'filled' ? v === '1' || v === 'true' : v;
     });
   }());
   delete stato.contesto;   // opzione della 0.1.0, sostituita dalle pagine per profilo
 
   function opzioni() {
     var o = { variant: stato.variant, weight: stato.weight, filled: stato.filled, lang: LG };
+    if (Number(stato.creditSize) !== 1) o.creditSize = Number(stato.creditSize);
     if (stato.schema === 'estremi') { o.from = stato.from; o.to = stato.to; }
     if (stato.schema === 'unico') o.color = stato.from;
     if (stato.schema === 'nero') o.color = '#111111';
@@ -64,6 +65,9 @@
     document.querySelector('.colori').hidden = !(stato.schema === 'estremi' || stato.schema === 'unico');
     document.querySelector('[data-opt="to"]').hidden = stato.schema !== 'estremi';
     document.querySelector('[data-out="weight"]').textContent = stato.weight;
+    document.querySelector('[data-out="creditSize"]').textContent = Number(stato.creditSize).toFixed(1);
+    // la licenza c'è solo sotto timbro e pittogramma: sull'etichetta il comando non serve
+    document.querySelector('.solo-credito').hidden = stato.variant === 'label';
     codici(o);
     try { localStorage.setItem('gradiente-ia', JSON.stringify(stato)); } catch (e) { /* ignora */ }
   }
@@ -84,6 +88,7 @@
     if (o.color) cfg.push("color: '" + o.color + "'");
     if (o.from) cfg.push("from: '" + o.from + "', to: '" + o.to + "'");
     if (Number(o.weight) !== 2) cfg.push('weight: ' + o.weight);
+    if (o.creditSize) cfg.push('creditSize: ' + o.creditSize);
     if (o.filled) cfg.push('filled: true');
     if (PAGINA !== BASE + T.dir) cfg.push("link: '" + PAGINA + "'");
     set('testo', testo(3));
@@ -266,7 +271,7 @@
   sfondo(stato.sfondo || 'transparent');
 
   // condividere la configurazione: le scelte vanno nell'indirizzo (?forma=…), chi lo apre vede gli stessi badge
-  var CHIAVI = { variant: 'forma', schema: 'colore', from: 'da', to: 'a', weight: 'peso', filled: 'pieno', sfondo: 'sfondo' };
+  var CHIAVI = { variant: 'forma', schema: 'colore', from: 'da', to: 'a', weight: 'peso', filled: 'pieno', sfondo: 'sfondo', creditSize: 'licenza' };
   var PARTENZA = stato0;
   function indirizzo() {
     var q = [];

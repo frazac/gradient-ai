@@ -43,7 +43,7 @@
 <header class="testata">
   <div class="riga">
     <div class="briciole" aria-label="Sommaire de la page">
-      <a class="titolo-pagina" href="../fr/">Gradient IA</a><span class="sep" aria-hidden="true">—</span>
+      <a class="titolo-pagina" href="../fr/">Gradient IA</a><span class="sep" aria-hidden="true"></span>
       <button type="button" class="briciole-btn" aria-expanded="false" aria-controls="indice-tendina"><span class="capitolo-corrente"></span><svg class="freccia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
       <ul class="indice-tendina" id="indice-tendina" hidden></ul>
     </div>
@@ -104,6 +104,7 @@
       <input type="color" data-opt="to" value="#52589a" aria-label="Couleur d'arrivée (niveau 5)">
     </span>
     <label>Graisse <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
+    <label class="solo-credito" title="Taille du texte de licence sous le tampon et le pictogramme">Licence <input type="range" data-opt="creditSize" min="0.5" max="2" step="0.1" value="1" aria-label="Taille du texte de licence sous le tampon et le pictogramme"> <output data-out="creditSize">1</output></label>
     <label class="spunta">Trait <input type="checkbox" role="switch" data-opt="filled"> Plein</label>
     <span class="sfondo-prova" role="group" aria-label="Fond de test"><span class="sfondo-etichetta">Fond de test</span>
         <button type="button" class="campione" data-sfondo="transparent" style="--campione:transparent" aria-label="Transparent" title="Transparent"></button>

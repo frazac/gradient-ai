@@ -21,7 +21,7 @@
     fr: { brand: 'Gradient IA', level: 'Niveau', bottom: 'GRADIENT IA', mark: 'Gradient IA' },
     en: { brand: 'Gradient AI', level: 'Level', bottom: 'GRADIENT AI', mark: 'Gradient AI' }
   };
-  // licenza e indirizzo, in corpo piccolo sull'arco esterno sotto timbro e pittogramma (opzione credit: false per toglierli)
+  // licenza e indirizzo sull'arco esterno sotto timbro e pittogramma (credit: false per toglierli, creditSize per la grandezza)
   var CREDIT = 'CC BY-NC-SA 4.0 getgradient.it';
   var ICONS = __ICONS__;
 
@@ -127,6 +127,21 @@
 
   // testo su arco sotto un cerchio di centro (cx, cy): baseline a raggio r, lettere verso il centro;
   // l'arco sale di `gradi` sopra l'orizzontale ai due lati, così c'è posto anche per i testi lunghi
+  // stima della lunghezza di un testo misto (maiuscole e minuscole) in Space Grotesk
+  function mixedWidth(txt, fs, ls) { return txt.length * (0.56 * fs + ls); }
+
+  // licenza sull'arco esterno di un disco di centro (c, c) e raggio R: corpo = base × creditSize;
+  // restituisce il margine da aggiungere al disegno e il codice del testo
+  function credit(id, txt, c, R, base, o, ink) {
+    var k = Math.min(2, Math.max(0.5, Number(o.creditSize) || 1));
+    var fs = +(base * k).toFixed(2), ls = +(fs * 0.06).toFixed(2);
+    var r = +(R + fs * 0.25 + fs * 0.72).toFixed(2);
+    // arco abbastanza lungo per il testo: oltre il semicerchio sale ai lati (al massimo 80° sopra l'orizzontale)
+    var serve = mixedWidth(txt, fs, ls) * 1.08 / r;
+    var gradi = Math.min(80, Math.max(0, (serve - Math.PI) / 2 * 180 / Math.PI));
+    return { m: Math.ceil(r + fs * 0.3 - c), svg: arcText(id, txt, c, c, r, fs, ink, gradi) };
+  }
+
   function arcText(id, txt, cx, cy, r, fs, ink, gradi) {
     var a = (gradi || 0) * Math.PI / 180, dx = r * Math.cos(a), dy = r * Math.sin(a);
     var f = function (v) { return +v.toFixed(2); };
@@ -155,8 +170,8 @@
     var id = 'gai' + (++uid);
     var fw = fontWeight(w);
     var bottom = o.bottomText != null ? o.bottomText : TEXT[o.lang].bottom;
-    var credit = o.credit !== false && o.credit !== 'false';
-    var s = open(200, 200, o, l, credit ? 9 : 0);
+    var cr = o.credit !== false && o.credit !== 'false' ? credit(id + 'c', CREDIT, 100, 97, 10, o, c) : null;
+    var s = open(200, 200, o, l, cr ? cr.m : 0);
     s += '<defs><path id="' + id + 't" d="M 25 100 A 75 75 0 0 1 175 100"/>' +
       '<path id="' + id + 'b" d="M 14 100 A 86 86 0 0 0 186 100"/></defs>';
     if (filled) s += '<circle cx="100" cy="100" r="97" fill="' + c + '"/>';
@@ -172,7 +187,7 @@
     s += '<text x="100" y="152" font-size="36" font-weight="' + Math.max(fw, 700) + '">' + l.n + '<tspan font-size="22">/5</tspan></text>';
     s += '</g>';
     s += icon(l.icon, 74, 52, 52, ink, w);
-    if (credit) s += arcText(id + 'c', CREDIT, 100, 100, 104, 7, c, 0);
+    if (cr) s += cr.svg;
     return s + '</svg>';
   }
 
@@ -180,12 +195,12 @@
   function badgeIcon(l, o) {
     var c = colorFor(l, o), w = o.weight, filled = o.filled;
     var ink = filled ? (o.ink || '#ffffff') : c;
-    var credit = o.credit !== false && o.credit !== 'false';
-    var s = open(48, 48, o, l, credit ? 4 : 0);
+    var cr = o.credit !== false && o.credit !== 'false' ? credit('gai' + (++uid) + 'c', TEXT[o.lang].mark + ' ' + l.n + '/5 — ' + CREDIT, 24, 23, 3.4, o, c) : null;
+    var s = open(48, 48, o, l, cr ? cr.m : 0);
     s += filled ? '<circle cx="24" cy="24" r="23" fill="' + c + '"/>'
       : '<circle cx="24" cy="24" r="' + (23 - w / 2) + '" fill="' + (o.background || 'none') + '" stroke="' + c + '" stroke-width="' + w + '"/>';
     s += icon(l.icon, 11, 11, 26, ink, w);
-    if (credit) s += arcText('gai' + (++uid) + 'c', TEXT[o.lang].mark + ' ' + l.n + '/5 — ' + CREDIT, 24, 24, 26.2, 2.5, c, 22);
+    if (cr) s += cr.svg;
     return s + '</svg>';
   }
 
@@ -216,6 +231,7 @@
    * @param {object} [options] variant: stamp|icon|label · lang: it|fr|en · color · from/to · palette · weight (1–3)
    *                           · filled · ink · background · size (px) · class · bottomText
    *                           · credit (false: niente licenza sull'arco esterno di timbro e pittogramma)
+   *                           · creditSize (0.5–2, predefinito 1: grandezza del testo della licenza)
    */
   function toSvg(n, options) {
     var o = {};
@@ -231,7 +247,7 @@
 
   /**
    * Sostituisce ogni elemento [data-gradient] con l'SVG del livello, come lucide.createIcons().
-   * Attributi: data-gradient="3" data-lang (it|fr|en) data-variant data-color data-from data-to data-weight data-filled data-size data-link.
+   * Attributi: data-gradient="3" data-lang (it|fr|en) data-variant data-color data-from data-to data-weight data-filled data-size data-link data-credit data-credit-size.
    * link: di default il timbro porta alla scheda del livello su frazac.github.io/gradient-ai;
    *       false (o data-link="false") lo toglie, una stringa è l'indirizzo della pagina da usare (es. il profilo /stem/).
    * Le opzioni passate valgono per tutti; gli attributi del singolo elemento hanno la precedenza.
@@ -241,9 +257,10 @@
     Array.prototype.forEach.call(els, function (el) {
       var o = {};
       for (var k in options || {}) o[k] = options[k];
-      ['variant', 'color', 'from', 'to', 'weight', 'filled', 'size', 'ink', 'background', 'link', 'lang'].forEach(function (a) {
+      ['variant', 'color', 'from', 'to', 'weight', 'filled', 'size', 'ink', 'background', 'link', 'lang', 'credit', 'creditSize'].forEach(function (a) {
         // data-filled senza valore vale true (altrimenti la stringa vuota verrebbe scartata)
-        if (el.hasAttribute('data-' + a)) o[a] = el.getAttribute('data-' + a) || (a === 'filled' ? true : '');
+        var at = 'data-' + a.replace(/[A-Z]/g, function (m) { return '-' + m.toLowerCase(); });   // creditSize → data-credit-size
+        if (el.hasAttribute(at)) o[a] = el.getAttribute(at) || (a === 'filled' ? true : '');
       });
       if (el.className) o['class'] = el.className;
       // lingua: opzione, data-lang, oppure il lang della pagina (en → inglese, altrimenti italiano)

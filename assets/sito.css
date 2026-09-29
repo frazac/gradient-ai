@@ -70,6 +70,9 @@ body.scorsa .briciole { display: flex; }
 .titolo-pagina { font-weight: 700; white-space: nowrap; color: var(--inchiostro); text-decoration: none; }
 .titolo-pagina:hover { color: var(--accento); }
 .sep { color: var(--tenue); }
+/* separatore della briciola: un pallino pieno, ben visibile (al posto del trattino) */
+.sep { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: currentColor; font-size: 0; flex: none; }
+.solo-credito[hidden] { display: none; }
 .briciole-btn {
   display: flex; align-items: center; gap: 0.45rem; min-width: 0;
   font: inherit; font-size: 0.95rem; color: var(--inchiostro); background: none;
