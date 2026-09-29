@@ -267,7 +267,7 @@ body[data-variant="label"] .galleria img { width: auto; height: 3rem; max-width:
   --r-t: calc(var(--r-img) + var(--p-t) + 1px);             /* riquadro del timbro */
   --r-u: calc(var(--r-t) + var(--p-u) + 1px);               /* scheda */
   margin-top: 2rem; padding: var(--p-u); border: 1px solid var(--filo);
-  border-radius: var(--r-u) 18px 18px 18px;                 /* solo l'angolo col timbro segue il cerchio; gli altri restano morbidi */
+  border-radius: 18px;                                      /* la scheda torna con i quattro angoli uguali (--r-u resta per chi volesse l'angolo concentrico) */
 }
 body[data-variant="label"] .uscite { --r-img: 2rem; }      /* etichetta a pillola alta 4rem: metà altezza */
 .uscite-timbro { display: block; width: 13rem; max-width: 100%; background: var(--sfondo-prova); border: 1px solid var(--filo); border-radius: var(--r-t); padding: var(--p-t); transition: background 0.2s; }
