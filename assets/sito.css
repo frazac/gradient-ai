@@ -169,12 +169,33 @@ body[data-variant="label"] .galleria { grid-template-columns: repeat(auto-fill, 
 body[data-variant="label"] .galleria a { aspect-ratio: auto; }
 
 /* scheda livello */
-.livello { display: grid; grid-template-columns: 10rem 1fr; gap: 2rem; padding: 3rem 0; border-top: 1px solid var(--filo); }
-.livello-timbro { position: sticky; top: 6rem; align-self: start; background: var(--fondo-timbri); border-radius: var(--raggio); padding: 1rem; }
+.livello { display: grid; grid-template-columns: 13rem 1fr; gap: 2rem; padding: 3rem 0; border-top: 1px solid var(--filo); }
+.livello-timbro { align-self: start; display: flex; flex-direction: column; gap: 0.9rem; }
+.livello-timbro [data-slot] { display: block; background: var(--fondo-timbri); border-radius: 14px; padding: 1rem; }
 .livello-timbro img { display: block; width: 100%; height: auto; }
+/* sotto il badge: pulsanti del badge, poi il badge testuale (link + Markdown) */
+.azioni-badge { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; }
+.azioni-badge .bottone, .badge-testo .bottone { font-size: 0.8rem; padding: 0.45rem 0.9rem; }
+.badge-testo { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; padding-top: 0.9rem; border-top: 1px solid var(--filo); }
+.badge-nome { margin: 0; font-size: 0.85rem; font-weight: 500; line-height: 1.35; }
+.badge-md { display: block; width: 100%; font-size: 0.72rem; line-height: 1.45; color: var(--tenue); background: var(--carta-2); border-radius: 10px; padding: 0.5rem 0.65rem; overflow-wrap: anywhere; }
 .occhiello { margin: 0; color: var(--tenue); font-size: 0.95rem; }
 .livello h2 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 0.1em; }
-.livello blockquote, #attribuzione { margin: 0; padding: 0.8rem 1rem; border-left: 4px solid var(--c, var(--accento)); background: var(--carta-2); border-radius: 0 var(--raggio) var(--raggio) 0; }
+/* box di testo da copiare: bordi arrotondati, icona copia dentro (Lucide copy → check) */
+.box-copia { position: relative; border: 1px solid var(--filo); border-radius: 16px; background: var(--carta-2); padding: 1rem 3.2rem 1rem 1.2rem; }
+.box-copia p { margin: 0; }
+.copia-icona {
+  position: absolute; top: 0.6rem; right: 0.6rem; width: 34px; height: 34px;
+  display: grid; place-items: center; padding: 0; cursor: pointer;
+  color: var(--tenue); background: var(--carta); border: 1px solid var(--filo); border-radius: 50%;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.copia-icona:hover { color: var(--inchiostro); border-color: var(--inchiostro); }
+.copia-icona svg { width: 16px; height: 16px; grid-area: 1 / 1; transition: opacity 0.15s, transform 0.15s; }
+.copia-icona .i-fatto { opacity: 0; transform: scale(0.6); }
+.copia-icona.fatto { color: #fff; background: #2a8c82; border-color: #2a8c82; }
+.copia-icona.fatto .i-copia { opacity: 0; transform: scale(0.6); }
+.copia-icona.fatto .i-fatto { opacity: 1; transform: none; }
 .esempi { margin: 0; padding-left: 1.2rem; }
 .esempi li { margin-bottom: 0.3rem; }
 .esempi li::marker { color: var(--c, var(--accento)); }
@@ -197,7 +218,7 @@ body[data-variant="label"] .galleria a { aspect-ratio: auto; }
 .tecnica h3 { color: var(--inchiostro); font-size: 1.1rem; text-transform: none; letter-spacing: 0; }
 .cc { display: flex; gap: 1rem; align-items: flex-start; }
 .cc img { flex: none; margin-top: 0.3rem; }
-#attribuzione { margin: 0 0 0.8rem; }
+
 .bibliografia li { margin-bottom: 0.5rem; }
 /* gradiente del progetto: etichette nere piene; nel tema scuro invertite, altrimenti sparirebbero */
 .gradiente-progetto dt { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.8rem; margin-top: 1rem; font-weight: 600; }
@@ -271,7 +292,7 @@ body[data-variant="label"] .galleria a { aspect-ratio: auto; }
 @media (max-width: 52rem) {
   .galleria { grid-template-columns: repeat(3, 1fr); }
   .livello { grid-template-columns: 1fr; gap: 1rem; }
-  .livello-timbro { position: static; max-width: 14rem; }
+  .livello-timbro [data-slot] { max-width: 14rem; }
   .cc { flex-direction: column; }
 }
 @media (max-width: 30rem) {

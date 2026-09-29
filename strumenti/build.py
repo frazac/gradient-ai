@@ -66,12 +66,26 @@ ICONA_EARTH = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
 ICONA_X = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
            '<path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>')
 
+SITO = "https://frazac.github.io/gradient-ai/"
+ICONA_COPY = ('<svg class="i-copia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+              '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>')
+ICONA_CHECK = ('<svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+               '<path d="M20 6 9 17l-5-5"/></svg>')
+
+
+def box_copia(id_, html_testo, lg):
+    """Box arrotondato con il testo e, dentro, il pulsante-icona copia (Lucide copy → check)."""
+    c = BOTTONI[lg]["copia"]
+    return (f'<div class="box-copia"><p id="{id_}">{html_testo}</p>'
+            f'<button type="button" class="copia-icona" data-copia="#{id_}" aria-label="{c}" title="{c}">{ICONA_COPY}{ICONA_CHECK}</button></div>')
+
+
 BOTTONI = {
-    "it": {"livello": "Livello", "copia": "Copia l'indicazione", "testo": "Copia testo con link",
+    "it": {"livello": "Livello", "copia": "Copia", "md": "Copia in formato MD", "testo": "Copia testo con link",
            "svg": "Scarica SVG", "png": "Scarica PNG", "copiasvg": "Copia SVG"},
-    "fr": {"livello": "Niveau", "copia": "Copier la consigne", "testo": "Copier le texte avec lien",
+    "fr": {"livello": "Niveau", "copia": "Copier", "md": "Copier au format MD", "testo": "Copier le texte avec lien",
            "svg": "Télécharger le SVG", "png": "Télécharger le PNG", "copiasvg": "Copier le SVG"},
-    "en": {"livello": "Level", "copia": "Copy the text", "testo": "Copy text with link",
+    "en": {"livello": "Level", "copia": "Copy", "md": "Copy as Markdown (MD)", "testo": "Copy text with link",
            "svg": "Download SVG", "png": "Download PNG", "copiasvg": "Copy SVG"},
 }
 
@@ -95,26 +109,35 @@ def render_lang(lg, dati, version):
         for l in data["livelli"]:
             n, t = l["n"], l["profili"][pid]
             esempi = "".join(f"\n        <li>{e(x)}</li>" for x in t["esempi"])
+            url = f"{SITO}{pr['percorso']}#livello-{n}"
+            nome_badge = f"{data['titolo']} · {B['livello']} {n} · {l['nome']}"
+            md = f"[{nome_badge}]({url})"
             parts.append(f"""
   <article id="livello-{n}" class="livello" data-livello="{n}">
-    <div class="livello-timbro"><span data-slot="{n}" data-grande></span></div>
+    <div class="livello-timbro">
+      <span data-slot="{n}" data-grande></span>
+      <p class="azioni-badge">
+        <button type="button" class="bottone" data-scarica="svg" data-n="{n}">{B["svg"]}</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="{n}">{B["png"]}</button>
+        <button type="button" class="bottone" data-copia-svg="{n}">{B["copiasvg"]}</button>
+      </p>
+      <div class="badge-testo">
+        <p class="badge-nome"><a href="{url}">{e(nome_badge)}</a></p>
+        <button type="button" class="bottone primario" data-copia-testo="{n}">{B["testo"]}</button>
+        <code class="badge-md" id="md-{n}">{e(md)}</code>
+        <button type="button" class="bottone" data-copia="#md-{n}">{B["md"]}</button>
+      </div>
+    </div>
     <div class="livello-testo">
       <p class="occhiello">{B["livello"]} {n} · {e(l["sottotitolo"])}</p>
       <h2>{e(l["nome"])}</h2>
       <h3>{e(pr["chiede"])}</h3>
       <p>{e(t["chiede"])}</p>
       <h3>{e(pr["esegue"])}</h3>
-      <blockquote id="consegna-{n}">{e(t["esegue"])}</blockquote>
+      {box_copia(f"consegna-{n}", e(t["esegue"]), lg)}
       <h3>{e(pr["esempi"])}</h3>
       <ul class="esempi">{esempi}
       </ul>
-      <p class="azioni">
-        <button type="button" class="bottone" data-copia="#consegna-{n}">{B["copia"]}</button>
-        <button type="button" class="bottone primario" data-copia-testo="{n}">{B["testo"]}</button>
-        <button type="button" class="bottone" data-scarica="svg" data-n="{n}">{B["svg"]}</button>
-        <button type="button" class="bottone" data-scarica="png" data-n="{n}">{B["png"]}</button>
-        <button type="button" class="bottone" data-copia-svg="{n}">{B["copiasvg"]}</button>
-      </p>
     </div>
   </article>""")
         note_list = data["note_didattica"] if pr["note"] == "didattica" else pr["note"]
@@ -124,7 +147,7 @@ def render_lang(lg, dati, version):
             f' title="{e(q["esteso"])}">{e(q["nome"])}</a>' for q in profili)
         # stesso profilo nelle altre lingue: selettore lingua e link hreflang
         pari = {x: next(q for q in dati[x]["profili"] if q["id"] == pid) for x in LINGUE}
-        base_url = "https://frazac.github.io/gradient-ai/"
+        base_url = SITO
         alternate = "\n".join(f'  <link rel="alternate" hreflang="{x}" href="{base_url}{pari[x]["percorso"]}">' for x in LINGUE)
         # selettore lingua come orco.it: globo (Lucide "earth") che apre un pannello a pillola
         voci = "".join(
@@ -143,7 +166,7 @@ def render_lang(lg, dati, version):
                 .replace("{{R}}", r).replace("{{TITOLO}}", e(titolo)).replace("{{DESCRIZIONE}}", e(descr))
                 .replace("{{PROFILO}}", pid).replace("{{PERCORSO}}", pr["percorso"]).replace("{{OCCHIELLO}}", e(pr["occhiello"]))
                 .replace("{{LEAD}}", pr["lead"]).replace("{{PROFILI}}", nav)
-                .replace("{{LIVELLI}}", "".join(parts)).replace("{{ALTERNATE}}", alternate).replace("{{LINGUA}}", lingua).replace("{{NOTE}}", note))
+                .replace("{{LIVELLI}}", "".join(parts)).replace("{{COPIA_ICONE}}", ICONA_COPY + ICONA_CHECK).replace("{{COPIA}}", B["copia"]).replace("{{ALTERNATE}}", alternate).replace("{{LINGUA}}", lingua).replace("{{NOTE}}", note))
         page = page.split("\n", 1)[1]            # via il commento sul modello
         page = re.sub(r"(<span data-versione>)[^<]*(</span>)", rf"\g<1>{version}\g<2>", page)
         out = ROOT / pr["percorso"] / "index.html"

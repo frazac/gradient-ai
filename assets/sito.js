@@ -86,6 +86,13 @@
   // ---- copia e scarica ----
 
   function conferma(btn, testo) {
+    // pulsante-icona: l'icona copia diventa una spunta (Lucide check) per un attimo
+    if (btn.classList.contains('copia-icona')) {
+      if (testo !== T.ok) return;
+      btn.classList.add('fatto');
+      setTimeout(function () { btn.classList.remove('fatto'); }, 1600);
+      return;
+    }
     var prima = btn.textContent;
     btn.textContent = testo; btn.classList.add('fatto');
     setTimeout(function () { btn.textContent = prima; btn.classList.remove('fatto'); }, 1600);

@@ -7,6 +7,7 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 - **Francese**: pagine `fr/`, `fr/stem/`, `fr/sciences-humaines/`, `fr/arts/`, timbri francesi in `dist/*/fr/`, `lang: 'fr'` nella libreria.
 - Selettore lingua come orco.it: globo (Lucide `earth`) che apre un pannello con Italiano, Français, Simple English.
 - Pannello di personalizzazione nello stile di masterismi.dev: menu a pillola, colori a cerchio, interruttore «Pieno», pulsante principale pieno.
+- Schede dei livelli: consegna e attribuzione in un box arrotondato con icona copia (Lucide `copy` → `check`); sotto il badge i pulsanti del badge, il badge testuale con link e la versione Markdown `[testo](url)` con «Copia in formato MD». Tolto «Copia l'indicazione».
 
 ## 0.3.0 — 2026-09-29
 
