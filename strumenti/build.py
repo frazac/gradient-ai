@@ -74,6 +74,14 @@ ICONA_CHECK = ('<svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="cur
                '<path d="M20 6 9 17l-5-5"/></svg>')
 
 
+def titolo_extra(l):
+    """Solo il primo grado porta il sottotitolo nel titolo della scheda: «Autonomia (senza IA)»."""
+    if l["n"] != 1:
+        return ""
+    st = l["sottotitolo"]
+    return " (" + e(st[:1].lower() + st[1:]) + ")"
+
+
 def box_copia(id_, html_testo, lg):
     """Box arrotondato con il testo e, dentro, il pulsante «Copia» (stesso stile degli altri)."""
     c = BOTTONI[lg]["copia"]
@@ -116,7 +124,7 @@ def render_lang(lg, dati, version):
             parts.append(f"""
   <article id="livello-{n}" class="livello" data-livello="{n}">
     <p class="occhiello">{B["gradiente"]} {n}<span class="pallino" aria-hidden="true"></span><span class="occhiello-nome">{e(l["nome"])}</span></p>
-    <h2>{e(l["nome"])}</h2>
+    <h2>{e(l["nome"])}{titolo_extra(l)}</h2>
     <p>{e(t["chiede"])}</p>
     <h3 class="etichetta">{e(pr["esempi"])}</h3>
     <ul class="esempi">{esempi}

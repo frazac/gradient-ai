@@ -4,6 +4,7 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 
 ## Non ancora rilasciato
 
+- Primo grado: titolo della scheda «Autonomia (senza IA)» (fr «Autonomie (sans IA)», en «On your own (no AI)»).
 - Schede dei livelli: occhiello «Gradiente 1 ● AUTONOMIA» (pallino grigio) al posto di «Livello 1 · Senza IA»; tolta l'etichetta «Per chi commissiona / Per chi insegna» sopra il primo paragrafo.
 - Introduzione: un solo testo per tutti i profili (cinque gradienti, personalizzazione per contesto e per aspetto), tradotto in francese e Simple English; il testo del profilo resta nella descrizione della pagina.
 - Menu della testata: aggiunte Introduzione e Ricerca (Ospitare una ricerca), tolto GitHub (resta nel piè di pagina come «Codice sorgente»).
