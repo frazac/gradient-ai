@@ -103,11 +103,11 @@ body.scorsa .briciole { display: flex; }
 .header-lang { position: relative; display: flex; align-items: center; margin-left: auto; }
 .lang-toggle {
   display: grid; place-items: center; width: 32px; height: 32px; padding: 0; flex-shrink: 0;
-  color: var(--tenue); background: none; border: 1px solid transparent; border-radius: 50%; cursor: pointer;
+  color: var(--tenue); background: none; border: 1px solid var(--filo); border-radius: 50%; cursor: pointer;   /* cerchietto leggero anche a riposo */
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 .lang-toggle svg { width: 20px; height: 20px; }
-.lang-toggle:hover, .header-lang.is-open .lang-toggle { color: var(--inchiostro); border-color: var(--filo); }
+.lang-toggle:hover, .header-lang.is-open .lang-toggle { color: var(--inchiostro); border-color: var(--inchiostro); }   /* come il tondino delle fasce */
 .lang-panel {
   position: absolute; right: 0; top: calc(100% + 0.6rem); z-index: 40;
   min-width: 12rem; background: var(--carta);

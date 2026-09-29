@@ -326,20 +326,33 @@
     try { localStorage.setItem('gradiente-ia', JSON.stringify(stato)); } catch (e) { /* ignora */ }
     // il reset riporta anche al profilo generale (il primo della fascia dei profili)
     var gen = document.querySelector('.profili a');
-    if (gen && gen.getAttribute('aria-current') !== 'page') { location.href = gen.href.replace(/#.*$/, '') + '#personalizza'; return; }
-    if (location.search) history.replaceState(null, '', location.pathname + location.hash);
+    if (gen && gen.getAttribute('aria-current') !== 'page') { location.href = gen.href.replace(/#.*$/, ''); return; }
+    if (location.search || location.hash) history.replaceState(null, '', location.pathname);
+    tondini.forEach(function (b) { fascia(b, false); });   // il reset richiude tutte le fasce
     conferma(bReset, T.ok);
   });
 
-  // fasce richiudibili: il tondino apre e chiude il corpo (all'inizio sono tutte aperte)
-  document.querySelectorAll('.apri-chiudi').forEach(function (b) {
-    var corpo = document.getElementById(b.getAttribute('aria-controls'));
-    b.addEventListener('click', function () {
-      var aperta = b.getAttribute('aria-expanded') === 'true';
-      b.setAttribute('aria-expanded', aperta ? 'false' : 'true');
-      corpo.hidden = aperta;
-    });
+  // fasce richiudibili: all'inizio chiuse, ognuna si apre e si chiude per conto suo (le altre restano come sono)
+  var tondini = Array.prototype.slice.call(document.querySelectorAll('.apri-chiudi'));
+  function fascia(b, aperta) {
+    b.setAttribute('aria-expanded', aperta ? 'true' : 'false');
+    document.getElementById(b.getAttribute('aria-controls')).hidden = !aperta;
+  }
+  tondini.forEach(function (b) {
+    b.addEventListener('click', function () { fascia(b, b.getAttribute('aria-expanded') !== 'true'); });
   });
+  // un link a una fascia (#profili, #personalizza) la apre: «modifica» nelle schede, indirizzi condivisi
+  function apriDaIndirizzo() {
+    var sez = location.hash && document.getElementById(location.hash.slice(1));
+    var b = sez && sez.querySelector('.apri-chiudi');
+    if (b) fascia(b, true);
+  }
+  window.addEventListener('hashchange', apriDaIndirizzo);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (a && a.getAttribute('href') === location.hash) apriDaIndirizzo();   // stesso hash: hashchange non scatta
+  });
+  apriDaIndirizzo();
 
   G.createBadges({ link: false });   // badge della sezione sull'uso dell'IA (hanno il proprio data-link)
   disegna();
