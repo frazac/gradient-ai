@@ -65,6 +65,35 @@ main > .intro { padding-top: 4rem; }
 .testata nav { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: 0.95rem; }
 .testata nav a { color: inherit; text-decoration: none; }
 .testata nav a:hover { color: var(--accento); }
+/* selettore lingua — stesso schema di orco.it: globo che apre un pannello a pillola */
+.testata .riga { gap: 0.8rem 1.2rem; }
+.header-lang { position: relative; display: flex; align-items: center; margin-left: auto; }
+.testata nav + .header-lang { margin-left: 0; }
+.lang-toggle, .lang-close {
+  display: grid; place-items: center; width: 28px; height: 28px; padding: 0; flex-shrink: 0;
+  color: var(--tenue); background: none; border: none; border-radius: 50%; cursor: pointer;
+  transition: color 0.2s ease, opacity 0.2s ease, width 0.2s ease;
+}
+.lang-toggle svg, .lang-close svg { width: 20px; height: 20px; }
+.lang-toggle:hover, .lang-close:hover { color: var(--inchiostro); }
+.lang-panel {
+  /* sovrapposto a destra, sopra il menu: la testata non va a capo quando si apre */
+  position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 20;
+  background: var(--carta);
+  max-width: 0; overflow: hidden;
+  border: 1px solid transparent; border-radius: 999px;
+  opacity: 0; pointer-events: none;
+  transition: max-width 0.35s ease, opacity 0.25s ease, border-color 0.25s ease;
+}
+.lang-panel-inner { display: flex; align-items: center; gap: 0.9rem; width: max-content; padding: 2px 0.4rem 2px 0.9rem; white-space: nowrap; }
+.lang-panel ul { display: flex; align-items: center; gap: 0.9rem; margin: 0; padding: 0; list-style: none; }
+.lang-panel a { display: inline-flex; align-items: center; color: var(--tenue); text-decoration: none; font-size: 0.9rem; }
+.lang-panel a::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; margin-right: 0.4rem; border-radius: 50%; background: transparent; }
+.lang-panel a:hover:not(.is-active) { color: var(--inchiostro); }
+.lang-panel a.is-active { color: var(--inchiostro); }
+.lang-panel a.is-active::before { background: var(--accento); }
+.header-lang.is-open .lang-toggle { opacity: 0; pointer-events: none; }
+.header-lang.is-open .lang-panel { max-width: 30rem; opacity: 1; pointer-events: auto; border-color: var(--filo); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 /* intro */
@@ -74,8 +103,6 @@ main > .intro { padding-top: 4rem; }
 .avviso-lingua { margin: 1.5rem 0 1rem; padding: 1rem 1.2rem; border: 1px solid var(--filo); border-left: 4px solid var(--accento); border-radius: 0 var(--raggio) var(--raggio) 0; background: var(--carta-2); font-size: 0.95rem; }
 .avviso-lingua p { margin: 0 0 0.6rem; }
 .avviso-lingua p:last-child { margin-bottom: 0; }
-.testata nav .lingua { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; color: var(--tenue); }
-.testata nav .lingua[aria-current] { color: var(--inchiostro); text-decoration: underline; text-underline-offset: 0.3em; }
 .occhiello-profilo { margin: 0 0 0.6rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--tenue); }
 .profili { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
 .profili a { font-size: 0.9rem; color: var(--inchiostro); text-decoration: none; border: 1px solid var(--filo); border-radius: 999px; padding: 0.35rem 0.9rem; }
@@ -92,14 +119,46 @@ main > .intro { padding-top: 4rem; }
   border-block: 1px solid var(--filo);
   margin-top: 1rem; padding: 0.7rem 0 !important;
 }
-.comandi { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; align-items: center; font-size: 0.9rem; }
-.comandi label { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--tenue); }
-.comandi select, .comandi input[type=range] { font: inherit; color: var(--inchiostro); }
-.comandi select { background: var(--carta); border: 1px solid var(--filo); border-radius: 6px; padding: 0.25rem 0.4rem; }
-.comandi output { min-width: 2.2em; color: var(--inchiostro); font-variant-numeric: tabular-nums; }
-.colori { display: inline-flex; gap: 0.3rem; }
-.colori input { width: 2rem; height: 1.8rem; padding: 0; border: 1px solid var(--filo); border-radius: 6px; background: none; cursor: pointer; }
+/* pannello: stile masterismi.dev — tutto a pillola */
+.comandi { display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: center; font-size: 0.85rem; }
+.comandi label { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--tenue); }
+.comandi select {
+  appearance: none; -webkit-appearance: none;
+  font: inherit; color: var(--inchiostro); background-color: var(--carta);
+  border: 1px solid var(--filo); border-radius: 999px;
+  padding: 0.5rem 2.1rem 0.5rem 1rem; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 17px) 52%, calc(100% - 12px) 52%;
+  background-size: 5px 5px; background-repeat: no-repeat;
+}
+.comandi select:hover, .comandi select:focus-visible { border-color: var(--inchiostro); }
+.colori { display: inline-flex; gap: 0.4rem; }
 .colori[hidden] { display: none; }
+.colori input[type=color] {
+  appearance: none; -webkit-appearance: none;
+  width: 30px; height: 30px; padding: 0; border: 1px solid var(--filo); border-radius: 50%;
+  background: none; cursor: pointer; overflow: hidden;
+}
+.colori input[type=color]::-webkit-color-swatch-wrapper { padding: 3px; }
+.colori input[type=color]::-webkit-color-swatch { border: none; border-radius: 50%; }
+.colori input[type=color]::-moz-color-swatch { border: none; border-radius: 50%; }
+.comandi input[type=range] { appearance: none; -webkit-appearance: none; width: 110px; height: 4px; border-radius: 999px; background: var(--filo); cursor: pointer; }
+.comandi input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--inchiostro); border: none; }
+.comandi input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--inchiostro); border: none; }
+.comandi output { min-width: 2.2em; color: var(--inchiostro); font-variant-numeric: tabular-nums; }
+/* "Pieno": checkbox resa come interruttore, come lo switch chiaro/scuro */
+.spunta input[type=checkbox] {
+  appearance: none; -webkit-appearance: none; position: relative; margin: 0;
+  width: 40px; height: 22px; border: 1px solid var(--filo); border-radius: 999px; cursor: pointer; background: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.spunta input[type=checkbox]::after {
+  content: ''; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--tenue); transition: transform 0.2s ease, background 0.2s ease;
+}
+.spunta input[type=checkbox]:checked { background: var(--inchiostro); border-color: var(--inchiostro); }
+.spunta input[type=checkbox]:checked::after { transform: translateX(18px); background: var(--carta); }
+.comandi :focus-visible { outline: 2px solid var(--accento); outline-offset: 2px; }
 
 /* galleria */
 .galleria { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
@@ -122,12 +181,16 @@ body[data-variant="label"] .galleria a { aspect-ratio: auto; }
 .azioni { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
 
 .bottone {
-  font: 500 0.9rem var(--f); color: var(--inchiostro);
-  background: var(--carta); border: 1px solid var(--filo); border-radius: 999px;
-  padding: 0.4rem 0.9rem; cursor: pointer;
+  font: 500 0.85rem var(--f); color: var(--inchiostro);
+  background: none; border: 1px solid var(--filo); border-radius: 999px;
+  padding: 0.6rem 1.15rem; cursor: pointer; white-space: nowrap;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
 }
 .bottone:hover { border-color: var(--inchiostro); }
-.bottone.fatto { border-color: #2a8c82; color: #2a8c82; }
+/* azione principale: pieno, come i pulsanti di masterismi.dev */
+.bottone.primario { background: var(--inchiostro); color: var(--carta); border-color: var(--inchiostro); }
+.bottone.primario:hover { opacity: 0.85; }
+.bottone.fatto { border-color: #2a8c82; background: #2a8c82; color: #fff; }
 
 /* usare, licenza, fonti */
 .tecnica { margin-top: 2rem; }

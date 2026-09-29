@@ -5,10 +5,12 @@
   var G = window.GradientAI;
   var BASE = 'https://frazac.github.io/gradient-ai/';
   var CDN = 'https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v' + G.version + '/dist/gradient-ai.js';
-  var LG = /^en/.test(document.documentElement.lang) ? 'en' : 'it';
+  var LG = (document.documentElement.lang || 'it').slice(0, 2);
   var T = {
     it: { brand: 'Gradiente IA', level: 'Livello', filled: '-pieno', dir: '', file: 'gradiente-ia-', ok: 'Copiato', ko: 'Copia non riuscita',
           nomi: { stamp: 'timbro', icon: 'icona', label: 'etichetta' } },
+    fr: { brand: 'Gradient IA', level: 'Niveau', filled: '-plein', dir: 'fr/', file: 'gradient-ia-', ok: 'Copié', ko: 'Échec de la copie',
+          nomi: { stamp: 'tampon', icon: 'icone', label: 'etiquette' } },
     en: { brand: 'Gradient AI', level: 'Level', filled: '-filled', dir: 'en/', file: 'gradient-ai-', ok: 'Copied', ko: 'Copy failed',
           nomi: { stamp: 'stamp', icon: 'icon', label: 'label' } }
   }[LG];
@@ -146,6 +148,17 @@
       disegna();
     });
   });
+
+  // selettore lingua (come orco.it): apre/chiude il pannello, chiude con ×, Esc o clic fuori
+  var lingua = document.querySelector('.header-lang');
+  if (lingua) {
+    var tog = lingua.querySelector('.lang-toggle');
+    var apri = function (si) { lingua.classList.toggle('is-open', si); tog.setAttribute('aria-expanded', si ? 'true' : 'false'); };
+    tog.addEventListener('click', function () { apri(!lingua.classList.contains('is-open')); });
+    lingua.querySelector('.lang-close').addEventListener('click', function () { apri(false); tog.focus(); });
+    document.addEventListener('click', function (e) { if (!lingua.contains(e.target)) apri(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') apri(false); });
+  }
 
   G.createBadges({ link: false });   // marchio nella testata (è già dentro un link)
   disegna();

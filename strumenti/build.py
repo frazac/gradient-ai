@@ -25,10 +25,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-LINGUE = ["it", "en"]
+LINGUE = ["it", "fr", "en"]
 VARIANTS = {"it": {"stamp": "timbro", "icon": "icona", "label": "etichetta"},
+            "fr": {"stamp": "tampon", "icon": "icone", "label": "etiquette"},
             "en": {"stamp": "stamp", "icon": "icon", "label": "label"}}
-PIENO = {"it": "-pieno", "en": "-filled"}
+PIENO = {"it": "-pieno", "fr": "-plein", "en": "-filled"}
 
 
 def build_js():
@@ -57,11 +58,19 @@ def e(t):
 
 
 # etichetta del selettore di lingua (il codice tecnico e l'URL restano it / en)
-ETICHETTE = {"it": ("IT", "Italiano"), "en": ("Simple EN", "Simple English")}
+ETICHETTE = {"it": "Italiano", "fr": "Français", "en": "Simple English"}
+LINGUA_UI = {"it": ("Cambia lingua", "Chiudi"), "fr": ("Changer de langue", "Fermer"), "en": ("Change language", "Close")}
+ICONA_EARTH = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+               '<path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/>'
+               '<path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>')
+ICONA_X = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+           '<path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>')
 
 BOTTONI = {
     "it": {"livello": "Livello", "copia": "Copia l'indicazione", "testo": "Copia testo con link",
            "svg": "Scarica SVG", "png": "Scarica PNG", "copiasvg": "Copia SVG"},
+    "fr": {"livello": "Niveau", "copia": "Copier la consigne", "testo": "Copier le texte avec lien",
+           "svg": "Télécharger le SVG", "png": "Télécharger le PNG", "copiasvg": "Copier le SVG"},
     "en": {"livello": "Level", "copia": "Copy the text", "testo": "Copy text with link",
            "svg": "Download SVG", "png": "Download PNG", "copiasvg": "Copy SVG"},
 }
@@ -101,7 +110,7 @@ def render_lang(lg, dati, version):
       </ul>
       <p class="azioni">
         <button type="button" class="bottone" data-copia="#consegna-{n}">{B["copia"]}</button>
-        <button type="button" class="bottone" data-copia-testo="{n}">{B["testo"]}</button>
+        <button type="button" class="bottone primario" data-copia-testo="{n}">{B["testo"]}</button>
         <button type="button" class="bottone" data-scarica="svg" data-n="{n}">{B["svg"]}</button>
         <button type="button" class="bottone" data-scarica="png" data-n="{n}">{B["png"]}</button>
         <button type="button" class="bottone" data-copia-svg="{n}">{B["copiasvg"]}</button>
@@ -117,11 +126,19 @@ def render_lang(lg, dati, version):
         pari = {x: next(q for q in dati[x]["profili"] if q["id"] == pid) for x in LINGUE}
         base_url = "https://frazac.github.io/gradient-ai/"
         alternate = "\n".join(f'  <link rel="alternate" hreflang="{x}" href="{base_url}{pari[x]["percorso"]}">' for x in LINGUE)
-        lingua = " ".join(
-            f'<a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{x}" lang="{x}" class="lingua"'
-            + (' aria-current="true"' if x == lg else "") + f' title="{ETICHETTE[x][1]}">{ETICHETTE[x][0]}</a>' for x in LINGUE)
+        # selettore lingua come orco.it: globo (Lucide "earth") che apre un pannello a pillola
+        voci = "".join(
+            f'<li><a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{x}" lang="{x}"'
+            + (' class="is-active" aria-current="true"' if x == lg else "") + f'>{ETICHETTE[x]}</a></li>' for x in LINGUE)
+        L = LINGUA_UI[lg]
+        lingua = (f'<div class="header-lang">\n'
+                  f'      <button class="lang-toggle" type="button" aria-label="{L[0]}" title="{L[0]}" aria-expanded="false" aria-haspopup="true" aria-controls="lang-panel">{ICONA_EARTH}</button>\n'
+                  f'      <div class="lang-panel" id="lang-panel"><div class="lang-panel-inner">\n'
+                  f'        <ul>{voci}</ul>\n'
+                  f'        <button type="button" class="lang-close" aria-label="{L[1]}" title="{L[1]}">{ICONA_X}</button>\n'
+                  f'      </div></div>\n    </div>')
         titolo = f"{data['titolo']} – {data['sottotitolo']}" + ("" if pid == "generale" else f" · {pr['nome']}")
-        descr = re.sub(r"<[^>]+>", "", pr["lead"]) + (" Adattamento di AIAS v2, CC BY-NC-SA 4.0." if lg == "it" else " Based on the AIAS v2, CC BY-NC-SA 4.0.")
+        descr = re.sub(r"<[^>]+>", "", pr["lead"]) + (" Adattamento di AIAS v2, CC BY-NC-SA 4.0." if lg == "it" else {"en": " Based on the AIAS v2, CC BY-NC-SA 4.0.", "fr": " Adaptation de l'AIAS v2, CC BY-NC-SA 4.0."}[lg])
         page = (template.replace('<a href="{{R}}" class="marchio-link">', f'<a href="{r or "./"}" class="marchio-link">')
                 .replace("{{R}}", r).replace("{{TITOLO}}", e(titolo)).replace("{{DESCRIZIONE}}", e(descr))
                 .replace("{{PROFILO}}", pid).replace("{{PERCORSO}}", pr["percorso"]).replace("{{OCCHIELLO}}", e(pr["occhiello"]))
@@ -154,9 +171,10 @@ def export():
         return ("" if lg == "it" else f"{lg}/") + f"{VARIANTS[lg][variant]}-{n}" + (PIENO[lg] if tone == "filled" else "")
 
     for d in ("svg", "png"):
-        (ROOT / "dist" / d / "en").mkdir(parents=True, exist_ok=True)
-        for f in (ROOT / "dist" / d / "en").glob(f"*.{d}"):
-            f.unlink()
+        for x in LINGUE[1:]:
+            (ROOT / "dist" / d / x).mkdir(parents=True, exist_ok=True)
+            for f in (ROOT / "dist" / d / x).glob(f"*.{d}"):
+                f.unlink()
     for key, svg in out["svg"].items():
         (ROOT / "dist" / "svg" / f"{name(key)}.svg").write_text(svg + "\n", encoding="utf-8")
     for key, data in out["png"].items():

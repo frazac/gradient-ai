@@ -22,6 +22,7 @@
   <meta name="description" content="Five levels to say, before a test or task, how much AI can be part of it, and how: exercises, lab reports, projects, code. A profile for science, technology, engineering and maths. Based on the AIAS v2, CC BY-NC-SA 4.0.">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" hreflang="it" href="https://frazac.github.io/gradient-ai/stem/">
+  <link rel="alternate" hreflang="fr" href="https://frazac.github.io/gradient-ai/fr/stem/">
   <link rel="alternate" hreflang="en" href="https://frazac.github.io/gradient-ai/en/stem/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,8 +49,14 @@
       <a href="#licenza">Licence</a>
       <a href="#fonti">Sources</a>
       <a href="https://github.com/frazac/gradient-ai" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span><span class="sr">(opens in a new tab)</span></a>
-      <a href="../../stem/" hreflang="it" lang="it" class="lingua" title="Italiano">IT</a> <a href="../../en/stem/" hreflang="en" lang="en" class="lingua" aria-current="true" title="Simple English">Simple EN</a>
     </nav>
+    <div class="header-lang">
+      <button class="lang-toggle" type="button" aria-label="Change language" title="Change language" aria-expanded="false" aria-haspopup="true" aria-controls="lang-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg></button>
+      <div class="lang-panel" id="lang-panel"><div class="lang-panel-inner">
+        <ul><li><a href="../../stem/" hreflang="it" lang="it">Italiano</a></li><li><a href="../../fr/stem/" hreflang="fr" lang="fr">Français</a></li><li><a href="../../en/stem/" hreflang="en" lang="en" class="is-active" aria-current="true">Simple English</a></li></ul>
+        <button type="button" class="lang-close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+      </div></div>
+    </div>
   </div>
 </header>
 
@@ -65,7 +72,7 @@
     <p>Gradient AI started in Italian. We wrote this English version for people who are still learning English. We follow the plain language standard <a href="https://www.iso.org/standard/78907.html">ISO 24495-1:2023</a> and the rules of the <a href="https://simple.wikipedia.org/wiki/Wikipedia:How_to_write_Simple_English_pages">Simple English Wikipedia</a>: common words, short sentences, one idea in each sentence.</p>
   </aside>
   <p class="nota-fonte">Based on the <a href="https://aiassessmentscale.com/">AI Assessment Scale (AIAS)</a> v2 by Mike Perkins, Leon Furze, Jasper Roe and Jason MacVaugh · <a href="#licenza">CC BY-NC-SA 4.0</a><br>
-  Gradient AI is at version <span data-versione>0.3.0</span></p>
+  Gradient AI is at version <span data-versione>0.4.0</span></p>
 </section>
 
 <nav class="profili riga" aria-label="Profiles">
@@ -128,7 +135,7 @@
       </ul>
       <p class="azioni">
         <button type="button" class="bottone" data-copia="#consegna-1">Copy the text</button>
-        <button type="button" class="bottone" data-copia-testo="1">Copy text with link</button>
+        <button type="button" class="bottone primario" data-copia-testo="1">Copy text with link</button>
         <button type="button" class="bottone" data-scarica="svg" data-n="1">Download SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="1">Download PNG</button>
         <button type="button" class="bottone" data-copia-svg="1">Copy SVG</button>
@@ -152,7 +159,7 @@
       </ul>
       <p class="azioni">
         <button type="button" class="bottone" data-copia="#consegna-2">Copy the text</button>
-        <button type="button" class="bottone" data-copia-testo="2">Copy text with link</button>
+        <button type="button" class="bottone primario" data-copia-testo="2">Copy text with link</button>
         <button type="button" class="bottone" data-scarica="svg" data-n="2">Download SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="2">Download PNG</button>
         <button type="button" class="bottone" data-copia-svg="2">Copy SVG</button>
@@ -176,7 +183,7 @@
       </ul>
       <p class="azioni">
         <button type="button" class="bottone" data-copia="#consegna-3">Copy the text</button>
-        <button type="button" class="bottone" data-copia-testo="3">Copy text with link</button>
+        <button type="button" class="bottone primario" data-copia-testo="3">Copy text with link</button>
         <button type="button" class="bottone" data-scarica="svg" data-n="3">Download SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="3">Download PNG</button>
         <button type="button" class="bottone" data-copia-svg="3">Copy SVG</button>
@@ -200,7 +207,7 @@
       </ul>
       <p class="azioni">
         <button type="button" class="bottone" data-copia="#consegna-4">Copy the text</button>
-        <button type="button" class="bottone" data-copia-testo="4">Copy text with link</button>
+        <button type="button" class="bottone primario" data-copia-testo="4">Copy text with link</button>
         <button type="button" class="bottone" data-scarica="svg" data-n="4">Download SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="4">Download PNG</button>
         <button type="button" class="bottone" data-copia-svg="4">Copy SVG</button>
@@ -224,7 +231,7 @@
       </ul>
       <p class="azioni">
         <button type="button" class="bottone" data-copia="#consegna-5">Copy the text</button>
-        <button type="button" class="bottone" data-copia-testo="5">Copy text with link</button>
+        <button type="button" class="bottone primario" data-copia-testo="5">Copy text with link</button>
         <button type="button" class="bottone" data-scarica="svg" data-n="5">Download SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="5">Download PNG</button>
         <button type="button" class="bottone" data-copia-svg="5">Copy SVG</button>
@@ -327,7 +334,7 @@
 </main>
 
 <footer class="piede riga">
-  <p class="titolo-piede">Gradient AI – Levels of AI use, based on the AIAS · version <span data-versione>0.3.0</span></p>
+  <p class="titolo-piede">Gradient AI – Levels of AI use, based on the AIAS · version <span data-versione>0.4.0</span></p>
   <p>© 2026 Francesco Zaccaria. The texts, badges and code have the licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution – NonCommercial – ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>.</p>
   <p>“AI Assessment Scale” and “AIAS” are names and signs of their owners. The AI Assessment Scale is the work of Mike Perkins, Leon Furze, Jasper Roe and Jason MacVaugh. They keep all intellectual property rights in it. We use it here only as their CC BY-NC-SA 4.0 licence allows. Gradient AI is an independent version: it is not official, and the authors or owners of the AIAS do not approve or support it.</p>
   <p>Icons: <a href="https://lucide.dev">Lucide</a>, © Lucide Icons and Contributors, ISC licence. Website font: Space Grotesk, SIL Open Font License. Cookie banner: <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> by Orest Bida, MIT licence; sun/moon icons: <a href="https://iconoir.com/">Iconoir</a>, MIT licence.</p>

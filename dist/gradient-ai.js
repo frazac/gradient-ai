@@ -1,5 +1,5 @@
 /*!
- * Gradient AI v0.3.0 — Gradiente IA: livelli di integrazione dell'IA tratti da AIAS
+ * Gradient AI v0.4.0 — Gradiente IA: livelli di integrazione dell'IA tratti da AIAS
  * https://github.com/frazac/gradient-ai
  *
  * Contenuti: adattamento di AI Assessment Scale (AIAS) v2 di Mike Perkins, Leon Furze,
@@ -14,10 +14,11 @@
 }(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '0.3.0';
-  var LEVELS = {"it": [{"n": 1, "id": "autonomia", "name": "Autonomia", "subtitle": "Senza IA", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Ideazione", "subtitle": "IA solo in fase preparatoria", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Co-creazione", "subtitle": "IA al fianco, con vaglio critico", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Regia", "subtitle": "IA sotto direzione umana", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Sperimentazione", "subtitle": "IA come terreno di ricerca", "icon": "lighthouse"}], "en": [{"n": 1, "id": "autonomia", "name": "On your own", "subtitle": "No AI", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Ideas", "subtitle": "AI only before you start", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Working together", "subtitle": "AI helps, you check everything", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Directing", "subtitle": "People lead the AI", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Exploring", "subtitle": "AI as a place to try new things", "icon": "lighthouse"}]};   // { it: [...], en: [...] }
+  var VERSION = '0.4.0';
+  var LEVELS = {"it": [{"n": 1, "id": "autonomia", "name": "Autonomia", "subtitle": "Senza IA", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Ideazione", "subtitle": "IA solo in fase preparatoria", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Co-creazione", "subtitle": "IA al fianco, con vaglio critico", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Regia", "subtitle": "IA sotto direzione umana", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Sperimentazione", "subtitle": "IA come terreno di ricerca", "icon": "lighthouse"}], "fr": [{"n": 1, "id": "autonomia", "name": "Autonomie", "subtitle": "Sans IA", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Idéation", "subtitle": "IA seulement en amont", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Co-création", "subtitle": "IA à vos côtés, avec regard critique", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Régie", "subtitle": "IA sous direction humaine", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Expérimentation", "subtitle": "IA comme terrain de recherche", "icon": "lighthouse"}], "en": [{"n": 1, "id": "autonomia", "name": "On your own", "subtitle": "No AI", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Ideas", "subtitle": "AI only before you start", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Working together", "subtitle": "AI helps, you check everything", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Directing", "subtitle": "People lead the AI", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Exploring", "subtitle": "AI as a place to try new things", "icon": "lighthouse"}]};   // { it: [...], en: [...] }
   var TEXT = {
     it: { brand: 'Gradiente IA', level: 'Livello', bottom: 'GRADIENTE IA' },
+    fr: { brand: 'Gradient IA', level: 'Niveau', bottom: 'GRADIENT IA' },
     en: { brand: 'Gradient AI', level: 'Level', bottom: 'GRADIENT AI' }
   };
   var ICONS = {"ban": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M4.929 4.929 19.07 19.071\"/>", "calendar-days": "<path d=\"M8 2v3\"/><path d=\"M16 2v3\"/><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M3 9h18\"/><path d=\"M8 13h.01\"/><path d=\"M12 13h.01\"/><path d=\"M16 13h.01\"/><path d=\"M8 17h.01\"/><path d=\"M12 17h.01\"/><path d=\"M16 17h.01\"/>", "blender": "<path d=\"M8 14a2 2 0 0 0-1.963 1.615l-1.018 5.193A1 1 0 0 0 6 22h12a1 1 0 0 0 .981-1.192l-1.018-5.193A2 2 0 0 0 16 14z\"/><path d=\"m17 2-1 12\"/><path d=\"M8.006 14 7 2\"/><path d=\"M7.565 8.787A5 5 0 0 0 12 8a5 5 0 0 1 4.56-.75\"/><path d=\"M19 2H5a2 2 0 0 0-2 2v5a2 2 0 0 0 .688 1.5\"/><path d=\"M12 18h.01\"/>", "bot": "<path d=\"M12 8V4H8\"/><rect width=\"16\" height=\"12\" x=\"4\" y=\"8\" rx=\"2\"/><path d=\"M2 14h2\"/><path d=\"M20 14h2\"/><path d=\"M15 13v2\"/><path d=\"M9 13v2\"/>", "lighthouse": "<path d=\"M12 3V2\"/><path d=\"M16.066 16.865 7 22l2-11V6a3 3 0 016 0v5l2 11\"/><path d=\"m19.792 4.5.866-.5\"/><path d=\"m19.797 13.5.866.5\"/><path d=\"M21 9h1\"/><path d=\"M3 9H2\"/><path d=\"m4.203 13.5-.866.5\"/><path d=\"M4.208 4.5 3.342 4\"/><path d=\"M5.5 22h13\"/><path d=\"m7.932 16.875 7.377-4.178\"/><path d=\"M8 11h8\"/><path d=\"M8 7h8\"/>"};
@@ -180,7 +181,7 @@
   /**
    * SVG di un livello come stringa.
    * @param {number|string} n  1–5 oppure l'id ("autonomia", "ideazione", …)
-   * @param {object} [options] variant: stamp|icon|label · lang: it|en · color · from/to · palette · weight (1–3)
+   * @param {object} [options] variant: stamp|icon|label · lang: it|fr|en · color · from/to · palette · weight (1–3)
    *                           · filled · ink · background · size (px) · class · bottomText
    */
   function toSvg(n, options) {
@@ -197,7 +198,7 @@
 
   /**
    * Sostituisce ogni elemento [data-gradient] con l'SVG del livello, come lucide.createIcons().
-   * Attributi: data-gradient="3" data-lang (it|en) data-variant data-color data-from data-to data-weight data-filled data-size data-link.
+   * Attributi: data-gradient="3" data-lang (it|fr|en) data-variant data-color data-from data-to data-weight data-filled data-size data-link.
    * link: di default il timbro porta alla scheda del livello su frazac.github.io/gradient-ai;
    *       false (o data-link="false") lo toglie, una stringa è l'indirizzo della pagina da usare (es. il profilo /stem/).
    * Le opzioni passate valgono per tutti; gli attributi del singolo elemento hanno la precedenza.
@@ -213,13 +214,13 @@
       });
       if (el.className) o['class'] = el.className;
       // lingua: opzione, data-lang, oppure il lang della pagina (en → inglese, altrimenti italiano)
-      if (!o.lang) { var lg = el.closest('[lang]'); o.lang = lg && /^en/i.test(lg.getAttribute('lang')) ? 'en' : 'it'; }
+      if (!o.lang) { var lg = el.closest('[lang]'); o.lang = lg ? lg.getAttribute('lang').slice(0, 2).toLowerCase() : 'it'; }
       o.lang = lang(o.lang);
       var tpl = document.createElement('template');
       tpl.innerHTML = toSvg(el.getAttribute('data-gradient'), o);
       var svg = tpl.content.firstChild;
       svg.setAttribute('data-gradient', el.getAttribute('data-gradient'));
-      var node = svg, link = o.link === undefined || o.link === true || o.link === 'true' ? SITE + (o.lang === 'en' ? 'en/' : '') : o.link;
+      var node = svg, link = o.link === undefined || o.link === true || o.link === 'true' ? SITE + (o.lang === 'it' ? '' : o.lang + '/') : o.link;
       if (link && link !== 'false') {
         var lv = level(el.getAttribute('data-gradient'), o.lang), n = lv.n, t = TEXT[o.lang];
         node = document.createElement('a');

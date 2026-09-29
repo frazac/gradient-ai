@@ -1,0 +1,298 @@
+{
+  "lingua": "fr",
+  "titolo": "Gradient IA",
+  "sottotitolo": "Niveaux d'intégration de l'IA inspirés de l'AIAS",
+  "fonte": {
+    "nome": "AI Assessment Scale (AIAS), Version 2 (2024)",
+    "autori": ["Mike Perkins", "Leon Furze", "Jasper Roe", "Jason MacVaugh"],
+    "licenza": "CC BY-NC-SA 4.0",
+    "url": "https://aiassessmentscale.com/"
+  },
+  "profili": [
+    {
+      "id": "generale",
+      "percorso": "fr/",
+      "nome": "Général",
+      "esteso": "Contexte professionnel",
+      "occhiello": "Profil général · contexte professionnel",
+      "lead": "Cinq niveaux pour dire, avant un travail, <strong>quelle place l'intelligence artificielle peut y prendre, et comment</strong> : dans une mission, un livrable, un projet d'équipe. Les mêmes niveaux et les mêmes tampons existent aussi dans les profils pour l'enseignement supérieur.",
+      "chiede": "Pour le commanditaire",
+      "esegue": "Consigne pour la personne qui réalise",
+      "esempi": "Exemples de travaux",
+      "note": [
+        "Le profil général étend au monde professionnel une échelle conçue pour l'évaluation scolaire et universitaire : c'est une extension propre à Gradient IA, qui ne fait pas partie de l'AIAS d'origine.",
+        "Les niveaux ne mesurent pas la qualité : ils indiquent quelle place l'IA prend dans un travail, pas ce que vaut ce travail.",
+        "Le niveau se convient avant de commencer, par exemple dans un brief, un contrat ou une charte interne, avec ce qui doit être déclaré et qui répond du résultat.",
+        "Le niveau 1 ne peut être garanti que si le travail se fait sous contrôle direct. Dans les autres cas, l'usage déclaré repose sur la confiance : mieux vaut demander de documenter la démarche."
+      ]
+    },
+    {
+      "id": "stem",
+      "percorso": "fr/stem/",
+      "nome": "Enseignement STEM",
+      "esteso": "Sciences, technologie, ingénierie, mathématiques",
+      "occhiello": "Profil enseignement · sciences et techniques",
+      "lead": "Cinq niveaux pour dire, avant une épreuve, <strong>quelle place l'intelligence artificielle peut y prendre, et comment</strong> : exercices, comptes rendus de TP, projets, code. Profil pour les sciences, la technologie, l'ingénierie et les mathématiques.",
+      "chiede": "Pour l'enseignant",
+      "esegue": "Consigne pour l'étudiant",
+      "esempi": "Exemples d'épreuves",
+      "note": "didattica"
+    },
+    {
+      "id": "umanistiche",
+      "percorso": "fr/sciences-humaines/",
+      "nome": "Enseignement lettres et sciences humaines",
+      "esteso": "Lettres, philosophie, histoire, langues, sciences sociales",
+      "occhiello": "Profil enseignement · lettres et sciences humaines",
+      "lead": "Cinq niveaux pour dire, avant une épreuve, <strong>quelle place l'intelligence artificielle peut y prendre, et comment</strong> : dissertations, traductions, commentaires, recherches. Profil pour les lettres, la philosophie, l'histoire, les langues et les sciences sociales.",
+      "chiede": "Pour l'enseignant",
+      "esegue": "Consigne pour l'étudiant",
+      "esempi": "Exemples d'épreuves",
+      "note": "didattica"
+    },
+    {
+      "id": "afam",
+      "percorso": "fr/arts/",
+      "nome": "Enseignement artistique",
+      "esteso": "Écoles d'art, conservatoires, design, arts du spectacle",
+      "occhiello": "Profil enseignement · écoles d'art et conservatoires",
+      "lead": "Cinq niveaux pour dire, avant une épreuve, <strong>quelle place l'intelligence artificielle peut y prendre, et comment</strong> : réalisations, projets, interprétations, portfolios. Profil pour les écoles d'art, les conservatoires, le design et les arts du spectacle.",
+      "chiede": "Pour l'enseignant",
+      "esegue": "Consigne pour l'étudiant",
+      "esempi": "Exemples d'épreuves",
+      "note": "didattica"
+    }
+  ],
+  "note_didattica": [
+    "Les niveaux ne sont pas une échelle de mérite : ils indiquent quelle place l'IA prend dans l'épreuve, pas ce que vaut l'épreuve.",
+    "Seul le niveau 1 peut être garanti, et seulement dans un cadre surveillé. Pour un travail fait à la maison, mieux vaut considérer que tout usage de l'IA est possible et concevoir l'épreuve en conséquence.",
+    "Le niveau se choisit en fonction des objectifs d'apprentissage et s'annonce avant l'épreuve, avec ce qui doit être déclaré (par exemple les instructions données à l'IA)."
+  ],
+  "livelli": [
+    {
+      "n": 1,
+      "id": "autonomia",
+      "nome": "Autonomie",
+      "sottotitolo": "Sans IA",
+      "icona": "ban",
+      "profili": {
+        "generale": {
+          "chiede": "Le travail se fait entièrement sans IA. À choisir quand comptent la compétence directe de la personne, la confidentialité des documents ou une exigence explicite du commanditaire.",
+          "esegue": "N'utilisez aucun outil d'IA, à aucune étape, pas même pour relire, résumer ou traduire. Si une étape semble en demander, posez la question avant d'avancer.",
+          "esempi": [
+            "Expertises, avis et documents signés qui engagent le jugement personnel du signataire.",
+            "Travaux sur des documents confidentiels qui ne doivent pas sortir de l'organisation.",
+            "Entretiens, tests techniques et vérifications de compétences lors d'un recrutement."
+          ]
+        },
+        "stem": {
+          "chiede": "L'épreuve se déroule entièrement sans IA, dans un cadre surveillé. L'étudiant ne compte que sur ses connaissances et sur sa capacité à poser et résoudre les problèmes.",
+          "esegue": "N'utilisez l'IA à aucune étape. L'épreuve sert à montrer ce que vous savez et savez faire seul, démarche comprise.",
+          "esempi": [
+            "Exercices et démonstrations faits en classe.",
+            "Épreuve écrite de calcul ; oral sur une méthode.",
+            "Cahier de laboratoire rempli à la main."
+          ]
+        },
+        "umanistiche": {
+          "chiede": "L'épreuve se déroule entièrement sans IA, dans un cadre surveillé. L'étudiant ne compte que sur ses lectures, sa compréhension des textes et son écriture.",
+          "esegue": "N'utilisez l'IA à aucune étape. L'épreuve sert à montrer comment vous lisez, interprétez et écrivez seul.",
+          "esempi": [
+            "Version ou thème en classe.",
+            "Commentaire de texte ou de document sur table ; oral.",
+            "Analyse d'un document d'archives sans appareil."
+          ]
+        },
+        "afam": {
+          "chiede": "L'épreuve se déroule entièrement sans IA, dans un cadre surveillé. L'étudiant ne compte que sur sa main, son oreille et sa technique.",
+          "esegue": "N'utilisez l'IA à aucune étape. L'épreuve sert à montrer ce que vous savez faire avec vos propres moyens.",
+          "esempi": [
+            "Dessin d'après modèle ; croquis à main levée en atelier.",
+            "Épreuve d'instrument ; improvisation.",
+            "Exercices d'harmonie ou d'analyse sur papier."
+          ]
+        }
+      }
+    },
+    {
+      "n": 2,
+      "id": "ideazione",
+      "nome": "Idéation",
+      "sottotitolo": "IA seulement en amont",
+      "icona": "calendar-days",
+      "profili": {
+        "generale": {
+          "chiede": "L'IA ne sert qu'avant le travail proprement dit : explorer des idées, bâtir un plan, s'orienter sur un sujet nouveau. Le livrable est développé et rédigé par la personne.",
+          "esegue": "Vous pouvez utiliser l'IA pour trouver des pistes, bâtir la structure et faire un premier repérage. Le travail rendu, c'est vous qui le développez et le rédigez ; chaque information se vérifie dans les sources.",
+          "esempi": [
+            "Remue-méninges pour une proposition, une offre ou un concept.",
+            "Plan d'un rapport ou d'une présentation.",
+            "Premier repérage d'un marché, d'une réglementation ou d'un sujet nouveau, à vérifier."
+          ]
+        },
+        "stem": {
+          "chiede": "L'IA peut intervenir avant le travail proprement dit : explorer des pistes, s'orienter dans la littérature, formuler des hypothèses. On évalue la capacité à développer ces idées de façon autonome.",
+          "esegue": "Vous pouvez utiliser l'IA pour chercher des approches, vous orienter dans la littérature et cadrer le projet. Le développement, les calculs et le code sont les vôtres.",
+          "esempi": [
+            "Repérer des pistes pour aborder un problème.",
+            "Cartographier la littérature pour un mémoire ou un rapport.",
+            "Formuler des hypothèses de projet à discuter en cours."
+          ]
+        },
+        "umanistiche": {
+          "chiede": "L'IA peut intervenir avant le travail proprement dit : faire émerger des problématiques, esquisser un plan, amorcer les recherches. On évalue la capacité à développer et argumenter ces idées de façon autonome.",
+          "esegue": "Vous pouvez utiliser l'IA pour chercher des idées, organiser un plan et commencer à vous documenter. Le texte final, c'est vous qui l'écrivez, et chaque référence se vérifie dans les sources.",
+          "esempi": [
+            "Remue-méninges sur des problématiques d'interprétation.",
+            "Plan d'une dissertation.",
+            "Premier repérage bibliographique, toujours à vérifier dans les sources."
+          ]
+        },
+        "afam": {
+          "chiede": "L'IA peut intervenir avant le travail proprement dit : rassembler des références, explorer des variantes, s'orienter sur un thème. On évalue comment l'étudiant développe et réalise ces idées avec ses propres moyens.",
+          "esegue": "Vous pouvez utiliser l'IA pour rassembler des références et explorer des variantes. Planches, partition ou prototype, c'est vous qui les réalisez.",
+          "esempi": [
+            "Planche de tendances et références visuelles.",
+            "Variantes de concept à discuter en revue.",
+            "Recherche iconographique ou de répertoire préliminaire."
+          ]
+        }
+      }
+    },
+    {
+      "n": 3,
+      "id": "co-creazione",
+      "nome": "Co-création",
+      "sottotitolo": "IA à vos côtés, avec regard critique",
+      "icona": "blender",
+      "profili": {
+        "generale": {
+          "chiede": "L'IA peut accompagner la réalisation : brouillons, révisions, retours, finitions. La personne vérifie, corrige et intègre chaque contribution, et en répond comme si elle était entièrement la sienne.",
+          "esegue": "Vous pouvez utiliser l'IA pour des parties définies du travail, comme un brouillon, une révision ou un contrôle. Relisez, corrigez et complétez tout ce qu'elle produit : le résultat reste sous votre responsabilité. Indiquez où vous l'avez utilisée.",
+          "esempi": [
+            "Textes, courriels et documents rédigés avec un assistant, puis relus.",
+            "Code écrit avec un assistant, relu et testé.",
+            "Traductions ou synthèses générées, puis vérifiées sur le texte d'origine."
+          ]
+        },
+        "stem": {
+          "chiede": "L'IA peut accompagner le travail : proposer des solutions, écrire du code, faire des retours. L'étudiant vérifie, corrige et explique ce que l'IA propose, et montre ainsi qu'il l'a compris.",
+          "esegue": "Vous pouvez utiliser l'IA pour certaines parties du travail. Chaque résultat se vérifie et chaque ligne de code doit pouvoir être expliquée : indiquez comment vous l'avez utilisée.",
+          "esempi": [
+            "Code écrit avec un assistant, puis commenté, testé et expliqué.",
+            "Débogage guidé.",
+            "Compte rendu de TP avec relecture linguistique."
+          ]
+        },
+        "umanistiche": {
+          "chiede": "L'IA peut accompagner le travail : proposer des formulations, rédiger des brouillons, commenter une argumentation. L'étudiant examine et réécrit ce que l'IA propose, et montre ainsi sa compréhension.",
+          "esegue": "Vous pouvez utiliser l'IA pour certaines parties du travail, comme un premier jet ou un retour. Tout contenu généré doit être examiné et réécrit : indiquez comment vous l'avez utilisée.",
+          "esempi": [
+            "Premier jet relu et annoté.",
+            "Comparaison entre sa propre traduction et une traduction générée, en discutant les écarts.",
+            "Retour sur l'argumentation d'une dissertation."
+          ]
+        },
+        "afam": {
+          "chiede": "L'IA peut accompagner la réalisation : générer des esquisses, proposer des arrangements, faire des retours. L'étudiant sélectionne, transforme et retravaille ce que l'IA propose, et justifie ses choix.",
+          "esegue": "Vous pouvez utiliser l'IA pour certaines parties du travail. Ce qu'elle génère doit être sélectionné et transformé par votre main : indiquez comment vous l'avez utilisée.",
+          "esempi": [
+            "Esquisses générées, puis redessinées.",
+            "Arrangement fait avec des outils d'IA, retravaillé à l'écoute.",
+            "Textes de présentation du projet réécrits."
+          ]
+        }
+      }
+    },
+    {
+      "n": 4,
+      "id": "regia",
+      "nome": "Régie",
+      "sottotitolo": "IA sous direction humaine",
+      "icona": "bot",
+      "profili": {
+        "generale": {
+          "chiede": "L'IA peut servir pour n'importe quelle partie du travail, ou elle est expressément demandée. La valeur tient à la direction : objectifs clairs, instructions précises, contrôle qualité, choix argumentés.",
+          "esegue": "Vous pouvez utiliser l'IA largement. Ce qui compte : comment vous la dirigez vers l'objectif, comment vous vérifiez les résultats et comment vous justifiez vos choix. Documentez la démarche.",
+          "esempi": [
+            "Analyse de données ou de documents menée avec des agents d'IA, avec contrôles par sondage.",
+            "Prototype de produit ou de service développé avec des outils d'IA.",
+            "Production de contenus en série dans une ligne éditoriale définie."
+          ]
+        },
+        "stem": {
+          "chiede": "L'IA peut servir pour n'importe quelle partie de l'épreuve, ou elle est demandée : l'étudiant la dirige vers les objectifs. On évalue la conduite, la vérification indépendante des résultats et la compétence disciplinaire.",
+          "esegue": "Vous pouvez utiliser l'IA largement, librement ou comme l'indique la consigne. Ce qui compte : comment vous la guidez et comment vous vérifiez ce qu'elle produit.",
+          "esempi": [
+            "Analyse de données menée avec des agents d'IA.",
+            "Prototype logiciel développé avec des assistants, avec documentation des choix.",
+            "Vérification indépendante des résultats sur des cas connus."
+          ]
+        },
+        "umanistiche": {
+          "chiede": "L'IA peut servir pour n'importe quelle partie de l'épreuve, ou elle est demandée : l'étudiant la dirige vers les objectifs. On évalue l'esprit critique, le contrôle des sources et les choix d'interprétation.",
+          "esegue": "Vous pouvez utiliser l'IA largement, librement ou comme l'indique la consigne. Ce qui compte : comment vous la guidez et l'esprit critique dont vous faites preuve.",
+          "esempi": [
+            "Constitution et analyse assistée d'un corpus.",
+            "Édition numérique d'un texte.",
+            "Dossier qui documente les instructions données à l'IA, les vérifications des sources et les choix d'interprétation."
+          ]
+        },
+        "afam": {
+          "chiede": "L'IA peut servir pour n'importe quelle partie de l'épreuve, ou elle est demandée : l'étudiant en assure la direction artistique. On évalue la vision, la cohérence des choix et la maîtrise du résultat.",
+          "esegue": "Vous pouvez utiliser l'IA largement, librement ou comme l'indique la consigne. Ce qui compte, c'est votre direction artistique : justifiez chaque choix.",
+          "esempi": [
+            "Projet multimédia où l'IA produit des matériaux sous direction artistique.",
+            "Portfolio de processus qui justifie chaque choix.",
+            "Installation ou spectacle conçus avec des outils d'IA."
+          ]
+        }
+      }
+    },
+    {
+      "n": 5,
+      "id": "sperimentazione",
+      "nome": "Expérimentation",
+      "sottotitolo": "IA comme terrain de recherche",
+      "icona": "lighthouse",
+      "profili": {
+        "generale": {
+          "chiede": "L'IA est le terrain même du travail : on explore des usages nouveaux pour résoudre des problèmes, faire émerger des idées ou construire des solutions originales. Objectifs et méthode se définissent ensemble entre commanditaire et équipe.",
+          "esegue": "Utilisez l'IA de façon créative et expérimentale : proposez des approches nouvelles, validez-les avec le commanditaire et documentez ce qui marche et ce qui ne marche pas.",
+          "esempi": [
+            "Projet pilote pour introduire l'IA dans un processus.",
+            "Outil sur mesure construit avec des modèles d'IA.",
+            "Recherche et développement de nouveaux services fondés sur l'IA."
+          ]
+        },
+        "stem": {
+          "chiede": "L'IA est utilisée de façon créative pour résoudre des problèmes, produire des intuitions ou développer des solutions originales. Enseignants et étudiants conçoivent l'épreuve ensemble, l'IA pouvant elle-même devenir l'objet d'étude.",
+          "esegue": "Utilisez l'IA de façon créative pour traiter le sujet : vous pouvez concevoir des approches nouvelles avec l'enseignant.",
+          "esempi": [
+            "Adapter ou entraîner un modèle.",
+            "Comparer des méthodes et en documenter les limites.",
+            "Concevoir des expériences où l'IA elle-même est l'objet d'étude."
+          ]
+        },
+        "umanistiche": {
+          "chiede": "L'IA est utilisée de façon créative pour poser des questions nouvelles aux textes et aux sources. Enseignants et étudiants conçoivent l'épreuve ensemble pour explorer des usages inédits de l'IA dans la discipline.",
+          "esegue": "Utilisez l'IA de façon créative pour traiter le sujet : vous pouvez concevoir des approches nouvelles avec l'enseignant.",
+          "esempi": [
+            "Méthodes des humanités numériques.",
+            "Étude des biais et des limites des modèles appliqués à des textes historiques.",
+            "Nouvelles formes de lecture et d'édition."
+          ]
+        },
+        "afam": {
+          "chiede": "L'IA est médium, outil ou sujet de l'œuvre. Enseignants et étudiants conçoivent l'épreuve ensemble pour explorer des langages et des processus nouveaux.",
+          "esegue": "Utilisez l'IA de façon créative, y compris comme matière de l'œuvre : vous pouvez concevoir des approches nouvelles avec l'enseignant.",
+          "esempi": [
+            "Œuvres qui prennent l'IA comme médium ou comme sujet critique.",
+            "Performances et installations.",
+            "Outils génératifs construits sur mesure."
+          ]
+        }
+      }
+    }
+  ]
+}

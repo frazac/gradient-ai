@@ -11,6 +11,8 @@ Stessi livelli e stessi timbri, testi diversi per profilo:
 - **[Didattica umanistica](https://frazac.github.io/gradient-ai/umanistiche/)**
 - **[Didattica AFAM](https://frazac.github.io/gradient-ai/afam/)**
 
+**Français** → https://frazac.github.io/gradient-ai/fr/ — traduction complète (profils général, STEM, lettres et sciences humaines, enseignement artistique).
+
 **English (Simple English)** → https://frazac.github.io/gradient-ai/en/ — a version for people who are still learning English, written following [ISO 24495-1:2023](https://www.iso.org/standard/78907.html) (plain language) and the [Simple English Wikipedia](https://simple.wikipedia.org/wiki/Wikipedia:How_to_write_Simple_English_pages) rules. There is already a better English text: the original [AI Assessment Scale](https://aiassessmentscale.com/).
 
 | | Livello | In breve |
@@ -38,7 +40,7 @@ La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè sca
 **JavaScript**, come [Lucide](https://lucide.dev):
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v0.3.0/dist/gradient-ai.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v0.4.0/dist/gradient-ai.js"></script>
 
 <i data-gradient="3"></i>
 <i data-gradient="5" data-variant="label" data-filled></i>
@@ -48,9 +50,9 @@ La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè sca
 </script>
 ```
 
-Opzioni: `variant` (`stamp` | `icon` | `label`) · `color` · `from`/`to` (gradiente in cinque passi, interpolato in OKLCH) · `palette` (array di cinque colori) · `weight` (1–3, come lo `stroke-width` di Lucide) · `filled` · `size` · `lang` (`it` | `en`; di default la lingua della pagina) · `link` (di default ogni timbro porta alla scheda del livello su frazac.github.io/gradient-ai; `false` per toglierlo, oppure l'indirizzo di un profilo, es. `.../stem/`). Solo la stringa: `GradientAI.toSvg(3, { variant: 'icon' })`.
+Opzioni: `variant` (`stamp` | `icon` | `label`) · `color` · `from`/`to` (gradiente in cinque passi, interpolato in OKLCH) · `palette` (array di cinque colori) · `weight` (1–3, come lo `stroke-width` di Lucide) · `filled` · `size` · `lang` (`it` | `fr` | `en`; di default la lingua della pagina) · `link` (di default ogni timbro porta alla scheda del livello su frazac.github.io/gradient-ai; `false` per toglierlo, oppure l'indirizzo di un profilo, es. `.../stem/`). Solo la stringa: `GradientAI.toSvg(3, { variant: 'icon' })`.
 
-I testi completi dei livelli, per ogni profilo, sono in [`dati/livelli.it.json`](dati/livelli.it.json) e [`dati/livelli.en.json`](dati/livelli.en.json).
+I testi completi dei livelli, per ogni profilo, sono in [`dati/livelli.it.json`](dati/livelli.it.json), [`dati/livelli.fr.json`](dati/livelli.fr.json) e [`dati/livelli.en.json`](dati/livelli.en.json).
 
 ## Sviluppo
 
@@ -60,7 +62,7 @@ Nessuna dipendenza: Python 3 e Google Chrome.
 python3 strumenti/build.py
 ```
 
-rigenera `dist/gradient-ai.js` (da `src/gradient-ai.core.js` + dati + icone), le pagine del sito (`index.html`, `stem/`, `umanistiche/`, `afam/` e `en/…`, dai modelli `src/pagina.it.html` e `src/pagina.en.html`), `dist/svg/` e `dist/png/`. I file in `dist/` sono generati: si modificano i sorgenti e si ricompila. Anteprima locale: `python3 -m http.server` e poi `http://localhost:8000/`.
+rigenera `dist/gradient-ai.js` (da `src/gradient-ai.core.js` + dati + icone), le pagine del sito (`index.html`, `stem/`, `umanistiche/`, `afam/`, `fr/…` ed `en/…`, dai modelli `src/pagina.{it,fr,en}.html`), `dist/svg/` e `dist/png/`. I file in `dist/` sono generati: si modificano i sorgenti e si ricompila. Anteprima locale: `python3 -m http.server` e poi `http://localhost:8000/`.
 
 ## Licenza e crediti
 

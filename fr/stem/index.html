@@ -1,0 +1,400 @@
+<!-- Generato da strumenti/build.py (src/pagina.fr.html + dati/livelli.fr.json): non modificare a mano. -->
+<!doctype html>
+<html lang="fr" data-theme-default="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script>
+  /* tema prima del primo disegno (niente lampo): stessa logica e chiave di masterismi.dev */
+  (function () {
+    try {
+      var d = document.documentElement;
+      var stored = localStorage.getItem('quark2-theme');
+      var pref = stored || d.getAttribute('data-theme-default') || 'auto';
+      var isDark = pref === 'dark' || (pref === 'auto' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      d.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      d.classList.toggle('dark', isDark);
+    } catch (e) {}
+  })();
+  </script>
+  <title>Gradient IA – Niveaux d'intégration de l'IA inspirés de l'AIAS · Enseignement STEM</title>
+  <meta name="description" content="Cinq niveaux pour dire, avant une épreuve, quelle place l'intelligence artificielle peut y prendre, et comment : exercices, comptes rendus de TP, projets, code. Profil pour les sciences, la technologie, l'ingénierie et les mathématiques. Adaptation de l'AIAS v2, CC BY-NC-SA 4.0.">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="it" href="https://frazac.github.io/gradient-ai/stem/">
+  <link rel="alternate" hreflang="fr" href="https://frazac.github.io/gradient-ai/fr/stem/">
+  <link rel="alternate" hreflang="en" href="https://frazac.github.io/gradient-ai/en/stem/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="../../assets/cookieconsent.css">
+  <link rel="stylesheet" href="../../assets/sito.css">
+  <script src="../../dist/gradient-ai.js" defer></script>
+  <script src="../../assets/sito.js" defer></script>
+  <!-- local uniquement : post-it de relecture (revisione/ n'est pas sur GitHub) -->
+  <script>
+    if (/^(localhost|127\.0\.0\.1|gradient-ai|.+\.localhost)$/.test(location.hostname) || location.protocol === 'file:') {
+      document.write('<link rel="stylesheet" href="../../revisione/note.css"><script src="../../revisione/note.js" defer><\/script>');
+    }
+  </script>
+</head>
+<body data-profilo="stem" data-percorso="fr/stem/">
+
+<header class="testata">
+  <div class="riga">
+    <p class="marchio"><a href="../../" class="marchio-link"><span data-gradient="3" data-variant="icon" data-color="currentColor"></span> Gradient IA</a></p>
+    <nav>
+      <a href="#livelli">Niveaux</a>
+      <a href="#usare">Utiliser</a>
+      <a href="#licenza">Licence</a>
+      <a href="#fonti">Sources</a>
+      <a href="https://github.com/frazac/gradient-ai" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a>
+    </nav>
+    <div class="header-lang">
+      <button class="lang-toggle" type="button" aria-label="Changer de langue" title="Changer de langue" aria-expanded="false" aria-haspopup="true" aria-controls="lang-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg></button>
+      <div class="lang-panel" id="lang-panel"><div class="lang-panel-inner">
+        <ul><li><a href="../../stem/" hreflang="it" lang="it">Italiano</a></li><li><a href="../../fr/stem/" hreflang="fr" lang="fr" class="is-active" aria-current="true">Français</a></li><li><a href="../../en/stem/" hreflang="en" lang="en">Simple English</a></li></ul>
+        <button type="button" class="lang-close" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+      </div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="intro" class="intro riga">
+  <h1>Gradient IA</h1>
+  <p class="sottotitolo">Niveaux d'intégration de l'IA inspirés de l'AIAS</p>
+  <p class="occhiello-profilo">Profil enseignement · sciences et techniques</p>
+  <p class="lead">Cinq niveaux pour dire, avant une épreuve, <strong>quelle place l'intelligence artificielle peut y prendre, et comment</strong> : exercices, comptes rendus de TP, projets, code. Profil pour les sciences, la technologie, l'ingénierie et les mathématiques.</p>
+  <p class="nota-fonte">Adaptation de l'<a href="https://aiassessmentscale.com/">AI Assessment Scale (AIAS)</a> v2 de Mike Perkins, Leon Furze, Jasper Roe et Jason MacVaugh · <a href="#licenza">CC BY-NC-SA 4.0</a><br>
+  Gradient IA en est à la version <span data-versione>0.4.0</span></p>
+</section>
+
+<nav class="profili riga" aria-label="Profils">
+  <a href="../../fr/" title="Contexte professionnel">Général</a>
+  <a href="../../fr/stem/" aria-current="page" title="Sciences, technologie, ingénierie, mathématiques">Enseignement STEM</a>
+  <a href="../../fr/sciences-humaines/" title="Lettres, philosophie, histoire, langues, sciences sociales">Enseignement lettres et sciences humaines</a>
+  <a href="../../fr/arts/" title="Écoles d'art, conservatoires, design, arts du spectacle">Enseignement artistique</a>
+</nav>
+
+<section id="personalizza" class="pannello" aria-label="Personnaliser les tampons">
+  <div class="riga comandi">
+    <label>Forme
+      <select data-opt="variant">
+        <option value="stamp">Tampon</option>
+        <option value="icon">Icône</option>
+        <option value="label">Étiquette</option>
+      </select>
+    </label>
+    <label>Couleurs
+      <select data-opt="schema">
+        <option value="gradiente">Dégradé (par défaut)</option>
+        <option value="estremi">De… à…</option>
+        <option value="unico">Couleur unique</option>
+        <option value="nero">Noir (impression)</option>
+      </select>
+    </label>
+    <span class="colori">
+      <input type="color" data-opt="from" value="#c8473d" aria-label="Couleur de départ (niveau 1)">
+      <input type="color" data-opt="to" value="#1f2a44" aria-label="Couleur d'arrivée (niveau 5)">
+    </span>
+    <label>Graisse <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
+    <label class="spunta"><input type="checkbox" data-opt="filled"> Plein</label>
+  </div>
+</section>
+
+<section id="livelli" class="riga">
+  <ol class="galleria">
+    <li><a href="#livello-1"><span data-slot="1"></span></a></li>
+    <li><a href="#livello-2"><span data-slot="2"></span></a></li>
+    <li><a href="#livello-3"><span data-slot="3"></span></a></li>
+    <li><a href="#livello-4"><span data-slot="4"></span></a></li>
+    <li><a href="#livello-5"><span data-slot="5"></span></a></li>
+  </ol>
+
+  <!-- LIVELLI:INIZIO -->
+  <article id="livello-1" class="livello" data-livello="1">
+    <div class="livello-timbro"><span data-slot="1" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Niveau 1 · Sans IA</p>
+      <h2>Autonomie</h2>
+      <h3>Pour l'enseignant</h3>
+      <p>L'épreuve se déroule entièrement sans IA, dans un cadre surveillé. L'étudiant ne compte que sur ses connaissances et sur sa capacité à poser et résoudre les problèmes.</p>
+      <h3>Consigne pour l'étudiant</h3>
+      <blockquote id="consegna-1">N'utilisez l'IA à aucune étape. L'épreuve sert à montrer ce que vous savez et savez faire seul, démarche comprise.</blockquote>
+      <h3>Exemples d'épreuves</h3>
+      <ul class="esempi">
+        <li>Exercices et démonstrations faits en classe.</li>
+        <li>Épreuve écrite de calcul ; oral sur une méthode.</li>
+        <li>Cahier de laboratoire rempli à la main.</li>
+      </ul>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-1">Copier la consigne</button>
+        <button type="button" class="bottone primario" data-copia-testo="1">Copier le texte avec lien</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="1">Télécharger le SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="1">Télécharger le PNG</button>
+        <button type="button" class="bottone" data-copia-svg="1">Copier le SVG</button>
+      </p>
+    </div>
+  </article>
+  <article id="livello-2" class="livello" data-livello="2">
+    <div class="livello-timbro"><span data-slot="2" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Niveau 2 · IA seulement en amont</p>
+      <h2>Idéation</h2>
+      <h3>Pour l'enseignant</h3>
+      <p>L'IA peut intervenir avant le travail proprement dit : explorer des pistes, s'orienter dans la littérature, formuler des hypothèses. On évalue la capacité à développer ces idées de façon autonome.</p>
+      <h3>Consigne pour l'étudiant</h3>
+      <blockquote id="consegna-2">Vous pouvez utiliser l'IA pour chercher des approches, vous orienter dans la littérature et cadrer le projet. Le développement, les calculs et le code sont les vôtres.</blockquote>
+      <h3>Exemples d'épreuves</h3>
+      <ul class="esempi">
+        <li>Repérer des pistes pour aborder un problème.</li>
+        <li>Cartographier la littérature pour un mémoire ou un rapport.</li>
+        <li>Formuler des hypothèses de projet à discuter en cours.</li>
+      </ul>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-2">Copier la consigne</button>
+        <button type="button" class="bottone primario" data-copia-testo="2">Copier le texte avec lien</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="2">Télécharger le SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="2">Télécharger le PNG</button>
+        <button type="button" class="bottone" data-copia-svg="2">Copier le SVG</button>
+      </p>
+    </div>
+  </article>
+  <article id="livello-3" class="livello" data-livello="3">
+    <div class="livello-timbro"><span data-slot="3" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Niveau 3 · IA à vos côtés, avec regard critique</p>
+      <h2>Co-création</h2>
+      <h3>Pour l'enseignant</h3>
+      <p>L'IA peut accompagner le travail : proposer des solutions, écrire du code, faire des retours. L'étudiant vérifie, corrige et explique ce que l'IA propose, et montre ainsi qu'il l'a compris.</p>
+      <h3>Consigne pour l'étudiant</h3>
+      <blockquote id="consegna-3">Vous pouvez utiliser l'IA pour certaines parties du travail. Chaque résultat se vérifie et chaque ligne de code doit pouvoir être expliquée : indiquez comment vous l'avez utilisée.</blockquote>
+      <h3>Exemples d'épreuves</h3>
+      <ul class="esempi">
+        <li>Code écrit avec un assistant, puis commenté, testé et expliqué.</li>
+        <li>Débogage guidé.</li>
+        <li>Compte rendu de TP avec relecture linguistique.</li>
+      </ul>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-3">Copier la consigne</button>
+        <button type="button" class="bottone primario" data-copia-testo="3">Copier le texte avec lien</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="3">Télécharger le SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="3">Télécharger le PNG</button>
+        <button type="button" class="bottone" data-copia-svg="3">Copier le SVG</button>
+      </p>
+    </div>
+  </article>
+  <article id="livello-4" class="livello" data-livello="4">
+    <div class="livello-timbro"><span data-slot="4" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Niveau 4 · IA sous direction humaine</p>
+      <h2>Régie</h2>
+      <h3>Pour l'enseignant</h3>
+      <p>L'IA peut servir pour n'importe quelle partie de l'épreuve, ou elle est demandée : l'étudiant la dirige vers les objectifs. On évalue la conduite, la vérification indépendante des résultats et la compétence disciplinaire.</p>
+      <h3>Consigne pour l'étudiant</h3>
+      <blockquote id="consegna-4">Vous pouvez utiliser l'IA largement, librement ou comme l'indique la consigne. Ce qui compte : comment vous la guidez et comment vous vérifiez ce qu'elle produit.</blockquote>
+      <h3>Exemples d'épreuves</h3>
+      <ul class="esempi">
+        <li>Analyse de données menée avec des agents d'IA.</li>
+        <li>Prototype logiciel développé avec des assistants, avec documentation des choix.</li>
+        <li>Vérification indépendante des résultats sur des cas connus.</li>
+      </ul>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-4">Copier la consigne</button>
+        <button type="button" class="bottone primario" data-copia-testo="4">Copier le texte avec lien</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="4">Télécharger le SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="4">Télécharger le PNG</button>
+        <button type="button" class="bottone" data-copia-svg="4">Copier le SVG</button>
+      </p>
+    </div>
+  </article>
+  <article id="livello-5" class="livello" data-livello="5">
+    <div class="livello-timbro"><span data-slot="5" data-grande></span></div>
+    <div class="livello-testo">
+      <p class="occhiello">Niveau 5 · IA comme terrain de recherche</p>
+      <h2>Expérimentation</h2>
+      <h3>Pour l'enseignant</h3>
+      <p>L'IA est utilisée de façon créative pour résoudre des problèmes, produire des intuitions ou développer des solutions originales. Enseignants et étudiants conçoivent l'épreuve ensemble, l'IA pouvant elle-même devenir l'objet d'étude.</p>
+      <h3>Consigne pour l'étudiant</h3>
+      <blockquote id="consegna-5">Utilisez l'IA de façon créative pour traiter le sujet : vous pouvez concevoir des approches nouvelles avec l'enseignant.</blockquote>
+      <h3>Exemples d'épreuves</h3>
+      <ul class="esempi">
+        <li>Adapter ou entraîner un modèle.</li>
+        <li>Comparer des méthodes et en documenter les limites.</li>
+        <li>Concevoir des expériences où l'IA elle-même est l'objet d'étude.</li>
+      </ul>
+      <p class="azioni">
+        <button type="button" class="bottone" data-copia="#consegna-5">Copier la consigne</button>
+        <button type="button" class="bottone primario" data-copia-testo="5">Copier le texte avec lien</button>
+        <button type="button" class="bottone" data-scarica="svg" data-n="5">Télécharger le SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="5">Télécharger le PNG</button>
+        <button type="button" class="bottone" data-copia-svg="5">Copier le SVG</button>
+      </p>
+    </div>
+  </article>
+  <!-- LIVELLI:FINE -->
+</section>
+
+<section id="usare" class="riga">
+  <h2>Utiliser les tampons</h2>
+  <p>Quatre façons, de la plus simple à la plus souple. Les exemples utilisent le niveau 3 et renvoient à sa fiche sur ce site ; forme, couleurs et graisse suivent les choix du panneau ci-dessus.</p>
+
+  <div class="tecnica">
+    <h3>1. Texte seul, avec lien</h3>
+    <p>Pour les documents, courriels, plateformes pédagogiques et sites : une ligne qui annonce le niveau et renvoie à sa fiche. Le bouton « Copier le texte avec lien » de chaque niveau la copie toute prête ; collée dans Word, Google Docs ou un courriel, le lien reste cliquable.</p>
+    <pre><code data-codice="testo"></code></pre>
+    <p>En HTML :</p>
+    <pre><code data-codice="testo-html"></code></pre>
+  </div>
+
+  <div class="tecnica">
+    <h3>2. Image PNG</h3>
+    <p>Pour les diapositives, les documents et les plateformes qui n'acceptent que des images. Chaque tampon existe en 128 et 512 px (icône : 64 et 256 ; étiquette : 48 et 192 de haut), en contour ou plein.</p>
+    <pre><code data-codice="png"></code></pre>
+    <p><a href="https://github.com/frazac/gradient-ai/tree/main/dist/png/fr">Tous les PNG</a></p>
+  </div>
+
+  <div class="tecnica">
+    <h3>3. Fichier SVG</h3>
+    <p>Vectoriel : il s'agrandit sans perte et se modifie dans Illustrator, Inkscape ou Figma. Le texte utilise une police système.</p>
+    <pre><code data-codice="svg"></code></pre>
+    <p><a href="https://github.com/frazac/gradient-ai/tree/main/dist/svg/fr">Tous les SVG</a></p>
+  </div>
+
+  <div class="tecnica">
+    <h3>4. JavaScript</h3>
+    <p>Comme <a href="https://lucide.dev/guide/packages/lucide">Lucide</a> : on marque l'emplacement avec un attribut et la bibliothèque dessine le tampon, avec les couleurs et la graisse de votre choix.</p>
+    <pre><code data-codice="js"></code></pre>
+    <p>Options : <code>variant</code> (<code>stamp</code>, <code>icon</code>, <code>label</code>) · <code>lang</code> (<code>fr</code>, <code>it</code>, <code>en</code>) · <code>color</code> · <code>from</code>/<code>to</code> (dégradé en cinq pas) · <code>palette</code> (cinq couleurs) · <code>weight</code> (1–3) · <code>filled</code> · <code>size</code> (px) · <code>link</code> (par défaut le tampon renvoie à la fiche du niveau sur ce site ; <code>false</code> pour l'enlever, ou l'adresse d'un profil). Pour obtenir seulement le SVG : <code>GradientAI.toSvg(3, {variant: 'stamp', lang: 'fr'})</code>.</p>
+  </div>
+</section>
+
+<section id="note-uso" class="riga">
+  <h2>Notes d'usage</h2>
+  <!-- NOTE:INIZIO -->
+  <ul>
+    <li>Les niveaux ne sont pas une échelle de mérite : ils indiquent quelle place l'IA prend dans l'épreuve, pas ce que vaut l'épreuve.</li>
+    <li>Seul le niveau 1 peut être garanti, et seulement dans un cadre surveillé. Pour un travail fait à la maison, mieux vaut considérer que tout usage de l'IA est possible et concevoir l'épreuve en conséquence.</li>
+    <li>Le niveau se choisit en fonction des objectifs d'apprentissage et s'annonce avant l'épreuve, avec ce qui doit être déclaré (par exemple les instructions données à l'IA).</li>
+  </ul>
+  <!-- NOTE:FINE -->
+</section>
+
+<section id="licenza" class="riga">
+  <h2>Licence et attribution</h2>
+  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
+  Gradient IA est diffusé sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">Creative Commons Attribution – Pas d'utilisation commerciale – Partage dans les mêmes conditions 4.0 International</a>, la même que l'AIAS v2 dont il dérive.</p>
+  <ul>
+    <li><strong>Vous pouvez</strong> partager, traduire, adapter et recolorer les tampons.</li>
+    <li><strong>Vous devez</strong> citer les auteurs et la source, indiquer vos modifications et diffuser les œuvres dérivées sous la même licence.</li>
+    <li><strong>Vous ne pouvez pas</strong> en faire un usage commercial.</li>
+  </ul>
+  <h3>Comment attribuer</h3>
+  <blockquote id="attribuzione">Gradient IA de Francesco Zaccaria, niveaux d'intégration de l'IA inspirés de l'AIAS v2 de Mike Perkins, Leon Furze, Jasper Roe et Jason MacVaugh (License <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>). Icônes : Lucide (License <a href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">ISC</a>).</blockquote>
+  <button type="button" class="bottone" data-copia="#attribuzione">Copier l'attribution</button>
+  <p class="piccolo">Gradient IA est une adaptation indépendante : ce n'est pas une traduction officielle et elle n'est pas approuvée par les auteurs de l'AIAS. Une traduction française de l'AIAS existe par ailleurs (François Jourde), recensée sur <a href="https://leonfurze.com/2025/03/19/ai-assessment-scale-aias-translations-2025-updates/">le site de Leon Furze</a>.</p>
+</section>
+
+<section id="fonti" class="riga">
+  <h2>Sources et crédits</h2>
+  <h3>AI Assessment Scale</h3>
+  <ul class="bibliografia">
+    <li>Perkins, M., Furze, L., Roe, J., &amp; MacVaugh, J. (2024). The Artificial Intelligence Assessment Scale (AIAS): A framework for ethical integration of generative AI in educational assessment. <em>Journal of University Teaching and Learning Practice</em>, 21(6). <a href="https://open-publishing.org/journals/index.php/jutlp/article/view/810">open-publishing.org</a></li>
+    <li>Perkins, M., Roe, J., &amp; Furze, L. (2024). The AI Assessment Scale revisited: A framework for educational assessment. <em>arXiv</em>, 2412.09029. <a href="https://arxiv.org/abs/2412.09029">arxiv.org</a></li>
+    <li>AI Assessment Scale, site officiel : <a href="https://aiassessmentscale.com/">aiassessmentscale.com</a> — version 2 consultée dans l'<a href="https://web.archive.org/web/20250611083200/https://aiassessmentscale.com/">archive de juin 2025</a>.</li>
+  </ul>
+  <h3>Icônes</h3>
+  <p>Les icônes au centre des tampons viennent de <a href="https://lucide.dev">Lucide</a> (licence <a href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">ISC</a>, © Lucide Icons and Contributors) : <a href="https://lucide.dev/icons/ban">ban</a>, <a href="https://lucide.dev/icons/calendar-days">calendar-days</a>, <a href="https://lucide.dev/icons/blender">blender</a>, <a href="https://lucide.dev/icons/bot">bot</a>, <a href="https://lucide.dev/icons/lighthouse">lighthouse</a>.</p>
+  <h3>Polices</h3>
+  <p>Site : <a href="https://fonts.google.com/specimen/Space+Grotesk">Space Grotesk</a> (SIL Open Font License). Dans les fichiers SVG et PNG, le texte utilise une police système.</p>
+  <h3>Composants du site</h3>
+  <p>Bannière cookies : <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> 3.1.0 d'Orest Bida (licence MIT). Interrupteur clair/sombre repris de masterismi.dev (thème Quark 2), icônes soleil et lune d'<a href="https://iconoir.com/">Iconoir</a> (licence MIT).</p>
+  <h3>Réalisation</h3>
+  <p><a href="https://linktr.ee/frazac">Francesco Zaccaria</a> — adaptation, textes et tampons. Traduction française à partir de la version italienne. Signalements et propositions : <a href="https://github.com/frazac/gradient-ai/issues">issues sur GitHub</a>.</p>
+</section>
+
+</main>
+
+<footer class="piede riga">
+  <p class="titolo-piede">Gradient IA – Niveaux d'intégration de l'IA inspirés de l'AIAS · version <span data-versione>0.4.0</span></p>
+  <p>© 2026 Francesco Zaccaria. Textes, tampons et code sont diffusés sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">Creative Commons Attribution – Pas d'utilisation commerciale – Partage dans les mêmes conditions 4.0 International (CC BY-NC-SA 4.0)</a>.</p>
+  <p>« AI Assessment Scale » et « AIAS » sont des dénominations et signes distinctifs appartenant à leurs titulaires respectifs. L'AI Assessment Scale est l'œuvre de Mike Perkins, Leon Furze, Jasper Roe et Jason MacVaugh, qui en conservent l'ensemble des droits de propriété intellectuelle ; elle est adaptée ici dans les limites de la licence CC BY-NC-SA 4.0 sous laquelle les auteurs l'ont rendue disponible. Gradient IA est une adaptation indépendante : ce n'est pas une version officielle et elle n'est ni approuvée ni soutenue par les auteurs ou les titulaires de l'AIAS.</p>
+  <p>Icônes : <a href="https://lucide.dev">Lucide</a>, © Lucide Icons and Contributors, licence ISC. Police du site : Space Grotesk, SIL Open Font License. Bannière cookies : <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> d'Orest Bida, licence MIT ; icônes soleil/lune : <a href="https://iconoir.com/">Iconoir</a>, licence MIT.</p>
+  <p>Ces contenus sont proposés à des fins pédagogiques, en l'état et sans garantie : le choix du niveau et la conception de l'épreuve ou du travail relèvent de la responsabilité de l'enseignant, du commanditaire et de l'institution.</p>
+  <nav aria-label="Liens du pied de page">
+    <a href="https://github.com/frazac/gradient-ai">Code source</a>
+    <a href="https://github.com/frazac/gradient-ai/blob/main/CHANGELOG.md">Nouveautés</a>
+    <a href="https://github.com/frazac/gradient-ai/blob/main/LICENSE">Licence</a>
+    <a href="https://github.com/frazac/gradient-ai/issues">Signalements</a>
+    <a href="https://linktr.ee/frazac">Contact</a>
+    <a href="#" id="cookie-prefs-link" onclick="window.CookieConsent &amp;&amp; CookieConsent.showPreferences(); return false;">Préférences cookies</a>
+  </nav>
+  <div class="piede-comandi">
+    <button type="button" class="theme-switch" data-theme-toggle
+            data-label-light="Clair" data-label-dark="Sombre"
+            data-aria-template="Apparence : %s" data-title-template="Apparence : %s (cliquer pour changer)"
+            aria-label="Apparence" title="Apparence (cliquer pour changer)">
+      <span class="icon-sun" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 12L23 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2V1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 23V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 20L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 4L19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 20L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 4L5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 12L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </span>
+      <span class="icon-moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </span>
+      <span class="knob" data-theme-knob></span>
+    </button>
+  </div>
+</footer>
+
+<script src="../../assets/theme-toggle.js"></script>
+<script src="../../assets/cookieconsent.umd.js"></script>
+<script>
+/* bannière cookies : même configuration que masterismi.dev, sans statistiques */
+window.addEventListener('load', function () {
+  CookieConsent.run({
+    mode: 'opt-in',
+    guiOptions: {
+      consentModal: { layout: 'box', position: 'bottom left', equalWeightButtons: true },
+      preferencesModal: { layout: 'box', equalWeightButtons: true }
+    },
+    categories: {
+      necessary: { readOnly: true }
+    },
+    language: {
+      default: 'fr',
+      translations: {
+        fr: {
+          consentModal: {
+            description: 'Nous n\'utilisons que des cookies techniques.',
+            acceptAllBtn: 'Accepter',
+            acceptNecessaryBtn: 'Refuser',
+            showPreferencesBtn: 'Gérer'
+          },
+          preferencesModal: {
+            title: 'Préférences cookies',
+            acceptAllBtn: 'Accepter',
+            acceptNecessaryBtn: 'Refuser',
+            savePreferencesBtn: 'Enregistrer',
+            closeIconLabel: 'Fermer',
+            sections: [
+              {
+                title: 'Cookies techniques',
+                description: 'Nécessaires au fonctionnement du site : ils mémorisent l\'apparence claire/sombre, les choix du panneau des tampons et votre réponse à cette bannière. Ils restent dans votre navigateur. Toujours actifs.',
+                linkedCategory: 'necessary'
+              },
+              {
+                title: 'Services externes',
+                description: 'Aucun outil de statistiques ni de profilage. Le site est hébergé par GitHub Pages ; la police vient de Google Fonts et le logo de licence de Creative Commons : ces services reçoivent l\'adresse IP du navigateur pour envoyer les fichiers.'
+              }
+            ]
+          }
+        }
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>

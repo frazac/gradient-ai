@@ -22,6 +22,7 @@
   <meta name="description" content="Cinque livelli per dire, prima di una prova, quanto e come l'intelligenza artificiale può entrarci: saggi, traduzioni, commenti, ricerche. Profilo per lettere, filosofia, storia, lingue e scienze sociali. Adattamento di AIAS v2, CC BY-NC-SA 4.0.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" hreflang="it" href="https://frazac.github.io/gradient-ai/umanistiche/">
+  <link rel="alternate" hreflang="fr" href="https://frazac.github.io/gradient-ai/fr/sciences-humaines/">
   <link rel="alternate" hreflang="en" href="https://frazac.github.io/gradient-ai/en/humanities/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,8 +49,14 @@
       <a href="#licenza">Licenza</a>
       <a href="#fonti">Fonti</a>
       <a href="https://github.com/frazac/gradient-ai" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span><span class="sr">(si apre in una nuova scheda)</span></a>
-      <a href="../umanistiche/" hreflang="it" lang="it" class="lingua" aria-current="true" title="Italiano">IT</a> <a href="../en/humanities/" hreflang="en" lang="en" class="lingua" title="Simple English">Simple EN</a>
     </nav>
+    <div class="header-lang">
+      <button class="lang-toggle" type="button" aria-label="Cambia lingua" title="Cambia lingua" aria-expanded="false" aria-haspopup="true" aria-controls="lang-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg></button>
+      <div class="lang-panel" id="lang-panel"><div class="lang-panel-inner">
+        <ul><li><a href="../umanistiche/" hreflang="it" lang="it" class="is-active" aria-current="true">Italiano</a></li><li><a href="../fr/sciences-humaines/" hreflang="fr" lang="fr">Français</a></li><li><a href="../en/humanities/" hreflang="en" lang="en">Simple English</a></li></ul>
+        <button type="button" class="lang-close" aria-label="Chiudi" title="Chiudi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+      </div></div>
+    </div>
   </div>
 </header>
 
@@ -61,7 +68,7 @@
   <p class="occhiello-profilo">Profilo didattico · area umanistica</p>
   <p class="lead">Cinque livelli per dire, prima di una prova, <strong>quanto e come l'intelligenza artificiale può entrarci</strong>: saggi, traduzioni, commenti, ricerche. Profilo per lettere, filosofia, storia, lingue e scienze sociali.</p>
   <p class="nota-fonte">Adattamento italiano della <a href="https://aiassessmentscale.com/">AI Assessment Scale (AIAS)</a> v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh · <a href="#licenza">CC BY-NC-SA 4.0</a><br>
-  Gradiente IA è in versione <span data-versione>0.3.0</span></p>
+  Gradiente IA è in versione <span data-versione>0.4.0</span></p>
 </section>
 
 <nav class="profili riga" aria-label="Profili">
@@ -124,7 +131,7 @@
       </ul>
       <p class="azioni">
         <button type="button" class="bottone" data-copia="#consegna-1">Copia l'indicazione</button>
-        <button type="button" class="bottone" data-copia-testo="1">Copia testo con link</button>
+        <button type="button" class="bottone primario" data-copia-testo="1">Copia testo con link</button>
         <button type="button" class="bottone" data-scarica="svg" data-n="1">Scarica SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="1">Scarica PNG</button>
         <button type="button" class="bottone" data-copia-svg="1">Copia SVG</button>
@@ -148,7 +155,7 @@
       </ul>
       <p class="azioni">
         <button type="button" class="bottone" data-copia="#consegna-2">Copia l'indicazione</button>
-        <button type="button" class="bottone" data-copia-testo="2">Copia testo con link</button>
+        <button type="button" class="bottone primario" data-copia-testo="2">Copia testo con link</button>
         <button type="button" class="bottone" data-scarica="svg" data-n="2">Scarica SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="2">Scarica PNG</button>
         <button type="button" class="bottone" data-copia-svg="2">Copia SVG</button>
@@ -172,7 +179,7 @@
       </ul>
       <p class="azioni">
         <button type="button" class="bottone" data-copia="#consegna-3">Copia l'indicazione</button>
-        <button type="button" class="bottone" data-copia-testo="3">Copia testo con link</button>
+        <button type="button" class="bottone primario" data-copia-testo="3">Copia testo con link</button>
         <button type="button" class="bottone" data-scarica="svg" data-n="3">Scarica SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="3">Scarica PNG</button>
         <button type="button" class="bottone" data-copia-svg="3">Copia SVG</button>
@@ -196,7 +203,7 @@
       </ul>
       <p class="azioni">
         <button type="button" class="bottone" data-copia="#consegna-4">Copia l'indicazione</button>
-        <button type="button" class="bottone" data-copia-testo="4">Copia testo con link</button>
+        <button type="button" class="bottone primario" data-copia-testo="4">Copia testo con link</button>
         <button type="button" class="bottone" data-scarica="svg" data-n="4">Scarica SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="4">Scarica PNG</button>
         <button type="button" class="bottone" data-copia-svg="4">Copia SVG</button>
@@ -220,7 +227,7 @@
       </ul>
       <p class="azioni">
         <button type="button" class="bottone" data-copia="#consegna-5">Copia l'indicazione</button>
-        <button type="button" class="bottone" data-copia-testo="5">Copia testo con link</button>
+        <button type="button" class="bottone primario" data-copia-testo="5">Copia testo con link</button>
         <button type="button" class="bottone" data-scarica="svg" data-n="5">Scarica SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="5">Scarica PNG</button>
         <button type="button" class="bottone" data-copia-svg="5">Copia SVG</button>
@@ -318,7 +325,7 @@
 </main>
 
 <footer class="piede riga">
-  <p class="titolo-piede">Gradiente IA – Livelli di integrazione dell'IA tratti da AIAS · versione <span data-versione>0.3.0</span></p>
+  <p class="titolo-piede">Gradiente IA – Livelli di integrazione dell'IA tratti da AIAS · versione <span data-versione>0.4.0</span></p>
   <p>© 2026 Francesco Zaccaria. Testi italiani, timbri e codice sono distribuiti con licenza <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it">Creative Commons Attribuzione – Non commerciale – Condividi allo stesso modo 4.0 Internazionale (CC BY-NC-SA 4.0)</a>.</p>
   <p>«AI Assessment Scale» e «AIAS» sono denominazioni e segni distintivi dei rispettivi titolari. La AI Assessment Scale è opera di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh, che ne conservano tutti i diritti di proprietà intellettuale; qui è adattata nei limiti della licenza CC BY-NC-SA 4.0 con cui gli autori l'hanno resa disponibile. Gradiente IA è un adattamento indipendente: non è una versione ufficiale e non è approvato né sostenuto dagli autori o dai titolari della AIAS.</p>
   <p>Icone: <a href="https://lucide.dev">Lucide</a>, © Lucide Icons and Contributors, licenza ISC. Carattere del sito: Space Grotesk, SIL Open Font License. Banner cookie: <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> di Orest Bida, licenza MIT; icone sole/luna: <a href="https://iconoir.com/">Iconoir</a>, licenza MIT.</p>

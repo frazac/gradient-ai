@@ -2,6 +2,12 @@
 
 Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con una numerazione propria; la versione della AIAS da cui deriva (v2, 2024) è dichiarata a parte.
 
+## 0.4.0 — 2026-09-29
+
+- **Francese**: pagine `fr/`, `fr/stem/`, `fr/sciences-humaines/`, `fr/arts/`, timbri francesi in `dist/*/fr/`, `lang: 'fr'` nella libreria.
+- Selettore lingua come orco.it: globo (Lucide `earth`) che apre un pannello con Italiano, Français, Simple English.
+- Pannello di personalizzazione nello stile di masterismi.dev: menu a pillola, colori a cerchio, interruttore «Pieno», pulsante principale pieno.
+
 ## 0.3.0 — 2026-09-29
 
 - Versione in **Simple English** (`/en/`, `/en/stem/`, `/en/humanities/`, `/en/arts/`), scritta secondo ISO 24495-1:2023 e le regole della Simple English Wikipedia, con rimando alla versione inglese originale della AIAS. Selettore IT/EN in testata, link `hreflang`.

@@ -1,0 +1,262 @@
+<!-- Modèle des pages françaises : strumenti/build.py génère fr/, fr/stem/, fr/sciences-humaines/, fr/arts/ à partir de ce fichier et de dati/livelli.fr.json. -->
+<!doctype html>
+<html lang="fr" data-theme-default="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script>
+  /* tema prima del primo disegno (niente lampo): stessa logica e chiave di masterismi.dev */
+  (function () {
+    try {
+      var d = document.documentElement;
+      var stored = localStorage.getItem('quark2-theme');
+      var pref = stored || d.getAttribute('data-theme-default') || 'auto';
+      var isDark = pref === 'dark' || (pref === 'auto' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      d.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      d.classList.toggle('dark', isDark);
+    } catch (e) {}
+  })();
+  </script>
+  <title>{{TITOLO}}</title>
+  <meta name="description" content="{{DESCRIZIONE}}">
+  <link rel="icon" href="{{R}}assets/favicon.svg" type="image/svg+xml">
+{{ALTERNATE}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="{{R}}assets/cookieconsent.css">
+  <link rel="stylesheet" href="{{R}}assets/sito.css">
+  <script src="{{R}}dist/gradient-ai.js" defer></script>
+  <script src="{{R}}assets/sito.js" defer></script>
+  <!-- local uniquement : post-it de relecture (revisione/ n'est pas sur GitHub) -->
+  <script>
+    if (/^(localhost|127\.0\.0\.1|gradient-ai|.+\.localhost)$/.test(location.hostname) || location.protocol === 'file:') {
+      document.write('<link rel="stylesheet" href="{{R}}revisione/note.css"><script src="{{R}}revisione/note.js" defer><\/script>');
+    }
+  </script>
+</head>
+<body data-profilo="{{PROFILO}}" data-percorso="{{PERCORSO}}">
+
+<header class="testata">
+  <div class="riga">
+    <p class="marchio"><a href="{{R}}" class="marchio-link"><span data-gradient="3" data-variant="icon" data-color="currentColor"></span> Gradient IA</a></p>
+    <nav>
+      <a href="#livelli">Niveaux</a>
+      <a href="#usare">Utiliser</a>
+      <a href="#licenza">Licence</a>
+      <a href="#fonti">Sources</a>
+      <a href="https://github.com/frazac/gradient-ai" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a>
+    </nav>
+    {{LINGUA}}
+  </div>
+</header>
+
+<main>
+
+<section id="intro" class="intro riga">
+  <h1>Gradient IA</h1>
+  <p class="sottotitolo">Niveaux d'intégration de l'IA inspirés de l'AIAS</p>
+  <p class="occhiello-profilo">{{OCCHIELLO}}</p>
+  <p class="lead">{{LEAD}}</p>
+  <p class="nota-fonte">Adaptation de l'<a href="https://aiassessmentscale.com/">AI Assessment Scale (AIAS)</a> v2 de Mike Perkins, Leon Furze, Jasper Roe et Jason MacVaugh · <a href="#licenza">CC BY-NC-SA 4.0</a><br>
+  Gradient IA en est à la version <span data-versione>0.1.0</span></p>
+</section>
+
+<nav class="profili riga" aria-label="Profils">{{PROFILI}}
+</nav>
+
+<section id="personalizza" class="pannello" aria-label="Personnaliser les tampons">
+  <div class="riga comandi">
+    <label>Forme
+      <select data-opt="variant">
+        <option value="stamp">Tampon</option>
+        <option value="icon">Icône</option>
+        <option value="label">Étiquette</option>
+      </select>
+    </label>
+    <label>Couleurs
+      <select data-opt="schema">
+        <option value="gradiente">Dégradé (par défaut)</option>
+        <option value="estremi">De… à…</option>
+        <option value="unico">Couleur unique</option>
+        <option value="nero">Noir (impression)</option>
+      </select>
+    </label>
+    <span class="colori">
+      <input type="color" data-opt="from" value="#c8473d" aria-label="Couleur de départ (niveau 1)">
+      <input type="color" data-opt="to" value="#1f2a44" aria-label="Couleur d'arrivée (niveau 5)">
+    </span>
+    <label>Graisse <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
+    <label class="spunta"><input type="checkbox" data-opt="filled"> Plein</label>
+  </div>
+</section>
+
+<section id="livelli" class="riga">
+  <ol class="galleria">
+    <li><a href="#livello-1"><span data-slot="1"></span></a></li>
+    <li><a href="#livello-2"><span data-slot="2"></span></a></li>
+    <li><a href="#livello-3"><span data-slot="3"></span></a></li>
+    <li><a href="#livello-4"><span data-slot="4"></span></a></li>
+    <li><a href="#livello-5"><span data-slot="5"></span></a></li>
+  </ol>
+
+  <!-- LIVELLI:INIZIO -->{{LIVELLI}}
+  <!-- LIVELLI:FINE -->
+</section>
+
+<section id="usare" class="riga">
+  <h2>Utiliser les tampons</h2>
+  <p>Quatre façons, de la plus simple à la plus souple. Les exemples utilisent le niveau 3 et renvoient à sa fiche sur ce site ; forme, couleurs et graisse suivent les choix du panneau ci-dessus.</p>
+
+  <div class="tecnica">
+    <h3>1. Texte seul, avec lien</h3>
+    <p>Pour les documents, courriels, plateformes pédagogiques et sites : une ligne qui annonce le niveau et renvoie à sa fiche. Le bouton « Copier le texte avec lien » de chaque niveau la copie toute prête ; collée dans Word, Google Docs ou un courriel, le lien reste cliquable.</p>
+    <pre><code data-codice="testo"></code></pre>
+    <p>En HTML :</p>
+    <pre><code data-codice="testo-html"></code></pre>
+  </div>
+
+  <div class="tecnica">
+    <h3>2. Image PNG</h3>
+    <p>Pour les diapositives, les documents et les plateformes qui n'acceptent que des images. Chaque tampon existe en 128 et 512 px (icône : 64 et 256 ; étiquette : 48 et 192 de haut), en contour ou plein.</p>
+    <pre><code data-codice="png"></code></pre>
+    <p><a href="https://github.com/frazac/gradient-ai/tree/main/dist/png/fr">Tous les PNG</a></p>
+  </div>
+
+  <div class="tecnica">
+    <h3>3. Fichier SVG</h3>
+    <p>Vectoriel : il s'agrandit sans perte et se modifie dans Illustrator, Inkscape ou Figma. Le texte utilise une police système.</p>
+    <pre><code data-codice="svg"></code></pre>
+    <p><a href="https://github.com/frazac/gradient-ai/tree/main/dist/svg/fr">Tous les SVG</a></p>
+  </div>
+
+  <div class="tecnica">
+    <h3>4. JavaScript</h3>
+    <p>Comme <a href="https://lucide.dev/guide/packages/lucide">Lucide</a> : on marque l'emplacement avec un attribut et la bibliothèque dessine le tampon, avec les couleurs et la graisse de votre choix.</p>
+    <pre><code data-codice="js"></code></pre>
+    <p>Options : <code>variant</code> (<code>stamp</code>, <code>icon</code>, <code>label</code>) · <code>lang</code> (<code>fr</code>, <code>it</code>, <code>en</code>) · <code>color</code> · <code>from</code>/<code>to</code> (dégradé en cinq pas) · <code>palette</code> (cinq couleurs) · <code>weight</code> (1–3) · <code>filled</code> · <code>size</code> (px) · <code>link</code> (par défaut le tampon renvoie à la fiche du niveau sur ce site ; <code>false</code> pour l'enlever, ou l'adresse d'un profil). Pour obtenir seulement le SVG : <code>GradientAI.toSvg(3, {variant: 'stamp', lang: 'fr'})</code>.</p>
+  </div>
+</section>
+
+<section id="note-uso" class="riga">
+  <h2>Notes d'usage</h2>
+  <!-- NOTE:INIZIO -->{{NOTE}}<!-- NOTE:FINE -->
+</section>
+
+<section id="licenza" class="riga">
+  <h2>Licence et attribution</h2>
+  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
+  Gradient IA est diffusé sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">Creative Commons Attribution – Pas d'utilisation commerciale – Partage dans les mêmes conditions 4.0 International</a>, la même que l'AIAS v2 dont il dérive.</p>
+  <ul>
+    <li><strong>Vous pouvez</strong> partager, traduire, adapter et recolorer les tampons.</li>
+    <li><strong>Vous devez</strong> citer les auteurs et la source, indiquer vos modifications et diffuser les œuvres dérivées sous la même licence.</li>
+    <li><strong>Vous ne pouvez pas</strong> en faire un usage commercial.</li>
+  </ul>
+  <h3>Comment attribuer</h3>
+  <blockquote id="attribuzione">Gradient IA de Francesco Zaccaria, niveaux d'intégration de l'IA inspirés de l'AIAS v2 de Mike Perkins, Leon Furze, Jasper Roe et Jason MacVaugh (License <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>). Icônes : Lucide (License <a href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">ISC</a>).</blockquote>
+  <button type="button" class="bottone" data-copia="#attribuzione">Copier l'attribution</button>
+  <p class="piccolo">Gradient IA est une adaptation indépendante : ce n'est pas une traduction officielle et elle n'est pas approuvée par les auteurs de l'AIAS. Une traduction française de l'AIAS existe par ailleurs (François Jourde), recensée sur <a href="https://leonfurze.com/2025/03/19/ai-assessment-scale-aias-translations-2025-updates/">le site de Leon Furze</a>.</p>
+</section>
+
+<section id="fonti" class="riga">
+  <h2>Sources et crédits</h2>
+  <h3>AI Assessment Scale</h3>
+  <ul class="bibliografia">
+    <li>Perkins, M., Furze, L., Roe, J., &amp; MacVaugh, J. (2024). The Artificial Intelligence Assessment Scale (AIAS): A framework for ethical integration of generative AI in educational assessment. <em>Journal of University Teaching and Learning Practice</em>, 21(6). <a href="https://open-publishing.org/journals/index.php/jutlp/article/view/810">open-publishing.org</a></li>
+    <li>Perkins, M., Roe, J., &amp; Furze, L. (2024). The AI Assessment Scale revisited: A framework for educational assessment. <em>arXiv</em>, 2412.09029. <a href="https://arxiv.org/abs/2412.09029">arxiv.org</a></li>
+    <li>AI Assessment Scale, site officiel : <a href="https://aiassessmentscale.com/">aiassessmentscale.com</a> — version 2 consultée dans l'<a href="https://web.archive.org/web/20250611083200/https://aiassessmentscale.com/">archive de juin 2025</a>.</li>
+  </ul>
+  <h3>Icônes</h3>
+  <p>Les icônes au centre des tampons viennent de <a href="https://lucide.dev">Lucide</a> (licence <a href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">ISC</a>, © Lucide Icons and Contributors) : <a href="https://lucide.dev/icons/ban">ban</a>, <a href="https://lucide.dev/icons/calendar-days">calendar-days</a>, <a href="https://lucide.dev/icons/blender">blender</a>, <a href="https://lucide.dev/icons/bot">bot</a>, <a href="https://lucide.dev/icons/lighthouse">lighthouse</a>.</p>
+  <h3>Polices</h3>
+  <p>Site : <a href="https://fonts.google.com/specimen/Space+Grotesk">Space Grotesk</a> (SIL Open Font License). Dans les fichiers SVG et PNG, le texte utilise une police système.</p>
+  <h3>Composants du site</h3>
+  <p>Bannière cookies : <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> 3.1.0 d'Orest Bida (licence MIT). Interrupteur clair/sombre repris de masterismi.dev (thème Quark 2), icônes soleil et lune d'<a href="https://iconoir.com/">Iconoir</a> (licence MIT).</p>
+  <h3>Réalisation</h3>
+  <p><a href="https://linktr.ee/frazac">Francesco Zaccaria</a> — adaptation, textes et tampons. Traduction française à partir de la version italienne. Signalements et propositions : <a href="https://github.com/frazac/gradient-ai/issues">issues sur GitHub</a>.</p>
+</section>
+
+</main>
+
+<footer class="piede riga">
+  <p class="titolo-piede">Gradient IA – Niveaux d'intégration de l'IA inspirés de l'AIAS · version <span data-versione>0.3.0</span></p>
+  <p>© 2026 Francesco Zaccaria. Textes, tampons et code sont diffusés sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">Creative Commons Attribution – Pas d'utilisation commerciale – Partage dans les mêmes conditions 4.0 International (CC BY-NC-SA 4.0)</a>.</p>
+  <p>« AI Assessment Scale » et « AIAS » sont des dénominations et signes distinctifs appartenant à leurs titulaires respectifs. L'AI Assessment Scale est l'œuvre de Mike Perkins, Leon Furze, Jasper Roe et Jason MacVaugh, qui en conservent l'ensemble des droits de propriété intellectuelle ; elle est adaptée ici dans les limites de la licence CC BY-NC-SA 4.0 sous laquelle les auteurs l'ont rendue disponible. Gradient IA est une adaptation indépendante : ce n'est pas une version officielle et elle n'est ni approuvée ni soutenue par les auteurs ou les titulaires de l'AIAS.</p>
+  <p>Icônes : <a href="https://lucide.dev">Lucide</a>, © Lucide Icons and Contributors, licence ISC. Police du site : Space Grotesk, SIL Open Font License. Bannière cookies : <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> d'Orest Bida, licence MIT ; icônes soleil/lune : <a href="https://iconoir.com/">Iconoir</a>, licence MIT.</p>
+  <p>Ces contenus sont proposés à des fins pédagogiques, en l'état et sans garantie : le choix du niveau et la conception de l'épreuve ou du travail relèvent de la responsabilité de l'enseignant, du commanditaire et de l'institution.</p>
+  <nav aria-label="Liens du pied de page">
+    <a href="https://github.com/frazac/gradient-ai">Code source</a>
+    <a href="https://github.com/frazac/gradient-ai/blob/main/CHANGELOG.md">Nouveautés</a>
+    <a href="https://github.com/frazac/gradient-ai/blob/main/LICENSE">Licence</a>
+    <a href="https://github.com/frazac/gradient-ai/issues">Signalements</a>
+    <a href="https://linktr.ee/frazac">Contact</a>
+    <a href="#" id="cookie-prefs-link" onclick="window.CookieConsent &amp;&amp; CookieConsent.showPreferences(); return false;">Préférences cookies</a>
+  </nav>
+  <div class="piede-comandi">
+    <button type="button" class="theme-switch" data-theme-toggle
+            data-label-light="Clair" data-label-dark="Sombre"
+            data-aria-template="Apparence : %s" data-title-template="Apparence : %s (cliquer pour changer)"
+            aria-label="Apparence" title="Apparence (cliquer pour changer)">
+      <span class="icon-sun" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 12L23 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2V1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 23V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 20L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 4L19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 20L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 4L5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 12L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </span>
+      <span class="icon-moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </span>
+      <span class="knob" data-theme-knob></span>
+    </button>
+  </div>
+</footer>
+
+<script src="{{R}}assets/theme-toggle.js"></script>
+<script src="{{R}}assets/cookieconsent.umd.js"></script>
+<script>
+/* bannière cookies : même configuration que masterismi.dev, sans statistiques */
+window.addEventListener('load', function () {
+  CookieConsent.run({
+    mode: 'opt-in',
+    guiOptions: {
+      consentModal: { layout: 'box', position: 'bottom left', equalWeightButtons: true },
+      preferencesModal: { layout: 'box', equalWeightButtons: true }
+    },
+    categories: {
+      necessary: { readOnly: true }
+    },
+    language: {
+      default: 'fr',
+      translations: {
+        fr: {
+          consentModal: {
+            description: 'Nous n\'utilisons que des cookies techniques.',
+            acceptAllBtn: 'Accepter',
+            acceptNecessaryBtn: 'Refuser',
+            showPreferencesBtn: 'Gérer'
+          },
+          preferencesModal: {
+            title: 'Préférences cookies',
+            acceptAllBtn: 'Accepter',
+            acceptNecessaryBtn: 'Refuser',
+            savePreferencesBtn: 'Enregistrer',
+            closeIconLabel: 'Fermer',
+            sections: [
+              {
+                title: 'Cookies techniques',
+                description: 'Nécessaires au fonctionnement du site : ils mémorisent l\'apparence claire/sombre, les choix du panneau des tampons et votre réponse à cette bannière. Ils restent dans votre navigateur. Toujours actifs.',
+                linkedCategory: 'necessary'
+              },
+              {
+                title: 'Services externes',
+                description: 'Aucun outil de statistiques ni de profilage. Le site est hébergé par GitHub Pages ; la police vient de Google Fonts et le logo de licence de Creative Commons : ces services reçoivent l\'adresse IP du navigateur pour envoyer les fichiers.'
+              }
+            ]
+          }
+        }
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>
