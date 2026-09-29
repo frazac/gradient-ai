@@ -4,6 +4,7 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 
 ## Non ancora rilasciato
 
+- Introduzione: un solo testo per tutti i profili (cinque gradienti, personalizzazione per contesto e per aspetto), tradotto in francese e Simple English; il testo del profilo resta nella descrizione della pagina.
 - Menu della testata: aggiunte Introduzione e Ricerca (Ospitare una ricerca), tolto GitHub (resta nel piè di pagina come «Codice sorgente»).
 - Schede dei livelli: curvature concentriche (scheda, riquadro del badge e badge con lo stesso centro nell'angolo in alto a sinistra; raggio = raggio interno + spazio fra i bordi), anche per l'etichetta a pillola.
 - Fonti: aggiunto Furze (2024), *AIAS: Why we’ve driven through the traffic lights*, sul perché la AIAS ha lasciato i colori del semaforo.
