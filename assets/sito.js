@@ -7,9 +7,11 @@
   var CDN = 'https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v' + G.version + '/dist/gradient-ai.js';
   var NOMI = { stamp: 'timbro', icon: 'icona', label: 'etichetta' };
   var PNG = { stamp: 512, icon: 256, label: 192 };
-  var stato = { variant: 'stamp', schema: 'gradiente', from: '#c8473d', to: '#1f2a44', weight: 2, filled: false, contesto: 'tutti' };
+  var PAGINA = BASE + (document.body.getAttribute('data-percorso') || '');   // pagina del profilo corrente
+  var stato = { variant: 'stamp', schema: 'gradiente', from: '#c8473d', to: '#1f2a44', weight: 2, filled: false };
 
   try { Object.assign(stato, JSON.parse(localStorage.getItem('gradiente-ia') || '{}')); } catch (e) { /* storage non disponibile */ }
+  delete stato.contesto;   // opzione della 0.1.0, sostituita dalle pagine per profilo
 
   function opzioni() {
     var o = { variant: stato.variant, weight: stato.weight, filled: stato.filled };
@@ -29,12 +31,11 @@
   function disegna() {
     var o = opzioni(), c = colori();
     document.body.setAttribute('data-variant', stato.variant);
-    document.body.setAttribute('data-contesto', stato.contesto);
+    // anteprima = file scaricato: stessa stringa SVG mostrata come <img>, quindi anche stesso font (di sistema)
     document.querySelectorAll('[data-slot]').forEach(function (el) {
-      var n = Number(el.getAttribute('data-slot'));
-      // nelle schede l'etichetta è troppo bassa: lì resta il timbro
-      var v = el.hasAttribute('data-grande') && o.variant === 'label' ? 'stamp' : o.variant;
-      el.innerHTML = G.toSvg(n, Object.assign({}, o, { variant: v }));
+      var n = Number(el.getAttribute('data-slot')), l = G.levels[n - 1];
+      el.innerHTML = '<img alt="Livello ' + n + ' · ' + l.name + '" src="data:image/svg+xml;charset=utf-8,' +
+        encodeURIComponent(svgDi(n)) + '">';
     });
     document.querySelectorAll('.livello').forEach(function (el) {
       el.style.setProperty('--c', c[Number(el.getAttribute('data-livello')) - 1]);
@@ -46,9 +47,15 @@
     try { localStorage.setItem('gradiente-ia', JSON.stringify(stato)); } catch (e) { /* ignora */ }
   }
 
+  // badge solo testo: una riga che dichiara il livello e porta alla sua scheda
+  function url(n) { return PAGINA + '#livello-' + n; }
+  function etichetta(n) { return 'Gradiente IA · Livello ' + n + ' · ' + G.levels[n - 1].name; }
+  function testo(n) { return etichetta(n) + ' — ' + url(n); }
+  function testoHtml(n) { return '<a href="' + url(n) + '">' + etichetta(n) + '</a>'; }
+
   function codici(o) {
     var nome = NOMI[o.variant] + '-3' + (o.filled ? '-pieno' : '');
-    var alt = 'Gradiente IA · Livello 3 · Co-creazione';
+    var alt = etichetta(3);
     var attr = ['data-gradient="3"'];
     if (o.variant !== 'stamp') attr.push('data-variant="' + o.variant + '"');
     var cfg = [];
@@ -56,8 +63,11 @@
     if (o.from) cfg.push("from: '" + o.from + "', to: '" + o.to + "'");
     if (Number(o.weight) !== 2) cfg.push('weight: ' + o.weight);
     if (o.filled) cfg.push('filled: true');
-    set('png', '<img src="' + BASE + 'dist/png/' + nome + '-' + PNG[o.variant] + '.png"\n     alt="' + alt + '" width="128">');
-    set('svg', '<img src="' + BASE + 'dist/svg/' + nome + '.svg"\n     alt="' + alt + '" width="128">');
+    if (PAGINA !== BASE) cfg.push("link: '" + PAGINA + "'");
+    set('testo', testo(3));
+    set('testo-html', testoHtml(3));
+    set('png', '<a href="' + url(3) + '">\n  <img src="' + BASE + 'dist/png/' + nome + '-' + PNG[o.variant] + '.png"\n       alt="' + alt + '" width="128">\n</a>');
+    set('svg', '<a href="' + url(3) + '">\n  <img src="' + BASE + 'dist/svg/' + nome + '.svg"\n       alt="' + alt + '" width="128">\n</a>');
     set('js', '<script src="' + CDN + '"></script>\n\n<i ' + attr.join(' ') + '></i>\n\n<script>\n  GradientAI.createBadges(' + (cfg.length ? '{ ' + cfg.join(', ') + ' }' : '') + ');\n</script>');
   }
   function set(k, t) { var el = document.querySelector('[data-codice="' + k + '"]'); if (el) el.textContent = t; }
@@ -86,7 +96,16 @@
   document.addEventListener('click', function (evt) {
     var b = evt.target.closest('button');
     if (!b) return;
-    if (b.hasAttribute('data-copia')) {
+    if (b.hasAttribute('data-copia-testo')) {
+      // testo semplice + HTML: nei programmi che lo accettano (Word, Docs, email) il link resta cliccabile
+      var t = Number(b.getAttribute('data-copia-testo'));
+      if (window.ClipboardItem) {
+        navigator.clipboard.write([new ClipboardItem({
+          'text/plain': new Blob([testo(t)], { type: 'text/plain' }),
+          'text/html': new Blob([testoHtml(t)], { type: 'text/html' })
+        })]).then(function () { conferma(b, 'Copiato'); }, function () { copia(testo(t), b); });
+      } else copia(testo(t), b);
+    } else if (b.hasAttribute('data-copia')) {
       copia(document.querySelector(b.getAttribute('data-copia')).textContent.trim(), b);
     } else if (b.hasAttribute('data-copia-svg')) {
       copia(svgDi(b.getAttribute('data-copia-svg')), b);
@@ -119,6 +138,6 @@
     });
   });
 
-  G.createBadges();   // marchio nella testata
+  G.createBadges({ link: false });   // marchio nella testata (è già dentro un link)
   disegna();
 }());

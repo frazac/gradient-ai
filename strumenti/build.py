@@ -9,8 +9,9 @@ Build di Gradient AI — nessuna dipendenza oltre a Python 3 e Google Chrome.
    (dati/livelli.it.json) e icone Lucide (src/icone/*.svg).
 2. dist/svg: Chrome headless esegue la libreria (strumenti/esporta.html) e restituisce gli SVG,
    così file statici e JS escono dallo stesso codice.
-0. index.html: le schede dei livelli e le note d'uso vengono scritte fra i segnaposto
-   <!-- LIVELLI:INIZIO/FINE --> e <!-- NOTE:INIZIO/FINE --> dai dati; la versione in [data-versione].
+0. Sito: una pagina per profilo (index.html = generale, stem/, umanistiche/, afam/) generata da
+   src/pagina.html + dati/livelli.it.json; la versione in [data-versione].
+4. assets/favicon.svg: icona del livello 3 in currentColor (bianca in tema scuro).
 3. dist/png: nella stessa pagina, ogni SVG passa da un canvas (sfondo trasparente).
    Le misure dei PNG stanno in strumenti/esporta.html (SIZES).
 """
@@ -51,45 +52,57 @@ def e(t):
 
 
 def render_site():
+    """Una pagina per profilo (generale → index.html, gli altri → <percorso>/index.html) da src/pagina.html."""
     version = (ROOT / "VERSION").read_text().strip()
     data = json.loads((ROOT / "dati" / "livelli.it.json").read_text(encoding="utf-8"))
-    ctx = data["contesti"]
-    parts = []
-    for l in data["livelli"]:
-        n = l["n"]
-        esempi = "".join(
-            f'\n        <div class="esempio" data-contesto="{c["id"]}"><h4 title="{e(c["esteso"])}">{e(c["nome"])}</h4>'
-            f'<p>{e(l["esempi"][c["id"]])}</p></div>' for c in ctx)
-        parts.append(f"""
+    template = (ROOT / "src" / "pagina.html").read_text(encoding="utf-8")
+    profili = data["profili"]
+    for pr in profili:
+        pid, r = pr["id"], "../" * pr["percorso"].count("/")
+        parts = []
+        for l in data["livelli"]:
+            n, t = l["n"], l["profili"][pid]
+            esempi = "".join(f"\n        <li>{e(x)}</li>" for x in t["esempi"])
+            parts.append(f"""
   <article id="livello-{n}" class="livello" data-livello="{n}">
     <div class="livello-timbro"><span data-slot="{n}" data-grande></span></div>
     <div class="livello-testo">
       <p class="occhiello">Livello {n} · {e(l["sottotitolo"])}</p>
       <h2>{e(l["nome"])}</h2>
-      <h3>Per chi insegna</h3>
-      <p>{e(l["docente"])}</p>
-      <h3>Consegna per chi studia</h3>
-      <blockquote id="consegna-{n}">{e(l["studente"])}</blockquote>
-      <h3>Esempi di prove</h3>
-      <div class="esempi">{esempi}
-      </div>
+      <h3>{e(pr["chiede"])}</h3>
+      <p>{e(t["chiede"])}</p>
+      <h3>{e(pr["esegue"])}</h3>
+      <blockquote id="consegna-{n}">{e(t["esegue"])}</blockquote>
+      <h3>{e(pr["esempi"])}</h3>
+      <ul class="esempi">{esempi}
+      </ul>
       <p class="azioni">
-        <button type="button" class="bottone" data-copia="#consegna-{n}">Copia la consegna</button>
+        <button type="button" class="bottone" data-copia="#consegna-{n}">Copia l'indicazione</button>
+        <button type="button" class="bottone" data-copia-testo="{n}">Copia testo con link</button>
         <button type="button" class="bottone" data-scarica="svg" data-n="{n}">Scarica SVG</button>
         <button type="button" class="bottone" data-scarica="png" data-n="{n}">Scarica PNG</button>
         <button type="button" class="bottone" data-copia-svg="{n}">Copia SVG</button>
       </p>
     </div>
   </article>""")
-    note = "\n  <ul>" + "".join(f"\n    <li>{e(x)}</li>" for x in data["note"]) + "\n  </ul>\n  "
-    page = (ROOT / "index.html").read_text(encoding="utf-8")
-    page = re.sub(r"(<!-- LIVELLI:INIZIO[^>]*-->).*?(\s*<!-- LIVELLI:FINE -->)",
-                  lambda m: m.group(1) + "".join(parts) + m.group(2), page, flags=re.S)
-    page = re.sub(r"(<!-- NOTE:INIZIO -->).*?(<!-- NOTE:FINE -->)",
-                  lambda m: m.group(1) + note + m.group(2), page, flags=re.S)
-    page = re.sub(r"(<span data-versione>)[^<]*(</span>)", rf"\g<1>{version}\g<2>", page)
-    (ROOT / "index.html").write_text(page, encoding="utf-8")
-    print("index.html")
+        note_list = data["note_didattica"] if pr["note"] == "didattica" else pr["note"]
+        note = "\n  <ul>" + "".join(f"\n    <li>{e(x)}</li>" for x in note_list) + "\n  </ul>\n  "
+        nav = "".join(
+            f'\n  <a href="{(r + q["percorso"]) or "./"}"' + (' aria-current="page"' if q is pr else "") +
+            f' title="{e(q["esteso"])}">{e(q["nome"])}</a>' for q in profili)
+        titolo = f"{data['titolo']} – {data['sottotitolo']}" + ("" if pid == "generale" else f" · {pr['nome']}")
+        descr = re.sub(r"<[^>]+>", "", pr["lead"]) + " Adattamento di AIAS v2, CC BY-NC-SA 4.0."
+        page = (template.replace('<a href="{{R}}" class="marchio-link">', f'<a href="{r or "./"}" class="marchio-link">')
+                .replace("{{R}}", r).replace("{{TITOLO}}", e(titolo)).replace("{{DESCRIZIONE}}", e(descr))
+                .replace("{{PROFILO}}", pid).replace("{{PERCORSO}}", pr["percorso"]).replace("{{OCCHIELLO}}", e(pr["occhiello"]))
+                .replace("{{LEAD}}", pr["lead"]).replace("{{PROFILI}}", nav)
+                .replace("{{LIVELLI}}", "".join(parts)).replace("{{NOTE}}", note))
+        page = page.split("\n", 1)[1]            # via il commento sul modello
+        page = re.sub(r"(<span data-versione>)[^<]*(</span>)", rf"\g<1>{version}\g<2>", page)
+        out = ROOT / pr["percorso"] / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text("<!-- Generato da strumenti/build.py (src/pagina.html + dati/livelli.it.json): non modificare a mano. -->\n" + page, encoding="utf-8")
+        print(out.relative_to(ROOT))
 
 
 def export():
@@ -115,6 +128,7 @@ def export():
     for key, data in out["png"].items():
         h = key.split("-")[3]
         (ROOT / "dist" / "png" / f"{name(key)}-{h}.png").write_bytes(base64.b64decode(data.split(",", 1)[1]))
+    (ROOT / "assets" / "favicon.svg").write_text(out["favicon"] + "\n", encoding="utf-8")
     print(f"dist/svg: {len(out['svg'])} file · dist/png: {len(out['png'])} file")
 
 

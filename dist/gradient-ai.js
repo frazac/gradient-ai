@@ -1,5 +1,5 @@
 /*!
- * Gradient AI v0.1.0 — Gradiente IA: livelli di integrazione dell'IA tratti da AIAS
+ * Gradient AI v0.2.0 — Gradiente IA: livelli di integrazione dell'IA tratti da AIAS
  * https://github.com/frazac/gradient-ai
  *
  * Contenuti: adattamento di AI Assessment Scale (AIAS) v2 di Mike Perkins, Leon Furze,
@@ -14,14 +14,15 @@
 }(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '0.1.0';
-  var LEVELS = [{"n": 1, "id": "autonomia", "name": "Autonomia", "subtitle": "Senza IA", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Ideazione", "subtitle": "IA solo in fase preparatoria", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Co-creazione", "subtitle": "IA al fianco, con vaglio critico", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Regia", "subtitle": "IA diretta dallo studente", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Sperimentazione", "subtitle": "IA come terreno di ricerca", "icon": "lighthouse"}];
+  var VERSION = '0.2.0';
+  var LEVELS = [{"n": 1, "id": "autonomia", "name": "Autonomia", "subtitle": "Senza IA", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Ideazione", "subtitle": "IA solo in fase preparatoria", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Co-creazione", "subtitle": "IA al fianco, con vaglio critico", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Regia", "subtitle": "IA sotto direzione umana", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Sperimentazione", "subtitle": "IA come terreno di ricerca", "icon": "lighthouse"}];
   var ICONS = {"ban": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M4.929 4.929 19.07 19.071\"/>", "calendar-days": "<path d=\"M8 2v3\"/><path d=\"M16 2v3\"/><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M3 9h18\"/><path d=\"M8 13h.01\"/><path d=\"M12 13h.01\"/><path d=\"M16 13h.01\"/><path d=\"M8 17h.01\"/><path d=\"M12 17h.01\"/><path d=\"M16 17h.01\"/>", "blender": "<path d=\"M8 14a2 2 0 0 0-1.963 1.615l-1.018 5.193A1 1 0 0 0 6 22h12a1 1 0 0 0 .981-1.192l-1.018-5.193A2 2 0 0 0 16 14z\"/><path d=\"m17 2-1 12\"/><path d=\"M8.006 14 7 2\"/><path d=\"M7.565 8.787A5 5 0 0 0 12 8a5 5 0 0 1 4.56-.75\"/><path d=\"M19 2H5a2 2 0 0 0-2 2v5a2 2 0 0 0 .688 1.5\"/><path d=\"M12 18h.01\"/>", "bot": "<path d=\"M12 8V4H8\"/><rect width=\"16\" height=\"12\" x=\"4\" y=\"8\" rx=\"2\"/><path d=\"M2 14h2\"/><path d=\"M20 14h2\"/><path d=\"M15 13v2\"/><path d=\"M9 13v2\"/>", "lighthouse": "<path d=\"M12 3V2\"/><path d=\"M16.066 16.865 7 22l2-11V6a3 3 0 016 0v5l2 11\"/><path d=\"m19.792 4.5.866-.5\"/><path d=\"m19.797 13.5.866.5\"/><path d=\"M21 9h1\"/><path d=\"M3 9H2\"/><path d=\"m4.203 13.5-.866.5\"/><path d=\"M4.208 4.5 3.342 4\"/><path d=\"M5.5 22h13\"/><path d=\"m7.932 16.875 7.377-4.178\"/><path d=\"M8 11h8\"/><path d=\"M8 7h8\"/>"};
 
   // Palette predefinita: dal rosso del divieto (senza IA) al blu dell'esplorazione (sperimentazione).
   var PALETTE = ['#c8473d', '#b8741c', '#2a8c82', '#2f5d8a', '#1f2a44'];
   var FONT = "'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif";
   var uid = 0;
+  var SITE = 'https://frazac.github.io/gradient-ai/';
 
   // ---- colori: interpolazione in OKLCH fra due estremi (opzioni from/to) ----
 
@@ -188,7 +189,9 @@
 
   /**
    * Sostituisce ogni elemento [data-gradient] con l'SVG del livello, come lucide.createIcons().
-   * Attributi: data-gradient="3" data-variant data-color data-from data-to data-weight data-filled data-size.
+   * Attributi: data-gradient="3" data-variant data-color data-from data-to data-weight data-filled data-size data-link.
+   * link: di default il timbro porta alla scheda del livello su frazac.github.io/gradient-ai;
+   *       false (o data-link="false") lo toglie, una stringa è l'indirizzo della pagina da usare (es. il profilo /stem/).
    * Le opzioni passate valgono per tutti; gli attributi del singolo elemento hanno la precedenza.
    */
   function createBadges(options, rootEl) {
@@ -196,15 +199,25 @@
     Array.prototype.forEach.call(els, function (el) {
       var o = {};
       for (var k in options || {}) o[k] = options[k];
-      ['variant', 'color', 'from', 'to', 'weight', 'filled', 'size', 'ink', 'background'].forEach(function (a) {
-        if (el.hasAttribute('data-' + a)) o[a] = el.getAttribute('data-' + a);
+      ['variant', 'color', 'from', 'to', 'weight', 'filled', 'size', 'ink', 'background', 'link'].forEach(function (a) {
+        // data-filled senza valore vale true (altrimenti la stringa vuota verrebbe scartata)
+        if (el.hasAttribute('data-' + a)) o[a] = el.getAttribute('data-' + a) || (a === 'filled' ? true : '');
       });
       if (el.className) o['class'] = el.className;
       var tpl = document.createElement('template');
       tpl.innerHTML = toSvg(el.getAttribute('data-gradient'), o);
       var svg = tpl.content.firstChild;
       svg.setAttribute('data-gradient', el.getAttribute('data-gradient'));
-      el.parentNode.replaceChild(svg, el);
+      var node = svg, link = o.link === undefined || o.link === true || o.link === 'true' ? SITE : o.link;
+      if (link && link !== 'false') {
+        var n = level(el.getAttribute('data-gradient')).n;
+        node = document.createElement('a');
+        node.href = link.replace(/#.*$/, '') + '#livello-' + n;
+        node.title = 'Gradiente IA · Livello ' + n + ' · ' + LEVELS[n - 1].name;
+        node.style.display = 'inline-block';
+        node.appendChild(svg);
+      }
+      el.parentNode.replaceChild(node, el);
     });
   }
 
@@ -213,6 +226,7 @@
     levels: LEVELS,
     icons: ICONS,
     defaultPalette: PALETTE.slice(),
+    site: SITE,
     palette: palette,
     toSvg: toSvg,
     createBadges: createBadges

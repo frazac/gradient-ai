@@ -32,7 +32,10 @@
       img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(s);
     });
   }
+  // favicon del sito: icona del livello 3 nel colore corrente, bianca sulle schede scure e scura su quelle chiare
+  var favicon = GradientAI.toSvg(3, { variant: 'icon', color: 'currentColor' })
+    .replace('<title>', '<style>svg{color:#1c1d21}@media (prefers-color-scheme:dark){svg{color:#ffffff}}</style><title>');
   Promise.all(jobs).then(function () {
-    document.getElementById('out').textContent = JSON.stringify({ svg: svg, png: png });
+    document.getElementById('out').textContent = JSON.stringify({ svg: svg, png: png, favicon: favicon });
   });
 </script>

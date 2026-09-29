@@ -1,20 +1,33 @@
 # Gradiente IA
 
-**Livelli di integrazione dell'IA tratti da AIAS** — cinque livelli per dire, prima di una prova, quanto e come l'intelligenza artificiale può entrarci. Testi in italiano per l'università (STEM, materie umanistiche, AFAM) e un timbro per ogni livello, in PNG, SVG e JavaScript.
+**Livelli di integrazione dell'IA tratti da AIAS** — cinque livelli per dire, prima di un lavoro o di una prova, quanto e come l'intelligenza artificiale può entrarci. Un timbro per ogni livello, in PNG, SVG, JavaScript o come semplice riga di testo con link.
 
 → **https://frazac.github.io/gradient-ai/**
+
+Stessi livelli e stessi timbri, testi diversi per profilo:
+
+- **[Generale](https://frazac.github.io/gradient-ai/)** — contesto professionale (estensione di Gradiente IA, non presente nella AIAS originale)
+- **[Didattica STEM](https://frazac.github.io/gradient-ai/stem/)**
+- **[Didattica umanistica](https://frazac.github.io/gradient-ai/umanistiche/)**
+- **[Didattica AFAM](https://frazac.github.io/gradient-ai/afam/)**
 
 | | Livello | In breve |
 |---|---|---|
 | 1 | **Autonomia** | Senza IA |
 | 2 | **Ideazione** | IA solo in fase preparatoria |
 | 3 | **Co-creazione** | IA al fianco, con vaglio critico |
-| 4 | **Regia** | IA diretta dallo studente |
+| 4 | **Regia** | IA sotto direzione umana |
 | 5 | **Sperimentazione** | IA come terreno di ricerca |
 
 La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè scala dell'IA nella valutazione → [aiassessmentscale.com](https://aiassessmentscale.com/)
 
 ## Usare i timbri
+
+**Solo testo, con link** — una riga che dichiara il livello e porta alla sua scheda (sul sito, pulsante «Copia testo con link»):
+
+```html
+<a href="https://frazac.github.io/gradient-ai/#livello-3">Gradiente IA · Livello 3 · Co-creazione</a>
+```
 
 **PNG** — `dist/png/timbro-3-512.png` (anche `-pieno`, icona, etichetta; più misure)
 
@@ -23,7 +36,7 @@ La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè sca
 **JavaScript**, come [Lucide](https://lucide.dev):
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v0.1.0/dist/gradient-ai.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v0.2.0/dist/gradient-ai.js"></script>
 
 <i data-gradient="3"></i>
 <i data-gradient="5" data-variant="label" data-filled></i>
@@ -33,9 +46,9 @@ La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè sca
 </script>
 ```
 
-Opzioni: `variant` (`stamp` | `icon` | `label`) · `color` · `from`/`to` (gradiente in cinque passi, interpolato in OKLCH) · `palette` (array di cinque colori) · `weight` (1–3, come lo `stroke-width` di Lucide) · `filled` · `size`. Solo la stringa: `GradientAI.toSvg(3, { variant: 'icon' })`.
+Opzioni: `variant` (`stamp` | `icon` | `label`) · `color` · `from`/`to` (gradiente in cinque passi, interpolato in OKLCH) · `palette` (array di cinque colori) · `weight` (1–3, come lo `stroke-width` di Lucide) · `filled` · `size` · `link` (di default ogni timbro porta alla scheda del livello su frazac.github.io/gradient-ai; `false` per toglierlo, oppure l'indirizzo di un profilo, es. `.../stem/`). Solo la stringa: `GradientAI.toSvg(3, { variant: 'icon' })`.
 
-I testi completi dei livelli, con gli esempi per contesto, sono in [`dati/livelli.it.json`](dati/livelli.it.json).
+I testi completi dei livelli, per ogni profilo, sono in [`dati/livelli.it.json`](dati/livelli.it.json).
 
 ## Sviluppo
 
@@ -45,7 +58,7 @@ Nessuna dipendenza: Python 3 e Google Chrome.
 python3 strumenti/build.py
 ```
 
-rigenera `dist/gradient-ai.js` (da `src/gradient-ai.core.js` + dati + icone), le schede dei livelli in `index.html`, `dist/svg/` e `dist/png/`. I file in `dist/` sono generati: si modificano i sorgenti e si ricompila. Anteprima locale: `python3 -m http.server` e poi `http://localhost:8000/`.
+rigenera `dist/gradient-ai.js` (da `src/gradient-ai.core.js` + dati + icone), le pagine del sito (`index.html`, `stem/`, `umanistiche/`, `afam/`, dal modello `src/pagina.html`), `dist/svg/` e `dist/png/`. I file in `dist/` sono generati: si modificano i sorgenti e si ricompila. Anteprima locale: `python3 -m http.server` e poi `http://localhost:8000/`.
 
 ## Licenza e crediti
 
