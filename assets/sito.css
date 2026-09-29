@@ -72,7 +72,6 @@ body.scorsa .briciole { display: flex; }
 .sep { color: var(--tenue); }
 /* separatore della briciola: un pallino pieno, ben visibile (al posto del trattino) */
 .sep { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: currentColor; font-size: 0; flex: none; }
-.solo-credito[hidden] { display: none; }
 .briciole-btn {
   display: flex; align-items: center; gap: 0.45rem; min-width: 0;
   font: inherit; font-size: 0.95rem; color: var(--inchiostro); background: none;
@@ -224,8 +223,11 @@ body.scorsa .briciole { display: flex; }
 .galleria a { display: grid; place-items: center; aspect-ratio: 1; border: 1px solid var(--filo); border-radius: var(--raggio); padding: 0.8rem; background: var(--sfondo-prova); transition: transform 0.15s, border-color 0.15s; }
 .galleria a:hover { transform: translateY(-2px); border-color: var(--tenue); }
 .galleria img { display: block; width: 100%; height: auto; max-height: 100%; }
-body[data-variant="label"] .galleria { grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
-body[data-variant="label"] .galleria a { aspect-ratio: auto; }
+/* etichette: una sotto l'altra, a bandiera a sinistra (larghezze diverse, stessa altezza) */
+body[data-variant="label"] .galleria { grid-template-columns: 1fr; justify-items: start; gap: 0.6rem; }
+body[data-variant="label"] .galleria a { aspect-ratio: auto; display: block; }
+/* etichette: stessa altezza per tutti i livelli, la larghezza segue il nome */
+body[data-variant="label"] .galleria img { width: auto; height: 3rem; max-width: none; }
 
 /* menu dei livelli: sticky sotto la testata, con traccia di avanzamento */
 .nav-livelli {
@@ -252,8 +254,9 @@ body[data-variant="label"] .galleria a { aspect-ratio: auto; }
 .nav-livelli + .livello { border-top: none; }
 .uscite { margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--filo); border-radius: 18px; }
 .uscite-timbro { display: block; width: 13rem; max-width: 100%; background: var(--sfondo-prova); border: 1px solid var(--filo); border-radius: 14px; padding: 1rem; transition: background 0.2s; }
-body[data-variant="label"] .uscite-timbro { width: 22rem; }
+body[data-variant="label"] .uscite-timbro { width: fit-content; }
 .uscite-timbro img { display: block; width: 100%; height: auto; }
+body[data-variant="label"] .uscite-timbro img { width: auto; height: 4rem; }
 .uscite > .azioni:first-of-type { margin-top: 1rem; }
 .badge-nome { margin: 1.5rem 0 0; font-weight: 500; }
 .badge-md { display: block; margin-top: 1.2rem; font-size: 0.8rem; line-height: 1.5; color: var(--tenue); background: var(--carta-2); border-radius: 10px; padding: 0.6rem 0.8rem; overflow-wrap: anywhere; }

@@ -24,6 +24,8 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 - Nelle schede, dopo «Indicazione per chi realizza» (o «Consegna per chi studia»): «(Profilo: Generale, modifica)», con il nome del profilo in uso e un link che riporta alla fascia dei profili (`#profili`).
 - Avviso «This page is in Simple English»: senza la barra a sinistra, filetto uguale su tutti i lati (2 px, colore d'accento) e angoli tutti stondati.
 - «Come questo progetto ha usato l'IA»: sotto, una riga «Fatto con Claude, il modello di IA di Anthropic, usato attraverso Claude Code», in testo semplice, senza logo e con la precisazione che Anthropic non è coinvolta né ha approvato il progetto (come chiedono le linee guida di Anthropic sui marchi). Claude non compare fra i contributori del repository.
+- Etichetta: altezza identica per tutti i livelli (varia solo la larghezza), sul sito come nei file; licenza in riga sotto la pillola («Gradient IA — CC BY-NC-SA 4.0 getgradient.it»), regolabile con «Licenza». Nella galleria le etichette stanno una sotto l'altra, a bandiera a sinistra.
+- Grado n/5 tutto nello stesso corpo, su timbro ed etichetta.
 - Pallini tutti di circa 9 px, come quello della briciola: elenchi (pallino disegnato, appeso fuori dal testo) e pallini ai lati del timbro.
 - Sezione «4. JavaScript»: tolto il paragone con Lucide in apertura.
 - Testata: nella briciola un pallino pieno al posto del trattino fra il nome e la sezione.

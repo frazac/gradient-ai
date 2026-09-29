@@ -185,7 +185,7 @@
     s += '<text font-size="12" letter-spacing="3.5"><textPath href="#' + id + 'b" startOffset="50%">' + esc(bottom) + '</textPath></text>';
     // pallini ai lati: grandi come quelli del sito (circa 9 px quando il timbro è a 170 px)
     s += '<circle cx="20" cy="100" r="' + (3.5 + w * 0.9) + '"/><circle cx="180" cy="100" r="' + (3.5 + w * 0.9) + '"/>';
-    s += '<text x="100" y="152" font-size="36" font-weight="' + Math.max(fw, 700) + '">' + l.n + '<tspan font-size="22">/5</tspan></text>';
+    s += '<text x="100" y="151" font-size="30" font-weight="' + Math.max(fw, 700) + '">' + l.n + '/5</text>';
     s += '</g>';
     s += icon(l.icon, 74, 52, 52, ink, w);
     if (cr) s += cr.svg;
@@ -210,15 +210,24 @@
     var c = colorFor(l, o), w = o.weight, filled = o.filled;
     var ink = filled ? (o.ink || '#ffffff') : c;
     var name = l.name.toUpperCase();
-    var W = Math.round(92 + textWidth(name, 15, 1.2) + 22);
-    var s = open(W, 48, o, l);
-    s += filled ? '<rect x="0" y="0" width="' + W + '" height="48" rx="24" fill="' + c + '"/>'
-      : '<rect x="' + w / 2 + '" y="' + w / 2 + '" width="' + (W - w) + '" height="' + (48 - w) + '" rx="' + (24 - w / 2) + '" fill="' + (o.background || 'none') + '" stroke="' + c + '" stroke-width="' + w + '"/>';
+    // l'altezza è la stessa per tutti i livelli (pillola 48 + riga della licenza); cambia solo la larghezza
+    var P = Math.round(100 + textWidth(name, 15, 1.2) + 22);
+    var withCredit = o.credit !== false && o.credit !== 'false';
+    var k = Math.min(2, Math.max(0.5, Number(o.creditSize) || 1)), cfs = +(7 * k).toFixed(2);
+    var ctxt = TEXT[o.lang].mark + ' — ' + CREDIT;
+    var W = withCredit ? Math.max(P, Math.ceil(18 + mixedWidth(ctxt, cfs, cfs * 0.06))) : P;
+    var H = withCredit ? Math.ceil(48 + 7 + cfs * 1.05) : 48;
+    var s = open(W, H, o, l);
+    s += filled ? '<rect x="0" y="0" width="' + P + '" height="48" rx="24" fill="' + c + '"/>'
+      : '<rect x="' + w / 2 + '" y="' + w / 2 + '" width="' + (P - w) + '" height="' + (48 - w) + '" rx="' + (24 - w / 2) + '" fill="' + (o.background || 'none') + '" stroke="' + c + '" stroke-width="' + w + '"/>';
     s += '<g fill="' + ink + '" font-family="' + esc(FONT) + '" font-weight="' + fontWeight(w) + '">';
-    s += '<text x="30" y="30.5" font-size="18" text-anchor="middle">' + l.n + '<tspan font-size="12">/5</tspan></text>';
-    s += '<text x="92" y="29.5" font-size="15" letter-spacing="1.2">' + esc(name) + '</text></g>';
-    s += '<line x1="50" y1="12" x2="50" y2="36" stroke="' + ink + '" stroke-width="' + (w * 0.6) + '" stroke-linecap="round"/>';
-    s += icon(l.icon, 58, 13, 22, ink, w);
+    // grado n/5 tutto nello stesso corpo
+    s += '<text x="36" y="30.5" font-size="17" text-anchor="middle">' + l.n + '/5</text>';
+    s += '<text x="100" y="29.5" font-size="15" letter-spacing="1.2">' + esc(name) + '</text></g>';
+    s += '<line x1="60" y1="12" x2="60" y2="36" stroke="' + ink + '" stroke-width="' + (w * 0.6) + '" stroke-linecap="round"/>';
+    s += icon(l.icon, 67, 13, 22, ink, w);
+    if (withCredit) s += '<text x="18" y="' + (48 + 6 + cfs * 0.8).toFixed(2) + '" fill="' + c + '" font-family="' + esc(FONT) +
+      '" font-weight="500" font-size="' + cfs + '" letter-spacing="' + (cfs * 0.06).toFixed(2) + '">' + esc(ctxt) + '</text>';
     return s + '</svg>';
   }
 
@@ -231,7 +240,7 @@
    * @param {number|string} n  1–5 oppure l'id ("autonomia", "ideazione", …)
    * @param {object} [options] variant: stamp|icon|label · lang: it|fr|en · color · from/to · palette · weight (1–3)
    *                           · filled · ink · background · size (px) · class · bottomText
-   *                           · credit (false: niente licenza sull'arco esterno di timbro e pittogramma)
+   *                           · credit (false: niente licenza sotto il badge: sull'arco esterno di timbro e pittogramma, in riga sotto l'etichetta)
    *                           · creditSize (0.5–2, predefinito 1: grandezza del testo della licenza)
    */
   function toSvg(n, options) {

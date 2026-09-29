@@ -66,8 +66,7 @@
     document.querySelector('[data-opt="to"]').hidden = stato.schema !== 'estremi';
     document.querySelector('[data-out="weight"]').textContent = stato.weight;
     document.querySelector('[data-out="creditSize"]').textContent = Number(stato.creditSize).toFixed(1);
-    // la licenza c'è solo sotto timbro e pittogramma: sull'etichetta il comando non serve
-    document.querySelector('.solo-credito').hidden = stato.variant === 'label';
+
     codici(o);
     try { localStorage.setItem('gradiente-ia', JSON.stringify(stato)); } catch (e) { /* ignora */ }
   }
