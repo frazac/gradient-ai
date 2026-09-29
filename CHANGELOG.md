@@ -22,6 +22,7 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 - Sotto il pannello, una striscia «Condividi questa configurazione» (copia un indirizzo con le scelte, es. `?forma=label&pieno=1`, che all'apertura ha la precedenza su quelle salvate) e «Reset».
 - Testo del profilo sopra i pulsanti dei profili, in una fascia con filetti al vivo come il pannello; «Introduzione» come h2 sotto il sottotitolo (entra anche nella briciola).
 - Nelle schede, dopo «Indicazione per chi realizza» (o «Consegna per chi studia»): «(Profilo: Generale, modifica)», con il nome del profilo in uso e un link che riporta alla fascia dei profili (`#profili`).
+- Avviso «This page is in Simple English»: senza la barra a sinistra, filetto uguale su tutti i lati (2 px, colore d'accento) e angoli tutti stondati.
 
 ## 0.4.0 — 2026-09-29
 

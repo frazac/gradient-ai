@@ -128,7 +128,8 @@ body.scorsa .briciole { display: flex; }
 .intro h1 { font-size: clamp(2.6rem, 8vw, 5.5rem); letter-spacing: -0.03em; margin: 0; }
 .sottotitolo { font-size: clamp(1.1rem, 2.6vw, 1.6rem); margin: 0.2rem 0 1.4rem; color: var(--tenue); }
 .lead { font-size: 1.2rem; max-width: 44rem; }
-.avviso-lingua { margin: 1.5rem 0 1rem; padding: 1rem 1.2rem; border: 1px solid var(--filo); border-left: 4px solid var(--accento); border-radius: 0 var(--raggio) var(--raggio) 0; background: var(--carta-2); font-size: 0.95rem; }
+/* avviso «Simple English»: in evidenza con lo stesso filetto su tutti i lati, angoli tutti stondati */
+.avviso-lingua { margin: 1.5rem 0 1rem; padding: 1rem 1.2rem; border: 2px solid var(--accento); border-radius: var(--raggio); background: var(--carta-2); font-size: 0.95rem; }
 .avviso-lingua p { margin: 0 0 0.6rem; }
 .avviso-lingua p:last-child { margin-bottom: 0; }
 .occhiello-profilo { margin: 0 0 0.6rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--tenue); }
