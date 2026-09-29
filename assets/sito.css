@@ -258,8 +258,19 @@ body[data-variant="label"] .galleria img { width: auto; height: 3rem; max-width:
 /* scheda livello: testo, poi le uscite (badge, pulsanti, testo con link, Markdown, indicazione) */
 .livello { padding: 3rem 0; border-top: 1px solid var(--filo); }
 .nav-livelli + .livello { border-top: none; }
-.uscite { margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--filo); border-radius: 18px; }
-.uscite-timbro { display: block; width: 13rem; max-width: 100%; background: var(--sfondo-prova); border: 1px solid var(--filo); border-radius: 14px; padding: 1rem; transition: background 0.2s; }
+.uscite {
+  /* curvature concentriche: disegno, riquadro del timbro e scheda hanno lo stesso centro nell'angolo in alto a sinistra.
+     Ogni raggio = raggio interno + spazio fra i due bordi (padding + 1px di bordo) */
+  --p-u: 1.5rem;                                            /* padding della scheda */
+  --p-t: 1rem;                                              /* padding del riquadro del timbro */
+  --r-img: calc((13rem - 2 * var(--p-t) - 2px) / 2);        /* timbro e pittogramma sono cerchi: metà del lato */
+  --r-t: calc(var(--r-img) + var(--p-t) + 1px);             /* riquadro del timbro */
+  --r-u: calc(var(--r-t) + var(--p-u) + 1px);               /* scheda */
+  margin-top: 2rem; padding: var(--p-u); border: 1px solid var(--filo);
+  border-radius: var(--r-u) 18px 18px 18px;                 /* solo l'angolo col timbro segue il cerchio; gli altri restano morbidi */
+}
+body[data-variant="label"] .uscite { --r-img: 2rem; }      /* etichetta a pillola alta 4rem: metà altezza */
+.uscite-timbro { display: block; width: 13rem; max-width: 100%; background: var(--sfondo-prova); border: 1px solid var(--filo); border-radius: var(--r-t); padding: var(--p-t); transition: background 0.2s; }
 body[data-variant="label"] .uscite-timbro { width: fit-content; }
 .uscite-timbro img { display: block; width: 100%; height: auto; }
 body[data-variant="label"] .uscite-timbro img { width: auto; height: 4rem; }
@@ -390,7 +401,7 @@ main ul > li::before {
 }
 @media (max-width: 30rem) {
   .galleria { grid-template-columns: repeat(2, 1fr); }
-  .uscite { padding: 1rem; }
+  .uscite { --p-u: 1rem; }
 }
 @media print {
   .piede-comandi, .pannello, .fascia-condividi, .fascia-profili, .testata, .nav-livelli, .azioni, #usare, .galleria { display: none; }
