@@ -240,7 +240,9 @@ body[data-variant="label"] .galleria img { width: auto; height: 3rem; max-width:
   background: color-mix(in srgb, var(--carta) 94%, transparent); backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--filo);
 }
-.nav-livelli ol { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.3rem; margin: 0; padding: 0; list-style: none; }
+/* voci a larghezza naturale, distribuite sulla riga (flex, non colonne fisse): i nomi lunghi si accorciano per ultimi */
+.nav-livelli ol { display: flex; justify-content: space-between; gap: 0.3rem 1rem; margin: 0; padding: 0; list-style: none; }
+.nav-livelli li { flex: 0 1 auto; min-width: 0; }
 .nav-livelli a { display: flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.2rem 0.5rem; color: var(--tenue); text-decoration: none; font-size: 0.8rem; white-space: nowrap; overflow: hidden; }
 .nav-num {
   flex: none; display: grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%;
@@ -385,7 +387,6 @@ main ul > li::before {
 @media (max-width: 52rem) {
   .galleria { grid-template-columns: repeat(3, 1fr); }
   .nav-nome { display: none; }
-  .nav-livelli ol { grid-template-columns: repeat(5, auto); justify-content: space-between; }
 }
 @media (max-width: 30rem) {
   .galleria { grid-template-columns: repeat(2, 1fr); }
