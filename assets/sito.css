@@ -58,8 +58,11 @@ code, pre { font-family: var(--mono); font-size: 0.85em; }
 pre { background: var(--carta-2); border: 1px solid var(--filo); border-radius: var(--raggio); padding: 1rem; overflow-x: auto; line-height: 1.5; }
 
 .riga { max-width: calc(var(--larghezza) + 2rem); margin: 0 auto; padding: 0 1rem; }
-main > section { padding-top: 3rem; }
+/* spazio sopra ogni sezione con h2: lo stesso che separa due schede dei livelli (fine scheda + inizio scheda) */
+:root { --spazio-sezione: 7rem; }
+main > section, main > section.riga { padding-top: var(--spazio-sezione); }   /* .riga azzerava il padding superiore */
 main > .intro { padding-top: 4rem; }
+main > #livelli { padding-top: 2rem; }   /* la galleria segue subito le fasce: le schede hanno già il loro spazio */
 
 /* testata */
 .testata { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid var(--filo); background: var(--carta); }
@@ -258,6 +261,7 @@ body[data-variant="label"] .galleria img { width: auto; height: 3rem; max-width:
 /* scheda livello: testo, poi le uscite (badge, pulsanti, testo con link, Markdown, indicazione) */
 .livello { padding: 3rem 0; border-top: 1px solid var(--filo); }
 .nav-livelli + .livello { border-top: none; }
+.livello:last-child { padding-bottom: 0; }   /* dopo l'ultima scheda lo spazio lo dà la sezione successiva */
 .uscite {
   /* curvature concentriche: disegno, riquadro del timbro e scheda hanno lo stesso centro nell'angolo in alto a sinistra.
      Ogni raggio = raggio interno + spazio fra i due bordi (padding + 1px di bordo) */
@@ -415,7 +419,7 @@ main ul > li::before {
   .intro h1 { font-size: clamp(2.3rem, 11vw, 3.2rem); }
   .lead { font-size: 1.05rem; }
   main > .intro { padding-top: 2.2rem; }
-  main > section { padding-top: 2.2rem; }
+  :root { --spazio-sezione: 5rem; }
 
   /* testata su una riga: il menu scorre in orizzontale invece di andare a capo, il globo resta a destra */
   .testata .riga { flex-wrap: nowrap; gap: 0.6rem; }

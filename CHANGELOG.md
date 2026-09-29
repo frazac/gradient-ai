@@ -2,6 +2,9 @@
 
 Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con una numerazione propria; la versione della AIAS da cui deriva (v2, 2024) è dichiarata a parte.
 
+## Non ancora rilasciato
+
+- Spazio sopra i titoli di sezione uniformato a quello fra le schede dei livelli (7rem, 5rem su telefono): prima la classe `.riga` azzerava il padding superiore delle sezioni.
 ## 0.6.1 — 2026-09-30
 
 - Timbri: le due scritte sugli archi sono centrate sulla linea mediana della fascia qualunque sia il corpo (raggio della linea di base calcolato dall'altezza delle maiuscole); pallini laterali sulla stessa linea.
