@@ -183,7 +183,8 @@
     var fs = Math.min(17, 185 / (l.name.length * 0.87));
     s += '<text font-size="' + fs.toFixed(1) + '" letter-spacing="' + (fs * 0.15).toFixed(2) + '"><textPath href="#' + id + 't" startOffset="50%">' + esc(l.name.toUpperCase()) + '</textPath></text>';
     s += '<text font-size="12" letter-spacing="3.5"><textPath href="#' + id + 'b" startOffset="50%">' + esc(bottom) + '</textPath></text>';
-    s += '<circle cx="20" cy="100" r="' + (1.6 + w * 0.6) + '"/><circle cx="180" cy="100" r="' + (1.6 + w * 0.6) + '"/>';
+    // pallini ai lati: grandi come quelli del sito (circa 9 px quando il timbro è a 170 px)
+    s += '<circle cx="20" cy="100" r="' + (3.5 + w * 0.9) + '"/><circle cx="180" cy="100" r="' + (3.5 + w * 0.9) + '"/>';
     s += '<text x="100" y="152" font-size="36" font-weight="' + Math.max(fw, 700) + '">' + l.n + '<tspan font-size="22">/5</tspan></text>';
     s += '</g>';
     s += icon(l.icon, 74, 52, 52, ink, w);

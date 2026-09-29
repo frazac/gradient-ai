@@ -268,10 +268,16 @@ body[data-variant="label"] .uscite-timbro { width: 22rem; }
 .box-copia p { margin: 0; }
 .box-copia .azioni { margin-top: 0.9rem; }
 /* elenchi: pallino appeso fuori dal blocco, testo allineato a sinistra col resto */
-main ul { padding-left: 0; list-style-position: outside; }
+main ul { padding-left: 0; list-style: none; }
+main ul > li { position: relative; }
+/* pallino dell'elenco: 9 px come quello della briciola, appeso fuori dal testo e centrato sulla prima riga */
+main ul > li::before {
+  content: ''; position: absolute; left: -1.15em; top: calc(0.8em - 4.5px);   /* 0,8em = metà della prima riga (interlinea 1,6) */
+  width: 9px; height: 9px; border-radius: 50%; background: var(--tenue);
+}
 .esempi { margin: 0; }
 .esempi li { margin-bottom: 0.3rem; }
-.esempi li::marker { color: var(--c, var(--accento)); }
+.esempi li::before { background: var(--c, var(--accento)); }
 .azioni { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.6rem 0 0; }
 
 .bottone {
