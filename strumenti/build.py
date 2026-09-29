@@ -167,7 +167,7 @@ def render_lang(lg, dati, version):
                 .replace("{{R}}", r).replace("{{TITOLO}}", e(titolo)).replace("{{DESCRIZIONE}}", e(descr))
                 .replace("{{PROFILO}}", pid).replace("{{PERCORSO}}", pr["percorso"]).replace("{{OCCHIELLO}}", e(pr["occhiello"]))
                 .replace("{{LEAD}}", pr["lead"]).replace("{{PROFILI}}", nav)
-                .replace("{{LIVELLI}}", nav_livelli + "".join(parts)).replace("{{COPIA_ICONE}}", ICONA_COPY + ICONA_CHECK).replace("{{COPIA}}", B["copia"]).replace("{{ALTERNATE}}", alternate).replace("{{LINGUA}}", lingua).replace("{{LINGUE_PIEDE}}", lingue_piede).replace("{{NOTE}}", note))
+                .replace("{{LIVELLI}}", nav_livelli + "".join(parts)).replace("{{COPIA_ICONE}}", ICONA_COPY + ICONA_CHECK).replace("{{COPIA}}", B["copia"]).replace("{{ALTERNATE}}", alternate).replace("{{HOME}}", (r + pari[lg]["percorso"].split("/")[0] + "/") if lg != "it" else (r or "./")).replace("{{LINGUA}}", lingua).replace("{{LINGUE_PIEDE}}", lingue_piede).replace("{{NOTE}}", note))
         page = page.split("\n", 1)[1]            # via il commento sul modello
         page = re.sub(r"(<span data-versione>)[^<]*(</span>)", rf"\g<1>{version}\g<2>", page)
         out = ROOT / pr["percorso"] / "index.html"

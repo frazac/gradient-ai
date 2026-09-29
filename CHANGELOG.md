@@ -13,7 +13,7 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 - Marchio in testata solo testuale (l'icona resta nella favicon).
 - Selettore lingua come menu a tendina sotto il globo (si apre verso destra se a sinistra non c'è spazio).
 - Lingue anche nel piè di pagina, sempre aperte, accanto allo switch chiaro/scuro.
-- Testata: voci allineate a sinistra; dopo il titolo il menu diventa una briciola a tendina (come l'indice di madeprogram): «Gradiente IA — sezione corrente ▾» con l'elenco di tutti gli h2.
+- Testata: voci allineate a sinistra; dopo il titolo il menu diventa una briciola a tendina (come l'indice di madeprogram): «Gradiente IA — [sezione corrente ▾]»: il nome è un link semplice alla home della lingua, la sezione è un pulsante a pillola sempre visibile che apre l'elenco di tutti gli h2; globo sempre a destra.
 - Licenza: bollino CC e, sotto, il testo in piccolo (prima finiva su più colonne).
 
 ## 0.4.0 — 2026-09-29

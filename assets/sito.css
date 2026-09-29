@@ -61,19 +61,23 @@ main > .intro { padding-top: 4rem; }
 /* testata */
 .testata { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid var(--filo); background: var(--carta); }
 .briciole { display: none; position: relative; min-width: 0; }
-body.scorsa .briciole { display: block; }
 body.scorsa .menu-sezioni { display: none; }
 .testata .riga { display: flex; align-items: center; justify-content: flex-start; gap: 1rem; min-height: var(--h-testata); flex-wrap: wrap; }
-/* briciola a tendina (come l'indice di madeprogram): titolo — sezione corrente ▾, apre l'elenco degli h2 */
-.briciole-btn {
-  display: flex; align-items: center; gap: 0.5rem; max-width: 100%; min-width: 0;
-  font: inherit; color: var(--inchiostro); background: none; border: 1px solid transparent; border-radius: 999px;
-  padding: 0.35rem 0.7rem 0.35rem 0; cursor: pointer; text-align: left;
-}
-.briciole-btn:hover, .briciole-btn[aria-expanded="true"] { border-color: var(--filo); padding-left: 0.7rem; }
-.titolo-pagina { font-weight: 700; white-space: nowrap; }
+/* briciola a tendina (come l'indice di madeprogram): «Gradiente IA» è un link semplice,
+   il capitolo corrente è un pulsante a pillola sempre visibile che apre l'elenco degli h2 */
+.briciole { align-items: center; gap: 0.6rem; }
+body.scorsa .briciole { display: flex; }
+.titolo-pagina { font-weight: 700; white-space: nowrap; color: var(--inchiostro); text-decoration: none; }
+.titolo-pagina:hover { color: var(--accento); }
 .sep { color: var(--tenue); }
-.capitolo-corrente { color: var(--tenue); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.briciole-btn {
+  display: flex; align-items: center; gap: 0.45rem; min-width: 0;
+  font: inherit; font-size: 0.95rem; color: var(--inchiostro); background: none;
+  border: 1px solid var(--filo); border-radius: 999px; padding: 0.35rem 0.75rem 0.35rem 0.95rem; cursor: pointer; text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+.briciole-btn:hover, .briciole-btn[aria-expanded="true"] { border-color: var(--inchiostro); }
+.capitolo-corrente { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .briciole-btn .freccia { flex: none; width: 16px; height: 16px; color: var(--tenue); transition: transform 0.2s; }
 .briciole-btn[aria-expanded="true"] .freccia { transform: rotate(180deg); }
 .indice-tendina {
@@ -92,7 +96,6 @@ body.scorsa .menu-sezioni { display: none; }
 /* selettore lingua: globo (Lucide earth) che apre un menu a tendina */
 .testata .riga { gap: 0.8rem 1.2rem; }
 .header-lang { position: relative; display: flex; align-items: center; margin-left: auto; }
-.testata nav + .header-lang { margin-left: 0; }
 .lang-toggle {
   display: grid; place-items: center; width: 32px; height: 32px; padding: 0; flex-shrink: 0;
   color: var(--tenue); background: none; border: 1px solid transparent; border-radius: 50%; cursor: pointer;
