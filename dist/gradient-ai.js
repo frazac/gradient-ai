@@ -1,5 +1,5 @@
 /*!
- * Gradient AI v0.4.0 — Gradiente IA: livelli di integrazione dell'IA tratti da AIAS
+ * Gradient AI v0.5.0 — Gradiente IA: livelli di integrazione dell'IA tratti da AIAS
  * https://github.com/frazac/gradient-ai
  *
  * Contenuti: adattamento di AI Assessment Scale (AIAS) v2 di Mike Perkins, Leon Furze,
@@ -14,7 +14,7 @@
 }(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '0.4.0';
+  var VERSION = '0.5.0';
   var LEVELS = {"it": [{"n": 1, "id": "autonomia", "name": "Autonomia", "subtitle": "Senza IA", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Ideazione", "subtitle": "IA solo in fase preparatoria", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Co-creazione", "subtitle": "IA al fianco, con vaglio critico", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Regia", "subtitle": "IA sotto direzione umana", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Sperimentazione", "subtitle": "IA come terreno di ricerca", "icon": "lighthouse"}], "fr": [{"n": 1, "id": "autonomia", "name": "Autonomie", "subtitle": "Sans IA", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Idéation", "subtitle": "IA seulement en amont", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Co-création", "subtitle": "IA à vos côtés, avec regard critique", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Régie", "subtitle": "IA sous direction humaine", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Expérimentation", "subtitle": "IA comme terrain de recherche", "icon": "lighthouse"}], "en": [{"n": 1, "id": "autonomia", "name": "On your own", "subtitle": "No AI", "icon": "ban"}, {"n": 2, "id": "ideazione", "name": "Ideas", "subtitle": "AI only before you start", "icon": "calendar-days"}, {"n": 3, "id": "co-creazione", "name": "Working together", "subtitle": "AI helps, you check everything", "icon": "blender"}, {"n": 4, "id": "regia", "name": "Directing", "subtitle": "People lead the AI", "icon": "bot"}, {"n": 5, "id": "sperimentazione", "name": "Exploring", "subtitle": "AI as a place to try new things", "icon": "lighthouse"}]};   // { it: [...], en: [...] }
   var TEXT = {
     it: { brand: 'Gradiente IA', level: 'Livello', bottom: 'GRADIENTE IA', mark: 'Gradient IA' },

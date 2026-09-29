@@ -4,6 +4,8 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 
 ## Non ancora rilasciato
 
+## 0.5.0 — 2026-09-30
+
 - Schede dei livelli in una colonna: prima il testo, poi le uscite (badge, pulsanti, testo con link, Markdown, indicazione per chi esegue). Tutti i pulsanti con lo stesso stile e la spunta ✓ quando l'azione riesce.
 - Testata sticky, con logo e nome che compaiono dopo lo scorrimento; pannello di personalizzazione non più sticky; menu dei 5 livelli sticky con traccia di avanzamento.
 - Scala tipografica rivista (h3 > h4; etichette delle schede in maiuscoletto a parte); elenchi con pallino appeso fuori dal testo.
