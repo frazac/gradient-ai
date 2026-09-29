@@ -152,6 +152,10 @@ def render_lang(lg, dati, version):
             f'<li><a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{x}" lang="{x}"'
             + (' class="is-active" aria-current="true"' if x == lg else "") + f'>{ETICHETTE[x]}</a></li>' for x in LINGUE)
         L = LINGUA_UI[lg]
+        # nel piè di pagina le lingue stanno aperte, in fila
+        lingue_piede = ('<ul class="lingue-piede" aria-label="' + L[0] + '">' + "".join(
+            f'<li><a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{x}" lang="{x}"'
+            + (' class="is-active" aria-current="true"' if x == lg else "") + f'>{ETICHETTE[x]}</a></li>' for x in LINGUE) + '</ul>')
         lingua = (f'<div class="header-lang">\n'
                   f'      <button class="lang-toggle" type="button" aria-label="{L[0]}" title="{L[0]}" aria-expanded="false" aria-haspopup="true" aria-controls="lang-panel">{ICONA_EARTH}</button>\n'
                   f'      <div class="lang-panel" id="lang-panel"><div class="lang-panel-inner">\n'
@@ -163,7 +167,7 @@ def render_lang(lg, dati, version):
                 .replace("{{R}}", r).replace("{{TITOLO}}", e(titolo)).replace("{{DESCRIZIONE}}", e(descr))
                 .replace("{{PROFILO}}", pid).replace("{{PERCORSO}}", pr["percorso"]).replace("{{OCCHIELLO}}", e(pr["occhiello"]))
                 .replace("{{LEAD}}", pr["lead"]).replace("{{PROFILI}}", nav)
-                .replace("{{LIVELLI}}", nav_livelli + "".join(parts)).replace("{{COPIA_ICONE}}", ICONA_COPY + ICONA_CHECK).replace("{{COPIA}}", B["copia"]).replace("{{ALTERNATE}}", alternate).replace("{{LINGUA}}", lingua).replace("{{NOTE}}", note))
+                .replace("{{LIVELLI}}", nav_livelli + "".join(parts)).replace("{{COPIA_ICONE}}", ICONA_COPY + ICONA_CHECK).replace("{{COPIA}}", B["copia"]).replace("{{ALTERNATE}}", alternate).replace("{{LINGUA}}", lingua).replace("{{LINGUE_PIEDE}}", lingue_piede).replace("{{NOTE}}", note))
         page = page.split("\n", 1)[1]            # via il commento sul modello
         page = re.sub(r"(<span data-versione>)[^<]*(</span>)", rf"\g<1>{version}\g<2>", page)
         out = ROOT / pr["percorso"] / "index.html"

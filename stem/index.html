@@ -42,8 +42,11 @@
 
 <header class="testata">
   <div class="riga">
-    <p class="marchio"><a href="../" class="marchio-link">Gradiente IA</a></p>
-    <nav>
+    <div class="briciole" aria-label="Indice della pagina">
+      <button type="button" class="briciole-btn" aria-expanded="false" aria-controls="indice-tendina"><span class="titolo-pagina">Gradiente IA</span><span class="sep" aria-hidden="true">—</span><span class="capitolo-corrente"></span><svg class="freccia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <ul class="indice-tendina" id="indice-tendina" hidden></ul>
+    </div>
+    <nav class="menu-sezioni">
       <a href="#livelli">Livelli</a>
       <a href="#usare">Usare</a>
       <a href="#licenza">Licenza</a>
@@ -357,6 +360,7 @@
     <a href="#" id="cookie-prefs-link" onclick="window.CookieConsent &amp;&amp; CookieConsent.showPreferences(); return false;">Preferenze cookie</a>
   </nav>
   <div class="piede-comandi">
+    <ul class="lingue-piede" aria-label="Cambia lingua"><li><a href="../stem/" hreflang="it" lang="it" class="is-active" aria-current="true">Italiano</a></li><li><a href="../fr/stem/" hreflang="fr" lang="fr">Français</a></li><li><a href="../en/stem/" hreflang="en" lang="en">Simple English</a></li></ul>
     <button type="button" class="theme-switch" data-theme-toggle
             data-label-light="Chiaro" data-label-dark="Scuro"
             data-aria-template="Aspetto: %s" data-title-template="Aspetto: %s (clic per cambiare)"

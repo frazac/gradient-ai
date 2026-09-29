@@ -179,7 +179,43 @@
   window.addEventListener('resize', altezza);
   altezza();
 
-  // testata: logo e nome compaiono quando il titolo esce dallo schermo
+  // briciola a tendina (come l'indice di madeprogram): dopo il titolo, «Titolo — sezione corrente ▾»
+  var capitoli = Array.prototype.slice.call(document.querySelectorAll('main h2'));
+  var briciole = document.querySelector('.briciole');
+  if (briciole && capitoli.length) {
+    var bBtn = briciole.querySelector('.briciole-btn'), tendina = briciole.querySelector('.indice-tendina');
+    var corrente = briciole.querySelector('.capitolo-corrente'), attivoCap = -1;
+    capitoli.forEach(function (h, i) {
+      var sez = h.closest('[id]');
+      var li = document.createElement('li');
+      if (sez && sez.classList.contains('livello')) li.className = 'livello-voce';
+      li.innerHTML = '<a href="#' + (sez ? sez.id : '') + '"></a>';
+      li.firstChild.textContent = (sez && sez.classList.contains('livello') ? sez.getAttribute('data-livello') + ' · ' : '') + h.textContent.trim();
+      tendina.appendChild(li);
+    });
+    var chiudiIndice = function () { tendina.hidden = true; bBtn.setAttribute('aria-expanded', 'false'); };
+    bBtn.addEventListener('click', function () { var ap = tendina.hidden; tendina.hidden = !ap; bBtn.setAttribute('aria-expanded', ap ? 'true' : 'false'); });
+    tendina.addEventListener('click', function (e) { if (e.target.closest('a')) chiudiIndice(); });
+    document.addEventListener('click', function (e) { if (!briciole.contains(e.target)) chiudiIndice(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !tendina.hidden) { chiudiIndice(); bBtn.focus(); } });
+    var aggiornaBriciole = function () {
+      // soglia: sotto la testata e, finché è a video, sotto il menu dei livelli (poi esce con la sua sezione)
+      var nl = document.querySelector('.nav-livelli');
+      // almeno quanto lo scroll-padding-top del CSS (7.5rem): chi salta a una sezione la vede subito nella briciola
+      var soglia = Math.max(testata.offsetHeight, nl ? nl.getBoundingClientRect().bottom : 0, parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) + 12;
+      var i = 0;
+      // riferimento: l'inizio della sezione (scheda o blocco con id), dove atterrano i link dell'indice
+      capitoli.forEach(function (h, k) { var sez = h.closest('[id]') || h; if (sez.getBoundingClientRect().top - soglia <= 0) i = k; });
+      if (i === attivoCap) return;
+      attivoCap = i;
+      corrente.textContent = tendina.children[i].firstChild.textContent;
+      Array.prototype.forEach.call(tendina.children, function (li, k) { li.classList.toggle('corrente', k === i); });
+    };
+    window.addEventListener('scroll', aggiornaBriciole, { passive: true });
+    aggiornaBriciole();
+  }
+
+  // testata: dopo il titolo la briciola sostituisce il menu delle sezioni
   var titolo = document.querySelector('.intro h1');
   if (titolo && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (v) { document.body.classList.toggle('scorsa', !v[0].isIntersecting); },

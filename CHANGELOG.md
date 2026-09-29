@@ -12,6 +12,9 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 - Badge sempre su sfondo trasparente; nel pannello «Sfondo di prova» (trasparente, bianco, nero, grigio, rosso o un colore a scelta) cambia solo l'anteprima, non i file.
 - Marchio in testata solo testuale (l'icona resta nella favicon).
 - Selettore lingua come menu a tendina sotto il globo (si apre verso destra se a sinistra non c'è spazio).
+- Lingue anche nel piè di pagina, sempre aperte, accanto allo switch chiaro/scuro.
+- Testata: voci allineate a sinistra; dopo il titolo il menu diventa una briciola a tendina (come l'indice di madeprogram): «Gradiente IA — sezione corrente ▾» con l'elenco di tutti gli h2.
+- Licenza: bollino CC e, sotto, il testo in piccolo (prima finiva su più colonne).
 
 ## 0.4.0 — 2026-09-29
 

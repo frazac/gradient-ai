@@ -40,8 +40,11 @@
 
 <header class="testata">
   <div class="riga">
-    <p class="marchio"><a href="{{R}}" class="marchio-link">Gradient IA</a></p>
-    <nav>
+    <div class="briciole" aria-label="Sommaire de la page">
+      <button type="button" class="briciole-btn" aria-expanded="false" aria-controls="indice-tendina"><span class="titolo-pagina">Gradient IA</span><span class="sep" aria-hidden="true">—</span><span class="capitolo-corrente"></span><svg class="freccia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <ul class="indice-tendina" id="indice-tendina" hidden></ul>
+    </div>
+    <nav class="menu-sezioni">
       <a href="#livelli">Niveaux</a>
       <a href="#usare">Utiliser</a>
       <a href="#licenza">Licence</a>
@@ -210,6 +213,7 @@
     <a href="#" id="cookie-prefs-link" onclick="window.CookieConsent &amp;&amp; CookieConsent.showPreferences(); return false;">Préférences cookies</a>
   </nav>
   <div class="piede-comandi">
+    {{LINGUE_PIEDE}}
     <button type="button" class="theme-switch" data-theme-toggle
             data-label-light="Clair" data-label-dark="Sombre"
             data-aria-template="Apparence : %s" data-title-template="Apparence : %s (cliquer pour changer)"

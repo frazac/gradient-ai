@@ -60,12 +60,33 @@ main > .intro { padding-top: 4rem; }
 
 /* testata */
 .testata { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid var(--filo); background: var(--carta); }
-.marchio { opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; }
-body.scorsa .marchio { opacity: 1; visibility: visible; transform: none; }
-.testata .riga { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--h-testata); flex-wrap: wrap; }
-.marchio { margin: 0; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
-.marchio-link { display: flex; align-items: center; gap: 0.5rem; color: inherit; text-decoration: none; }
-.testata nav { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: 0.95rem; }
+.briciole { display: none; position: relative; min-width: 0; }
+body.scorsa .briciole { display: block; }
+body.scorsa .menu-sezioni { display: none; }
+.testata .riga { display: flex; align-items: center; justify-content: flex-start; gap: 1rem; min-height: var(--h-testata); flex-wrap: wrap; }
+/* briciola a tendina (come l'indice di madeprogram): titolo — sezione corrente ▾, apre l'elenco degli h2 */
+.briciole-btn {
+  display: flex; align-items: center; gap: 0.5rem; max-width: 100%; min-width: 0;
+  font: inherit; color: var(--inchiostro); background: none; border: 1px solid transparent; border-radius: 999px;
+  padding: 0.35rem 0.7rem 0.35rem 0; cursor: pointer; text-align: left;
+}
+.briciole-btn:hover, .briciole-btn[aria-expanded="true"] { border-color: var(--filo); padding-left: 0.7rem; }
+.titolo-pagina { font-weight: 700; white-space: nowrap; }
+.sep { color: var(--tenue); }
+.capitolo-corrente { color: var(--tenue); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.briciole-btn .freccia { flex: none; width: 16px; height: 16px; color: var(--tenue); transition: transform 0.2s; }
+.briciole-btn[aria-expanded="true"] .freccia { transform: rotate(180deg); }
+.indice-tendina {
+  position: absolute; left: 0; top: calc(100% + 0.5rem); z-index: 40;
+  min-width: 16rem; max-height: 70vh; overflow-y: auto; margin: 0; padding: 0.35rem; list-style: none;
+  background: var(--carta); border: 1px solid var(--filo); border-radius: 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+.indice-tendina[hidden] { display: none; }
+.indice-tendina a { display: block; padding: 0.5rem 0.8rem; border-radius: 9px; color: var(--tenue); text-decoration: none; font-size: 0.92rem; }
+.indice-tendina a:hover { background: var(--carta-2); color: var(--inchiostro); }
+.indice-tendina li.corrente a { color: var(--inchiostro); font-weight: 600; }
+.indice-tendina li.livello-voce a { padding-left: 1.6rem; }
+.testata nav { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: 0.95rem; justify-content: flex-start; }
 .testata nav a { color: inherit; text-decoration: none; }
 .testata nav a:hover { color: var(--accento); }
 /* selettore lingua: globo (Lucide earth) che apre un menu a tendina */
@@ -246,8 +267,8 @@ main ul { padding-left: 0; list-style-position: outside; }
 
 /* usare, licenza, fonti */
 .tecnica { margin-top: 2rem; }
-.cc { display: flex; gap: 1rem; align-items: flex-start; }
-.cc img { flex: none; margin-top: 0.3rem; }
+.cc { font-size: 0.9rem; color: var(--tenue); }
+.cc img { display: block; margin: 0 0 0.6rem; }
 
 .bibliografia li { margin-bottom: 0.5rem; }
 /* come il progetto ha usato l'IA: sottotitolo, badge come contenuto, testo.
@@ -264,6 +285,12 @@ main ul { padding-left: 0; list-style-position: outside; }
 .piede nav { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid var(--filo); }
 .piede a { color: inherit; }
 .piede-comandi { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-top: 1rem; }
+.lingue-piede { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin: 0; padding: 0; list-style: none; }
+.lingue-piede a { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; }
+.lingue-piede a::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: transparent; }
+.lingue-piede a.is-active { color: var(--inchiostro); font-weight: 600; }
+.lingue-piede a.is-active::before { background: var(--accento); }
+.lingue-piede a:hover { color: var(--inchiostro); }
 
 /* switch chiaro/scuro — da masterismi.dev (assets/style.css) */
 .theme-switch {
@@ -324,7 +351,6 @@ main ul { padding-left: 0; list-style-position: outside; }
   .galleria { grid-template-columns: repeat(3, 1fr); }
   .nav-nome { display: none; }
   .nav-livelli ol { grid-template-columns: repeat(5, auto); justify-content: space-between; }
-  .cc { flex-direction: column; }
 }
 @media (max-width: 30rem) {
   .galleria { grid-template-columns: repeat(2, 1fr); }
