@@ -11,6 +11,7 @@
   --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --larghezza: 700px;   /* colonna del testo; il padding laterale si aggiunge fuori */
   --raggio: 10px;
+  --pad-fascia: 1.5rem;        /* spazio sopra e sotto uguale in tutte le fasce richiudibili (profilo, personalizza, condividi) */
   --sfondo-prova: transparent;   /* sfondo dell'anteprima dei badge: solo per provarli, non entra nei file */
   --h-testata: 3.5rem;       /* altezza della testata sticky: il menu dei livelli si aggancia sotto */
   --ok: #2a8c82;
@@ -138,13 +139,13 @@ body.scorsa .briciole { display: flex; }
 .avviso-lingua p:last-child { margin-bottom: 0; }
 .occhiello-profilo { margin: 0 0 0.6rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--tenue); }
 /* profili: testo del profilo sopra i pulsanti, fascia con filetti al vivo come il pannello */
-.fascia-profili { margin-top: 2rem; border-top: 1px solid var(--filo); padding: calc(0.7rem + 10px) 0; }
+.fascia-profili { margin-top: 2rem; border-top: 1px solid var(--filo); padding: var(--pad-fascia) 0; }
 .fascia-profili .occhiello-profilo { margin: 0; }
 .profili { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .fascia-profili + .pannello { margin-top: 0; }   /* un solo filetto fra le due fasce */
 /* striscia sotto il pannello: condividere la configurazione o tornare a quella di partenza */
 .pannello:has(+ .fascia-condividi) { margin-bottom: 0; }
-.fascia-condividi { border-bottom: 1px solid var(--filo); padding: 0.7rem 0; margin-bottom: 2rem; }
+.fascia-condividi { border-bottom: 1px solid var(--filo); padding: var(--pad-fascia) 0; margin-bottom: 2rem; }
 .fascia-condividi .corpo-fascia { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1.2rem; }
 .fascia-condividi p { margin: 0; font-size: 0.85rem; color: var(--tenue); }
 .fascia-condividi .azioni { margin: 0; }
@@ -159,7 +160,7 @@ body.scorsa .briciole { display: flex; }
 .pannello {
   margin-bottom: 2rem;   /* respiro fra i comandi e i badge; non è sticky */
   border-block: 1px solid var(--filo);
-  margin-top: 1rem; padding: calc(0.7rem + 10px) 0 !important;
+  margin-top: 1rem; padding: var(--pad-fascia) 0 !important;
 }
 /* pannello: stile masterismi.dev — tutto a pillola */
 .comandi { display: flex; flex-direction: column; align-items: stretch; gap: 0.8rem; font-size: 0.85rem; }

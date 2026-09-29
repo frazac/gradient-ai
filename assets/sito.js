@@ -242,7 +242,11 @@
       // soglia: sotto la testata e, finché è a video, sotto il menu dei livelli (poi esce con la sua sezione)
       var nl = document.querySelector('.nav-livelli');
       // almeno quanto lo scroll-padding-top del CSS (7.5rem): chi salta a una sezione la vede subito nella briciola
-      var soglia = Math.max(testata.offsetHeight, nl ? nl.getBoundingClientRect().bottom : 0, parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) + 12;
+      // il menu dei livelli conta solo quando è agganciato sotto la testata (prima sta più in basso nella pagina
+      // e spingerebbe la soglia fino ai livelli: all'inizio dello scorrimento la briciola diceva già «1 · …»)
+      var nr = nl ? nl.getBoundingClientRect() : null;
+      var sotto = nr && nr.top <= testata.offsetHeight + 2 ? nr.bottom : 0;
+      var soglia = Math.max(testata.offsetHeight, sotto, parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) + 12;
       var i = 0;
       // riferimento: l'inizio della sezione (scheda o blocco con id), dove atterrano i link dell'indice
       capitoli.forEach(function (h, k) { var sez = h.closest('[id]') || h; if (sez.getBoundingClientRect().top - soglia <= 0) i = k; });
