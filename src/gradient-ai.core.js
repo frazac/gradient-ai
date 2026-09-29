@@ -183,8 +183,9 @@
     s += '<circle cx="100" cy="100" r="64" fill="none" stroke="' + ink + '" stroke-width="' + (w * 0.9) + '"/>';
     s += '<g fill="' + ink + '" font-family="' + esc(FONT) + '" font-weight="' + fw + '" text-anchor="middle">';
     // corpo adattivo: i nomi lunghi (SPERIMENTAZIONE) restano dentro l'arco superiore
-    var fs = Math.min(17, 185 / (l.name.length * 0.87));
-    s += '<text font-size="' + fs.toFixed(1) + '" letter-spacing="' + (fs * 0.15).toFixed(2) + '"><textPath href="#' + id + 't" startOffset="50%">' + esc(l.name.toUpperCase()) + '</textPath></text>';
+    var nome = l.badge || l.name;
+    var fs = Math.min(17, 185 / (nome.length * 0.87));
+    s += '<text font-size="' + fs.toFixed(1) + '" letter-spacing="' + (fs * 0.15).toFixed(2) + '"><textPath href="#' + id + 't" startOffset="50%">' + esc(nome.toUpperCase()) + '</textPath></text>';
     s += '<text font-size="12" letter-spacing="3.5"><textPath href="#' + id + 'b" startOffset="50%">' + esc(bottom) + '</textPath></text>';
     // pallini ai lati: grandi come quelli del sito (circa 9 px quando il timbro è a 170 px)
     s += '<circle cx="20" cy="100" r="' + (3.5 + w * 0.9) + '"/><circle cx="180" cy="100" r="' + (3.5 + w * 0.9) + '"/>';
@@ -213,7 +214,7 @@
   function label(l, o) {
     var c = colorFor(l, o), w = o.weight, filled = o.filled;
     var ink = filled ? (o.ink || '#ffffff') : c;
-    var name = l.name.toUpperCase();
+    var name = (l.badge || l.name).toUpperCase();
     // l'altezza è la stessa per tutti i livelli (pillola 48 + riga della licenza); cambia solo la larghezza
     var P = Math.round(100 + textWidth(name, 15, 1.2) + 22);
     var withCredit = o.credit !== false && o.credit !== 'false';

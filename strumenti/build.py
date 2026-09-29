@@ -37,7 +37,9 @@ def build_js():
     levels = {}
     for lg in LINGUE:
         data = json.loads((ROOT / "dati" / f"livelli.{lg}.json").read_text(encoding="utf-8"))
-        levels[lg] = [{"n": l["n"], "id": l["id"], "name": l["nome"], "subtitle": l["sottotitolo"], "icon": l["icona"]}
+        levels[lg] = [{"n": l["n"], "id": l["id"], "name": l["nome"], "subtitle": l["sottotitolo"], "icon": l["icona"],
+                       # nome sui badge: il primo grado porta anche «(senza IA)», come il titolo della scheda
+                       "badge": l["nome"] + (f" ({l['sottotitolo'][:1].lower()}{l['sottotitolo'][1:]})" if l["n"] == 1 else "")}
                       for l in data["livelli"]]
     icons = {}
     for l in levels["it"]:

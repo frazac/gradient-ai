@@ -4,6 +4,7 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 
 ## Non ancora rilasciato
 
+- Badge del primo grado: sul timbro e sull'etichetta «AUTONOMIA (SENZA IA)» (fr «AUTONOMIE (SANS IA)», en «ON YOUR OWN (NO AI)»); campo `badge` nei livelli della libreria.
 - Scheda delle uscite di nuovo con i quattro angoli a 18 px; il riquadro del badge resta concentrico al disegno.
 - Primo grado: titolo della scheda «Autonomia (senza IA)» (fr «Autonomie (sans IA)», en «On your own (no AI)»).
 - Schede dei livelli: occhiello «Gradiente 1 ● AUTONOMIA» (pallino grigio) al posto di «Livello 1 · Senza IA»; tolta l'etichetta «Per chi commissiona / Per chi insegna» sopra il primo paragrafo.
