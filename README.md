@@ -76,4 +76,4 @@ Gradiente IA è un adattamento indipendente: non è una traduzione ufficiale e n
 
 ### Come attribuire
 
-> Gradiente IA di Francesco Zaccaria, Livelli di integrazione dell'IA tratti da AIAS v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh (License CC BY-NC-SA 4.0). Icone: Lucide (License ISC).
+> Gradiente IA di Francesco Zaccaria, Livelli di integrazione dell'IA tratti da AIAS v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh (licenza CC BY-NC-SA 4.0). Icone: Lucide (licenza ISC).
