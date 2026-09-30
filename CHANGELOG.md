@@ -4,6 +4,7 @@ Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con 
 
 ## Non ancora rilasciato
 
+- Tolta la riga «Fatto con Claude…» sotto l'uso dell'IA: Claude è già citato nella voce «Sito, codice e grafica».
 - Spazio sopra i titoli di sezione uniformato a quello fra le schede dei livelli (7rem, 5rem su telefono): prima la classe `.riga` azzerava il padding superiore delle sezioni.
 ## 0.6.1 — 2026-09-30
 

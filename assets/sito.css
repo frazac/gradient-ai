@@ -456,8 +456,6 @@ main ul > li::before {
   .livello { break-inside: avoid; }
 }
 
-/* sotto «Come questo progetto ha usato l'IA»: con quale strumento, in testo semplice (niente logo, nessun legame con Anthropic) */
-.fatto-con { margin-top: 1.2rem; font-size: 0.85rem; color: var(--tenue); }
 
 /* fasce richiudibili (profilo, personalizza, condividi): titolo a sinistra, tondino +/× a destra; all'inizio aperte */
 .testa-fascia { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
