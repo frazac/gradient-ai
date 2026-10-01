@@ -474,3 +474,9 @@ main ul > li::before {
 /* il titolo della fascia si clicca come il tondino */
 .titolo-fascia { cursor: pointer; user-select: none; }
 .testa-fascia:hover .apri-chiudi { border-color: var(--inchiostro); color: var(--inchiostro); }
+
+/* «Copia fissa o sempre aggiornata?» in cima a Usare i timbri */
+.copia-fissa { margin: 1.5rem 0 0.5rem; padding: 1rem 1.2rem; border: 1px solid var(--filo); border-radius: 16px; background: var(--carta-2); }
+.copia-fissa h3 { margin-top: 0; }
+.copia-fissa ul { margin: 0 0 0.6rem; }
+.copia-fissa p { margin: 0; }

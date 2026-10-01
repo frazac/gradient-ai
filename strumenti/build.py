@@ -91,6 +91,13 @@ def box_copia(id_, html_testo, lg):
             f'<p class="azioni"><button type="button" class="bottone" data-copia="#{id_}">{c}</button></p></div>')
 
 
+# rimando, in fondo alle note d'uso, al riquadro «Copia fissa o sempre aggiornata?» in Usare i timbri
+RIMANDO_COPIA = {
+    "it": 'Per dichiarare un livello in modo stabile nel tempo, vedi <a href="#copia-fissa">Copia fissa o sempre aggiornata?</a>',
+    "fr": 'Pour déclarer un niveau de façon stable dans le temps, voir <a href="#copia-fissa">Copie figée ou toujours à jour ?</a>',
+    "en": 'To state a level in a way that does not change, see <a href="#copia-fissa">A fixed copy, or always up to date?</a>',
+}
+
 BOTTONI = {
     "it": {"gradiente": "Gradiente", "livelli": "Livelli", "livello": "Livello", "copia": "Copia", "md": "Copia in formato MD", "testo": "Copia testo con link",
            "svg": "Scarica SVG", "png": "Scarica PNG", "copiasvg": "Copia SVG", "profilo": "Profilo", "modifica": "modifica"},
@@ -151,7 +158,8 @@ def render_lang(lg, dati, version):
             f'<span class="nav-nome">{e(l["nome"])}</span></a></li>' for l in data["livelli"])
             + '</ol><div class="traccia" aria-hidden="true"><div class="traccia-barra"></div></div></nav>')
         note_list = data["note_didattica"] if pr["note"] == "didattica" else pr["note"]
-        note = "\n  <ul>" + "".join(f"\n    <li>{e(x)}</li>" for x in note_list) + "\n  </ul>\n  "
+        note = ("\n  <ul>" + "".join(f"\n    <li>{e(x)}</li>" for x in note_list)
+                + f'\n    <li>{RIMANDO_COPIA[lg]}</li>' + "\n  </ul>\n  ")
         nav = "".join(
             f'\n  <a href="{(r + q["percorso"]) or "./"}"' + (' aria-current="page"' if q is pr else "") +
             f' title="{e(q["esteso"])}">{e(q["nome"])}</a>' for q in profili)

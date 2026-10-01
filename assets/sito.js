@@ -4,7 +4,9 @@
 
   var G = window.GradientAI;
   var BASE = 'https://frazac.github.io/gradient-ai/';
-  var CDN = 'https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v' + G.version + '/dist/gradient-ai.js';
+  // codici da copiare legati alla versione (jsDelivr, tag vX.Y.Z): chi li usa non vede cambiare i timbri quando il progetto si aggiorna
+  var FISSO = 'https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v' + G.version + '/';
+  var CDN = FISSO + 'dist/gradient-ai.js';
   var LG = (document.documentElement.lang || 'it').slice(0, 2);
   var T = {
     it: { brand: 'Gradiente IA', level: 'Livello', filled: '-pieno', dir: '', file: 'gradiente-ia-', ok: 'Copiato', ko: 'Copia non riuscita',
@@ -91,8 +93,8 @@
     if (PAGINA !== BASE + T.dir) cfg.push("link: '" + PAGINA + "'");
     set('testo', testo(3));
     set('testo-html', testoHtml(3));
-    set('png', '<a href="' + url(3) + '">\n  <img src="' + BASE + 'dist/png/' + nome + '-' + PNG[o.variant] + '.png"\n       alt="' + alt + '" width="128">\n</a>');
-    set('svg', '<a href="' + url(3) + '">\n  <img src="' + BASE + 'dist/svg/' + nome + '.svg"\n       alt="' + alt + '" width="128">\n</a>');
+    set('png', '<a href="' + url(3) + '">\n  <img src="' + FISSO + 'dist/png/' + nome + '-' + PNG[o.variant] + '.png"\n       alt="' + alt + '" width="128">\n</a>');
+    set('svg', '<a href="' + url(3) + '">\n  <img src="' + FISSO + 'dist/svg/' + nome + '.svg"\n       alt="' + alt + '" width="128">\n</a>');
     set('js', '<script src="' + CDN + '"></script>\n\n<i ' + attr.join(' ') + '></i>\n\n<script>\n  GradientAI.createBadges(' + (cfg.length ? '{ ' + cfg.join(', ') + ' }' : '') + ');\n</script>');
   }
   function set(k, t) { var el = document.querySelector('[data-codice="' + k + '"]'); if (el) el.textContent = t; }
