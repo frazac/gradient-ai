@@ -1,2 +1,22 @@
+# Si ignora tutto nella radice, poi si elencano le eccezioni pubbliche.
+/*
+!/.gitignore
+!/CHANGELOG.md
+!/LICENSE
+!/README.md
+!/VERSION
+!/index.html
+!/afam/
+!/assets/
+!/dati/
+!/dist/
+!/en/
+!/fr/
+!/src/
+!/stem/
+!/strumenti/
+!/umanistiche/
+
+# Dentro le cartelle permesse
 .DS_Store
 __pycache__/
