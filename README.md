@@ -2,20 +2,20 @@
 
 **Livelli di integrazione dell'IA tratti da AIAS** — cinque livelli per dire, prima di un lavoro o di una prova, quanto e come l'intelligenza artificiale può entrarci. Un timbro per ogni livello, in PNG, SVG, JavaScript o come semplice riga di testo con link.
 
-→ **https://frazac.github.io/gradient-ai/**
+→ **https://getgradient.it/**
 
 Stessi livelli e stessi timbri, testi diversi per profilo:
 
-- **[Generale](https://frazac.github.io/gradient-ai/)** — contesto professionale (estensione di Gradiente IA, non presente nella AIAS originale)
-- **[Didattica STEM](https://frazac.github.io/gradient-ai/stem/)**
-- **[Didattica umanistica](https://frazac.github.io/gradient-ai/umanistiche/)**
-- **[Didattica AFAM](https://frazac.github.io/gradient-ai/afam/)**
+- **[Generale](https://getgradient.it/)** — contesto professionale (estensione di Gradiente IA, non presente nella AIAS originale)
+- **[Didattica STEM](https://getgradient.it/stem/)**
+- **[Didattica umanistica](https://getgradient.it/umanistiche/)**
+- **[Didattica AFAM](https://getgradient.it/afam/)**
 
-**Français** → https://frazac.github.io/gradient-ai/fr/ — traduction complète (profils général, STEM, lettres et sciences humaines, enseignement artistique).
+**Français** → https://getgradient.it/fr/ — traduction complète (profils général, STEM, lettres et sciences humaines, enseignement artistique).
 
-**English (Simple English)** → https://frazac.github.io/gradient-ai/en/ — a version for people who are still learning English, written following [ISO 24495-1:2023](https://www.iso.org/standard/78907.html) (plain language) and the [Simple English Wikipedia](https://simple.wikipedia.org/wiki/Wikipedia:How_to_write_Simple_English_pages) rules. There is already a better English text: the original [AI Assessment Scale](https://aiassessmentscale.com/).
+**English (Simple English)** → https://getgradient.it/en/ — a version for people who are still learning English, written following [ISO 24495-1:2023](https://www.iso.org/standard/78907.html) (plain language) and the [Simple English Wikipedia](https://simple.wikipedia.org/wiki/Wikipedia:How_to_write_Simple_English_pages) rules. There is already a better English text: the original [AI Assessment Scale](https://aiassessmentscale.com/).
 
-**简体中文** → https://frazac.github.io/gradient-ai/zh/ — 完整译本（通用、STEM、人文学科、艺术院校四个场景），由意大利语翻译而来，尚待以中文为母语的人士审校。
+**简体中文** → https://getgradient.it/zh/ — 完整译本（通用、STEM、人文学科、艺术院校四个场景），由意大利语翻译而来，尚待以中文为母语的人士审校。
 
 | | Livello | In breve |
 |---|---|---|
@@ -32,7 +32,7 @@ La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè sca
 **Solo testo, con link** — una riga che dichiara il livello e porta alla sua scheda (sul sito, pulsante «Copia testo con link»):
 
 ```html
-<a href="https://frazac.github.io/gradient-ai/#livello-3">Gradiente IA · Livello 3 · Co-creazione</a>
+<a href="https://getgradient.it/#livello-3">Gradiente IA · Livello 3 · Co-creazione</a>
 ```
 
 **PNG** — `dist/png/timbro-3-512.png` (anche `-pieno`, icona, etichetta; più misure)
@@ -42,7 +42,7 @@ La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè sca
 **JavaScript**, come [Lucide](https://lucide.dev):
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v0.7.0/dist/gradient-ai.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v0.7.1/dist/gradient-ai.js"></script>
 
 <i data-gradient="3"></i>
 <i data-gradient="5" data-variant="label" data-filled></i>
@@ -52,7 +52,7 @@ La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè sca
 </script>
 ```
 
-Opzioni: `variant` (`stamp` | `icon` | `label`) · `color` · `from`/`to` (gradiente in cinque passi, interpolato in OKLCH) · `palette` (array di cinque colori) · `weight` (1–3, come lo `stroke-width` di Lucide) · `filled` · `size` · `lang` (`it` | `fr` | `en` | `zh`; di default la lingua della pagina) · `link` (di default ogni timbro porta alla scheda del livello su frazac.github.io/gradient-ai; `false` per toglierlo, oppure l'indirizzo di un profilo, es. `.../stem/`). Solo la stringa: `GradientAI.toSvg(3, { variant: 'icon' })`.
+Opzioni: `variant` (`stamp` | `icon` | `label`) · `color` · `from`/`to` (gradiente in cinque passi, interpolato in OKLCH) · `palette` (array di cinque colori) · `weight` (1–3, come lo `stroke-width` di Lucide) · `filled` · `size` · `lang` (`it` | `fr` | `en` | `zh`; di default la lingua della pagina) · `link` (di default ogni timbro porta alla scheda del livello su getgradient.it; `false` per toglierlo, oppure l'indirizzo di un profilo, es. `.../stem/`). Solo la stringa: `GradientAI.toSvg(3, { variant: 'icon' })`.
 
 I testi completi dei livelli, per ogni profilo, sono in [`dati/livelli.it.json`](dati/livelli.it.json), [`dati/livelli.fr.json`](dati/livelli.fr.json), [`dati/livelli.en.json`](dati/livelli.en.json) e [`dati/livelli.zh.json`](dati/livelli.zh.json).
 

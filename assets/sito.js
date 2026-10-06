@@ -3,7 +3,7 @@
   'use strict';
 
   var G = window.GradientAI;
-  var BASE = 'https://frazac.github.io/gradient-ai/';
+  var BASE = 'https://getgradient.it/';
   // codici da copiare legati alla versione (jsDelivr, tag vX.Y.Z): chi li usa non vede cambiare i timbri quando il progetto si aggiorna
   var FISSO = 'https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v' + G.version + '/';
   var CDN = FISSO + 'dist/gradient-ai.js';

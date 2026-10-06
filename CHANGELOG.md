@@ -2,6 +2,10 @@
 
 Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con una numerazione propria; la versione della AIAS da cui deriva (v2, 2024) è dichiarata a parte.
 
+## 0.7.1 — 2026-10-06
+
+- **Dominio getgradient.it**: il sito passa da frazac.github.io/gradient-ai a https://getgradient.it/ (DNS su Cloudflare, GitHub Pages con dominio verificato e HTTPS). I vecchi indirizzi reindirizzano al nuovo. Link dei timbri, codici da copiare e README aggiornati.
+
 ## 0.7.0 — 2026-10-06
 
 - **Doppia licenza**: codice (libreria, strumenti, sito) MIT in `LICENSE-MIT`; testi dei livelli e timbri CC BY-NC-SA 4.0 in `LICENSE-CC-BY-NC-SA`; `LICENSE` come guida, con una nota sull'uso del nome. Sezione Licenza aggiornata in tutte le lingue.

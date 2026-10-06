@@ -37,7 +37,7 @@
   // dopo i caratteri latini, quelli cinesi: Noto Sans SC (caricato dalle pagine zh e usato per i PNG), poi quelli di sistema
   var FONT = "'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, 'Noto Sans SC', 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif";
   var uid = 0;
-  var SITE = 'https://frazac.github.io/gradient-ai/';
+  var SITE = 'https://getgradient.it/';
 
   // ---- colori: interpolazione in OKLCH fra due estremi (opzioni from/to) ----
 
@@ -299,7 +299,7 @@
   /**
    * Sostituisce ogni elemento [data-gradient] con l'SVG del livello, come lucide.createIcons().
    * Attributi: data-gradient="3" data-lang (it|fr|en|zh) data-variant data-color data-from data-to data-weight data-filled data-size data-link data-credit data-credit-size.
-   * link: di default il timbro porta alla scheda del livello su frazac.github.io/gradient-ai;
+   * link: di default il timbro porta alla scheda del livello su getgradient.it;
    *       false (o data-link="false") lo toglie, una stringa è l'indirizzo della pagina da usare (es. il profilo /stem/).
    * Le opzioni passate valgono per tutti; gli attributi del singolo elemento hanno la precedenza.
    */
