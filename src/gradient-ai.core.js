@@ -20,8 +20,11 @@
   var TEXT = {
     it: { brand: 'Gradiente IA', level: 'Livello', bottom: 'GRADIENTE IA', mark: 'Gradient IA' },
     fr: { brand: 'Gradient IA', level: 'Niveau', bottom: 'GRADIENT IA', mark: 'Gradient IA' },
-    en: { brand: 'Gradient AI', level: 'Level', bottom: 'GRADIENT AI', mark: 'Gradient AI' }
+    en: { brand: 'Gradient AI', level: 'Level', bottom: 'GRADIENT AI', mark: 'Gradient AI' },
+    zh: { brand: 'AI 梯度', level: '第', bottom: 'AI 梯度', mark: 'AI 梯度' }
   };
+  // «Livello 3» · in cinese «第 3 级»
+  function grado(lg, n) { return lg === 'zh' ? '第 ' + n + ' 级' : TEXT[lg].level + ' ' + n; }
   // licenza e indirizzo sull'arco esterno sotto timbro e pittogramma (credit: false per toglierli, creditSize per la grandezza)
   var CREDIT = 'CC BY-NC-SA 4.0 getgradient.it';
   var ICONS = __ICONS__;
@@ -31,7 +34,8 @@
   // tinta unita di riferimento per livello (il primo tono del mix): la usa chi non vuole il gradiente (gradient: false)
   var PALETTE = MIX.livelli.map(function (t) { return t.da; });
   var SEGNAPOSTO = '#010203';   // colore temporaneo, poi sostituito dal gradiente
-  var FONT = "'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif";
+  // dopo i caratteri latini, quelli cinesi: Noto Sans SC (caricato dalle pagine zh e usato per i PNG), poi quelli di sistema
+  var FONT = "'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, 'Noto Sans SC', 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif";
   var uid = 0;
   var SITE = 'https://frazac.github.io/gradient-ai/';
 
@@ -122,9 +126,9 @@
     var W = w + 2 * m, H = h + 2 * m;
     var px = o.size ? ' width="' + (o.size * W / H) + '" height="' + o.size + '"' : '';
     return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="' + (-m) + ' ' + (-m) + ' ' + W + ' ' + H + '"' + px +
-      ' role="img" aria-label="' + esc(t.level + ' ' + l.n + ' · ' + l.name + ' — ' + l.subtitle) + '"' +
+      ' role="img" aria-label="' + esc(grado(o.lang, l.n) + ' · ' + l.name + ' — ' + l.subtitle) + '"' +
       (o['class'] ? ' class="' + esc(o['class']) + '"' : '') + '>' +
-      '<title>' + esc(t.brand + ' · ' + t.level + ' ' + l.n + ' · ' + l.name) + '</title>';
+      '<title>' + esc(t.brand + ' · ' + grado(o.lang, l.n) + ' · ' + l.name) + '</title>';
   }
 
   function fontWeight(w) { return w < 1.5 ? 500 : w < 2.5 ? 700 : 800; }
@@ -132,7 +136,12 @@
   // testo su arco sotto un cerchio di centro (cx, cy): baseline a raggio r, lettere verso il centro;
   // l'arco sale di `gradi` sopra l'orizzontale ai due lati, così c'è posto anche per i testi lunghi
   // stima della lunghezza di un testo misto (maiuscole e minuscole) in Space Grotesk
-  function mixedWidth(txt, fs, ls) { return txt.length * (0.56 * fs + ls); }
+  var CJK = /[\u2e80-\u9fff\uf900-\ufaff\uff00-\uffef]/;
+  function mixedWidth(txt, fs, ls) {
+    var w = 0;
+    for (var i = 0; i < txt.length; i++) w += CJK.test(txt[i]) ? 1 : 0.56;
+    return w * fs + ls * txt.length;
+  }
 
   // licenza sull'arco esterno di un disco di centro (c, c) e raggio R: corpo = base × creditSize;
   // restituisce il margine da aggiungere al disegno e il codice del testo
@@ -160,7 +169,7 @@
     var w = 0;
     for (var i = 0; i < txt.length; i++) {
       var ch = txt[i];
-      w += /[IJ1 ]/.test(ch) ? 0.34 : /[MW]/.test(ch) ? 0.86 : 0.62;
+      w += CJK.test(ch) ? 1 : /[IJ1 ]/.test(ch) ? 0.34 : /[MW]/.test(ch) ? 0.86 : 0.62;
     }
     return w * fs + ls * txt.length;
   }
@@ -179,7 +188,10 @@
     // le due scritte stanno centrate sulla linea mediana della fascia fra anello esterno e cerchio interno,
     // qualunque sia il corpo: il raggio della linea di base si sposta di mezza altezza delle maiuscole (0,7 em)
     var nome = l.badge || l.name;
-    var fs = Math.min(17, 185 / (nome.length * 0.87)), fsB = 12, CAP = 0.7;
+    // un carattere cinese vale circa una maiuscola e mezza (1 em + spaziatura contro ~0,77)
+    var unita = 0;
+    for (var i = 0; i < nome.length; i++) unita += CJK.test(nome[i]) ? 1.5 : 1;
+    var fs = Math.min(17, 185 / (unita * 0.87)), fsB = 12, CAP = 0.7;
     var rc = ((64 + w * 0.45) + (96 - w * 1.8)) / 2;           // centro della fascia
     var rT = +(rc - CAP * fs / 2).toFixed(2);                    // arco in alto: le lettere crescono verso l'esterno
     var rB = +(rc + CAP * fsB / 2).toFixed(2);                   // arco in basso: le lettere crescono verso il centro
@@ -263,7 +275,7 @@
   /**
    * SVG di un livello come stringa.
    * @param {number|string} n  1–5 oppure l'id ("autonomia", "ideazione", …)
-   * @param {object} [options] variant: stamp|icon|label · lang: it|fr|en · color · from/to · palette · gradient (false: tinta unita) · weight (1–3)
+   * @param {object} [options] variant: stamp|icon|label · lang: it|fr|en|zh · color · from/to · palette · gradient (false: tinta unita) · weight (1–3)
    *                           · filled · ink · background · size (px) · class · bottomText
    *                           · credit (false: niente licenza sotto il badge: sull'arco esterno di timbro e pittogramma, in riga sotto l'etichetta)
    *                           · creditSize (0.5–2, predefinito 1: grandezza del testo della licenza)
@@ -286,7 +298,7 @@
 
   /**
    * Sostituisce ogni elemento [data-gradient] con l'SVG del livello, come lucide.createIcons().
-   * Attributi: data-gradient="3" data-lang (it|fr|en) data-variant data-color data-from data-to data-weight data-filled data-size data-link data-credit data-credit-size.
+   * Attributi: data-gradient="3" data-lang (it|fr|en|zh) data-variant data-color data-from data-to data-weight data-filled data-size data-link data-credit data-credit-size.
    * link: di default il timbro porta alla scheda del livello su frazac.github.io/gradient-ai;
    *       false (o data-link="false") lo toglie, una stringa è l'indirizzo della pagina da usare (es. il profilo /stem/).
    * Le opzioni passate valgono per tutti; gli attributi del singolo elemento hanno la precedenza.
@@ -314,7 +326,7 @@
         var lv = level(el.getAttribute('data-gradient'), o.lang), n = lv.n, t = TEXT[o.lang];
         node = document.createElement('a');
         node.href = link.replace(/#.*$/, '') + '#livello-' + n;
-        node.title = t.brand + ' · ' + t.level + ' ' + n + ' · ' + lv.name;
+        node.title = t.brand + ' · ' + grado(o.lang, n) + ' · ' + lv.name;
         node.style.display = 'inline-block';
         node.appendChild(svg);
       }

@@ -25,11 +25,19 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-LINGUE = ["it", "fr", "en"]
+LINGUE = ["it", "fr", "en", "zh"]
 VARIANTS = {"it": {"stamp": "timbro", "icon": "icona", "label": "etichetta"},
             "fr": {"stamp": "tampon", "icon": "icone", "label": "etiquette"},
-            "en": {"stamp": "stamp", "icon": "icon", "label": "label"}}
-PIENO = {"it": "-pieno", "fr": "-plein", "en": "-filled"}
+            "en": {"stamp": "stamp", "icon": "icon", "label": "label"},
+            "zh": {"stamp": "stamp", "icon": "icon", "label": "label"}}   # nomi dei file in inglese
+PIENO = {"it": "-pieno", "fr": "-plein", "en": "-filled", "zh": "-filled"}
+# codice della lingua negli attributi lang/hreflang (il cinese è in caratteri semplificati)
+HREFLANG = {"it": "it", "fr": "fr", "en": "en", "zh": "zh-Hans"}
+
+
+def tra_parentesi(st, lg):
+    """«(senza IA)» accanto al nome del primo grado; in cinese parentesi a tutta larghezza."""
+    return f"（{st}）" if lg == "zh" else f" ({st[:1].lower()}{st[1:]})"
 
 
 def build_js():
@@ -39,7 +47,7 @@ def build_js():
         data = json.loads((ROOT / "dati" / f"livelli.{lg}.json").read_text(encoding="utf-8"))
         levels[lg] = [{"n": l["n"], "id": l["id"], "name": l["nome"], "subtitle": l["sottotitolo"], "icon": l["icona"],
                        # nome sui badge: il primo grado porta anche «(senza IA)», come il titolo della scheda
-                       "badge": l["nome"] + (f" ({l['sottotitolo'][:1].lower()}{l['sottotitolo'][1:]})" if l["n"] == 1 else "")}
+                       "badge": l["nome"] + (tra_parentesi(l["sottotitolo"], lg) if l["n"] == 1 else "")}
                       for l in data["livelli"]]
     icons = {}
     for l in levels["it"]:
@@ -64,8 +72,8 @@ def e(t):
 
 
 # etichetta del selettore di lingua (il codice tecnico e l'URL restano it / en)
-ETICHETTE = {"it": "Italiano", "fr": "Français", "en": "Simple English"}
-LINGUA_UI = {"it": ("Cambia lingua",), "fr": ("Changer de langue",), "en": ("Change language",)}
+ETICHETTE = {"it": "Italiano", "fr": "Français", "en": "Simple English", "zh": "简体中文"}
+LINGUA_UI = {"it": ("Cambia lingua",), "fr": ("Changer de langue",), "en": ("Change language",), "zh": ("切换语言",)}
 ICONA_GLOBO = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
                '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>')
 
@@ -76,12 +84,11 @@ ICONA_CHECK = ('<svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="cur
                '<path d="M20 6 9 17l-5-5"/></svg>')
 
 
-def titolo_extra(l):
+def titolo_extra(l, lg):
     """Solo il primo grado porta il sottotitolo nel titolo della scheda: «Autonomia (senza IA)»."""
     if l["n"] != 1:
         return ""
-    st = l["sottotitolo"]
-    return " (" + e(st[:1].lower() + st[1:]) + ")"
+    return e(tra_parentesi(l["sottotitolo"], lg))
 
 
 def box_copia(id_, html_testo, lg):
@@ -96,6 +103,7 @@ RIMANDO_COPIA = {
     "it": 'Per dichiarare un livello in modo stabile nel tempo, vedi <a href="#copia-fissa">Copia fissa o sempre aggiornata?</a>',
     "fr": 'Pour déclarer un niveau de façon stable dans le temps, voir <a href="#copia-fissa">Copie figée ou toujours à jour ?</a>',
     "en": 'To state a level in a way that does not change, see <a href="#copia-fissa">A fixed copy, or always up to date?</a>',
+    "zh": '如需以长期不变的方式声明层级，请参阅<a href="#copia-fissa">固定副本还是始终最新？</a>',
 }
 
 BOTTONI = {
@@ -105,7 +113,22 @@ BOTTONI = {
            "svg": "Télécharger le SVG", "png": "Télécharger le PNG", "copiasvg": "Copier le SVG", "profilo": "Profil", "modifica": "modifier"},
     "en": {"gradiente": "Gradient", "livelli": "Levels", "livello": "Level", "copia": "Copy", "md": "Copy as Markdown (MD)", "testo": "Copy text with link",
            "svg": "Download SVG", "png": "Download PNG", "copiasvg": "Copy SVG", "profilo": "Profile", "modifica": "change"},
+    "zh": {"gradiente": "梯度", "livelli": "层级", "livello": "第", "copia": "复制", "md": "复制为 Markdown（MD）", "testo": "复制带链接的文本",
+           "svg": "下载 SVG", "png": "下载 PNG", "copiasvg": "复制 SVG", "profilo": "场景", "modifica": "更改"},
 }
+
+
+def profilo_tra_parentesi(lg, nome):
+    """«(Profilo: Didattica STEM, modifica)» accanto all'etichetta della consegna."""
+    B = BOTTONI[lg]
+    if lg == "zh":
+        return f'（{B["profilo"]}：{nome}，<a href="#profili">{B["modifica"]}</a>）'
+    return f'({B["profilo"]}: {nome}, <a href="#profili">{B["modifica"]}</a>)'
+
+
+def nome_livello(lg, n):
+    """«Livello 3» · in cinese «第 3 级»."""
+    return f"第 {n} 级" if lg == "zh" else f"{BOTTONI[lg]['livello']} {n}"
 
 
 def render_site():
@@ -128,12 +151,12 @@ def render_lang(lg, dati, version):
             n, t = l["n"], l["profili"][pid]
             esempi = "".join(f"\n        <li>{e(x)}</li>" for x in t["esempi"])
             url = f"{SITO}{pr['percorso']}#livello-{n}"
-            nome_badge = f"{data['titolo']} · {B['livello']} {n} · {l['nome']}{html.unescape(titolo_extra(l))}"
+            nome_badge = f"{data['titolo']} · {nome_livello(lg, n)} · {l['nome']}{html.unescape(titolo_extra(l, lg))}"
             md = f"[{nome_badge}]({url})"
             parts.append(f"""
   <article id="livello-{n}" class="livello" data-livello="{n}">
     <p class="occhiello">{B["gradiente"]} {n}<span class="pallino" aria-hidden="true"></span><span class="occhiello-nome">{e(l["nome"])}</span></p>
-    <h2>{e(l["nome"])}{titolo_extra(l)}</h2>
+    <h2>{e(l["nome"])}{titolo_extra(l, lg)}</h2>
     <p>{e(t["chiede"])}</p>
     <h3 class="etichetta">{e(pr["esempi"])}</h3>
     <ul class="esempi">{esempi}
@@ -149,7 +172,7 @@ def render_lang(lg, dati, version):
       <p class="azioni"><button type="button" class="bottone" data-copia-testo="{n}">{B["testo"]}</button></p>
       <code class="badge-md" id="md-{n}">{e(md)}</code>
       <p class="azioni"><button type="button" class="bottone" data-copia="#md-{n}">{B["md"]}</button></p>
-      <h3 class="etichetta">{e(pr["esegue"])} <span class="etichetta-profilo">({B["profilo"]}: {e(pr["nome"])}, <a href="#profili">{B["modifica"]}</a>)</span></h3>
+      <h3 class="etichetta">{e(pr["esegue"])}{"" if lg == "zh" else " "}<span class="etichetta-profilo">{profilo_tra_parentesi(lg, e(pr["nome"]))}</span></h3>
       {box_copia(f"consegna-{n}", e(t["esegue"]), lg)}
     </div>
   </article>""")
@@ -166,15 +189,15 @@ def render_lang(lg, dati, version):
         # stesso profilo nelle altre lingue: selettore lingua e link hreflang
         pari = {x: next(q for q in dati[x]["profili"] if q["id"] == pid) for x in LINGUE}
         base_url = SITO
-        alternate = "\n".join(f'  <link rel="alternate" hreflang="{x}" href="{base_url}{pari[x]["percorso"]}">' for x in LINGUE)
+        alternate = "\n".join(f'  <link rel="alternate" hreflang="{HREFLANG[x]}" href="{base_url}{pari[x]["percorso"]}">' for x in LINGUE)
         # selettore lingua: globo (Lucide "globe") che apre un menu a tendina
         voci = "".join(
-            f'<li><a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{x}" lang="{x}"'
+            f'<li><a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{HREFLANG[x]}" lang="{HREFLANG[x]}"'
             + (' class="is-active" aria-current="true"' if x == lg else "") + f'>{ETICHETTE[x]}</a></li>' for x in LINGUE)
         L = LINGUA_UI[lg]
         # nel piè di pagina le lingue stanno aperte, in fila
         lingue_piede = ('<ul class="lingue-piede" aria-label="' + L[0] + '">' + "".join(
-            f'<li><a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{x}" lang="{x}"'
+            f'<li><a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{HREFLANG[x]}" lang="{HREFLANG[x]}"'
             + (' class="is-active" aria-current="true"' if x == lg else "") + f'>{ETICHETTE[x]}</a></li>' for x in LINGUE) + '</ul>')
         lingua = (f'<div class="header-lang">\n'
                   f'      <button class="lang-toggle" type="button" aria-label="{L[0]}" title="{L[0]}" aria-expanded="false" aria-haspopup="true" aria-controls="lang-panel">{ICONA_GLOBO}</button>\n'
@@ -182,7 +205,8 @@ def render_lang(lg, dati, version):
                   f'        <ul>{voci}</ul>\n'
                   f'      </div></div>\n    </div>')
         titolo = f"{data['titolo']} – {data['sottotitolo']}" + ("" if pid == "generale" else f" · {pr['nome']}")
-        descr = re.sub(r"<[^>]+>", "", pr["lead"]) + (" Adattamento di AIAS v2, CC BY-NC-SA 4.0." if lg == "it" else {"en": " Based on the AIAS v2, CC BY-NC-SA 4.0.", "fr": " Adaptation de l'AIAS v2, CC BY-NC-SA 4.0."}[lg])
+        descr = re.sub(r"<[^>]+>", "", pr["lead"]) + {"it": " Adattamento di AIAS v2, CC BY-NC-SA 4.0.", "en": " Based on the AIAS v2, CC BY-NC-SA 4.0.",
+                                                       "fr": " Adaptation de l'AIAS v2, CC BY-NC-SA 4.0.", "zh": "改编自 AIAS v2，CC BY-NC-SA 4.0。"}[lg]
         page = (template.replace('<a href="{{R}}" class="marchio-link">', f'<a href="{r or "./"}" class="marchio-link">')
                 .replace("{{R}}", r).replace("{{TITOLO}}", e(titolo)).replace("{{DESCRIZIONE}}", e(descr))
                 .replace("{{PROFILO}}", pid).replace("{{PERCORSO}}", pr["percorso"]).replace("{{OCCHIELLO}}", e(pr["occhiello"]))

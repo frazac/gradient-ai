@@ -1,0 +1,481 @@
+<!-- Generato da strumenti/build.py (src/pagina.zh.html + dati/livelli.zh.json): non modificare a mano. -->
+<!doctype html>
+<html lang="zh-Hans" data-theme-default="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script>
+  /* tema prima del primo disegno (niente lampo): stessa logica e chiave di masterismi.dev */
+  (function () {
+    try {
+      var d = document.documentElement;
+      var stored = localStorage.getItem('quark2-theme');
+      var pref = stored || d.getAttribute('data-theme-default') || 'auto';
+      var isDark = pref === 'dark' || (pref === 'auto' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      d.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      d.classList.toggle('dark', isDark);
+    } catch (e) {}
+  })();
+  </script>
+  <title>AI 梯度 – 基于 AIAS 的人工智能融入层级 · STEM 教学</title>
+  <meta name="description" content="五个层级，用于在一项考核之前说明人工智能可以在多大程度上、以何种方式参与其中：习题、实验报告、项目、代码。适用于科学、技术、工程和数学。改编自 AIAS v2，CC BY-NC-SA 4.0。">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="it" href="https://frazac.github.io/gradient-ai/stem/">
+  <link rel="alternate" hreflang="fr" href="https://frazac.github.io/gradient-ai/fr/stem/">
+  <link rel="alternate" hreflang="en" href="https://frazac.github.io/gradient-ai/en/stem/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://frazac.github.io/gradient-ai/zh/stem/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="../../assets/cookieconsent.css">
+  <link rel="stylesheet" href="../../assets/sito.css">
+  <script src="../../dist/gradient-ai.js" defer></script>
+  <script src="../../assets/sito.js" defer></script>
+</head>
+<body data-profilo="stem" data-percorso="zh/stem/">
+
+<header class="testata">
+  <div class="riga">
+    <div class="briciole" aria-label="本页目录">
+      <a class="titolo-pagina" href="../../zh/">AI 梯度</a><span class="sep" aria-hidden="true"></span>
+      <button type="button" class="briciole-btn" aria-expanded="false" aria-controls="indice-tendina"><span class="capitolo-corrente"></span><svg class="freccia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <ul class="indice-tendina" id="indice-tendina" hidden></ul>
+    </div>
+    <nav class="menu-sezioni">
+      <a href="#intro">简介</a>
+      <a href="#livelli">层级</a>
+      <a href="#usare">使用</a>
+      <a href="#licenza">许可</a>
+      <a href="#fonti">来源</a>
+      <a href="#ricerca">研究</a>
+    </nav>
+    <div class="header-lang">
+      <button class="lang-toggle" type="button" aria-label="切换语言" title="切换语言" aria-expanded="false" aria-haspopup="true" aria-controls="lang-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></button>
+      <div class="lang-panel" id="lang-panel"><div class="lang-panel-inner">
+        <ul><li><a href="../../stem/" hreflang="it" lang="it">Italiano</a></li><li><a href="../../fr/stem/" hreflang="fr" lang="fr">Français</a></li><li><a href="../../en/stem/" hreflang="en" lang="en">Simple English</a></li><li><a href="../../zh/stem/" hreflang="zh-Hans" lang="zh-Hans" class="is-active" aria-current="true">简体中文</a></li></ul>
+      </div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="intro" class="intro riga">
+  <h1>AI 梯度</h1>
+  <p class="sottotitolo">基于 AIAS 的人工智能融入层级</p>
+  <h2 class="titolo-intro">简介</h2>
+  <p class="lead">五个梯度，用来说明人工智能模型在一项工作、一个项目、一项任务或一段简单文字中的参与程度。在本网站上，你还可以定制这些印章：既可以按使用场景调整，例如用于教学，并按学科类型区分；也可以调整外观，改变颜色、粗细和尺寸。</p>
+  <aside class="avviso-lingua">
+    <p><strong>本页为简体中文译本。</strong>AI 梯度最初以意大利语写成，中文版由意大利语原文翻译而来，尚待以中文为母语的人士审校。如发现不准确或不自然的表述，欢迎在 <a href="https://github.com/frazac/gradient-ai/issues">GitHub</a> 上提出建议。</p>
+    <p>如果你能阅读英文，建议先阅读原版 <a href="https://aiassessmentscale.com/">AI Assessment Scale（AIAS，AI 评估量表）</a>，作者为 Mike Perkins、Leon Furze、Jasper Roe 和 Jason MacVaugh。</p>
+  </aside>
+  <p class="nota-fonte">改编自 Mike Perkins、Leon Furze、Jasper Roe 和 Jason MacVaugh 的 <a href="https://aiassessmentscale.com/">AI Assessment Scale（AIAS）</a> v2 · <a href="#licenza">CC BY-NC-SA 4.0</a><br>
+  AI 梯度当前版本为 <span data-versione>0.7.0</span></p>
+</section>
+
+<section id="profili" class="fascia-profili" aria-label="使用场景">
+  <div class="riga">
+    <div class="testa-fascia">
+      <p class="occhiello-profilo titolo-fascia">教学场景 · STEM</p>
+      <button type="button" class="apri-chiudi" aria-expanded="false" aria-controls="corpo-profili" aria-label="显示或隐藏：教学场景 · STEM" title="显示或隐藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+    </div>
+    <nav id="corpo-profili" class="profili corpo-fascia" hidden aria-label="使用场景">
+  <a href="../../zh/" title="职场与专业工作">通用</a>
+  <a href="../../zh/stem/" aria-current="page" title="科学、技术、工程、数学">STEM 教学</a>
+  <a href="../../zh/renwen/" title="文学、哲学、历史、语言、社会科学">人文学科教学</a>
+  <a href="../../zh/yishu/" title="美术学院、音乐学院、设计、表演艺术（意大利称 AFAM）">艺术院校教学</a>
+    </nav>
+  </div>
+</section>
+
+<section id="personalizza" class="pannello" aria-label="定制印章">
+  <div class="riga">
+    <div class="testa-fascia">
+      <h2 class="titolo-fascia">定制</h2>
+      <button type="button" class="apri-chiudi" aria-expanded="false" aria-controls="corpo-personalizza" aria-label="显示或隐藏：定制" title="显示或隐藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+    </div>
+    <div id="corpo-personalizza" class="comandi corpo-fascia" hidden>
+      <div class="linea">
+        <div class="gruppo" role="radiogroup" aria-label="形状" data-gruppo="variant">
+          <div class="scelta" role="radio" data-valore="stamp">印章</div>
+          <div class="scelta" role="radio" data-valore="label">标签</div>
+          <div class="scelta" role="radio" data-valore="icon">图标</div>
+        </div>
+      </div>
+      <div class="linea">
+        <div class="gruppo" role="radiogroup" aria-label="颜色" data-gruppo="schema">
+          <div class="scelta" role="radio" data-valore="gradiente">渐变</div>
+          <div class="scelta" role="radio" data-valore="estremi">从 <input type="color" data-opt="from" value="#c8473d" aria-label="起始颜色（第 1 级）"> 到 <input type="color" data-opt="to" value="#52589a" aria-label="结束颜色（第 5 级）"></div>
+          <div class="scelta" role="radio" data-valore="unico">单色 <input type="color" data-opt="unico" value="#2f5d8a" aria-label="单一颜色"></div>
+          <div class="scelta" role="radio" data-valore="nero">黑色（印刷）</div>
+        </div>
+      </div>
+      <div class="linea">
+        <label>粗细 <input type="range" data-opt="weight" min="1" max="3" step="0.25" value="2"> <output data-out="weight">2</output></label>
+        <label class="spunta">描边 <input type="checkbox" role="switch" data-opt="filled"> 填充</label>
+      <span class="sfondo-prova" role="group" aria-label="测试背景"><span class="sfondo-etichetta">测试背景</span>
+          <button type="button" class="campione" data-sfondo="transparent" style="--campione:transparent" aria-label="透明" title="透明"></button>
+          <button type="button" class="campione" data-sfondo="#ffffff" style="--campione:#ffffff" aria-label="白色" title="白色"></button>
+          <button type="button" class="campione" data-sfondo="#000000" style="--campione:#000000" aria-label="黑色" title="黑色"></button>
+          <input type="color" data-sfondo-libero value="#f2c14e" aria-label="其他颜色" title="其他颜色">
+      </span>
+      </div>
+      <div class="linea linea-licenza">
+        <label title="印章下方许可文字的大小">许可 <input type="range" data-opt="creditSize" min="0.5" max="2" step="0.1" value="1" aria-label="印章下方许可文字的大小"> <output data-out="creditSize">1</output></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fascia-condividi" aria-label="设置">
+  <div class="riga">
+    <div class="testa-fascia">
+      <p class="titolo-fascia">分享</p>
+      <button type="button" class="apri-chiudi" aria-expanded="false" aria-controls="corpo-condividi" aria-label="显示或隐藏：分享" title="显示或隐藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+    </div>
+    <div id="corpo-condividi" class="corpo-fascia" hidden>
+      <p>按当前设置分享本页，或恢复初始设置。</p>
+      <p class="azioni"><button type="button" class="bottone" data-condividi>分享当前设置</button> <button type="button" class="bottone" data-reset>重置</button></p>
+    </div>
+  </div>
+</section>
+
+<section id="livelli" class="riga">
+  <ol class="galleria">
+    <li><a href="#livello-1"><span data-slot="1"></span></a></li>
+    <li><a href="#livello-2"><span data-slot="2"></span></a></li>
+    <li><a href="#livello-3"><span data-slot="3"></span></a></li>
+    <li><a href="#livello-4"><span data-slot="4"></span></a></li>
+    <li><a href="#livello-5"><span data-slot="5"></span></a></li>
+  </ol>
+
+  <!-- LIVELLI:INIZIO --><nav class="nav-livelli" aria-label="层级"><ol><li><a href="#livello-1" data-nav="1"><span class="nav-num">1</span><span class="nav-nome">自主</span></a></li><li><a href="#livello-2" data-nav="2"><span class="nav-num">2</span><span class="nav-nome">构思</span></a></li><li><a href="#livello-3" data-nav="3"><span class="nav-num">3</span><span class="nav-nome">共创</span></a></li><li><a href="#livello-4" data-nav="4"><span class="nav-num">4</span><span class="nav-nome">执导</span></a></li><li><a href="#livello-5" data-nav="5"><span class="nav-num">5</span><span class="nav-nome">实验</span></a></li></ol><div class="traccia" aria-hidden="true"><div class="traccia-barra"></div></div></nav>
+  <article id="livello-1" class="livello" data-livello="1">
+    <p class="occhiello">梯度 1<span class="pallino" aria-hidden="true"></span><span class="occhiello-nome">自主</span></p>
+    <h2>自主（不用 AI）</h2>
+    <p>考核完全不使用 AI，并在受监督的环境中进行。学生只依靠自己的知识，以及自己分析和解决问题的能力。</p>
+    <h3 class="etichetta">考核示例</h3>
+    <ul class="esempi">
+        <li>课堂上完成的习题和证明。</li>
+        <li>笔试计算；关于某个解题方法的口试。</li>
+        <li>手写的实验记录本。</li>
+    </ul>
+    <div class="uscite">
+      <span class="uscite-timbro" data-slot="1" data-grande></span>
+      <p class="azioni">
+        <button type="button" class="bottone" data-scarica="svg" data-n="1">下载 SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="1">下载 PNG</button>
+        <button type="button" class="bottone" data-copia-svg="1">复制 SVG</button>
+      </p>
+      <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/zh/stem/#livello-1">AI 梯度 · 第 1 级 · 自主（不用 AI）</a></p>
+      <p class="azioni"><button type="button" class="bottone" data-copia-testo="1">复制带链接的文本</button></p>
+      <code class="badge-md" id="md-1">[AI 梯度 · 第 1 级 · 自主（不用 AI）](https://frazac.github.io/gradient-ai/zh/stem/#livello-1)</code>
+      <p class="azioni"><button type="button" class="bottone" data-copia="#md-1">复制为 Markdown（MD）</button></p>
+      <h3 class="etichetta">致学生的任务说明<span class="etichetta-profilo">（场景：STEM 教学，<a href="#profili">更改</a>）</span></h3>
+      <div class="box-copia"><p id="consegna-1">任何环节都不要使用 AI。这项考核要展示你独立掌握的知识和能力，包括解题过程。</p><p class="azioni"><button type="button" class="bottone" data-copia="#consegna-1">复制</button></p></div>
+    </div>
+  </article>
+  <article id="livello-2" class="livello" data-livello="2">
+    <p class="occhiello">梯度 2<span class="pallino" aria-hidden="true"></span><span class="occhiello-nome">构思</span></p>
+    <h2>构思</h2>
+    <p>AI 可以在正式工作开始之前参与：探索可能的思路、梳理文献、提出假设。考核的是学生独立发展这些想法的能力。</p>
+    <h3 class="etichetta">考核示例</h3>
+    <ul class="esempi">
+        <li>找出解决某个问题的几种可能思路。</li>
+        <li>为一篇小论文或报告梳理文献。</li>
+        <li>提出项目设想，供课堂讨论。</li>
+    </ul>
+    <div class="uscite">
+      <span class="uscite-timbro" data-slot="2" data-grande></span>
+      <p class="azioni">
+        <button type="button" class="bottone" data-scarica="svg" data-n="2">下载 SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="2">下载 PNG</button>
+        <button type="button" class="bottone" data-copia-svg="2">复制 SVG</button>
+      </p>
+      <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/zh/stem/#livello-2">AI 梯度 · 第 2 级 · 构思</a></p>
+      <p class="azioni"><button type="button" class="bottone" data-copia-testo="2">复制带链接的文本</button></p>
+      <code class="badge-md" id="md-2">[AI 梯度 · 第 2 级 · 构思](https://frazac.github.io/gradient-ai/zh/stem/#livello-2)</code>
+      <p class="azioni"><button type="button" class="bottone" data-copia="#md-2">复制为 Markdown（MD）</button></p>
+      <h3 class="etichetta">致学生的任务说明<span class="etichetta-profilo">（场景：STEM 教学，<a href="#profili">更改</a>）</span></h3>
+      <div class="box-copia"><p id="consegna-2">你可以用 AI 寻找解题思路、梳理文献、规划项目。推导、计算和代码由你自己完成。</p><p class="azioni"><button type="button" class="bottone" data-copia="#consegna-2">复制</button></p></div>
+    </div>
+  </article>
+  <article id="livello-3" class="livello" data-livello="3">
+    <p class="occhiello">梯度 3<span class="pallino" aria-hidden="true"></span><span class="occhiello-nome">共创</span></p>
+    <h2>共创</h2>
+    <p>AI 可以协助完成考核：提出解法、编写代码、给出反馈。学生要核实、修正并解释 AI 的建议，以证明自己真正理解了。</p>
+    <h3 class="etichetta">考核示例</h3>
+    <ul class="esempi">
+        <li>借助 AI 助手编写代码，再加注释、测试并讲解。</li>
+        <li>在 AI 引导下排查代码错误。</li>
+        <li>经过语言润色的实验报告。</li>
+    </ul>
+    <div class="uscite">
+      <span class="uscite-timbro" data-slot="3" data-grande></span>
+      <p class="azioni">
+        <button type="button" class="bottone" data-scarica="svg" data-n="3">下载 SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="3">下载 PNG</button>
+        <button type="button" class="bottone" data-copia-svg="3">复制 SVG</button>
+      </p>
+      <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/zh/stem/#livello-3">AI 梯度 · 第 3 级 · 共创</a></p>
+      <p class="azioni"><button type="button" class="bottone" data-copia-testo="3">复制带链接的文本</button></p>
+      <code class="badge-md" id="md-3">[AI 梯度 · 第 3 级 · 共创](https://frazac.github.io/gradient-ai/zh/stem/#livello-3)</code>
+      <p class="azioni"><button type="button" class="bottone" data-copia="#md-3">复制为 Markdown（MD）</button></p>
+      <h3 class="etichetta">致学生的任务说明<span class="etichetta-profilo">（场景：STEM 教学，<a href="#profili">更改</a>）</span></h3>
+      <div class="box-copia"><p id="consegna-3">你可以在任务的特定部分使用 AI。每个结果都要核实，每一行代码你都要能解释清楚。请说明你是如何使用 AI 的。</p><p class="azioni"><button type="button" class="bottone" data-copia="#consegna-3">复制</button></p></div>
+    </div>
+  </article>
+  <article id="livello-4" class="livello" data-livello="4">
+    <p class="occhiello">梯度 4<span class="pallino" aria-hidden="true"></span><span class="occhiello-nome">执导</span></p>
+    <h2>执导</h2>
+    <p>任务的任何部分都可以使用 AI，或者要求使用 AI：学生指挥 AI 去实现考核目标。考核的是指挥能力、对结果的独立核验和学科能力。</p>
+    <h3 class="etichetta">考核示例</h3>
+    <ul class="esempi">
+        <li>借助 AI 智能体进行数据分析。</li>
+        <li>借助 AI 助手开发的软件原型，并记录各项选择的理由。</li>
+        <li>用已知案例独立核验结果。</li>
+    </ul>
+    <div class="uscite">
+      <span class="uscite-timbro" data-slot="4" data-grande></span>
+      <p class="azioni">
+        <button type="button" class="bottone" data-scarica="svg" data-n="4">下载 SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="4">下载 PNG</button>
+        <button type="button" class="bottone" data-copia-svg="4">复制 SVG</button>
+      </p>
+      <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/zh/stem/#livello-4">AI 梯度 · 第 4 级 · 执导</a></p>
+      <p class="azioni"><button type="button" class="bottone" data-copia-testo="4">复制带链接的文本</button></p>
+      <code class="badge-md" id="md-4">[AI 梯度 · 第 4 级 · 执导](https://frazac.github.io/gradient-ai/zh/stem/#livello-4)</code>
+      <p class="azioni"><button type="button" class="bottone" data-copia="#md-4">复制为 Markdown（MD）</button></p>
+      <h3 class="etichetta">致学生的任务说明<span class="etichetta-profilo">（场景：STEM 教学，<a href="#profili">更改</a>）</span></h3>
+      <div class="box-copia"><p id="consegna-4">你可以大量使用 AI，可以自由使用，也可以按任务说明的方式使用。关键在于你如何引导它、如何核实它的产出。</p><p class="azioni"><button type="button" class="bottone" data-copia="#consegna-4">复制</button></p></div>
+    </div>
+  </article>
+  <article id="livello-5" class="livello" data-livello="5">
+    <p class="occhiello">梯度 5<span class="pallino" aria-hidden="true"></span><span class="occhiello-nome">实验</span></p>
+    <h2>实验</h2>
+    <p>以创造性的方式使用 AI 来解决问题、获得洞见或发展原创方案。教师和学生共同设计考核，也可以把 AI 本身作为研究对象。</p>
+    <h3 class="etichetta">考核示例</h3>
+    <ul class="esempi">
+        <li>调整或训练一个模型。</li>
+        <li>比较不同方法并记录它们的局限。</li>
+        <li>设计以 AI 本身为研究对象的实验。</li>
+    </ul>
+    <div class="uscite">
+      <span class="uscite-timbro" data-slot="5" data-grande></span>
+      <p class="azioni">
+        <button type="button" class="bottone" data-scarica="svg" data-n="5">下载 SVG</button>
+        <button type="button" class="bottone" data-scarica="png" data-n="5">下载 PNG</button>
+        <button type="button" class="bottone" data-copia-svg="5">复制 SVG</button>
+      </p>
+      <p class="badge-nome"><a href="https://frazac.github.io/gradient-ai/zh/stem/#livello-5">AI 梯度 · 第 5 级 · 实验</a></p>
+      <p class="azioni"><button type="button" class="bottone" data-copia-testo="5">复制带链接的文本</button></p>
+      <code class="badge-md" id="md-5">[AI 梯度 · 第 5 级 · 实验](https://frazac.github.io/gradient-ai/zh/stem/#livello-5)</code>
+      <p class="azioni"><button type="button" class="bottone" data-copia="#md-5">复制为 Markdown（MD）</button></p>
+      <h3 class="etichetta">致学生的任务说明<span class="etichetta-profilo">（场景：STEM 教学，<a href="#profili">更改</a>）</span></h3>
+      <div class="box-copia"><p id="consegna-5">以创造性的方式使用 AI 完成任务：你可以和老师一起设计新的方法。</p><p class="azioni"><button type="button" class="bottone" data-copia="#consegna-5">复制</button></p></div>
+    </div>
+  </article>
+  <!-- LIVELLI:FINE -->
+</section>
+
+<section id="usare" class="riga">
+  <h2>如何使用印章</h2>
+  <p>有四种方式，从最简单到最灵活。示例使用第 3 级，并链接到本网站上该层级的说明；形状、颜色和粗细跟随上方面板中的选择。</p>
+
+  <div class="copia-fissa" id="copia-fissa">
+    <h3>固定副本还是始终最新？</h3>
+    <ul>
+      <li><strong>下载的文件</strong>（SVG、PNG）：是你自己的副本，之后不会再变。</li>
+      <li><strong>本页提供的代码</strong>（PNG 图片、SVG 文件、JavaScript）：与地址中写明的版本绑定，目前是 <span data-versione>0.7.0</span>。即使项目更新，你看到的仍是这个版本，直到你修改版本号。</li>
+      <li><strong>本网站</strong>始终显示最新版本：带链接的文本会指向这里最新的层级说明。</li>
+    </ul>
+    <p>如果层级需要以长期不变的方式声明，例如写进合同、任务说明或项目征集公告，请使用下载的文件或下面的代码。</p>
+  </div>
+
+  <div class="tecnica">
+    <h3>1. 纯文本，带链接</h3>
+    <p>适用于文档、邮件、教学平台和网站：一行文字说明层级，并链接到该层级的说明。每个层级下的“复制带链接的文本”按钮会直接复制这行文字；粘贴到 Word、Google 文档或邮件中，链接依然可以点击。</p>
+    <pre><code data-codice="testo"></code></pre>
+    <p>HTML 格式：</p>
+    <pre><code data-codice="testo-html"></code></pre>
+  </div>
+
+  <div class="tecnica">
+    <h3>2. PNG 图片</h3>
+    <p>适用于幻灯片、文档以及只接受图片的平台。每个印章都有 128 和 512 像素两种尺寸（图标：64 和 256；标签：高 48 和 192），分描边和填充两种样式。</p>
+    <pre><code data-codice="png"></code></pre>
+    <p><a href="https://github.com/frazac/gradient-ai/tree/main/dist/png/zh">全部 PNG 文件</a></p>
+  </div>
+
+  <div class="tecnica">
+    <h3>3. SVG 文件</h3>
+    <p>矢量格式：放大不失真，可以在 Illustrator、Inkscape、Figma 中编辑。文字使用系统字体。</p>
+    <pre><code data-codice="svg"></code></pre>
+    <p><a href="https://github.com/frazac/gradient-ai/tree/main/dist/svg/zh">全部 SVG 文件</a></p>
+  </div>
+
+  <div class="tecnica">
+    <h3>4. JavaScript</h3>
+    <p>用一个属性标出位置，脚本库就会绘制印章，颜色和粗细可以自选。</p>
+    <pre><code data-codice="js"></code></pre>
+    <p>选项：<code>variant</code>（<code>stamp</code>、<code>icon</code>、<code>label</code>）· <code>lang</code>（<code>zh</code>、<code>it</code>、<code>fr</code>、<code>en</code>）· <code>color</code> · <code>from</code>/<code>to</code>（五级渐变）· <code>palette</code>（五种颜色）· <code>weight</code>（1–3）· <code>filled</code> · <code>size</code>（像素）· <code>link</code>（默认情况下，印章链接到本网站上对应层级的说明；设为 <code>false</code> 可去掉链接，也可以填写某个场景页面的地址）。只需要 SVG 字符串时：<code>GradientAI.toSvg(3, {variant: 'stamp', lang: 'zh'})</code>。</p>
+  </div>
+</section>
+
+<section id="note-uso" class="riga">
+  <h2>使用说明</h2>
+  <!-- NOTE:INIZIO -->
+  <ul>
+    <li>这些层级不是成绩等级：它们说明 AI 在多大程度上、以何种方式参与了考核，而不是考核本身的价值。</li>
+    <li>只有第 1 级能够得到保证，而且只能在受监督的环境中。对于在家完成的作业，应当默认学生可能以任何方式使用 AI，并据此设计考核。</li>
+    <li>层级应根据学习目标来选择，并在布置任务之前告知学生，同时说明需要申报哪些内容（例如给 AI 的指令）。</li>
+    <li>如需以长期不变的方式声明层级，请参阅<a href="#copia-fissa">固定副本还是始终最新？</a></li>
+  </ul>
+  <!-- NOTE:FINE -->
+</section>
+
+<section id="licenza" class="riga">
+  <h2>许可与署名</h2>
+  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
+  AI 梯度按组成部分采用两种许可协议。</p>
+  <h3>层级文本和印章：CC BY-NC-SA 4.0</h3>
+  <p>层级和场景的文本以及印章（印章上有层级的名称和序号）采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans">知识共享 署名—非商业性使用—相同方式共享 4.0 国际</a>许可协议发布，与其所依据的 AIAS v2 相同。</p>
+  <ul>
+    <li><strong>你可以</strong>分享、翻译、改编这些文本，并给印章重新配色。</li>
+    <li><strong>你必须</strong>注明作者和来源，说明是否做了修改，并以相同的许可协议发布衍生作品。</li>
+    <li><strong>你不可以</strong>将其用于商业目的。</li>
+  </ul>
+  <h3>代码：MIT</h3>
+  <p>JavaScript 脚本库、工具和网站代码采用 <a href="https://github.com/frazac/gradient-ai/blob/main/LICENSE-MIT">MIT 许可协议</a>：你可以自由使用和修改，也可以用于商业目的，只需保留版权声明。脚本库绘制出的印章仍然适用 CC BY-NC-SA。</p>
+  <h3>名称</h3>
+  <p>许可协议涉及的是著作权，而不是名称。如果你在自己的作品中使用这些层级和印章，请称之为“AI 梯度”；不要用这个名称命名你自己的产品或衍生项目，也不要让人误以为作者认可或支持你。</p>
+  <h3>如何署名</h3>
+  <div class="box-copia"><p id="attribuzione">AI 梯度，作者 Francesco Zaccaria，基于 Mike Perkins、Leon Furze、Jasper Roe 和 Jason MacVaugh 的 AIAS v2 改编的人工智能融入层级（许可协议：<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans">CC BY-NC-SA 4.0</a>）。代码：<a href="https://github.com/frazac/gradient-ai/blob/main/LICENSE-MIT">MIT</a> 许可协议。图标：Lucide（许可协议：<a href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">ISC</a>）。</p><p class="azioni"><button type="button" class="bottone" data-copia="#attribuzione">复制</button></p></div>
+  <p class="piccolo">AI 梯度是一个独立的改编版本：它不是官方翻译，也未经 AIAS 作者认可。</p>
+</section>
+
+<section id="fonti" class="riga">
+  <h2>来源与致谢</h2>
+  <h3>AI Assessment Scale</h3>
+  <ul class="bibliografia">
+    <li>Perkins, M., Furze, L., Roe, J., &amp; MacVaugh, J. (2024). The Artificial Intelligence Assessment Scale (AIAS): A framework for ethical integration of generative AI in educational assessment. <em>Journal of University Teaching and Learning Practice</em>, 21(6). <a href="https://open-publishing.org/journals/index.php/jutlp/article/view/810">open-publishing.org</a></li>
+    <li>Perkins, M., Roe, J., &amp; Furze, L. (2024). The AI Assessment Scale revisited: A framework for educational assessment. <em>arXiv</em>, 2412.09029. <a href="https://arxiv.org/abs/2412.09029">arxiv.org</a></li>
+    <li>Furze, L. (2024, September 2). AIAS: Why we’ve driven through the traffic lights. <em>Leon Furze</em>. <a href="https://leonfurze.com/2024/09/02/aias-why-weve-driven-through-the-traffic-lights/">leonfurze.com</a>——AIAS 为什么放弃了红绿灯配色：这些颜色暗示各层级之间存在高下之分。</li>
+    <li>AI Assessment Scale 官方网站：<a href="https://aiassessmentscale.com/">aiassessmentscale.com</a>——第 2 版参考的是 <a href="https://web.archive.org/web/20250611083200/https://aiassessmentscale.com/">2025 年 6 月的存档</a>。</li>
+  </ul>
+  <h3>图标</h3>
+  <p>印章中央的图标来自 <a href="https://lucide.dev">Lucide</a>（许可协议 <a href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">ISC</a>，© Lucide Icons and Contributors）：<a href="https://lucide.dev/icons/ban">ban</a>、<a href="https://lucide.dev/icons/calendar-days">calendar-days</a>、<a href="https://lucide.dev/icons/blender">blender</a>、<a href="https://lucide.dev/icons/bot">bot</a>、<a href="https://lucide.dev/icons/lighthouse">lighthouse</a>。</p>
+  <h3>字体</h3>
+  <p>网站：<a href="https://fonts.google.com/specimen/Space+Grotesk">Space Grotesk</a>（拉丁字母和数字）和 <a href="https://fonts.google.com/noto/specimen/Noto+Sans+SC">Noto Sans SC</a>（中文），均采用 SIL Open Font License。PNG 文件中的中文使用 Noto Sans SC；SVG 文件中的文字使用打开文件的设备上的字体。</p>
+  <h3>网站组件</h3>
+  <p>Cookie 横幅：Orest Bida 的 <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> 3.1.0（MIT 许可）。明暗切换开关取自 masterismi.dev（Quark 2 主题），太阳和月亮图标来自 <a href="https://iconoir.com/">Iconoir</a>（MIT 许可）。</p>
+  <h3>编者</h3>
+  <p><a href="https://linktr.ee/frazac">Francesco Zaccaria</a>——改编、文本和印章。问题与建议：<a href="https://github.com/frazac/gradient-ai/issues">GitHub issue</a>。</p>
+  <h3>本项目如何使用 AI</h3>
+  <div class="gradiente-progetto">
+    <h4>内容</h4>
+    <p class="badge-progetto"><span data-gradient="3" data-variant="label" data-color="currentColor" data-link="#"></span></p>
+    <p>作者负责改编和基本选择：层级名称、使用场景、职场与教学的侧重。文本由作者给出方向，与 AI（Claude）共同撰写；作者审阅、修改，并对照 AIAS v2 核实。</p>
+    <h4>中文翻译</h4>
+    <p class="badge-progetto"><span data-gradient="4" data-variant="label" data-color="currentColor" data-link="#"></span></p>
+    <p>中文版由 AI（Claude）按照作者的要求从意大利语翻译而来，并参考了英语和法语版本。层级名称和术语由作者确定方向；译文尚待以中文为母语的人士审校。</p>
+    <h4>颜色</h4>
+    <p class="badge-progetto"><span data-gradient="3" data-variant="label" data-color="currentColor" data-link="#"></span></p>
+    <p>AI 提出了最初的十种色调和用来调整它们的工具，并测量了对比度和色相差异。作者确定方向，凭肉眼调整颜色；部分最终色调由 AI 按照作者的要求选定。</p>
+    <h4>网站、代码和设计</h4>
+    <p class="badge-progetto"><span data-gradient="4" data-variant="label" data-color="currentColor" data-link="#"></span></p>
+    <p>网站、JavaScript 脚本库、构建工具、印章和 GitHub 仓库均使用 Claude Code 完成。作者确定目标和设计选择，并检查和测试了结果。</p>
+  </div>
+</section>
+
+<section id="ricerca" class="riga">
+  <h2>开展合作研究</h2>
+  <p>AI 梯度适合在实际使用中加以研究：教师、学生和委托方如何理解这些层级，它们是否有助于申报 AI 的使用，以及层级之间的界限在哪些地方不够清晰。如果有大学、院系或研究中心希望就此开展研究，作者愿意合作：研究资助或奖学金、访问学者（<em>visiting fellowship</em>）、联合研究项目。</p>
+  <p>联系方式：<a href="https://linktr.ee/frazac">Francesco Zaccaria</a>，或在 <a href="https://github.com/frazac/gradient-ai/issues">GitHub 上提交 issue</a>。</p>
+</section>
+
+</main>
+
+<footer class="piede riga">
+  <p class="titolo-piede">AI 梯度 – 基于 AIAS 的人工智能融入层级 · 版本 <span data-versione>0.7.0</span></p>
+  <p>© 2026 Francesco Zaccaria。层级文本和印章：<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans">知识共享 署名—非商业性使用—相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a>。代码：<a href="https://github.com/frazac/gradient-ai/blob/main/LICENSE-MIT">MIT 许可协议</a>。</p>
+  <p>“AI Assessment Scale”和“AIAS”是其各自权利人的名称和标识。AI Assessment Scale 是 Mike Perkins、Leon Furze、Jasper Roe 和 Jason MacVaugh 的作品，他们保留其全部知识产权；本网站仅在作者发布时所采用的 CC BY-NC-SA 4.0 许可范围内对其进行改编。AI 梯度是一个独立的改编版本：它不是官方版本，也未经 AIAS 的作者或权利人认可或支持。</p>
+  <p>图标：<a href="https://lucide.dev">Lucide</a>，© Lucide Icons and Contributors，ISC 许可。网站字体：Space Grotesk 和 Noto Sans SC，SIL Open Font License。Cookie 横幅：Orest Bida 的 <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a>，MIT 许可；太阳/月亮图标：<a href="https://iconoir.com/">Iconoir</a>，MIT 许可。</p>
+  <p>本材料按“现状”提供，用于教学目的，不附带任何保证：层级的选择和考核的设计由教师和所在机构负责。</p>
+  <nav aria-label="页脚链接">
+    <a href="https://github.com/frazac/gradient-ai">源代码</a>
+    <a href="https://github.com/frazac/gradient-ai/blob/main/CHANGELOG.md">更新内容</a>
+    <a href="https://github.com/frazac/gradient-ai/blob/main/LICENSE">许可协议</a>
+    <a href="https://github.com/frazac/gradient-ai/issues">问题反馈</a>
+    <a href="https://linktr.ee/frazac">联系</a>
+    <a href="#" id="cookie-prefs-link" onclick="window.CookieConsent &amp;&amp; CookieConsent.showPreferences(); return false;">Cookie 设置</a>
+  </nav>
+  <div class="piede-comandi">
+    <ul class="lingue-piede" aria-label="切换语言"><li><a href="../../stem/" hreflang="it" lang="it">Italiano</a></li><li><a href="../../fr/stem/" hreflang="fr" lang="fr">Français</a></li><li><a href="../../en/stem/" hreflang="en" lang="en">Simple English</a></li><li><a href="../../zh/stem/" hreflang="zh-Hans" lang="zh-Hans" class="is-active" aria-current="true">简体中文</a></li></ul>
+    <button type="button" class="theme-switch" data-theme-toggle
+            data-label-light="浅色" data-label-dark="深色"
+            data-aria-template="外观：%s" data-title-template="外观：%s（点击切换）"
+            aria-label="外观" title="外观（点击切换）">
+      <span class="icon-sun" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 12L23 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2V1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 23V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 20L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 4L19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 20L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 4L5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 12L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </span>
+      <span class="icon-moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </span>
+      <span class="knob" data-theme-knob></span>
+    </button>
+  </div>
+</footer>
+
+<script src="../../assets/theme-toggle.js"></script>
+<script src="../../assets/cookieconsent.umd.js"></script>
+<script>
+/* banner cookie: stessa configurazione di masterismi.dev, senza la categoria statistica (qui non c'è Matomo) */
+window.addEventListener('load', function () {
+  CookieConsent.run({
+    mode: 'opt-in',
+    guiOptions: {
+      consentModal: { layout: 'box', position: 'bottom left', equalWeightButtons: true },
+      preferencesModal: { layout: 'box', equalWeightButtons: true }
+    },
+    categories: {
+      necessary: { readOnly: true }
+    },
+    language: {
+      default: 'zh',
+      translations: {
+        zh: {
+          consentModal: {
+            description: '我们只使用网站运行所必需的 Cookie。',
+            acceptAllBtn: '接受',
+            acceptNecessaryBtn: '拒绝',
+            showPreferencesBtn: '设置'
+          },
+          preferencesModal: {
+            title: 'Cookie 设置',
+            acceptAllBtn: '接受',
+            acceptNecessaryBtn: '拒绝',
+            savePreferencesBtn: '保存',
+            closeIconLabel: '关闭',
+            sections: [
+              {
+                title: '必要的 Cookie',
+                description: '网站运行所必需：记住浅色或深色外观、印章面板中的选择，以及你对本横幅的答复。它们只保存在你的浏览器中，始终开启。',
+                linkedCategory: 'necessary'
+              },
+              {
+                title: '外部服务',
+                description: '我们不使用任何统计或追踪工具。网站由 GitHub Pages 托管；字体来自 Google Fonts，许可徽标来自 Creative Commons：这些服务会获取你浏览器的 IP 地址，以便发送文件。'
+              }
+            ]
+          }
+        }
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>

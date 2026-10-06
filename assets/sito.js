@@ -14,8 +14,12 @@
     fr: { brand: 'Gradient IA', level: 'Niveau', filled: '-plein', dir: 'fr/', file: 'gradient-ia-', ok: 'Copié', ko: 'Échec de la copie',
           nomi: { stamp: 'tampon', icon: 'icone', label: 'etiquette' } },
     en: { brand: 'Gradient AI', level: 'Level', filled: '-filled', dir: 'en/', file: 'gradient-ai-', ok: 'Copied', ko: 'Copy failed',
+          nomi: { stamp: 'stamp', icon: 'icon', label: 'label' } },
+    zh: { brand: 'AI 梯度', level: '第', filled: '-filled', dir: 'zh/', file: 'gradient-ai-', ok: '已复制', ko: '复制失败',
           nomi: { stamp: 'stamp', icon: 'icon', label: 'label' } }
   }[LG];
+  // «Livello 3» · in cinese «第 3 级»
+  function grado(n) { return LG === 'zh' ? '第 ' + n + ' 级' : T.level + ' ' + n; }
   var NOMI = T.nomi;
   var LEVELS = G.i18n[LG];
   var PNG = { stamp: 512, icon: 256, label: 192 };
@@ -58,7 +62,7 @@
     // anteprima = file scaricato: stessa stringa SVG mostrata come <img>, quindi anche stesso font (di sistema)
     document.querySelectorAll('[data-slot]').forEach(function (el) {
       var n = Number(el.getAttribute('data-slot')), l = LEVELS[n - 1];
-      el.innerHTML = '<img alt="' + T.level + ' ' + n + ' · ' + l.name + '" src="data:image/svg+xml;charset=utf-8,' +
+      el.innerHTML = '<img alt="' + grado(n) + ' · ' + l.name + '" src="data:image/svg+xml;charset=utf-8,' +
         encodeURIComponent(svgDi(n)) + '">';
     });
     document.querySelectorAll('.livello').forEach(function (el) {
@@ -74,7 +78,7 @@
   // badge solo testo: una riga che dichiara il livello e porta alla sua scheda
   function url(n) { return PAGINA + '#livello-' + n; }
   // nome come sui badge: il primo grado porta «(senza IA)»
-  function etichetta(n) { return T.brand + ' · ' + T.level + ' ' + n + ' · ' + (LEVELS[n - 1].badge || LEVELS[n - 1].name); }
+  function etichetta(n) { return T.brand + ' · ' + grado(n) + ' · ' + (LEVELS[n - 1].badge || LEVELS[n - 1].name); }
   function testo(n) { return etichetta(n) + ' — ' + url(n); }
   function testoHtml(n) { return '<a href="' + url(n) + '">' + etichetta(n) + '</a>'; }
 

@@ -2,8 +2,12 @@
 
 Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con una numerazione propria; la versione della AIAS da cui deriva (v2, 2024) è dichiarata a parte.
 
-## Non ancora rilasciato
+## 0.7.0 — 2026-10-06
 
+- **Doppia licenza**: codice (libreria, strumenti, sito) MIT in `LICENSE-MIT`; testi dei livelli e timbri CC BY-NC-SA 4.0 in `LICENSE-CC-BY-NC-SA`; `LICENSE` come guida, con una nota sull'uso del nome. Sezione Licenza aggiornata in tutte le lingue.
+- **Cinese semplificato** (`zh/`, quarta lingua): dati `dati/livelli.zh.json`, modello `src/pagina.zh.html`, profili `zh/`, `zh/stem/`, `zh/renwen/`, `zh/yishu/`; timbri, etichette e pittogrammi in `dist/svg/zh/` e `dist/png/zh/`; opzione `lang: 'zh'` nella libreria. Nome «AI 梯度»; livelli 自主 (不用 AI) · 构思 · 共创 · 执导 · 实验. Traduzione da rivedere con un madrelingua.
+- Font cinese: **Noto Sans SC** (Google Fonts, SIL OFL) sulle pagine `zh` accanto a Space Grotesk, e primo dei caratteri cinesi nel font dei badge (poi PingFang SC, Microsoft YaHei); i PNG cinesi sono generati con Noto Sans SC.
+- Libreria: font cinesi in coda al font dei badge e misure dei testi che contano i caratteri cinesi a tutta larghezza.
 - Codici immagine PNG e SVG legati alla versione (jsDelivr, come il JavaScript): chi li usa non vede cambiare i timbri.
 - «Copia fissa o sempre aggiornata?» in cima a Usare i timbri, con rimando dalle note d'uso.
 - Tolta la riga «Fatto con Claude…» sotto l'uso dell'IA: Claude è già citato nella voce «Sito, codice e grafica».

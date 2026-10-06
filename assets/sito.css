@@ -16,6 +16,12 @@
   --h-testata: 3.5rem;       /* altezza della testata sticky: il menu dei livelli si aggancia sotto */
   --ok: #2a8c82;
 }
+/* pagine in cinese: Space Grotesk per lettere e cifre, Noto Sans SC (Google Fonts) per i caratteri cinesi, poi quelli di sistema */
+:root:lang(zh) {
+  --f: 'Space Grotesk', 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
+}
+:root:lang(zh) body { line-height: 1.75; }
+:root:lang(zh) em { font-style: normal; }
 /* tema scuro: scelto dallo switch (data-theme, vedi assets/theme-toggle.js) o, senza JS, dal sistema */
 :root[data-theme="dark"] {
   --carta: #15161a;
