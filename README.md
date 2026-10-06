@@ -66,7 +66,11 @@ rigenera `dist/gradient-ai.js` (da `src/gradient-ai.core.js` + dati + icone), le
 
 ## Licenza e crediti
 
-[CC BY-NC-SA 4.0](LICENSE) — la stessa della fonte.
+Due licenze, secondo la parte ([dettagli](LICENSE)):
+
+- **Codice** — [MIT](LICENSE-MIT): libreria JavaScript, strumenti di build, codice del sito. Uso libero, anche commerciale.
+- **Testi dei livelli e timbri** — [CC BY-NC-SA 4.0](LICENSE-CC-BY-NC-SA), la stessa della fonte: i testi in `dati/livelli.*.json` (e gli stessi testi nelle pagine e dentro `dist/gradient-ai.js`), timbri, pittogrammi ed etichette (file in `dist/svg/` e `dist/png/` o creati con la libreria), palette Mix Gradient. Niente uso commerciale.
+- **Nome** — le licenze riguardano il diritto d'autore, non il nome: chi usa livelli e timbri li cita come «Gradiente IA», ma non dà questo nome a un proprio prodotto o progetto derivato.
 
 - **Fonte**: AI Assessment Scale (AIAS) v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh, CC BY-NC-SA 4.0 — [aiassessmentscale.com](https://aiassessmentscale.com/). Perkins, M., Furze, L., Roe, J., & MacVaugh, J. (2024). The Artificial Intelligence Assessment Scale (AIAS). *Journal of University Teaching and Learning Practice*, 21(6).
 - **Icone**: [Lucide](https://lucide.dev) — ban, calendar-days, blender, bot, lighthouse — licenza ISC, © Lucide Icons and Contributors ([testo](src/icone/LICENSE-lucide.txt)).
@@ -76,4 +80,4 @@ Gradiente IA è un adattamento indipendente: non è una traduzione ufficiale e n
 
 ### Come attribuire
 
-> Gradiente IA di Francesco Zaccaria, Livelli di integrazione dell'IA tratti da AIAS v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh (licenza CC BY-NC-SA 4.0). Icone: Lucide (licenza ISC).
+> Gradiente IA di Francesco Zaccaria, Livelli di integrazione dell'IA tratti da AIAS v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh (licenza CC BY-NC-SA 4.0). Codice: licenza MIT. Icone: Lucide (licenza ISC).

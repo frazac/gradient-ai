@@ -2,8 +2,9 @@
  * Gradient AI v0.6.1 — Gradiente IA: livelli di integrazione dell'IA tratti da AIAS
  * https://github.com/frazac/gradient-ai
  *
- * Contenuti: adattamento di AI Assessment Scale (AIAS) v2 di Mike Perkins, Leon Furze,
- * Jasper Roe e Jason MacVaugh — CC BY-NC-SA 4.0. Questo file: CC BY-NC-SA 4.0.
+ * Codice: © 2026 Francesco Zaccaria, licenza MIT.
+ * Testi dei livelli inclusi (LEVELS) e timbri generati: adattamento di AI Assessment Scale (AIAS) v2
+ * di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh — CC BY-NC-SA 4.0. Dettagli: LICENSE nel repository.
  * Icone: Lucide (https://lucide.dev), licenza ISC — © Lucide Icons and Contributors.
  *
  * File generato da strumenti/build.py a partire da src/gradient-ai.core.js: non modificarlo a mano.
