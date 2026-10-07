@@ -407,6 +407,12 @@ main ul > li::before {
 }
 #cc-main .cm, #cc-main .pm { box-shadow: 0 .625em 1.875em rgba(0,0,0,.3); }
 :root[data-theme="dark"] #cc-main .cm, :root[data-theme="dark"] #cc-main .pm { box-shadow: 0 .625em 1.875em rgba(255,255,255,.15); }
+/* preferenze cookie: niente traccia attorno alle sezioni (con i bottoni a pillola il bordo diventava una pillola enorme) */
+#cc-main .pm__section, #cc-main .pm__section:not(:first-child):hover { border: none; background: none; padding: 0.5em 0; }
+/* categoria aperta: il titolo resta una pillola intera, la descrizione sotto senza traccia */
+#cc-main .pm__section-title, #cc-main .pm__section--expandable .pm__section-arrow ~ * { border-radius: var(--cc-btn-border-radius) !important; }
+#cc-main .pm__section-desc-wrapper { border: none; border-radius: 0; }
+#cc-main .pm__section-desc { padding: 0.8em 1em 0; }
 
 @media (max-width: 52rem) {
   .galleria { grid-template-columns: repeat(3, 1fr); }

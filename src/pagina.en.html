@@ -257,7 +257,7 @@
   <h3>Share how you use it with the project</h3>
   <p>Do you use Gradient AI? You can help us see if the levels work, in three steps:</p>
   <ol class="passi">
-    <li>Ask for the surveys: write to <a href="mailto:frazac@gmail.com?subject=Gradiente%20IA">frazac@gmail.com</a>.</li>
+    <li>Ask for the surveys: write to <a class="js-email" data-u="ofni" data-d="ti.tneidargteg" data-s="Gradiente IA">info (at) getgradient.it</a>.</li>
     <li>I send them to you by email, in English or in Italian.</li>
     <li>You answer the first one before the work starts and the second one when the work is finished. The third one is anonymous and takes less than two minutes: you send it to the people who receive the work, like students, clients or readers.</li>
   </ol>
@@ -282,6 +282,7 @@
     <a href="https://github.com/frazac/gradient-ai/issues">Report a problem</a>
     <a href="https://linktr.ee/frazac">Contact</a>
     <a href="{{R}}en/privacy/">Privacy</a>
+    <a href="{{R}}en/terms/">Terms of use</a>
     <a href="#" id="cookie-prefs-link" onclick="window.CookieConsent &amp;&amp; CookieConsent.showPreferences(); return false;">Cookie settings</a>
   </nav>
   <div class="piede-comandi">
@@ -302,9 +303,10 @@
 </footer>
 
 <script src="{{R}}assets/theme-toggle.js"></script>
+<script src="{{R}}assets/email.js"></script>
 <script src="{{R}}assets/cookieconsent.umd.js"></script>
 <script>
-/* cookie banner: same set-up as masterismi.dev, with no statistics (there is no Matomo here) */
+/* cookie banner: same set-up as masterismi.dev; Matomo works without cookies, so there is no statistics category */
 window.addEventListener('load', function () {
   CookieConsent.run({
     mode: 'opt-in',
@@ -339,7 +341,7 @@ window.addEventListener('load', function () {
               },
               {
                 title: 'Outside services',
-                description: 'We use no statistics and no tracking. GitHub Pages hosts the site. The font comes from Google Fonts and the licence badge from Creative Commons: these services get the IP address of your browser to send the files.'
+                description: 'We count visits with Matomo, on our own server, with no cookies and with the IP address made anonymous: only totals, no tracking of people. GitHub Pages hosts the site. The font comes from Google Fonts and the licence badge from Creative Commons: these services get the IP address of your browser to send the files.'
               }
             ]
           }

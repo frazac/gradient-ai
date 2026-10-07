@@ -32,6 +32,17 @@
   <link rel="stylesheet" href="assets/sito.css">
   <script src="dist/gradient-ai.js" defer></script>
   <script src="assets/sito.js" defer></script>
+  <script>
+  if (location.hostname === 'getgradient.it') {
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['disableCookies'], ['setDoNotTrack', true], ['trackPageView'], ['enableLinkTracking']);
+    (function () {
+      var u = 'https://matomo.masterismi.com/';
+      _paq.push(['setTrackerUrl', u + 'matomo.php'], ['setSiteId', '28']);
+      var g = document.createElement('script'); g.async = true; g.src = u + 'matomo.js'; document.head.appendChild(g);
+    })();
+  }
+  </script>
 </head>
 <body data-profilo="generale" data-percorso="">
 
@@ -393,7 +404,7 @@
   <h3>Condividere dati di utilizzo con il progetto</h3>
   <p>Usi Gradiente IA? Puoi aiutare a capire se i livelli funzionano, in tre passi:</p>
   <ol class="passi">
-    <li>Chiedi i questionari scrivendo a <a href="mailto:frazac@gmail.com?subject=Gradiente%20IA">frazac@gmail.com</a>.</li>
+    <li>Chiedi i questionari scrivendo a <a class="js-email" data-u="ofni" data-d="ti.tneidargteg" data-s="Gradiente IA">info (at) getgradient.it</a>.</li>
     <li>Te li mando via email, in italiano o in inglese.</li>
     <li>Compili il primo prima di cominciare e il secondo a lavoro finito; il terzo, anonimo e da meno di due minuti, lo giri a chi riceve il lavoro: studenti, clienti o lettori.</li>
   </ol>
@@ -418,6 +429,7 @@
     <a href="https://github.com/frazac/gradient-ai/issues">Segnalazioni</a>
     <a href="https://linktr.ee/frazac">Contatti</a>
     <a href="privacy/">Informativa privacy</a>
+    <a href="condizioni/">Condizioni d'uso</a>
     <a href="#" id="cookie-prefs-link" onclick="window.CookieConsent &amp;&amp; CookieConsent.showPreferences(); return false;">Preferenze cookie</a>
   </nav>
   <div class="piede-comandi">
@@ -438,9 +450,10 @@
 </footer>
 
 <script src="assets/theme-toggle.js"></script>
+<script src="assets/email.js"></script>
 <script src="assets/cookieconsent.umd.js"></script>
 <script>
-/* banner cookie: stessa configurazione di masterismi.dev, senza la categoria statistica (qui non c'è Matomo) */
+/* banner cookie: stessa configurazione di masterismi.dev; Matomo senza cookie, quindi nessuna categoria statistica */
 window.addEventListener('load', function () {
   CookieConsent.run({
     mode: 'opt-in',
@@ -475,7 +488,7 @@ window.addEventListener('load', function () {
               },
               {
                 title: 'Servizi esterni',
-                description: 'Nessuno strumento di statistica o di profilazione. Il sito è ospitato da GitHub Pages; il carattere tipografico arriva da Google Fonts e il bollino della licenza da Creative Commons: questi servizi ricevono l\'indirizzo IP del browser per inviare i file.'
+                description: 'Statistiche di visita con Matomo, installato sul nostro server, senza cookie e con indirizzo IP anonimizzato: solo numeri aggregati, nessuna profilazione. Il sito è ospitato da GitHub Pages; il carattere tipografico arriva da Google Fonts e il bollino della licenza da Creative Commons: questi servizi ricevono l\'indirizzo IP del browser per inviare i file.'
               }
             ]
           }

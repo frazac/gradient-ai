@@ -32,6 +32,17 @@
   <link rel="stylesheet" href="../../assets/sito.css">
   <script src="../../dist/gradient-ai.js" defer></script>
   <script src="../../assets/sito.js" defer></script>
+  <script>
+  if (location.hostname === 'getgradient.it') {
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['disableCookies'], ['setDoNotTrack', true], ['trackPageView'], ['enableLinkTracking']);
+    (function () {
+      var u = 'https://matomo.masterismi.com/';
+      _paq.push(['setTrackerUrl', u + 'matomo.php'], ['setSiteId', '28']);
+      var g = document.createElement('script'); g.async = true; g.src = u + 'matomo.js'; document.head.appendChild(g);
+    })();
+  }
+  </script>
 </head>
 <body data-profilo="stem" data-percorso="zh/stem/">
 
@@ -399,7 +410,7 @@
   <h3>与项目分享使用情况</h3>
   <p>你在使用 AI 梯度吗？只需三步，就能帮助我们了解这些层级是否有效：</p>
   <ol class="passi">
-    <li>写信至 <a href="mailto:frazac@gmail.com?subject=Gradiente%20IA">frazac@gmail.com</a>，索取问卷。</li>
+    <li>写信至 <a class="js-email" data-u="ofni" data-d="ti.tneidargteg" data-s="Gradiente IA">info (at) getgradient.it</a>，索取问卷。</li>
     <li>我会通过电子邮件把问卷发给你（英文或意大利文）。</li>
     <li>第一份在开始前填写，第二份在作品完成后填写；第三份是匿名问卷，不到两分钟即可完成，请转发给接收作品的人，例如学生、客户或读者。</li>
   </ol>
@@ -424,6 +435,7 @@
     <a href="https://github.com/frazac/gradient-ai/issues">问题反馈</a>
     <a href="https://linktr.ee/frazac">联系</a>
     <a href="../../en/privacy/">隐私</a>
+    <a href="../../en/terms/">使用条款</a>
     <a href="#" id="cookie-prefs-link" onclick="window.CookieConsent &amp;&amp; CookieConsent.showPreferences(); return false;">Cookie 设置</a>
   </nav>
   <div class="piede-comandi">
@@ -444,9 +456,10 @@
 </footer>
 
 <script src="../../assets/theme-toggle.js"></script>
+<script src="../../assets/email.js"></script>
 <script src="../../assets/cookieconsent.umd.js"></script>
 <script>
-/* banner cookie: stessa configurazione di masterismi.dev, senza la categoria statistica (qui non c'è Matomo) */
+/* banner cookie: stessa configurazione di masterismi.dev; Matomo senza cookie, quindi nessuna categoria statistica */
 window.addEventListener('load', function () {
   CookieConsent.run({
     mode: 'opt-in',
@@ -481,7 +494,7 @@ window.addEventListener('load', function () {
               },
               {
                 title: '外部服务',
-                description: '我们不使用任何统计或追踪工具。网站由 GitHub Pages 托管；字体来自 Google Fonts，许可徽标来自 Creative Commons：这些服务会获取你浏览器的 IP 地址，以便发送文件。'
+                description: '我们使用安装在自己服务器上的 Matomo 统计访问量，不使用 Cookie，IP 地址经过匿名化处理：只有汇总数字，不做用户画像。网站由 GitHub Pages 托管；字体来自 Google Fonts，许可徽标来自 Creative Commons：这些服务会获取你浏览器的 IP 地址，以便发送文件。'
               }
             ]
           }

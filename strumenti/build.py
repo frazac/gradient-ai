@@ -81,6 +81,19 @@ ICONA_GLOBO = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
                '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>')
 
 SITO = "https://getgradient.it/"
+# statistiche Matomo (matomo.masterismi.com, idSite 28): senza cookie, rispetta Do Not Track, solo sul dominio pubblico
+MATOMO = """  <script>
+  if (location.hostname === 'getgradient.it') {
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['disableCookies'], ['setDoNotTrack', true], ['trackPageView'], ['enableLinkTracking']);
+    (function () {
+      var u = 'https://matomo.masterismi.com/';
+      _paq.push(['setTrackerUrl', u + 'matomo.php'], ['setSiteId', '28']);
+      var g = document.createElement('script'); g.async = true; g.src = u + 'matomo.js'; document.head.appendChild(g);
+    })();
+  }
+  </script>
+"""
 ICONA_COPY = ('<svg class="i-copia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
               '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>')
 ICONA_CHECK = ('<svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
@@ -217,6 +230,7 @@ def render_lang(lg, dati, version):
                 .replace("{{LIVELLI}}", nav_livelli + "".join(parts)).replace("{{COPIA_ICONE}}", ICONA_COPY + ICONA_CHECK).replace("{{COPIA}}", B["copia"]).replace("{{ALTERNATE}}", alternate).replace("{{HOME}}", (r + pari[lg]["percorso"].split("/")[0] + "/") if lg != "it" else (r or "./")).replace("{{LINGUA}}", lingua).replace("{{LINGUE_PIEDE}}", lingue_piede).replace("{{NOTE}}", note))
         page = page.split("\n", 1)[1]            # via il commento sul modello
         page = re.sub(r"(<span data-versione>)[^<]*(</span>)", rf"\g<1>{version}\g<2>", page)
+        page = page.replace("</head>", MATOMO + "</head>", 1)
         out = ROOT / pr["percorso"] / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(f"<!-- Generato da strumenti/build.py (src/pagina.{lg}.html + dati/livelli.{lg}.json): non modificare a mano. -->\n" + page, encoding="utf-8")
@@ -224,13 +238,14 @@ def render_lang(lg, dati, version):
 
 
 def render_privacy():
-    """Informativa privacy: src/privacy.it.html → privacy/, src/privacy.en.html → en/privacy/."""
-    for lg, percorso in (("it", "privacy/"), ("en", "en/privacy/")):
+    """Pagine di testo: informativa privacy (privacy/, en/privacy/) e condizioni d'uso (condizioni/, en/terms/)."""
+    for nome, lg, percorso in (("privacy", "it", "privacy/"), ("privacy", "en", "en/privacy/"),
+                               ("condizioni", "it", "condizioni/"), ("condizioni", "en", "en/terms/")):
         r = "../" * percorso.count("/")
-        page = (ROOT / "src" / f"privacy.{lg}.html").read_text(encoding="utf-8").split("\n", 1)[1].replace("{{R}}", r)
+        page = (ROOT / "src" / f"{nome}.{lg}.html").read_text(encoding="utf-8").split("\n", 1)[1].replace("{{R}}", r).replace("</head>", MATOMO + "</head>", 1)
         out = ROOT / percorso / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(f"<!-- Generato da strumenti/build.py (src/privacy.{lg}.html): non modificare a mano. -->\n" + page, encoding="utf-8")
+        out.write_text(f"<!-- Generato da strumenti/build.py (src/{nome}.{lg}.html): non modificare a mano. -->\n" + page, encoding="utf-8")
         print(out.relative_to(ROOT))
 
 
