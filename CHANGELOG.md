@@ -2,6 +2,10 @@
 
 Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con una numerazione propria; la versione della AIAS da cui deriva (v2, 2024) è dichiarata a parte.
 
+## 0.8.0 — 2026-10-07
+
+- **Peso ottico dei pittogrammi**: spessore del tratto compensato per icona (`icona_peso` in `dati/livelli.it.json`), perché a parità di tratto le icone fitte sembravano più scure e quelle rade più chiare. Fattori: ban 1,1 · calendar-days 0,89 · blender 0,93 · bot 1 · lighthouse 0,89 (scelti da FZ su un foglio di confronto, partendo dalla misura della tinta di ciascuna icona). Vale per timbri, pittogrammi, etichette, SVG e PNG.
+
 ## 0.7.2 — 2026-10-07
 
 - Codici da copiare (immagine PNG, file SVG, JavaScript) su **cdn.getgradient.it/vX.Y.Z/…** al posto di cdn.jsdelivr.net/gh/frazac/gradient-ai@vX.Y.Z/…: restano legati alla versione. Un Worker Cloudflare (`strumenti/cdn/worker.js`, pubblicato con `strumenti/cdn/pubblica.py`) serve i file `dist/` del tag tramite jsDelivr.

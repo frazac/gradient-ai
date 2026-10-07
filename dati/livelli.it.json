@@ -76,6 +76,7 @@
       "nome": "Autonomia",
       "sottotitolo": "Senza IA",
       "icona": "ban",
+      "icona_peso": 1.1,
       "profili": {
         "generale": {
           "chiede": "Il lavoro si svolge interamente senza IA. Serve quando contano la competenza diretta della persona, la riservatezza dei materiali o un requisito esplicito di chi commissiona.",
@@ -121,6 +122,7 @@
       "nome": "Ideazione",
       "sottotitolo": "IA solo in fase preparatoria",
       "icona": "calendar-days",
+      "icona_peso": 0.89,
       "profili": {
         "generale": {
           "chiede": "L'IA può servire solo prima del lavoro vero e proprio: per esplorare idee, impostare una scaletta, orientarsi su un tema nuovo. Il risultato consegnato è sviluppato e scritto dalla persona.",
@@ -166,6 +168,7 @@
       "nome": "Co-creazione",
       "sottotitolo": "IA al fianco, con vaglio critico",
       "icona": "blender",
+      "icona_peso": 0.93,
       "profili": {
         "generale": {
           "chiede": "L'IA può affiancare la realizzazione: bozze, revisioni, riscontri, rifiniture. Chi realizza vaglia, corregge e integra ogni contributo, e ne risponde come se fosse interamente suo.",
@@ -211,6 +214,7 @@
       "nome": "Regia",
       "sottotitolo": "IA sotto direzione umana",
       "icona": "bot",
+      "icona_peso": 1,
       "profili": {
         "generale": {
           "chiede": "L'IA può essere usata per qualsiasi parte del lavoro, o è espressamente richiesta. Il valore sta nella direzione: obiettivi chiari, istruzioni precise, controllo di qualità, scelte motivate.",
@@ -256,6 +260,7 @@
       "nome": "Sperimentazione",
       "sottotitolo": "IA come terreno di ricerca",
       "icona": "lighthouse",
+      "icona_peso": 0.89,
       "profili": {
         "generale": {
           "chiede": "L'IA è il terreno del lavoro: si esplorano usi nuovi per risolvere problemi, generare intuizioni o costruire soluzioni originali. Obiettivi e metodo si definiscono insieme fra chi commissiona e chi realizza.",

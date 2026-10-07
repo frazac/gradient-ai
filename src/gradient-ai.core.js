@@ -28,6 +28,8 @@
   // licenza e indirizzo sull'arco esterno sotto timbro e pittogramma (credit: false per toglierli, creditSize per la grandezza)
   var CREDIT = 'CC BY-NC-SA 4.0 getgradient.it';
   var ICONS = __ICONS__;
+  // compensazione ottica del tratto per icona (dati/livelli.it.json → icona_peso): ban più spesso, calendario, frullatore e faro più sottili
+  var ICON_WEIGHTS = __ICON_WEIGHTS__;
 
   // Mix Gradient IA (dati/mix-gradient.json): colore predefinito, due toni per livello in un gradiente lineare.
   var MIX = __MIX__;
@@ -112,10 +114,11 @@
     return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
   }
 
-  // icona Lucide (24×24) posizionata in (x, y) con lato `size`; `weight` è lo stroke-width di Lucide (default 2)
+  // icona Lucide (24×24) posizionata in (x, y) con lato `size`; `weight` è lo stroke-width di Lucide (default 2),
+  // moltiplicato per il fattore ottico dell'icona
   function icon(name, x, y, size, ink, weight) {
     return '<g transform="translate(' + x + ' ' + y + ') scale(' + (size / 24) + ')" fill="none" stroke="' + ink +
-      '" stroke-width="' + weight + '" stroke-linecap="round" stroke-linejoin="round">' +
+      '" stroke-width="' + +(weight * (ICON_WEIGHTS[name] || 1)).toFixed(3) + '" stroke-linecap="round" stroke-linejoin="round">' +
       ICONS[name] + '</g>';
   }
 

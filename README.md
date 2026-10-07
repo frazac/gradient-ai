@@ -35,16 +35,16 @@ La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè sca
 <a href="https://getgradient.it/#livello-3">Gradiente IA · Livello 3 · Co-creazione</a>
 ```
 
-**PNG** — `dist/png/timbro-3-512.png` (anche `-pieno`, icona, etichetta; più misure), da usare anche come immagine collegata: `https://cdn.getgradient.it/v0.7.2/dist/png/timbro-3-512.png`
+**PNG** — `dist/png/timbro-3-512.png` (anche `-pieno`, icona, etichetta; più misure), da usare anche come immagine collegata: `https://cdn.getgradient.it/v0.8.0/dist/png/timbro-3-512.png`
 
-**SVG** — `dist/svg/timbro-3.svg`, oppure `https://cdn.getgradient.it/v0.7.2/dist/svg/timbro-3.svg`
+**SVG** — `dist/svg/timbro-3.svg`, oppure `https://cdn.getgradient.it/v0.8.0/dist/svg/timbro-3.svg`
 
 Gli indirizzi `cdn.getgradient.it/vX.Y.Z/…` sono legati a una versione: i timbri incollati non cambiano quando il progetto si aggiorna. Servono i file del tag `vX.Y.Z` di questo repository (tramite jsDelivr; il Worker è in [`strumenti/cdn/`](strumenti/cdn/)).
 
 **JavaScript**, come [Lucide](https://lucide.dev):
 
 ```html
-<script src="https://cdn.getgradient.it/v0.7.2/dist/gradient-ai.js"></script>
+<script src="https://cdn.getgradient.it/v0.8.0/dist/gradient-ai.js"></script>
 
 <i data-gradient="3"></i>
 <i data-gradient="5" data-variant="label" data-filled></i>

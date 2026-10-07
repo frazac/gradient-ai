@@ -49,6 +49,8 @@ def build_js():
                        # nome sui badge: il primo grado porta anche «(senza IA)», come il titolo della scheda
                        "badge": l["nome"] + (tra_parentesi(l["sottotitolo"], lg) if l["n"] == 1 else "")}
                       for l in data["livelli"]]
+    # compensazione ottica del tratto per icona (dati/livelli.it.json → icona_peso): pareggia la tinta fra pittogrammi fitti e radi
+    pesi = {l["icona"]: l.get("icona_peso", 1) for l in json.loads((ROOT / "dati" / "livelli.it.json").read_text(encoding="utf-8"))["livelli"]}
     icons = {}
     for l in levels["it"]:
         svg = (ROOT / "src" / "icone" / f"{l['icon']}.svg").read_text()
@@ -61,6 +63,7 @@ def build_js():
     out = (core.replace("__VERSION__", version)
            .replace("__LEVELS__", json.dumps(levels, ensure_ascii=False))
            .replace("__ICONS__", json.dumps(icons, ensure_ascii=False))
+           .replace("__ICON_WEIGHTS__", json.dumps(pesi))
            .replace("__MIX__", json.dumps(mix, ensure_ascii=False)))
     (ROOT / "dist").mkdir(exist_ok=True)
     (ROOT / "dist" / "gradient-ai.js").write_text(out, encoding="utf-8")
