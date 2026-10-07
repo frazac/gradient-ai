@@ -24,7 +24,7 @@
 {{ALTERNATE}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&display=swap">
   <link rel="stylesheet" href="{{R}}assets/cookieconsent.css">
   <link rel="stylesheet" href="{{R}}assets/sito.css">
   <script src="{{R}}dist/gradient-ai.js" defer></script>
@@ -53,6 +53,8 @@
 
 <main>
 
+{{SALTA}}
+
 <section id="intro" class="intro riga">
   <h1>AI 梯度</h1>
   <p class="sottotitolo">人工智能融入层级</p>
@@ -74,6 +76,7 @@
     </div>
     <nav id="corpo-profili" class="profili corpo-fascia" hidden aria-label="使用场景">{{PROFILI}}
     </nav>
+    {{SALTA}}
   </div>
 </section>
 
@@ -193,7 +196,7 @@
 
 <section id="licenza" class="riga">
   <h2>许可与署名</h2>
-  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
+  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"><img src="{{R}}assets/cc-by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
   AI 梯度按组成部分采用两种许可协议。</p>
   <h3>层级文本和印章：CC BY-NC-SA 4.0</h3>
   <p>层级和场景的文本以及印章（印章上有层级的名称和序号）采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans">知识共享 署名—非商业性使用—相同方式共享 4.0 国际</a>许可协议发布，与其所依据的 AIAS v2 相同。</p>
@@ -339,7 +342,7 @@ window.addEventListener('load', function () {
               },
               {
                 title: '外部服务',
-                description: '我们使用安装在自己服务器上的 Matomo 统计访问量，不使用 Cookie，IP 地址经过匿名化处理：只有汇总数字，不做用户画像。网站由 GitHub Pages 托管；字体来自 Google Fonts，许可徽标来自 Creative Commons：这些服务会获取你浏览器的 IP 地址，以便发送文件。'
+                description: '我们使用安装在自己服务器上的 Matomo 统计访问量，不使用 Cookie，IP 地址经过匿名化处理：只有汇总数字，不做用户画像。网站由 GitHub Pages 托管，它会获取浏览器的 IP 地址以发送页面；中文字体来自 Google Fonts，同样会获取 IP 地址；其他字体和图片由本网站自身提供。'
               }
             ]
           }

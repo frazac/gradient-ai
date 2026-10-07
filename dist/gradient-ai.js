@@ -1,5 +1,5 @@
 /*!
- * Gradient AI v0.8.1 — Gradiente IA: livelli di integrazione dell'IA (getgradient.it)
+ * Gradient AI v0.8.2 — Gradiente IA: livelli di integrazione dell'IA (getgradient.it)
  * https://github.com/frazac/gradient-ai
  *
  * Codice: © 2026 Francesco Zaccaria, licenza MIT.
@@ -15,7 +15,7 @@
 }(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var VERSION = '0.8.1';
+  var VERSION = '0.8.2';
   var LEVELS = {"it": [{"n": 1, "id": "autonomia", "name": "Autonomia", "subtitle": "Senza IA", "icon": "ban", "badge": "Autonomia (senza IA)"}, {"n": 2, "id": "ideazione", "name": "Ideazione", "subtitle": "IA solo in fase preparatoria", "icon": "calendar-days", "badge": "Ideazione"}, {"n": 3, "id": "co-creazione", "name": "Co-creazione", "subtitle": "IA al fianco, con vaglio critico", "icon": "blender", "badge": "Co-creazione"}, {"n": 4, "id": "regia", "name": "Regia", "subtitle": "IA sotto direzione umana", "icon": "bot", "badge": "Regia"}, {"n": 5, "id": "sperimentazione", "name": "Sperimentazione", "subtitle": "IA come terreno di ricerca", "icon": "lighthouse", "badge": "Sperimentazione"}], "fr": [{"n": 1, "id": "autonomia", "name": "Autonomie", "subtitle": "Sans IA", "icon": "ban", "badge": "Autonomie (sans IA)"}, {"n": 2, "id": "ideazione", "name": "Idéation", "subtitle": "IA seulement en amont", "icon": "calendar-days", "badge": "Idéation"}, {"n": 3, "id": "co-creazione", "name": "Co-création", "subtitle": "IA à vos côtés, avec regard critique", "icon": "blender", "badge": "Co-création"}, {"n": 4, "id": "regia", "name": "Régie", "subtitle": "IA sous direction humaine", "icon": "bot", "badge": "Régie"}, {"n": 5, "id": "sperimentazione", "name": "Expérimentation", "subtitle": "IA comme terrain de recherche", "icon": "lighthouse", "badge": "Expérimentation"}], "en": [{"n": 1, "id": "autonomia", "name": "On your own", "subtitle": "No AI", "icon": "ban", "badge": "On your own (no AI)"}, {"n": 2, "id": "ideazione", "name": "Ideas", "subtitle": "AI only before you start", "icon": "calendar-days", "badge": "Ideas"}, {"n": 3, "id": "co-creazione", "name": "Working together", "subtitle": "AI helps, you check everything", "icon": "blender", "badge": "Working together"}, {"n": 4, "id": "regia", "name": "Directing", "subtitle": "People lead the AI", "icon": "bot", "badge": "Directing"}, {"n": 5, "id": "sperimentazione", "name": "Exploring", "subtitle": "AI as a place to try new things", "icon": "lighthouse", "badge": "Exploring"}], "zh": [{"n": 1, "id": "autonomia", "name": "自主", "subtitle": "不用 AI", "icon": "ban", "badge": "自主（不用 AI）"}, {"n": 2, "id": "ideazione", "name": "构思", "subtitle": "AI 只用于准备阶段", "icon": "calendar-days", "badge": "构思"}, {"n": 3, "id": "co-creazione", "name": "共创", "subtitle": "AI 协助，人来把关", "icon": "blender", "badge": "共创"}, {"n": 4, "id": "regia", "name": "执导", "subtitle": "AI 在人的指挥下工作", "icon": "bot", "badge": "执导"}, {"n": 5, "id": "sperimentazione", "name": "实验", "subtitle": "AI 作为研究的场域", "icon": "lighthouse", "badge": "实验"}]};   // { it: [...], en: [...] }
   var TEXT = {
     it: { brand: 'Gradiente IA', level: 'Livello', bottom: 'GRADIENTE IA', mark: 'Gradient IA' },

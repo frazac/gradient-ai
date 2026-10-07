@@ -22,9 +22,6 @@
   <meta name="description" content="{{DESCRIZIONE}}">
   <link rel="icon" href="{{R}}assets/favicon.svg" type="image/svg+xml">
 {{ALTERNATE}}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="{{R}}assets/cookieconsent.css">
   <link rel="stylesheet" href="{{R}}assets/sito.css">
   <script src="{{R}}dist/gradient-ai.js" defer></script>
@@ -53,6 +50,8 @@
 
 <main>
 
+{{SALTA}}
+
 <section id="intro" class="intro riga">
   <h1>Gradient AI</h1>
   <p class="sottotitolo">Levels of AI use</p>
@@ -74,6 +73,7 @@
     </div>
     <nav id="corpo-profili" class="profili corpo-fascia" hidden aria-label="Profiles">{{PROFILI}}
     </nav>
+    {{SALTA}}
   </div>
 </section>
 
@@ -193,7 +193,7 @@
 
 <section id="licenza" class="riga">
   <h2>Licence and credit</h2>
-  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
+  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="{{R}}assets/cc-by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
   Gradient AI has two licences, one for each part.</p>
   <h3>Level texts and badges: CC BY-NC-SA 4.0</h3>
   <p>The texts of the levels and profiles, and the badges (they show the level names and numbers), have the licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution – NonCommercial – ShareAlike 4.0 International</a>. This is the same licence as the AIAS v2, the work they come from.</p>
@@ -341,7 +341,7 @@ window.addEventListener('load', function () {
               },
               {
                 title: 'Outside services',
-                description: 'We count visits with Matomo, on our own server, with no cookies and with the IP address made anonymous: only totals, no tracking of people. GitHub Pages hosts the site. The font comes from Google Fonts and the licence badge from Creative Commons: these services get the IP address of your browser to send the files.'
+                description: 'We count visits with Matomo, on our own server, with no cookies and with the IP address made anonymous: only totals, no tracking of people. GitHub Pages hosts the site and gets the IP address of your browser to send the pages. Fonts and images come from the site itself.'
               }
             ]
           }

@@ -69,8 +69,10 @@
     document.querySelectorAll('.livello').forEach(function (el) {
       el.style.setProperty('--c', c[Number(el.getAttribute('data-livello')) - 1]);
     });
-    document.querySelector('[data-out="weight"]').textContent = stato.weight;
-    document.querySelector('[data-out="creditSize"]').textContent = Number(stato.creditSize).toFixed(1);
+    // la pagina «Genera subito» non ha il pannello
+    var oPeso = document.querySelector('[data-out="weight"]'), oLic = document.querySelector('[data-out="creditSize"]');
+    if (oPeso) oPeso.textContent = stato.weight;
+    if (oLic) oLic.textContent = Number(stato.creditSize).toFixed(1);
 
     codici(o);
     try { localStorage.setItem('gradiente-ia', JSON.stringify(stato)); } catch (e) { /* ignora */ }
@@ -284,8 +286,9 @@
   var schede = Array.prototype.slice.call(document.querySelectorAll('.livello'));
   var barra = document.querySelector('.traccia-barra');
   function spia() {
-    if (!schede.length) return;
-    var nav = document.querySelector('.nav-livelli'), y = nav.getBoundingClientRect().bottom + 8;
+    var nav = document.querySelector('.nav-livelli');
+    if (!schede.length || !nav) return;
+    var y = nav.getBoundingClientRect().bottom + 8;
     var inizio = schede[0].getBoundingClientRect().top, fine = schede[schede.length - 1].getBoundingClientRect().bottom;
     var p = Math.min(1, Math.max(0, (y - inizio) / (fine - inizio - window.innerHeight + y)));
     if (barra) barra.style.width = (p * 100).toFixed(1) + '%';

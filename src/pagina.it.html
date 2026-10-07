@@ -22,9 +22,6 @@
   <meta name="description" content="{{DESCRIZIONE}}">
   <link rel="icon" href="{{R}}assets/favicon.svg" type="image/svg+xml">
 {{ALTERNATE}}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="{{R}}assets/cookieconsent.css">
   <link rel="stylesheet" href="{{R}}assets/sito.css">
   <script src="{{R}}dist/gradient-ai.js" defer></script>
@@ -53,6 +50,8 @@
 
 <main>
 
+{{SALTA}}
+
 <section id="intro" class="intro riga">
   <h1>Gradiente IA</h1>
   <p class="sottotitolo">Livelli di integrazione dell'IA</p>
@@ -70,6 +69,7 @@
     </div>
     <nav id="corpo-profili" class="profili corpo-fascia" hidden aria-label="Profili">{{PROFILI}}
     </nav>
+    {{SALTA}}
   </div>
 </section>
 
@@ -189,7 +189,7 @@
 
 <section id="licenza" class="riga">
   <h2>Licenza e attribuzione</h2>
-  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
+  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it"><img src="{{R}}assets/cc-by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
   Gradiente IA ha due licenze, secondo la parte.</p>
   <h3>Testi dei livelli e timbri: CC BY-NC-SA 4.0</h3>
   <p>I testi dei livelli e dei profili e i timbri (che ne riportano nomi e gradi) sono distribuiti con licenza <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.it">Creative Commons Attribuzione – Non commerciale – Condividi allo stesso modo 4.0 Internazionale</a>, la stessa della AIAS v2 da cui derivano.</p>
@@ -332,7 +332,7 @@ window.addEventListener('load', function () {
               },
               {
                 title: 'Servizi esterni',
-                description: 'Statistiche di visita con Matomo, installato sul nostro server, senza cookie e con indirizzo IP anonimizzato: solo numeri aggregati, nessuna profilazione. Il sito è ospitato da GitHub Pages; il carattere tipografico arriva da Google Fonts e il bollino della licenza da Creative Commons: questi servizi ricevono l\'indirizzo IP del browser per inviare i file.'
+                description: 'Statistiche di visita con Matomo, installato sul nostro server, senza cookie e con indirizzo IP anonimizzato: solo numeri aggregati, nessuna profilazione. Il sito è ospitato da GitHub Pages, che riceve l\'indirizzo IP del browser per inviare le pagine; caratteri e immagini sono serviti dal sito stesso.'
               }
             ]
           }

@@ -25,9 +25,6 @@
   <link rel="alternate" hreflang="fr" href="https://getgradient.it/fr/">
   <link rel="alternate" hreflang="en" href="https://getgradient.it/en/">
   <link rel="alternate" hreflang="zh-Hans" href="https://getgradient.it/zh/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="../assets/cookieconsent.css">
   <link rel="stylesheet" href="../assets/sito.css">
   <script src="../dist/gradient-ai.js" defer></script>
@@ -72,6 +69,8 @@
 
 <main>
 
+<p class="salta riga">Skip the settings: <a class="bottone" href="quick/">Get it now</a></p>
+
 <section id="intro" class="intro riga">
   <h1>Gradient AI</h1>
   <p class="sottotitolo">Levels of AI use</p>
@@ -82,7 +81,7 @@
     <p>Gradient AI started in Italian. We wrote this English version for people who are still learning English. We follow the plain language standard <a href="https://www.iso.org/standard/78907.html">ISO 24495-1:2023</a> and the rules of the <a href="https://simple.wikipedia.org/wiki/Wikipedia:How_to_write_Simple_English_pages">Simple English Wikipedia</a>: common words, short sentences, one idea in each sentence.</p>
   </aside>
   <p class="nota-fonte">Based on the <a href="https://aiassessmentscale.com/">AI Assessment Scale (AIAS)</a> v2 by Mike Perkins, Leon Furze, Jasper Roe and Jason MacVaugh · <a href="#licenza">CC BY-NC-SA 4.0</a><br>
-  Gradient AI is at version <span data-versione>0.8.1</span> · <a href="https://getgradient.it/">getgradient.it</a></p>
+  Gradient AI is at version <span data-versione>0.8.2</span> · <a href="https://getgradient.it/">getgradient.it</a></p>
 </section>
 
 <section id="profili" class="fascia-profili" aria-label="Profiles">
@@ -97,6 +96,7 @@
   <a href="../en/humanities/" title="Literature, philosophy, history, languages, social sciences">Humanities teaching</a>
   <a href="../en/arts/" title="Art and music schools, design, performing arts (in Italy: AFAM)">Arts teaching</a>
     </nav>
+    <p class="salta">Skip the settings: <a class="bottone" href="quick/">Get it now</a></p>
   </div>
 </section>
 
@@ -298,7 +298,7 @@
     <h3>A fixed copy, or always up to date?</h3>
     <ul>
       <li><strong>Downloaded files</strong> (SVG, PNG): they are your own copy. They do not change.</li>
-      <li><strong>Codes on this page</strong> (PNG image, SVG file, JavaScript): they are linked to the version in the address. Today this is version <span data-versione>0.8.1</span>. You keep seeing this version when the project changes, until you change the number.</li>
+      <li><strong>Codes on this page</strong> (PNG image, SVG file, JavaScript): they are linked to the version in the address. Today this is version <span data-versione>0.8.2</span>. You keep seeing this version when the project changes, until you change the number.</li>
       <li><strong>This website</strong> always shows the latest version. The text with a link brings people here, to the latest version of the level.</li>
     </ul>
     <p>If you need to state a level in a way that does not change, for example in a contract, a task or a call for projects, use a downloaded file or one of the codes below.</p>
@@ -349,7 +349,7 @@
 
 <section id="licenza" class="riga">
   <h2>Licence and credit</h2>
-  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
+  <p class="cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="../assets/cc-by-nc-sa.svg" alt="CC BY-NC-SA 4.0" width="88" height="31"></a>
   Gradient AI has two licences, one for each part.</p>
   <h3>Level texts and badges: CC BY-NC-SA 4.0</h3>
   <p>The texts of the levels and profiles, and the badges (they show the level names and numbers), have the licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution – NonCommercial – ShareAlike 4.0 International</a>. This is the same licence as the AIAS v2, the work they come from.</p>
@@ -426,7 +426,7 @@
 </main>
 
 <footer class="piede riga">
-  <p class="titolo-piede">Gradient AI – Levels of AI use · version <span data-versione>0.8.1</span> · <a href="https://getgradient.it/">getgradient.it</a></p>
+  <p class="titolo-piede">Gradient AI – Levels of AI use · version <span data-versione>0.8.2</span> · <a href="https://getgradient.it/">getgradient.it</a></p>
   <p>© 2026 Francesco Zaccaria. Level texts and badges: licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution – NonCommercial – ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>. Code: <a href="https://github.com/frazac/gradient-ai/blob/main/LICENSE-MIT">MIT licence</a>.</p>
   <p>“AI Assessment Scale” and “AIAS” are names and signs of their owners. The AI Assessment Scale is the work of Mike Perkins, Leon Furze, Jasper Roe and Jason MacVaugh. They keep all intellectual property rights in it. We use it here only as their CC BY-NC-SA 4.0 licence allows. Gradient AI is an independent version: it is not official, and the authors or owners of the AIAS do not approve or support it.</p>
   <p>Icons: <a href="https://lucide.dev">Lucide</a>, © Lucide Icons and Contributors, ISC licence. Website font: Space Grotesk, SIL Open Font License. Cookie banner: <a href="https://github.com/orestbida/cookieconsent">CookieConsent</a> by Orest Bida, MIT licence; sun/moon icons: <a href="https://iconoir.com/">Iconoir</a>, MIT licence.</p>
@@ -497,7 +497,7 @@ window.addEventListener('load', function () {
               },
               {
                 title: 'Outside services',
-                description: 'We count visits with Matomo, on our own server, with no cookies and with the IP address made anonymous: only totals, no tracking of people. GitHub Pages hosts the site. The font comes from Google Fonts and the licence badge from Creative Commons: these services get the IP address of your browser to send the files.'
+                description: 'We count visits with Matomo, on our own server, with no cookies and with the IP address made anonymous: only totals, no tracking of people. GitHub Pages hosts the site and gets the IP address of your browser to send the pages. Fonts and images come from the site itself.'
               }
             ]
           }

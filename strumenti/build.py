@@ -199,42 +199,123 @@ def render_lang(lg, dati, version):
         note_list = data["note_didattica"] if pr["note"] == "didattica" else pr["note"]
         note = ("\n  <ul>" + "".join(f"\n    <li>{e(x)}</li>" for x in note_list)
                 + f'\n    <li>{RIMANDO_COPIA[lg]}</li>' + "\n  </ul>\n  ")
-        nav = "".join(
-            f'\n  <a href="{(r + q["percorso"]) or "./"}"' + (' aria-current="page"' if q is pr else "") +
-            f' title="{e(q["esteso"])}">{e(q["nome"])}</a>' for q in profili)
         # stesso profilo nelle altre lingue: selettore lingua e link hreflang
         pari = {x: next(q for q in dati[x]["profili"] if q["id"] == pid) for x in LINGUE}
-        base_url = SITO
-        alternate = "\n".join(f'  <link rel="alternate" hreflang="{HREFLANG[x]}" href="{base_url}{pari[x]["percorso"]}">' for x in LINGUE)
-        # selettore lingua: globo (Lucide "globe") che apre un menu a tendina
-        voci = "".join(
-            f'<li><a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{HREFLANG[x]}" lang="{HREFLANG[x]}"'
-            + (' class="is-active" aria-current="true"' if x == lg else "") + f'>{ETICHETTE[x]}</a></li>' for x in LINGUE)
         L = LINGUA_UI[lg]
-        # nel piè di pagina le lingue stanno aperte, in fila
-        lingue_piede = ('<ul class="lingue-piede" aria-label="' + L[0] + '">' + "".join(
-            f'<li><a href="{(r + pari[x]["percorso"]) or "./"}" hreflang="{HREFLANG[x]}" lang="{HREFLANG[x]}"'
-            + (' class="is-active" aria-current="true"' if x == lg else "") + f'>{ETICHETTE[x]}</a></li>' for x in LINGUE) + '</ul>')
-        lingua = (f'<div class="header-lang">\n'
-                  f'      <button class="lang-toggle" type="button" aria-label="{L[0]}" title="{L[0]}" aria-expanded="false" aria-haspopup="true" aria-controls="lang-panel">{ICONA_GLOBO}</button>\n'
-                  f'      <div class="lang-panel" id="lang-panel"><div class="lang-panel-inner">\n'
-                  f'        <ul>{voci}</ul>\n'
-                  f'      </div></div>\n    </div>')
+
+        def compila(fine, titolo, descr, livelli, salta):
+            """Riempie il modello. fine: per lingua, la sottocartella dopo il profilo ("" = pagina del profilo,
+            SUBITO[x] = pagina «Genera subito»), così profili e lingue portano alla pagina corrispondente."""
+            rr = r + "../" * fine[lg].count("/")
+            nav = "".join(
+                f'\n  <a href="{(rr + q["percorso"] + fine[lg]) or "./"}"' + (' aria-current="page"' if q is pr else "") +
+                f' title="{e(q["esteso"])}">{e(q["nome"])}</a>' for q in profili)
+            alternate = "\n".join(f'  <link rel="alternate" hreflang="{HREFLANG[x]}" href="{SITO}{pari[x]["percorso"]}{fine[x]}">' for x in LINGUE)
+            # selettore lingua: globo (Lucide "globe") che apre un menu a tendina; nel piè di pagina le lingue stanno aperte, in fila
+            voci = "".join(
+                f'<li><a href="{(rr + pari[x]["percorso"] + fine[x]) or "./"}" hreflang="{HREFLANG[x]}" lang="{HREFLANG[x]}"'
+                + (' class="is-active" aria-current="true"' if x == lg else "") + f'>{ETICHETTE[x]}</a></li>' for x in LINGUE)
+            lingue_piede = '<ul class="lingue-piede" aria-label="' + L[0] + '">' + voci + '</ul>'
+            lingua = (f'<div class="header-lang">\n'
+                      f'      <button class="lang-toggle" type="button" aria-label="{L[0]}" title="{L[0]}" aria-expanded="false" aria-haspopup="true" aria-controls="lang-panel">{ICONA_GLOBO}</button>\n'
+                      f'      <div class="lang-panel" id="lang-panel"><div class="lang-panel-inner">\n'
+                      f'        <ul>{voci}</ul>\n'
+                      f'      </div></div>\n    </div>')
+            page = (template.replace('<a href="{{R}}" class="marchio-link">', f'<a href="{rr or "./"}" class="marchio-link">')
+                    .replace("{{R}}", rr).replace("{{TITOLO}}", e(titolo)).replace("{{DESCRIZIONE}}", e(descr))
+                    .replace("{{PROFILO}}", pid).replace("{{PERCORSO}}", pr["percorso"]).replace("{{OCCHIELLO}}", e(pr["occhiello"]))
+                    .replace("{{LEAD}}", pr["lead"]).replace("{{PROFILI}}", nav)
+                    # «Salta le configurazioni»: sotto il menu (blocco a sé) e dentro la fascia dei profili (già in una .riga)
+                    .replace("    {{SALTA}}", "    " + salta.replace(' class="salta riga"', ' class="salta"')).replace("{{SALTA}}", salta)
+                    .replace("{{LIVELLI}}", livelli).replace("{{COPIA_ICONE}}", ICONA_COPY + ICONA_CHECK).replace("{{COPIA}}", B["copia"]).replace("{{ALTERNATE}}", alternate).replace("{{HOME}}", (rr + pari[lg]["percorso"].split("/")[0] + "/") if lg != "it" else (rr or "./")).replace("{{LINGUA}}", lingua).replace("{{LINGUE_PIEDE}}", lingue_piede).replace("{{NOTE}}", note))
+            page = page.split("\n", 1)[1]            # via il commento sul modello
+            page = re.sub(r"(<span data-versione>)[^<]*(</span>)", rf"\g<1>{version}\g<2>", page)
+            return page.replace("</head>", MATOMO + "</head>", 1)
+
+        def scrivi(percorso, page):
+            out = ROOT / percorso / "index.html"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(f"<!-- Generato da strumenti/build.py (src/pagina.{lg}.html + dati/livelli.{lg}.json): non modificare a mano. -->\n" + page, encoding="utf-8")
+            print(out.relative_to(ROOT))
+
         titolo = f"{data['titolo']} – {data['sottotitolo']}" + ("" if pid == "generale" else f" · {pr['nome']}")
         descr = re.sub(r"<[^>]+>", "", pr["lead"]) + {"it": " Adattamento di AIAS v2, CC BY-NC-SA 4.0.", "en": " Based on the AIAS v2, CC BY-NC-SA 4.0.",
                                                        "fr": " Adaptation de l'AIAS v2, CC BY-NC-SA 4.0.", "zh": "改编自 AIAS v2，CC BY-NC-SA 4.0。"}[lg]
-        page = (template.replace('<a href="{{R}}" class="marchio-link">', f'<a href="{r or "./"}" class="marchio-link">')
-                .replace("{{R}}", r).replace("{{TITOLO}}", e(titolo)).replace("{{DESCRIZIONE}}", e(descr))
-                .replace("{{PROFILO}}", pid).replace("{{PERCORSO}}", pr["percorso"]).replace("{{OCCHIELLO}}", e(pr["occhiello"]))
-                .replace("{{LEAD}}", pr["lead"]).replace("{{PROFILI}}", nav)
-                .replace("{{LIVELLI}}", nav_livelli + "".join(parts)).replace("{{COPIA_ICONE}}", ICONA_COPY + ICONA_CHECK).replace("{{COPIA}}", B["copia"]).replace("{{ALTERNATE}}", alternate).replace("{{HOME}}", (r + pari[lg]["percorso"].split("/")[0] + "/") if lg != "it" else (r or "./")).replace("{{LINGUA}}", lingua).replace("{{LINGUE_PIEDE}}", lingue_piede).replace("{{NOTE}}", note))
-        page = page.split("\n", 1)[1]            # via il commento sul modello
-        page = re.sub(r"(<span data-versione>)[^<]*(</span>)", rf"\g<1>{version}\g<2>", page)
-        page = page.replace("</head>", MATOMO + "</head>", 1)
-        out = ROOT / pr["percorso"] / "index.html"
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(f"<!-- Generato da strumenti/build.py (src/pagina.{lg}.html + dati/livelli.{lg}.json): non modificare a mano. -->\n" + page, encoding="utf-8")
-        print(out.relative_to(ROOT))
+        S = SUBITO_UI[lg]
+        salta = f'<p class="salta riga">{S["salta"]} <a class="bottone" href="{SUBITO[lg]}">{S["genera"]}</a></p>'
+        page = compila({x: "" for x in LINGUE}, titolo, descr, nav_livelli + "".join(parts), salta)
+        scrivi(pr["percorso"], page)
+        scrivi(pr["percorso"] + SUBITO[lg], pagina_subito(lg, data, pr, compila, titolo))
+
+
+# «Genera subito»: per chi vuole solo dichiarare un livello, senza passare dalle personalizzazioni.
+# Una pagina per profilo (<profilo>/subito/, en/quick/, …): i cinque livelli con il testo con link
+# e l'indicazione per chi realizza, poi l'attribuzione breve.
+SUBITO = {"it": "subito/", "fr": "rapide/", "en": "quick/", "zh": "kuaisu/"}
+SUBITO_UI = {
+    "it": {"salta": "Salta le configurazioni:", "genera": "Genera subito",
+           "lead": "I cinque livelli, pronti da copiare: la riga con il link alla scheda del livello e il testo da dare a chi svolge il lavoro.",
+           "torna": 'Torna alla <a href="{home}">homepage</a> se vuoi vedere altri dettagli.', "menu": "Homepage"},
+    "fr": {"salta": "Passer les réglages :", "genera": "Générer tout de suite",
+           "lead": "Les cinq niveaux, prêts à copier : la ligne avec le lien vers la fiche du niveau et le texte à donner à la personne qui fait le travail.",
+           "torna": 'Revenez à la <a href="{home}">page d\'accueil</a> pour voir plus de détails.', "menu": "Accueil"},
+    "en": {"salta": "Skip the settings:", "genera": "Get it now",
+           "lead": "The five levels, ready to copy: a line with a link to the level, and the text for the person who does the work.",
+           "torna": 'Go back to the <a href="{home}">home page</a> to see more details.', "menu": "Home page"},
+    "zh": {"salta": "跳过设置：", "genera": "立即生成",
+           "lead": "五个层级，可直接复制：一行带有层级链接的文本，以及交给完成工作的人的说明。",
+           "torna": '如需查看更多细节，请返回<a href="{home}">首页</a>。', "menu": "首页"},
+}
+
+
+def pagina_subito(lg, data, pr, compila, titolo_profilo):
+    """Pagina «Genera subito» del profilo: stesso modello (testata, fascia dei profili, piè di pagina), corpo ridotto."""
+    B, S = BOTTONI[lg], SUBITO_UI[lg]
+    schede = []
+    for l in data["livelli"]:
+        n, t = l["n"], l["profili"][pr["id"]]
+        url = f"{SITO}{pr['percorso']}#livello-{n}"
+        nome_badge = f"{data['titolo']} · {nome_livello(lg, n)} · {l['nome']}{html.unescape(titolo_extra(l, lg))}"
+        schede.append(f"""
+  <article id="livello-{n}" class="livello" data-livello="{n}">
+    <p class="occhiello">{B["gradiente"]} {n}<span class="pallino" aria-hidden="true"></span><span class="occhiello-nome">{e(l["nome"])}</span></p>
+    <h2>{e(l["nome"])}{titolo_extra(l, lg)}</h2>
+    <div class="box-copia"><p class="badge-nome"><a href="{url}">{e(nome_badge)}</a> — {url}</p>
+      <p class="azioni"><button type="button" class="bottone" data-copia-testo="{n}">{B["testo"]}</button></p></div>
+    <h3 class="etichetta">{e(pr["esegue"])}{"" if lg == "zh" else " "}<span class="etichetta-profilo">{profilo_tra_parentesi(lg, e(pr["nome"]))}</span></h3>
+    {box_copia(f"consegna-{n}", e(t["esegue"]), lg)}
+  </article>""")
+    titolo = f"{S['genera']} – {titolo_profilo}"
+    descr = f"{data['titolo']}: {S['lead']}"
+    page = compila(SUBITO, titolo, descr, "", "")
+    # dal modello compilato per questa pagina: la fascia dei profili (i link portano alle altre pagine «Genera subito»)
+    # e l'attribuzione breve, così i testi restano in un posto solo
+    fascia = re.search(r'<section id="profili".*?</section>', page, re.S).group(0).replace("\n    \n  </div>", "\n  </div>")
+    breve = re.search(r'<h4>([^<]*)</h4>\s*(<p class="piccolo">[^<]*</p>)\s*(<div class="box-copia"><p id="attribuzione-breve">.*?</div>)', page, re.S)
+    home = "../"
+    corpo = f"""<main>
+
+<section id="intro" class="intro riga">
+  <h1>{S["genera"]}</h1>
+  <p class="sottotitolo">{e(data["titolo"])} · {e(pr["nome"])}</p>
+  <p class="lead">{S["lead"]}</p>
+</section>
+
+{fascia}
+
+<section id="livelli" class="riga">{"".join(schede)}
+</section>
+
+<section id="attribuzione-breve-sez" class="riga">
+  <h2>{breve.group(1)}</h2>
+  {breve.group(2)}
+  {breve.group(3)}
+  <p class="torna">{S["torna"].format(home=home)}</p>
+</section>
+
+</main>"""
+    page = re.sub(r"<main>.*</main>", lambda m: corpo, page, count=1, flags=re.S)
+    return re.sub(r'<nav class="menu-sezioni">.*?</nav>', f'<nav class="menu-sezioni">\n      <a href="{home}">{S["menu"]}</a>\n    </nav>', page, count=1, flags=re.S)
 
 
 def render_privacy():

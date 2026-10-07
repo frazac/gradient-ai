@@ -2,6 +2,15 @@
 
 Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con una numerazione propria; la versione della AIAS da cui deriva (v2, 2024) è dichiarata a parte.
 
+## 0.8.2 — 2026-10-07
+
+- **Genera subito**: per chi vuole solo dichiarare un livello, «Salta le configurazioni: Genera subito» sotto il menu e sotto i profili porta a una pagina ridotta, una per profilo e lingua (`/subito/`, `/fr/rapide/`, `/en/quick/`, `/zh/kuaisu/`, …): per ogni livello il testo con link e l'indicazione per chi realizza, poi l'attribuzione breve.
+- **Statistiche di visita con Matomo** (matomo.masterismi.com, idSite 28): senza cookie, IP anonimizzato, rispetto di Do Not Track, attive solo su getgradient.it. Nessuna nuova categoria nel banner; testi del banner e informativa aggiornati.
+- **Condizioni d'uso** in italiano e inglese (`/condizioni/`, `/en/terms/`): come chiediamo l'attribuzione testuale (anche lontano dal timbro, una per lavoro), responsabilità del livello dichiarato, nome e approvazioni, servizi del sito, nessuna garanzia. Link nel piè di pagina.
+- Informativa: questionari riservati ai maggiorenni, destinatari e trasferimenti (GitHub, Netsons, Cloudflare, Google), diritti completi.
+- Space Grotesk e bollino CC ospitati sul sito (`assets/font/`, `assets/cc-by-nc-sa.svg`): nessuna richiesta a Google Fonts o Creative Commons, tranne Noto Sans SC sulle pagine in cinese.
+- Preferenze cookie: tolta la traccia a pillola attorno alle categorie.
+
 ## 0.8.1 — 2026-10-07
 
 - Sottotitolo sotto il titolo: «Livelli di integrazione dell'IA», senza «tratti da AIAS» (anche nel titolo della pagina e nel piè di pagina; il rimando alla AIAS resta sotto l'introduzione). In tutte le lingue.
