@@ -1,6 +1,7 @@
 /* Gradiente IA — indirizzo email ricomposto nel browser, per ostacolare i bot che raccolgono indirizzi.
  * Nel codice HTML l'indirizzo non compare mai intero: <a class="js-email" data-u="ofni" data-d="ti.tneidargteg">
- * (utente e dominio scritti al contrario), con un eventuale data-s per l'oggetto. Senza JS resta il testo leggibile. */
+ * (utente e dominio scritti al contrario), con un eventuale data-s per l'oggetto. Senza JS resta il testo leggibile.
+ * Se il testo del link è un'etichetta (es. «Contatti»), resta quella; solo «info (at) …» diventa l'indirizzo. */
 (function () {
   'use strict';
   function giro(s) { return s.split('').reverse().join(''); }
@@ -10,6 +11,7 @@
     var e = giro(a.getAttribute('data-u') || '') + '@' + giro(a.getAttribute('data-d') || '');
     var s = a.getAttribute('data-s');
     a.href = 'mailto:' + e + (s ? '?subject=' + encodeURIComponent(s) : '');
-    a.textContent = e;
+    // il testo diventa l'indirizzo solo se era il segnaposto «info (at) …»; un'etichetta come «Contatti» resta
+    if (/\(at\)/.test(a.textContent)) a.textContent = e;
   }
 })();
