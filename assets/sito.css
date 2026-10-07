@@ -486,3 +486,14 @@ main ul > li::before {
 .copia-fissa h3 { margin-top: 0; }
 .copia-fissa ul { margin: 0 0 0.6rem; }
 .copia-fissa p { margin: 0; }
+
+
+/* informativa privacy: pagina di solo testo */
+.pagina-testo .testata .riga { display: flex; align-items: center; justify-content: space-between; }
+.pagina-testo main { padding: 4rem 0 6rem; }
+.pagina-testo h1 { font-size: 2.6rem; margin-bottom: 0.3em; }
+.pagina-testo h2 { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--filo); font-size: 1.4rem; }
+
+/* Come collaborare: i tre passi */
+.passi { padding-left: 1.4rem; }
+.passi li { margin: 0.4rem 0; }

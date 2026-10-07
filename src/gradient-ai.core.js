@@ -1,5 +1,5 @@
 /*!
- * Gradient AI v__VERSION__ — Gradiente IA: livelli di integrazione dell'IA tratti da AIAS
+ * Gradient AI v__VERSION__ — Gradiente IA: livelli di integrazione dell'IA (getgradient.it)
  * https://github.com/frazac/gradient-ai
  *
  * Codice: © 2026 Francesco Zaccaria, licenza MIT.

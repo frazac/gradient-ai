@@ -1,6 +1,6 @@
 # Gradiente IA
 
-**Livelli di integrazione dell'IA tratti da AIAS** — cinque livelli per dire, prima di un lavoro o di una prova, quanto e come l'intelligenza artificiale può entrarci. Un timbro per ogni livello, in PNG, SVG, JavaScript o come semplice riga di testo con link.
+**Livelli di integrazione dell'IA** — cinque livelli per dire, prima di un lavoro o di una prova, quanto e come l'intelligenza artificiale può entrarci. Un timbro per ogni livello, in PNG, SVG, JavaScript o come semplice riga di testo con link.
 
 → **https://getgradient.it/**
 
@@ -29,22 +29,24 @@ La versione originale, in inglese: **AIAS** — *AI Assessment Scale*, cioè sca
 
 ## Usare i timbri
 
+**Senza toccare il codice**: sul sito, il pannello **Personalizza** cambia forma (timbro, etichetta, pittogramma), colori, peso e contorno o pieno; anteprime, file da scaricare e codici da copiare seguono le scelte. **Condividi** copia un link che apre il sito con le stesse impostazioni.
+
 **Solo testo, con link** — una riga che dichiara il livello e porta alla sua scheda (sul sito, pulsante «Copia testo con link»):
 
 ```html
 <a href="https://getgradient.it/#livello-3">Gradiente IA · Livello 3 · Co-creazione</a>
 ```
 
-**PNG** — `dist/png/timbro-3-512.png` (anche `-pieno`, icona, etichetta; più misure), da usare anche come immagine collegata: `https://cdn.getgradient.it/v0.8.0/dist/png/timbro-3-512.png`
+**PNG** — `dist/png/timbro-3-512.png` (anche `-pieno`, icona, etichetta; più misure), da usare anche come immagine collegata: `https://cdn.getgradient.it/v0.8.1/dist/png/timbro-3-512.png`
 
-**SVG** — `dist/svg/timbro-3.svg`, oppure `https://cdn.getgradient.it/v0.8.0/dist/svg/timbro-3.svg`
+**SVG** — `dist/svg/timbro-3.svg`, oppure `https://cdn.getgradient.it/v0.8.1/dist/svg/timbro-3.svg`
 
 Gli indirizzi `cdn.getgradient.it/vX.Y.Z/…` sono legati a una versione: i timbri incollati non cambiano quando il progetto si aggiorna. Servono i file del tag `vX.Y.Z` di questo repository (tramite jsDelivr; il Worker è in [`strumenti/cdn/`](strumenti/cdn/)).
 
 **JavaScript**, come [Lucide](https://lucide.dev):
 
 ```html
-<script src="https://cdn.getgradient.it/v0.8.0/dist/gradient-ai.js"></script>
+<script src="https://cdn.getgradient.it/v0.8.1/dist/gradient-ai.js"></script>
 
 <i data-gradient="3"></i>
 <i data-gradient="5" data-variant="label" data-filled></i>
@@ -84,4 +86,10 @@ Gradiente IA è un adattamento indipendente: non è una traduzione ufficiale e n
 
 ### Come attribuire
 
-> Gradiente IA di Francesco Zaccaria, Livelli di integrazione dell'IA tratti da AIAS v2 di Mike Perkins, Leon Furze, Jasper Roe e Jason MacVaugh (licenza CC BY-NC-SA 4.0). Codice: licenza MIT. Icone: Lucide (licenza ISC).
+**Attribuzione completa** — per un colophon, oppure se usi le icone togliendo a mano il riferimento:
+
+> Gradiente IA, livelli di integrazione dell'IA (getgradient.it); progetto di F. Zaccaria; contenuti tratti e riscritti da AIAS v2 (2024) di Perkins, Furze, Roe, MacVaugh (con licenza CC BY-NC-SA 4.0); codice: licenza MIT; icone: Lucide (licenza ISC).
+
+**Attribuzione breve** — sempre necessaria, se non è presente quella completa:
+
+> Gradiente IA, livelli di integrazione dell'IA (getgradient.it).

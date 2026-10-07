@@ -2,6 +2,15 @@
 
 Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con una numerazione propria; la versione della AIAS da cui deriva (v2, 2024) è dichiarata a parte.
 
+## 0.8.1 — 2026-10-07
+
+- Sottotitolo sotto il titolo: «Livelli di integrazione dell'IA», senza «tratti da AIAS» (anche nel titolo della pagina e nel piè di pagina; il rimando alla AIAS resta sotto l'introduzione). In tutte le lingue.
+- **Come attribuire** in due versioni, ognuna con il suo pulsante «Copia»: attribuzione completa (per un colophon, o se si usano le icone togliendo il riferimento) e attribuzione breve (sempre necessaria se manca la completa). AIAS indicata come «v2 (2024)».
+- Fonti e crediti: «Cura del progetto» in apertura.
+- Nuova sezione **Come collaborare**: «Condividere dati di utilizzo con il progetto» (si chiedono i questionari per email) e, sotto, «Ospitare una ricerca». Nel menu «Ricerca» diventa «Collaborare».
+- **Informativa privacy** in italiano e inglese (`/privacy/`, `/en/privacy/`), con una parte sui questionari volontari; link nel piè di pagina.
+- README: il pannello Personalizza e Condividi, senza bisogno di toccare il codice.
+
 ## 0.8.0 — 2026-10-07
 
 - **Peso ottico dei pittogrammi**: spessore del tratto compensato per icona (`icona_peso` in `dati/livelli.it.json`), perché a parità di tratto le icone fitte sembravano più scure e quelle rade più chiare. Fattori: ban 1,1 · calendar-days 0,89 · blender 0,93 · bot 1 · lighthouse 0,89 (scelti da FZ su un foglio di confronto, partendo dalla misura della tinta di ciascuna icona). Vale per timbri, pittogrammi, etichette, SVG e PNG.

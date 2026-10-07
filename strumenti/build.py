@@ -223,6 +223,17 @@ def render_lang(lg, dati, version):
         print(out.relative_to(ROOT))
 
 
+def render_privacy():
+    """Informativa privacy: src/privacy.it.html → privacy/, src/privacy.en.html → en/privacy/."""
+    for lg, percorso in (("it", "privacy/"), ("en", "en/privacy/")):
+        r = "../" * percorso.count("/")
+        page = (ROOT / "src" / f"privacy.{lg}.html").read_text(encoding="utf-8").split("\n", 1)[1].replace("{{R}}", r)
+        out = ROOT / percorso / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(f"<!-- Generato da strumenti/build.py (src/privacy.{lg}.html): non modificare a mano. -->\n" + page, encoding="utf-8")
+        print(out.relative_to(ROOT))
+
+
 def export():
     page = (ROOT / "strumenti" / "esporta.html").as_uri()
     dom = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--allow-file-access-from-files",
@@ -258,5 +269,6 @@ def export():
 if __name__ == "__main__":
     build_js()
     render_site()
+    render_privacy()
     if "--js" not in sys.argv:
         export()
