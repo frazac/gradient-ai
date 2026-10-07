@@ -2,6 +2,11 @@
 
 Il progetto segue il [versionamento semantico](https://semver.org/lang/it/) con una numerazione propria; la versione della AIAS da cui deriva (v2, 2024) è dichiarata a parte.
 
+## 0.7.2 — 2026-10-07
+
+- Codici da copiare (immagine PNG, file SVG, JavaScript) su **cdn.getgradient.it/vX.Y.Z/…** al posto di cdn.jsdelivr.net/gh/frazac/gradient-ai@vX.Y.Z/…: restano legati alla versione. Un Worker Cloudflare (`strumenti/cdn/worker.js`, pubblicato con `strumenti/cdn/pubblica.py`) serve i file `dist/` del tag tramite jsDelivr.
+- Indirizzo getgradient.it nell'introduzione e nel piè di pagina di tutte le lingue; README aggiornato.
+
 ## 0.7.1 — 2026-10-06
 
 - **Dominio getgradient.it**: il sito passa da frazac.github.io/gradient-ai a https://getgradient.it/ (DNS su Cloudflare, GitHub Pages con dominio verificato e HTTPS). I vecchi indirizzi reindirizzano al nuovo. Link dei timbri, codici da copiare e README aggiornati.

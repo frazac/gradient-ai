@@ -4,8 +4,9 @@
 
   var G = window.GradientAI;
   var BASE = 'https://getgradient.it/';
-  // codici da copiare legati alla versione (jsDelivr, tag vX.Y.Z): chi li usa non vede cambiare i timbri quando il progetto si aggiorna
-  var FISSO = 'https://cdn.jsdelivr.net/gh/frazac/gradient-ai@v' + G.version + '/';
+  // codici da copiare legati alla versione (cdn.getgradient.it/vX.Y.Z/ → jsDelivr, tag vX.Y.Z; Worker in strumenti/cdn/):
+  // chi li usa non vede cambiare i timbri quando il progetto si aggiorna
+  var FISSO = 'https://cdn.getgradient.it/v' + G.version + '/';
   var CDN = FISSO + 'dist/gradient-ai.js';
   var LG = (document.documentElement.lang || 'it').slice(0, 2);
   var T = {
