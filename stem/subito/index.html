@@ -76,12 +76,15 @@
       <p class="occhiello-profilo titolo-fascia">Profilo didattico · area STEM</p>
       <button type="button" class="apri-chiudi" aria-expanded="false" aria-controls="corpo-profili" aria-label="Mostra o nascondi: Profilo didattico · area STEM" title="Mostra o nascondi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
     </div>
-    <nav id="corpo-profili" class="profili corpo-fascia" hidden aria-label="Profili">
+    <div id="corpo-profili" class="corpo-fascia" hidden>
+      <nav class="profili" aria-label="Profili">
   <a href="../../subito/" title="Contesto professionale">Generale</a>
   <a href="../../stem/subito/" aria-current="page" title="Scienze, tecnologia, ingegneria, matematica">Didattica STEM</a>
   <a href="../../umanistiche/subito/" title="Lettere, filosofia, storia, lingue, scienze sociali">Didattica umanistica</a>
   <a href="../../afam/subito/" title="Accademie di belle arti, conservatori, design, arti performative">Didattica AFAM</a>
-    </nav>
+      </nav>
+    
+    </div>
   </div>
 </section>
 
@@ -190,7 +193,7 @@ window.addEventListener('load', function () {
       translations: {
         it: {
           consentModal: {
-            description: 'Usiamo solo cookie tecnici.',
+            description: 'Usiamo solo cookie tecnici. <a href="../../privacy/">Informativa privacy</a>',
             acceptAllBtn: 'Accetta',
             acceptNecessaryBtn: 'Rifiuta',
             showPreferencesBtn: 'Gestisci'
@@ -210,6 +213,10 @@ window.addEventListener('load', function () {
               {
                 title: 'Servizi esterni',
                 description: 'Statistiche di visita con Matomo, installato sul nostro server, senza cookie e con indirizzo IP anonimizzato: solo numeri aggregati, nessuna profilazione. Il sito è ospitato da GitHub Pages, che riceve l\'indirizzo IP del browser per inviare le pagine; caratteri e immagini sono serviti dal sito stesso.'
+              },
+              {
+                title: 'Maggiori informazioni',
+                description: 'Tutti i dettagli sono nell\'<a href="../../privacy/">informativa privacy</a>.'
               }
             ]
           }

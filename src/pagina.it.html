@@ -67,9 +67,11 @@
       <p class="occhiello-profilo titolo-fascia">{{OCCHIELLO}}</p>
       <button type="button" class="apri-chiudi" aria-expanded="false" aria-controls="corpo-profili" aria-label="Mostra o nascondi: {{OCCHIELLO}}" title="Mostra o nascondi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
     </div>
-    <nav id="corpo-profili" class="profili corpo-fascia" hidden aria-label="Profili">{{PROFILI}}
-    </nav>
+    <div id="corpo-profili" class="corpo-fascia" hidden>
+      <nav class="profili" aria-label="Profili">{{PROFILI}}
+      </nav>
     {{SALTA}}
+    </div>
   </div>
 </section>
 
@@ -313,7 +315,7 @@ window.addEventListener('load', function () {
       translations: {
         it: {
           consentModal: {
-            description: 'Usiamo solo cookie tecnici.',
+            description: 'Usiamo solo cookie tecnici. <a href="{{R}}privacy/">Informativa privacy</a>',
             acceptAllBtn: 'Accetta',
             acceptNecessaryBtn: 'Rifiuta',
             showPreferencesBtn: 'Gestisci'
@@ -333,6 +335,10 @@ window.addEventListener('load', function () {
               {
                 title: 'Servizi esterni',
                 description: 'Statistiche di visita con Matomo, installato sul nostro server, senza cookie e con indirizzo IP anonimizzato: solo numeri aggregati, nessuna profilazione. Il sito è ospitato da GitHub Pages, che riceve l\'indirizzo IP del browser per inviare le pagine; caratteri e immagini sono serviti dal sito stesso.'
+              },
+              {
+                title: 'Maggiori informazioni',
+                description: 'Tutti i dettagli sono nell\'<a href="{{R}}privacy/">informativa privacy</a>.'
               }
             ]
           }

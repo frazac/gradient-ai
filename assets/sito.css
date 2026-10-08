@@ -166,6 +166,9 @@ body.scorsa .briciole { display: flex; }
 .fascia-profili .occhiello-profilo { margin: 0; }
 .profili { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .fascia-profili + .pannello { margin-top: 0; }   /* un solo filetto fra le due fasce */
+/* «Genera subito»: le schede seguono subito la fascia dei profili, che si chiude col suo filetto come «Condividi» in homepage */
+.fascia-profili:has(+ #livelli) { border-bottom: 1px solid var(--filo); }
+.fascia-profili + #livelli > .livello:first-child { border-top: none; padding-top: 1rem; }
 /* striscia sotto il pannello: condividere la configurazione o tornare a quella di partenza */
 .pannello:has(+ .fascia-condividi) { margin-bottom: 0; }
 .fascia-condividi { border-bottom: 1px solid var(--filo); padding: var(--pad-fascia) 0; margin-bottom: 2rem; }
@@ -322,6 +325,8 @@ main ul > li::before {
   content: ''; position: absolute; left: -1.15em; top: calc(0.8em - 4.5px);   /* 0,8em = metà della prima riga (interlinea 1,6) */
   width: 9px; height: 9px; border-radius: 50%; background: var(--tenue);
 }
+/* dentro un box in evidenza il pallino resta nel box: il testo dell'elenco rientra della stessa misura */
+:is(.copia-fissa, .box-copia, .avviso-lingua) ul { padding-left: 1.15em; }
 .esempi { margin: 0; }
 .esempi li { margin-bottom: 0.3rem; }
 .esempi li::before { background: var(--c, var(--accento)); }

@@ -71,9 +71,11 @@
       <p class="occhiello-profilo titolo-fascia">{{OCCHIELLO}}</p>
       <button type="button" class="apri-chiudi" aria-expanded="false" aria-controls="corpo-profili" aria-label="Show or hide: {{OCCHIELLO}}" title="Show or hide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
     </div>
-    <nav id="corpo-profili" class="profili corpo-fascia" hidden aria-label="Profiles">{{PROFILI}}
-    </nav>
+    <div id="corpo-profili" class="corpo-fascia" hidden>
+      <nav class="profili" aria-label="Profiles">{{PROFILI}}
+      </nav>
     {{SALTA}}
+    </div>
   </div>
 </section>
 
@@ -322,7 +324,7 @@ window.addEventListener('load', function () {
       translations: {
         en: {
           consentModal: {
-            description: 'We only use cookies that the site needs to work.',
+            description: 'We only use cookies that the site needs to work. <a href="{{R}}en/privacy/">Privacy notice</a>',
             acceptAllBtn: 'Accept',
             acceptNecessaryBtn: 'Reject',
             showPreferencesBtn: 'Settings'
@@ -342,6 +344,10 @@ window.addEventListener('load', function () {
               {
                 title: 'Outside services',
                 description: 'We count visits with Matomo, on our own server, with no cookies and with the IP address made anonymous: only totals, no tracking of people. GitHub Pages hosts the site and gets the IP address of your browser to send the pages. Fonts and images come from the site itself.'
+              },
+              {
+                title: 'More information',
+                description: 'You can read all the details in the <a href="{{R}}en/privacy/">privacy notice</a>.'
               }
             ]
           }

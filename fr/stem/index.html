@@ -86,13 +86,15 @@
       <p class="occhiello-profilo titolo-fascia">Profil enseignement · sciences et techniques</p>
       <button type="button" class="apri-chiudi" aria-expanded="false" aria-controls="corpo-profili" aria-label="Afficher ou masquer: Profil enseignement · sciences et techniques" title="Afficher ou masquer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
     </div>
-    <nav id="corpo-profili" class="profili corpo-fascia" hidden aria-label="Profils">
+    <div id="corpo-profili" class="corpo-fascia" hidden>
+      <nav class="profili" aria-label="Profils">
   <a href="../../fr/" title="Contexte professionnel">Général</a>
   <a href="../../fr/stem/" aria-current="page" title="Sciences, technologie, ingénierie, mathématiques">Enseignement STEM</a>
   <a href="../../fr/sciences-humaines/" title="Lettres, philosophie, histoire, langues, sciences sociales">Enseignement lettres et sciences humaines</a>
   <a href="../../fr/arts/" title="Écoles d'art, conservatoires, design, arts du spectacle">Enseignement artistique</a>
-    </nav>
+      </nav>
     <p class="salta">Passer les réglages : <a class="bottone" href="rapide/">Générer tout de suite</a></p>
+    </div>
   </div>
 </section>
 
@@ -468,7 +470,7 @@ window.addEventListener('load', function () {
       translations: {
         fr: {
           consentModal: {
-            description: 'Nous n\'utilisons que des cookies techniques.',
+            description: 'Nous n\'utilisons que des cookies techniques. <a href="../../en/privacy/">Politique de confidentialité (en anglais)</a>',
             acceptAllBtn: 'Accepter',
             acceptNecessaryBtn: 'Refuser',
             showPreferencesBtn: 'Gérer'
@@ -488,6 +490,10 @@ window.addEventListener('load', function () {
               {
                 title: 'Services externes',
                 description: 'Statistiques de visite avec Matomo, installé sur notre serveur, sans cookies et avec adresse IP anonymisée : uniquement des chiffres agrégés, aucun profilage. Le site est hébergé par GitHub Pages, qui reçoit l\'adresse IP du navigateur pour envoyer les pages ; polices et images sont servies par le site lui-même.'
+              },
+              {
+                title: 'Plus d\'informations',
+                description: 'Tous les détails sont dans la <a href="../../en/privacy/">politique de confidentialité (en anglais)</a>.'
               }
             ]
           }

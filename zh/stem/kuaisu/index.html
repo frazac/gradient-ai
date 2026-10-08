@@ -79,12 +79,15 @@
       <p class="occhiello-profilo titolo-fascia">教学场景 · STEM</p>
       <button type="button" class="apri-chiudi" aria-expanded="false" aria-controls="corpo-profili" aria-label="显示或隐藏：教学场景 · STEM" title="显示或隐藏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
     </div>
-    <nav id="corpo-profili" class="profili corpo-fascia" hidden aria-label="使用场景">
+    <div id="corpo-profili" class="corpo-fascia" hidden>
+      <nav class="profili" aria-label="使用场景">
   <a href="../../../zh/kuaisu/" title="职场与专业工作">通用</a>
   <a href="../../../zh/stem/kuaisu/" aria-current="page" title="科学、技术、工程、数学">STEM 教学</a>
   <a href="../../../zh/renwen/kuaisu/" title="文学、哲学、历史、语言、社会科学">人文学科教学</a>
   <a href="../../../zh/yishu/kuaisu/" title="美术学院、音乐学院、设计、表演艺术（意大利称 AFAM）">艺术院校教学</a>
-    </nav>
+      </nav>
+    
+    </div>
   </div>
 </section>
 
@@ -193,7 +196,7 @@ window.addEventListener('load', function () {
       translations: {
         zh: {
           consentModal: {
-            description: '我们只使用网站运行所必需的 Cookie。',
+            description: '我们只使用网站运行所必需的 Cookie。 <a href="../../../en/privacy/">隐私声明（英文）</a>',
             acceptAllBtn: '接受',
             acceptNecessaryBtn: '拒绝',
             showPreferencesBtn: '设置'
@@ -213,6 +216,10 @@ window.addEventListener('load', function () {
               {
                 title: '外部服务',
                 description: '我们使用安装在自己服务器上的 Matomo 统计访问量，不使用 Cookie，IP 地址经过匿名化处理：只有汇总数字，不做用户画像。网站由 GitHub Pages 托管，它会获取浏览器的 IP 地址以发送页面；中文字体来自 Google Fonts，同样会获取 IP 地址；其他字体和图片由本网站自身提供。'
+              },
+              {
+                title: '更多信息',
+                description: '详情请见<a href="../../../en/privacy/">隐私声明（英文）</a>。'
               }
             ]
           }
