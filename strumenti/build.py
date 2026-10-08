@@ -205,7 +205,7 @@ def render_lang(lg, dati, version):
 
         def compila(fine, titolo, descr, livelli, salta):
             """Riempie il modello. fine: per lingua, la sottocartella dopo il profilo ("" = pagina del profilo,
-            SUBITO[x] = pagina «Genera subito»), così profili e lingue portano alla pagina corrispondente."""
+            SUBITO[x] = pagina «Generazione rapida»), così profili e lingue portano alla pagina corrispondente."""
             rr = r + "../" * fine[lg].count("/")
             nav = "".join(
                 f'\n  <a href="{(rr + q["percorso"] + fine[lg]) or "./"}"' + (' aria-current="page"' if q is pr else "") +
@@ -248,28 +248,28 @@ def render_lang(lg, dati, version):
         scrivi(pr["percorso"] + SUBITO[lg], pagina_subito(lg, data, pr, compila, titolo))
 
 
-# «Genera subito»: per chi vuole solo dichiarare un livello, senza passare dalle personalizzazioni.
+# «Generazione rapida»: per chi vuole solo dichiarare un livello, senza passare dalle personalizzazioni.
 # Una pagina per profilo (<profilo>/subito/, en/quick/, …): i cinque livelli con il testo con link
 # e l'indicazione per chi realizza, poi l'attribuzione breve.
 SUBITO = {"it": "subito/", "fr": "rapide/", "en": "quick/", "zh": "kuaisu/"}
 SUBITO_UI = {
-    "it": {"salta": "Salta le configurazioni:", "genera": "Genera subito",
+    "it": {"salta": "Salta le configurazioni:", "genera": "Generazione rapida", "sotto": "Generazione rapida del livello di integrazione dell'IA",
            "lead": "I cinque livelli, pronti da copiare: la riga con il link alla scheda del livello e il testo da dare a chi svolge il lavoro.",
            "torna": 'Torna alla <a href="{home}">homepage</a> se vuoi vedere altri dettagli.', "menu": "Homepage"},
-    "fr": {"salta": "Passer les réglages :", "genera": "Générer tout de suite",
+    "fr": {"salta": "Passer les réglages :", "genera": "Génération rapide", "sotto": "Génération rapide du niveau d'intégration de l'IA",
            "lead": "Les cinq niveaux, prêts à copier : la ligne avec le lien vers la fiche du niveau et le texte à donner à la personne qui fait le travail.",
            "torna": 'Revenez à la <a href="{home}">page d\'accueil</a> pour voir plus de détails.', "menu": "Accueil"},
-    "en": {"salta": "Skip the settings:", "genera": "Get it now",
+    "en": {"salta": "Skip the settings:", "genera": "Quick version", "sotto": "Quick version: your level of AI use",
            "lead": "The five levels, ready to copy: a line with a link to the level, and the text for the person who does the work.",
            "torna": 'Go back to the <a href="{home}">home page</a> to see more details.', "menu": "Home page"},
-    "zh": {"salta": "跳过设置：", "genera": "立即生成",
+    "zh": {"salta": "跳过设置：", "genera": "快速生成", "sotto": "快速生成人工智能融入层级",
            "lead": "五个层级，可直接复制：一行带有层级链接的文本，以及交给完成工作的人的说明。",
            "torna": '如需查看更多细节，请返回<a href="{home}">首页</a>。', "menu": "首页"},
 }
 
 
 def pagina_subito(lg, data, pr, compila, titolo_profilo):
-    """Pagina «Genera subito» del profilo: stesso modello (testata, fascia dei profili, piè di pagina), corpo ridotto."""
+    """Pagina «Generazione rapida» del profilo: stesso modello (testata, fascia dei profili, piè di pagina), corpo ridotto."""
     B, S = BOTTONI[lg], SUBITO_UI[lg]
     schede = []
     for l in data["livelli"]:
@@ -288,7 +288,7 @@ def pagina_subito(lg, data, pr, compila, titolo_profilo):
     titolo = f"{S['genera']} – {titolo_profilo}"
     descr = f"{data['titolo']}: {S['lead']}"
     page = compila(SUBITO, titolo, descr, "", "")
-    # dal modello compilato per questa pagina: la fascia dei profili (i link portano alle altre pagine «Genera subito»)
+    # dal modello compilato per questa pagina: la fascia dei profili (i link portano alle altre pagine «Generazione rapida»)
     # e l'attribuzione breve, così i testi restano in un posto solo
     fascia = re.search(r'<section id="profili".*?</section>', page, re.S).group(0).replace("\n    \n  </div>", "\n  </div>")
     breve = re.search(r'<h4>([^<]*)</h4>\s*(<p class="piccolo">[^<]*</p>)\s*(<div class="box-copia"><p id="attribuzione-breve">.*?</div>)', page, re.S)
@@ -296,8 +296,8 @@ def pagina_subito(lg, data, pr, compila, titolo_profilo):
     corpo = f"""<main>
 
 <section id="intro" class="intro riga">
-  <h1>{S["genera"]}</h1>
-  <p class="sottotitolo">{e(data["titolo"])} · {e(pr["nome"])}</p>
+  <h1>{e(data["titolo"])}</h1>
+  <p class="sottotitolo">{S["sotto"]}</p>
   <p class="lead">{S["lead"]}</p>
 </section>
 
