@@ -1,5 +1,6 @@
 <!doctype html>
-<!-- Immagine di anteprima per i social (Open Graph, 1200×630): strumenti/build.py la fotografa con Chrome headless → assets/og/og.png.
+<!-- Immagine di anteprima per i social (Open Graph, 1200×630): strumenti/build.py la fotografa con Chrome headless → assets/og/og.png;
+     con ?quadrato la versione 2160×2160 (Linktree e profili) → assets/og/quadrato.png.
      Sfondo: il Mix Gradient IA, i dieci toni dei cinque livelli, inclinato di 12°; al centro il pittogramma del livello 3
      (frullatore) e 3/5 in bianco, sotto getgradient.it. Nessun altro testo: la stessa immagine vale per tutte le lingue,
      e resta intera anche quando le app ritagliano l'anteprima in un quadrato. -->
@@ -17,6 +18,13 @@
   #icona svg { width: 250px; height: 250px; display: block; }
   #grado { top: 322px; margin: 0; font-size: 120px; font-weight: 700; line-height: 1; letter-spacing: -0.01em; }
   #sito { top: 492px; margin: 0; font-size: 46px; font-weight: 500; letter-spacing: 0.03em; }
+  /* quadrato 2160×2160: stesse proporzioni fra disegno, grado e indirizzo, centrate in verticale */
+  .quadrato, .quadrato body { width: 2160px; height: 2160px; }
+  .quadrato #fondo::after { background: radial-gradient(circle at 50% 48%, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0) 45%); }
+  .quadrato #icona { top: 440px; }
+  .quadrato #icona svg { width: 720px; height: 720px; }
+  .quadrato #grado { top: 1170px; font-size: 345px; }
+  .quadrato #sito { top: 1600px; font-size: 132px; }
 </style>
 <div id="fondo"></div>
 <div id="icona" class="centro"></div>
@@ -24,6 +32,7 @@
 <p id="sito" class="centro">getgradient.it</p>
 <script src="../dist/gradient-ai.js"></script>
 <script>
+  if (location.search.indexOf('quadrato') > -1) document.documentElement.className = 'quadrato';
   // dieci toni, da 1 (carminio) a 5 (viola): 90° = da sinistra a destra, +12° di inclinazione
   var toni = [];
   GradientAI.mix.livelli.forEach(function (t) { toni.push(t.da, t.a); });

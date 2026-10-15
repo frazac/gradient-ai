@@ -14,7 +14,8 @@ Build di Gradient AI — nessuna dipendenza oltre a Python 3 e Google Chrome.
 4. assets/favicon.svg: icona del livello 3 in currentColor (bianca in tema scuro).
 3. dist/png: nella stessa pagina, ogni SVG passa da un canvas (sfondo trasparente).
    Le misure dei PNG stanno in strumenti/esporta.html (SIZES).
-5. assets/og/og.png: anteprima per i social (strumenti/og.html), citata dai meta Open Graph di ogni pagina.
+5. assets/og/og.png: anteprima per i social (strumenti/og.html), citata dai meta Open Graph di ogni pagina;
+   assets/og/quadrato.png: la stessa in 2160×2160, per Linktree.
 """
 import base64
 import html
@@ -387,14 +388,16 @@ def export():
 
 
 def export_og():
-    """Anteprima per i social (1200×630, senza testi da tradurre: vale per tutte le lingue):
-    Chrome headless fotografa strumenti/og.html → assets/og/og.png."""
+    """Anteprima per i social (1200×630, senza testi da tradurre: vale per tutte le lingue) e versione quadrata
+    2160×2160 per Linktree: Chrome headless fotografa strumenti/og.html → assets/og/og.png, assets/og/quadrato.png."""
     (ROOT / "assets" / "og").mkdir(parents=True, exist_ok=True)
-    out = ROOT / "assets" / "og" / "og.png"
-    subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--allow-file-access-from-files", "--hide-scrollbars",
-                    "--window-size=1200,630", "--virtual-time-budget=5000", f"--screenshot={out}", (ROOT / "strumenti" / "og.html").as_uri()],
-                   capture_output=True, timeout=60)
-    print(out.relative_to(ROOT))
+    for nome, query, misure in (("og", "", "1200,630"), ("quadrato", "?quadrato", "2160,2160")):
+        out = ROOT / "assets" / "og" / f"{nome}.png"
+        subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--allow-file-access-from-files", "--hide-scrollbars",
+                        f"--window-size={misure}", "--virtual-time-budget=5000", f"--screenshot={out}",
+                        (ROOT / "strumenti" / "og.html").as_uri() + query],
+                       capture_output=True, timeout=60)
+        print(out.relative_to(ROOT))
 
 if __name__ == "__main__":
     build_js()
