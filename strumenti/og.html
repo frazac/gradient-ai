@@ -1,0 +1,35 @@
+<!doctype html>
+<!-- Immagine di anteprima per i social (Open Graph, 1200×630): strumenti/build.py la fotografa con Chrome headless → assets/og/og.png.
+     Sfondo: il Mix Gradient IA, i dieci toni dei cinque livelli, inclinato di 12°; al centro il pittogramma del livello 3
+     (frullatore) e 3/5 in bianco, sotto getgradient.it. Nessun altro testo: la stessa immagine vale per tutte le lingue,
+     e resta intera anche quando le app ritagliano l'anteprima in un quadrato. -->
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Space Grotesk'; font-weight: 300 700; src: url('../assets/font/space-grotesk-latin.woff2') format('woff2'); }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body { position: relative; color: #fff; font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; }
+  #fondo { position: absolute; inset: 0; }
+  /* leggera ombra al centro: il bianco si stacca anche dove il gradiente passa sull'ocra */
+  #fondo::after { content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 34% 62% at 50% 48%, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0) 100%); }
+  .centro { position: absolute; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; }
+  #icona { top: 70px; }
+  #icona svg { width: 250px; height: 250px; display: block; }
+  #grado { top: 322px; margin: 0; font-size: 120px; font-weight: 700; line-height: 1; letter-spacing: -0.01em; }
+  #sito { top: 492px; margin: 0; font-size: 46px; font-weight: 500; letter-spacing: 0.03em; }
+</style>
+<div id="fondo"></div>
+<div id="icona" class="centro"></div>
+<p id="grado" class="centro">3/5</p>
+<p id="sito" class="centro">getgradient.it</p>
+<script src="../dist/gradient-ai.js"></script>
+<script>
+  // dieci toni, da 1 (carminio) a 5 (viola): 90° = da sinistra a destra, +12° di inclinazione
+  var toni = [];
+  GradientAI.mix.livelli.forEach(function (t) { toni.push(t.da, t.a); });
+  document.getElementById('fondo').style.background = 'linear-gradient(102deg, ' + toni.join(', ') + ')';
+  // dal pittogramma della libreria solo il disegno Lucide (con il suo peso ottico), senza disco né grado
+  var g = GradientAI.toSvg(3, { variant: 'icon', color: '#ffffff', credit: false }).match(/<g transform[^>]*>[\s\S]*?<\/g>/)[0];
+  g = g.replace(/transform="[^"]*"\s*/, '');
+  document.getElementById('icona').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' + g + '</svg>';
+</script>

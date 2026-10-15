@@ -14,6 +14,7 @@ Build di Gradient AI — nessuna dipendenza oltre a Python 3 e Google Chrome.
 4. assets/favicon.svg: icona del livello 3 in currentColor (bianca in tema scuro).
 3. dist/png: nella stessa pagina, ogni SVG passa da un canvas (sfondo trasparente).
    Le misure dei PNG stanno in strumenti/esporta.html (SIZES).
+5. assets/og/og.png: anteprima per i social (strumenti/og.html), citata dai meta Open Graph di ogni pagina.
 """
 import base64
 import html
@@ -98,6 +99,25 @@ ICONA_COPY = ('<svg class="i-copia" viewBox="0 0 24 24" fill="none" stroke="curr
               '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>')
 ICONA_CHECK = ('<svg class="i-fatto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
                '<path d="M20 6 9 17l-5-5"/></svg>')
+
+
+LOCALE = {"it": "it_IT", "fr": "fr_FR", "en": "en_US", "zh": "zh_CN"}
+OG_ALT = {"it": "Il frullatore e 3/5, il livello 3 (Co-creazione) di Gradiente IA, su uno sfondo che sfuma nei colori dei cinque livelli; sotto, getgradient.it",
+          "fr": "Le mixeur et 3/5, le niveau 3 (Co-création) de Gradient IA, sur un fond qui passe par les couleurs des cinq niveaux ; dessous, getgradient.it",
+          "en": "A blender and 3/5, level 3 (Working together) of Gradient AI, on a background with the colours of the five levels; below, getgradient.it",
+          "zh": "搅拌机图标和 3/5，即 AI 梯度第 3 级（共创），背景依次渐变为五个层级的颜色；下方为 getgradient.it"}
+
+
+def meta_social(lg, titolo, descr, url):
+    """Anteprima dei link sui social (Open Graph + Twitter/X): immagine assets/og/og.png, uguale per tutte le lingue."""
+    img = f"{SITO}assets/og/og.png"
+    alt = {"it": "Gradiente IA", "fr": "Gradient IA", "en": "Gradient AI", "zh": "AI 梯度"}[lg]
+    righe = [("property", "og:type", "website"), ("property", "og:site_name", alt), ("property", "og:locale", LOCALE[lg]),
+             ("property", "og:title", titolo), ("property", "og:description", descr), ("property", "og:url", url),
+             ("property", "og:image", img), ("property", "og:image:type", "image/png"),
+             ("property", "og:image:width", "1200"), ("property", "og:image:height", "630"), ("property", "og:image:alt", OG_ALT[lg]),
+             ("name", "twitter:card", "summary_large_image"), ("name", "twitter:image", img), ("name", "twitter:image:alt", OG_ALT[lg])]
+    return "".join(f'  <meta {a}="{k}" content="{e(v)}">\n' for a, k, v in righe)
 
 
 def titolo_extra(l, lg):
@@ -230,7 +250,7 @@ def render_lang(lg, dati, version):
                     .replace("{{LIVELLI}}", livelli).replace("{{COPIA_ICONE}}", ICONA_COPY + ICONA_CHECK).replace("{{COPIA}}", B["copia"]).replace("{{ALTERNATE}}", alternate).replace("{{HOME}}", (rr + pari[lg]["percorso"].split("/")[0] + "/") if lg != "it" else (rr or "./")).replace("{{LINGUA}}", lingua).replace("{{LINGUE_PIEDE}}", lingue_piede).replace("{{NOTE}}", note))
             page = page.split("\n", 1)[1]            # via il commento sul modello
             page = re.sub(r"(<span data-versione>)[^<]*(</span>)", rf"\g<1>{version}\g<2>", page)
-            return page.replace("</head>", MATOMO + "</head>", 1)
+            return page.replace("</head>", meta_social(lg, titolo, descr, SITO + pr["percorso"] + fine[lg]) + MATOMO + "</head>", 1)
 
         def scrivi(percorso, page):
             out = ROOT / percorso / "index.html"
@@ -323,7 +343,11 @@ def render_privacy():
     for nome, lg, percorso in (("privacy", "it", "privacy/"), ("privacy", "en", "en/privacy/"),
                                ("condizioni", "it", "condizioni/"), ("condizioni", "en", "en/terms/")):
         r = "../" * percorso.count("/")
-        page = (ROOT / "src" / f"{nome}.{lg}.html").read_text(encoding="utf-8").split("\n", 1)[1].replace("{{R}}", r).replace("</head>", MATOMO + "</head>", 1)
+        page = (ROOT / "src" / f"{nome}.{lg}.html").read_text(encoding="utf-8").split("\n", 1)[1].replace("{{R}}", r)
+        titolo = html.unescape(re.search(r"<title>(.*?)</title>", page).group(1))
+        m = re.search(r'<meta name="description" content="([^"]*)"', page)
+        descr = html.unescape(m.group(1)) if m else titolo
+        page = page.replace("</head>", meta_social(lg, titolo, descr, SITO + percorso) + MATOMO + "</head>", 1)
         out = ROOT / percorso / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(f"<!-- Generato da strumenti/build.py (src/{nome}.{lg}.html): non modificare a mano. -->\n" + page, encoding="utf-8")
@@ -362,9 +386,20 @@ def export():
     print(f"dist/svg: {len(out['svg'])} file · dist/png: {len(out['png'])} file")
 
 
+def export_og():
+    """Anteprima per i social (1200×630, senza testi da tradurre: vale per tutte le lingue):
+    Chrome headless fotografa strumenti/og.html → assets/og/og.png."""
+    (ROOT / "assets" / "og").mkdir(parents=True, exist_ok=True)
+    out = ROOT / "assets" / "og" / "og.png"
+    subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--allow-file-access-from-files", "--hide-scrollbars",
+                    "--window-size=1200,630", "--virtual-time-budget=5000", f"--screenshot={out}", (ROOT / "strumenti" / "og.html").as_uri()],
+                   capture_output=True, timeout=60)
+    print(out.relative_to(ROOT))
+
 if __name__ == "__main__":
     build_js()
     render_site()
     render_privacy()
     if "--js" not in sys.argv:
         export()
+        export_og()
