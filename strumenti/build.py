@@ -121,6 +121,20 @@ def meta_social(lg, titolo, descr, url):
     return "".join(f'  <meta {a}="{k}" content="{e(v)}">\n' for a, k, v in righe)
 
 
+def descrizione_breve(lead, lg):
+    """Meta description e og:description: le frasi intere dell'introduzione del profilo che stanno in 160 caratteri
+    (80 in cinese), la misura che motori di ricerca e anteprime social mostrano senza tagliare."""
+    testo = re.sub(r"<[^>]+>", "", lead)
+    frasi = re.findall(r"[^。]+。", testo) if lg == "zh" else re.split(r"(?<=\.)\s+", testo)
+    limite, out = (80 if lg == "zh" else 160), ""
+    for f in frasi:
+        prova = out + ("" if lg == "zh" or not out else " ") + f
+        if out and len(prova) > limite:
+            break
+        out = prova
+    return out
+
+
 def titolo_extra(l, lg):
     """Solo il primo grado porta il sottotitolo nel titolo della scheda: «Autonomia (senza IA)»."""
     if l["n"] != 1:
@@ -260,8 +274,7 @@ def render_lang(lg, dati, version):
             print(out.relative_to(ROOT))
 
         titolo = f"{data['titolo']} – {data['sottotitolo']}" + ("" if pid == "generale" else f" · {pr['nome']}")
-        descr = re.sub(r"<[^>]+>", "", pr["lead"]) + {"it": " Adattamento di AIAS v2, CC BY-NC-SA 4.0.", "en": " Based on the AIAS v2, CC BY-NC-SA 4.0.",
-                                                       "fr": " Adaptation de l'AIAS v2, CC BY-NC-SA 4.0.", "zh": "改编自 AIAS v2，CC BY-NC-SA 4.0。"}[lg]
+        descr = descrizione_breve(pr["lead"], lg)
         S = SUBITO_UI[lg]
         salta = f'<p class="salta riga">{S["salta"]} <a class="bottone" href="{SUBITO[lg]}">{S["genera"]}</a></p>'
         page = compila({x: "" for x in LINGUE}, titolo, descr, nav_livelli + "".join(parts), salta)
